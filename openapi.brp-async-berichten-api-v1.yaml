@@ -1,0 +1,655 @@
+openapi: 3.0.3
+info:
+  title: BRP asynchrone berichten API
+  description: |
+    Een REST API voor het a-synchroon uitwisselen van berichten welke in het Logisch Ontwerp gedefinieerd zijn.
+
+    # Wijzigingshistorie:
+    ## 0.2.0 - April 2024
+    - "List" verzoek is verhuisd van "/berichten/lijst" --> "/berichten"
+    - "GET" van meerdere berichten wordt gedaan middels path-parameters i.p.v. query-parameters en is samengevoegd met het endpoint voor het ophalen van een enkel bericht.<br/>
+      (/berichten/?berichtTransportIds=[UUID],[UUID] --> /berichten/[UUID],[UUID])
+    - "DELETE" van meerdere berichten wordt gedaan middels path-parameters i.p.v. query-parameters en is samengevoegd met het endpoint voor het verwijderen van een enkel bericht.<br/>
+      (/berichten/?berichtTransportIds=[UUID],[UUID] --> /berichten/[UUID],[UUID])
+    - Het "berichtId" wat correspondeert met het "MessageId" veld van de mailboxserver is qua type gewijzigd van String naar Integer. Maximale lengte 12.
+      - Beschrijving LO: MessageId, lengte: 12, Het unieke volgnummer dat aan het uitgaande bericht wordt toegekend.
+    - Het veld "verwijzingBerichtId" wat correspondeert met het "CrossReference" veld van de mailboxserver:
+      - is qua type gewijzigd van String naar Integer. Maximale lengte 12.
+      - kan of weggelaten worden, of gevuld worden met 0 indien het bericht een eerste bericht in de cyclus betreft.
+    - "aantalKeerOpgehaald" is toegevoegd aan de ListMessageKenmerken.
+
+    ## 0.1.0 - Maart 2024
+    Initiële versie.
+
+    # In ontwikkeling:
+      - Conversie API om te kunnen vertalen tussen UTF8 / Teletex formaten naar het nieuwe JSON formaat (heen en terug)
+      - Meer duidelijkheid over welke formaten definitief ondersteund gaan worden.
+        - Op dit moment gaan we er vanuit dat JSON het enige ge-accepteerde formaat gaat worden. Gedurende migratie- en/of testtraject kan er gebruikt
+          gemaakt worden van de conversie API om van oud naar nieuw formaat over te gaan. Een PUT request met een oud bericht moet dan vooraf gaan met
+          een dergelijke conversie alvorens de PUT daadwerkelijk plaatsvindt.
+      - Opstellen van de diverse berichtformaten (in JSON) en de realisatie van voorbeeldberichten.
+      - Structuur van de foutmeldingen.
+        - Inclusief het opnemen van mogelijke foutmeldingen in deze API specificatie.
+      - Bepalen of het een checksum op de berichtinhoud van meerwaarde kan zijn.
+
+    # Voorlopige limieten:
+    | Waarde | Omschrijving |
+    |--------|--------------|
+    | 1      | Ontvanger per bericht. |
+    | 10     | Maximum aantal berichten dat in één PUT request verstuurd meag worden. |
+    | 100    | Maximum aantal berichten dat in één LIST request getoond zal worden. |
+    | 10     | Maximum aantal berichten dat in één GET request ontvangen mag worden. |
+    | 64kb   | Maximum grote van één enkel bericht. Één request zal qua grote dan uitkomen op ((maximale-grote-enkel-bericht * maximaal-aantal-berichten) + overhead). |
+
+  version: 0.2.0
+tags:
+  - name: Berichtenverkeer
+    description: API waarop berichten uitgewisseld kunnen worden.
+servers:
+  - url: http://localhost:8083/
+    description: Local ontwikkelomgeving
+paths:
+  /api/v1/account/wachtwoord:
+    put:
+      tags:
+        - Accountbeheer
+      summary:
+        Wachtwoord wijzigen
+      description:
+        Stelt een afnemende partij in staat om het wachtwoord van een account te wijzigen.
+      operationId: wijzigWachtwoord
+      requestBody:
+        content:
+          application/json; charset=utf-8:
+            schema:
+              type: object
+              required:
+                - nieuwWachtwoord
+              properties:
+                nieuwWachtwoord:
+                  type: string
+      responses:
+        '204':
+          description: Wachtwoord succesvol gewijzigd
+        '400':
+          description: Wachtwoord wijzigen verzoek niet in orde (bijvoorbeeld wanneer het nieuwe wachtwoord niet aan de vereisten voldoet)
+          content:
+            application/problem+json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/probleem-antwoord'
+
+  /api/v1/berichten:
+    post: # (= sPd PUT)
+      tags:
+        - Berichtenverkeer
+      summary: Het versturen van een of meerdere berichten (PUT).
+      description: >
+        Dit endpoint gebruikt u om berichten zoals gespecificeerd in het Logisch Ontwerp te versturen.
+      operationId: putMessages
+      requestBody:
+        content:
+          application/json; charset=utf-8:
+            schema:
+              $ref: '#/components/schemas/put-message-request'
+      responses:
+        '201':
+          description: a-Synchrone response. Een eventueel antwoord op een bericht wordt later voor u klaargezet en dient separaat opgehaald te worden.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/put-message-antwoord'
+        '500':
+          $ref: '#/components/responses/500'
+
+    get: # (= sPd LIST)
+      tags:
+        - Berichtenverkeer
+      summary: Het ophalen een lijst met berichten die klaarstaan (LIST).
+      description: >
+        Dit endpoint gebruikt u om te achterhalen welke berichten er voor u beschikbaar zijn.
+      operationId: listMessages
+      parameters:
+        - $ref: "#/components/parameters/paginaParam"
+        - $ref: "#/components/parameters/sorteringParam"
+      responses:
+        '200':
+          description: Een opsomming van de berichten die beschikbaar zijn voor de mailbox die gekoppeld is aan het geauthenticeerde account.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/list-message-antwoord'
+        '500':
+          $ref: '#/components/responses/500'
+
+  /api/v1/berichten/{berichtTransportIdsParam}:
+    get: # (=sPd GET, 1 of meerdere bericht)
+      tags:
+        - Berichtenverkeer
+      summary: Het ophalen van een of meerdere berichten (GET).
+      description: >
+        Dit endpoint gebruikt u om berichten op te halen.
+      operationId: getMessages
+      parameters:
+        - $ref: '#/components/parameters/berichtTransportIdsParam'
+      responses:
+        '200':
+          description: Deze 200 OK response wordt vrijwel alle situaties geretourneerd, mits er geen technische fouten opgetreden zijn. Indien er bij het ophalen van het bericht iets mis ging, dan vindt u dat per bericht terug in de response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/get-message-antwoord'
+        '500':
+          $ref: '#/components/responses/500'
+    delete: # (= sPd DELETE)
+      tags:
+        - Berichtenverkeer
+      summary: Het verwijderen van een of meerdere berichten (DELETE).
+      description: >
+        Verwijderen van een of meerdere berichten. De berichten kunnen na deze actie niet meer bij de berichten API opgehaald worden.
+      operationId: deleteMessages
+      parameters:
+        - $ref: '#/components/parameters/berichtTransportIdsParam'
+      responses:
+        '200':
+          description: Deze 200 OK response wordt vrijwel alle situaties geretourneerd, mits er geen technische fouten opgetreden zijn. Indien er bij het verwijderen van het bericht iets mis ging, dan vindt u dat per bericht terug in de response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/delete-message-antwoord'
+        '500':
+          $ref: '#/components/responses/500'
+
+components:
+  schemas:
+    put-message-request:
+      type: object
+      required:
+        - berichten
+      properties:
+        berichten:
+          type: array
+          items:
+            $ref: '#/components/schemas/PutMessage'
+
+    put-message-antwoord:
+      allOf:
+        - $ref: '#/components/schemas/generiek-antwoord'
+        - type: object
+          required:
+            - succesvolVerwerkteBerichten
+            - nietSuccesvolVerwerkteBerichten
+          properties:
+            verwerkteBerichten:
+              type: array
+              items:
+                required:
+                  - berichtId
+                  - berichtTransportId
+                properties:
+                  berichtId:
+                    $ref: '#/components/schemas/BerichtId'
+                  berichtTransportId:
+                    $ref: '#/components/schemas/BerichtTransportId'
+            nietVerwerkteBerichten:
+              type: array
+              items:
+                required:
+                  - berichtId
+                  - berichtTransportId
+                  - foutmeldingen
+                properties:
+                  berichtId:
+                    $ref: '#/components/schemas/BerichtId'
+                  berichtTransportId:
+                    $ref: '#/components/schemas/BerichtTransportId'
+                  foutmeldingen:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Foutmelding'
+
+    list-message-antwoord:
+      allOf:
+        - $ref: '#/components/schemas/generiek-antwoord'
+        - type: object
+          required:
+            - berichten
+          properties:
+            berichten:
+              type: array
+              items:
+                $ref: '#/components/schemas/ListMessageKenmerken'
+        - $ref: '#/components/schemas/PagineerbaarResultaat'
+
+    get-message-antwoord:
+      allOf:
+        - $ref: '#/components/schemas/generiek-antwoord'
+        - type: object
+          required:
+            - opgehaaldeBerichten
+            - nietOpgehaaldeBerichten
+          properties:
+            opgehaaldeBerichten:
+              type: array
+              description: Gevraagde berichten die ook succesvol opgehaald konden worden.
+              items:
+                type: object
+                required:
+                  - berichtKenmerken
+                  - berichtInhoud
+                properties:
+                  berichtKenmerken:
+                    $ref: '#/components/schemas/GetMessageKenmerken'
+                  berichtInhoud:
+                    $ref: '#/components/schemas/BerichtInhoud'
+            nietOpgehaaldeBerichten:
+              type: array
+              description: Gevraagde berichten die niet succesvol opgehaald konden worden.
+              items:
+                required:
+                  - berichtTransportId
+                  - foutmeldingen
+                properties:
+                  berichtTransportId:
+                    $ref: '#/components/schemas/BerichtTransportId'
+                  foutmeldingen:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Foutmelding'
+
+    delete-message-antwoord:
+      allOf:
+        - $ref: '#/components/schemas/generiek-antwoord'
+        - type: object
+          properties:
+            succesvolVerwijderdeBerichten:
+              type: array
+              uniqueItems: true
+              description: Berichten die verwijderd zijn.
+              items:
+                type: string
+                description: In deze collectie staan de berichten die daadwerkelijk verwijderd zijn.
+            nietSuccesvolVerwijderdeBerichten:
+              type: array
+              uniqueItems: true
+              description: In deze collectie staan de berichten die niet verwijderd konden worden.
+              items:
+                type: object
+                description: De foutmelding welke aangeeft waarom een bericht niet verwijderd kon worden.
+                required:
+                  - berichtTransportId
+                  - foutmeldingen
+                properties:
+                  berichtTransportId:
+                    $ref: '#/components/schemas/BerichtTransportId'
+                  foutmeldingen:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Foutmelding'
+
+    generiek-antwoord:
+      type: object
+      required:
+        - interactieId
+      properties:
+        interactieId:
+          type: string
+          format: uuid
+          description: Een uniek ID wat aan het HTTP request gekoppeld wordt.
+
+    probleem-antwoord:
+      oneOf:
+        - $ref: '/openapi-problem-detail-v1.yml#/components/schemas/Probleem'
+
+    PutMessage:
+      type: object
+      required:
+        - berichtKenmerken
+        - berichtInhoud
+      properties:
+        berichtKenmerken:
+          $ref: '#/components/schemas/PutMessageKenmerken'
+        berichtInhoud:
+          $ref: '#/components/schemas/BerichtInhoud'
+
+    PutMessageKenmerken:
+      description: >
+        De PutMessageKenmerken lijken op de PutEnvelope zoals dat gebruikt werdt bij de mailboxserver. Ten
+        opzichte van de mailboxserver zijn een aantal velden komen te vervallen een sommige hebben een andere naam gekregen:
+          * Attention: Was gereserveerd voor toekomstig gebruik. In deze API niet langer relevant.
+          * ContentType: Dit veldt had altijd een vaste waarde. In deze API niet langer relevant.
+          * DeferredDeliveryTime: Hiermee kon een gewenst tijdstip van aflevering aangegeven worden. Dit wordt niet door deze API ondersteund.
+          * OriginatorORName: Wordt niet door deze API ondersteund. Dit veldt wordt afgeleid door uit het account waarmee u ingelogd bent.
+          * Priority: Dit veldt had invloed op aflevertijden tussen MTA's. In deze API niet langer relevant.
+
+        Zie toelichting bij "BerichtKenmerken" voor verschillen t.o.v. de MessageHeading van de mailboxserver.
+      allOf:
+        - $ref: '#/components/schemas/BerichtKenmerken'
+        - type: object
+          required:
+            - berichtId
+            - berichtType
+            - berichtFormaat
+            - ontvanger
+          properties:
+            ontvanger:
+              $ref: '#/components/schemas/OntvangerOfAfzender'
+
+    ListMessageKenmerken:
+      allOf:
+        - $ref: '#/components/schemas/BerichtKenmerken'
+        - type: object
+          required:
+            - berichtTransportId
+            - dtOntvangen
+            - opgehaald
+            - dtBewaardTot
+          properties:
+            berichtTransportId:
+              $ref: '#/components/schemas/BerichtTransportId'
+            berichtVolgnummer:
+              $ref: '#/components/schemas/BerichtVolgnummer'
+            verwijzingBerichtId:
+              $ref: '#/components/schemas/VerwijzingBerichtId'
+            afzender:
+              $ref: '#/components/schemas/OntvangerOfAfzender'
+            dtOntvangen:
+              type: string
+              format: date-time
+              description: Het tijdstip waarop het bericht door de berichten API ontvangen is
+            opgehaald:
+              type: boolean
+              description: Geeft aan of dit bericht al eens eerder opgehaald is.
+            aantalKeerOpgehaald:
+              type: integer
+              description: Geeft aan hoe vaak dit bericht opgehaald is.
+            dtLaatstOpgehaald:
+              type: string
+              format: date-time
+              description: Het tijdstip waarop dit bericht al eens eerder opgehaald is.
+            dtBewaardTot:
+              type: string
+              format: date-time
+              description: Tot dit moment zal het bericht beschikbaar zijn op de berichten API.
+
+    GetMessageKenmerken:
+      allOf:
+        - $ref: '#/components/schemas/ListMessageKenmerken'
+
+    BerichtKenmerken:
+      type: object
+      description: >
+        De BerichtKenmerken lijkt op de MessageHeading zoals dat gebruikt werdt bij de mailboxserver. Ten opzichte van de mailboxserver zijn de
+        onderstaande velden niet langer aan de orde en sommige hebben een andere naam gekregen.
+          * CrossReference --> verwijzingBerichtId
+          * MessageId --> berichtId
+          * NotificationRequest: Wordt niet door deze API ondersteund.
+          * NumberOfRecipients: Wordt niet door deze API ondersteund.
+          * RecipientORName --> ontvanger
+      required:
+        - berichtId
+        - berichtType
+        - berichtFormaat
+      properties:
+        berichtId:
+          $ref: '#/components/schemas/BerichtId'
+        verwijzingBerichtId:
+          $ref: '#/components/schemas/VerwijzingBerichtId'
+        berichtType:
+          $ref: '#/components/schemas/BerichtType'
+        berichtFormaat:
+          $ref: '#/components/schemas/BerichtFormaat'
+
+    BerichtInhoud:
+      type: string
+      maxLength: 102400 # 100 KB
+      description: Een inhoudelijk bericht zoals gespecificeerd in het Logisch Ontwerp, Base64 geëncodeerd.
+
+    OntvangerOfAfzender:
+      type: integer
+      description: Het unieke nummer van een verzender/ontvanger.
+      maximum: 9999999
+
+    BerichtId:
+      type: integer
+      format: int64
+      maximum: 999999999999
+      description: |
+        Het unieke volgnummer dat aan het uitgaande bericht wordt toegekend door de afzender.
+        De "BRP A-Synchrone API" voert geen inhoudelijke controles uit op dit BerichtId.
+
+    VerwijzingBerichtId:
+      type: integer
+      format: int64
+      maximum: 999999999999
+      description: |
+        Indien het bericht een antwoord is op een eerder door het eindsysteem ontvangen bericht: het `berichtId` van het eerder ontvangen bericht. Het veld correspondeert met het "CrossReference" veld van de mailboxserver.
+
+        Het volgnummer van het bericht, waarop dit uitgaande bericht een reactie is. Dit volgnummer is het MessageId van het voorgaande bericht uit de cyclus.
+        Is het bericht het eerste van een cyclus dan kan dit veld of weggelaten worden, of gevuld worden met 0;
+
+    BerichtTransportId:
+      type: string
+      format: uuid
+      description: "De is de referentie naar het bericht zoals deze bekend is bij de `BRP asynchrone berichten API` (UUID). Bij elke interactie met deze dienst omtrent een bericht, wordt deze waarde gebruikt. Het mag, net zoals `berichtVolgnummer` gebruikt worden om het bericht uniek te identificeren."
+      example: 190486a3-cf3d-4622-a6f7-1f2bfcd0abd6
+
+    BerichtVolgnummer:
+      type: integer
+      format: int64
+      description: "Dit volgnummer is het equivalent van het 'Dispatch sequence number'/'MSSequenceNumber' van de mailboxserver. Hiermee kan over verschillende media worden vastgesteld of dit bericht al eerder verwerkt is. Het nummer wordt door deze dienst uniek toegekend aan het bericht."
+      example: 500012345678
+
+    BerichtFormaat:
+      type: string
+      maxLength: 24
+      description: >
+        Indicatie welke aangeeft in welk formaat het bericht aangeboden wordt. Bijvoorbeeld: "brp/spd; charset=utf-8", "brp/spd; charset=teletex", "brp/json".
+
+        Zoals te zien is worden er 2 formaten ondersteund. Het klassieke format dat over de mailboxserver uitgewisseld werd/wordt (enkel sPd body)
+        en een nieuwer formaat op basis van een JSON-datastructuur. Voor het klassieke formaat moet aangegeven worden welke charset er gehanteerd wordt.
+
+    BerichtType:
+      type: string
+      maxLength: 4
+      description: >
+        Het soort bericht (zoals gedefinieerd in het berichtenboek in het Logisch Ontwerp).
+
+
+        * Berichten ten behoeve van de bijhouding en de consistentie van de BRP
+          * Berichten tussen bijhouders onderling
+            * Berichten in verband met de vervolginschrijving tussen gemeenten:
+              * Ii01 Initiatie intergemeentelijke verhuizing
+              * Ib01 Verhuizen PL intergemeentelijk
+              * Iv01 Verwijsgegevens
+              * If01 Fout: PL niet te verzenden
+              * If21 Fout: de ontvangen PL is niet de aangevraagde
+              * If31 Fout: de verwijsgegevens zijn niet correct
+            * Berichten in verband met de vervolginschrijving van de gemeente naar de RNI:
+              * Rb01 Verhuizen PL van gemeente naar RNI
+              * Rv01 Verwijsgegevens
+              * Rf01 Fout: de ontvangen PL kan niet worden opgenomen
+              * Rf31 Fout: de verwijsgegevens zijn niet correct
+            * Berichten in verband met de vervolginschrijving van de RNI naar de gemeente:
+              * Ji01 Initiatie verhuizing PL van RNI naar gemeente
+              * Jb01 Verhuizen PL van RNI naar gemeente
+              * Jv01 Verwijsgegevens
+              * Jf01 Fout: PL niet te verzenden
+              * Jf21 Fout: de ontvangen PL is niet de aangevraagde
+              * Jf31 Fout: de verwijsgegevens zijn niet correct
+            * Berichten in verband met een toevallige geboorte:
+              * Tb01 Toevallige geboorte
+              * Tv01 Verwijsgegevens
+              * Tf01 Fout: persoon niet in te schrijven
+              * Tf11 Fout: de verwijsgegevens zijn niet correct
+            * Berichten in verband met een toevallige gebeurtenis:
+              * Tb02 Toevallige gebeurtenis
+              * Tf21 Fout: gebeurtenisgegevens niet te verwerken
+            * Berichten in verband met het opnemen van verwijsgegevens:
+              * Iv11 Verwijsgegevens
+              * Iv21 Verificatie verwijsgegevens
+              * If41 Fout: verwijsgegevens kunnen niet worden opgenomen
+            * Berichten in verband met wijzigen A-nummer in de verwijsgegevens bij gemeenten en bij de RNI:
+              * Wa01 Wijziging A-nummer
+              * Wf01 Fout: A-nummerwijziging niet te verwerken
+          * Berichten ten behoeve van de bijhouding
+            * Berichten in verband met verblijfstitel:
+              * Og11 Opnemen gegevens verblijfstitel
+              * Of11 Fout: opnemen/wijzigen verblijfstitel niet mogelijk
+          * Berichten ten behoeve van het bijhouden van de persoonsgegevens in BRP-V
+            * Berichten in verband met synchronisatie met BRP-V:
+              * Lg01 Synchronisatiebericht
+              * Lq01 Synchronisatievraag
+              * La01 Synchronisatieantwoord
+              * Lf01 Fout: synchronisatievraag niet te beantwoorden
+            * Berichten in verband met synchroniciteitsselecties:
+              * Lg01 Synchronisatiebericht
+        * Berichten ten behoeve van de gegevensverstrekkingen
+          * Berichten in verband met spontane gegevensverstrekkingen als gevolg van afnemersindicaties op persoonslijsten:
+            * Gv01 Spontane mutatie
+            * Gv02 Spontane mutatie: infrastructurele wijziging
+            * Wa11 Wijziging A-nummer ten behoeve van afnemers
+            * Ng01 Afvoeren PL
+            * Ag11 Vulbericht
+            * Ag21 Conditionele gegevensverstrekking
+            * Ag31 Foutherstelbericht
+          * Berichten in verband met selecties:
+            * Sv01 Selectieverstrekking
+            * Sv11 Niemand geselecteerd
+          * Berichten in verband met ad hoc vragen:
+            * Hq01 Ad hoc vraag
+            * Ha01 Ad hoc antwoord
+            * Hf01 Fout: ad hoc vraag niet te beantwoorden
+          * Berichten in verband met ad hoc adresvragen:
+            * Xq01 Ad hoc adresvraag
+            * Xa01 Ad hoc adresantwoord
+            * Xf01 Fout: ad hoc adresvraag niet te beantwoorden
+          * Berichten in verband met het muteren van afnemersindicaties op persoonslijsten:
+            * Ap01 Plaatsen afnemersindicatie op persoonslijst
+            * Ag01 Gegevensverstrekking als gevolg van ad hoc plaatsing afnemersindicatie op persoonslijst
+            * Af01 Fout: plaatsen afnemersindicatie op persoonslijst onmogelijk
+            * Av01 Verwijderen afnemersindicatie van persoonslijst
+            * Af11 Fout: verwijderen afnemersindicatie van persoonslijst onmogelijk
+
+    PagineerbaarResultaat:
+      type: object
+      description: Structuur bij responses die grotere data sets kunnen opleveren.
+      properties:
+        paginering:
+          $ref: "#/components/schemas/PagineringResultaat"
+
+    PagineringResultaat:
+      type: object
+      properties:
+        pagineringVerzoek:
+          "$ref": "#/components/schemas/PagineringVerzoek"
+        sorteringVerzoek:
+          "$ref": "#/components/schemas/SorteringVerzoek"
+        totaalAantalElementen:
+          type: integer
+          format: int64
+          default: 0
+        aantalPaginas:
+          type: integer
+          default: 0
+        huidigePagina:
+          type: integer
+        eerstePagina:
+          type: boolean
+        laatstePagina:
+          type: boolean
+
+    PagineringVerzoek:
+      type: object
+      properties:
+        pagina:
+          type: integer
+          minimum: 0
+
+    SorteringVerzoek:
+      type: object
+      properties:
+        sortering:
+          type: array
+          items:
+            type: string
+
+    Foutmelding:
+      type: object
+      required:
+        - foutType
+        - foutTitel
+        - foutDetail
+      properties:
+        foutType:
+          type: string
+          description: De foutcode horende bij de foutsituatie.
+        foutTitel:
+          type: string
+          description: Korte beschrijving van de foutsituatie
+        foutDetails:
+          type: string
+          description: De toelichting van de foutsituatie (indien mogelijk) (TODO foutcodes specificeren? / misschien zelfs problem-json structuur)
+
+  responses:
+    '202':
+      description: Verzoek is geaccepteerd en wordt op een later moment verwerkt.
+    '204':
+      description: Verzoek is goed verwerkt, maar heeft geen inhoudelijke response.
+    '500':
+      description: Interne technische fout
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/probleem-antwoord'
+
+
+  parameters:
+    paginaParam:
+      in: query
+      name: pagina
+      schema:
+        type: integer
+      required: false
+      description: Pagina nummer, startend bij 1 t/m N (niet 0).
+
+    sorteringParam:
+      in: query
+      name: sortering
+      description: 'Sorteer criteria in het formaat: ?sorting=veld1,asc&sorting=veld2,desc". Standaard sorteermethode is `asc`. Het meerdere keren opgeven van het argument `sorting` worden ondersteund.'
+      examples:
+        enkel:
+          description: "Sorteren op 1 enkel veld"
+          value: "?sorting=berichtId,asc"
+        meerdere:
+          description: "Sorteren op meerdere velden"
+          value: "?sorting=afzender,asc&sorting=berichtId,desc"
+      style: form
+      explode: true
+      schema:
+        type: array
+        items:
+          type: string
+
+
+    berichtTransportIdsParam:
+      in: path
+      name: berichtTransportIdsParam
+      required: true
+      description: >
+        Een UUID of meerdere UUID's van het bericht(en) die opgehaald moet worden. Indien meerdere UUID's, dan scheiden met een komma.
+        Deze query parameter verwijst naar het berichtenId zoals deze bij de "BRP A-Synchrone API" bekend is, niet te verwarren met het
+        BerichtId dat door de verzender is opgegeven. U verkrijgt deze UUID's middels een request naar `/api/v1/berichten/list`.
+      schema:
+        type: array
+        items:
+          $ref: '#/components/schemas/BerichtTransportId'
+      examples:
+        enkel:
+          value: "28122289-f2f2-41c3-b33d-4c25c6620e9b"
+          summary: "Een enkel bericht"
+        meerdere:
+          value: "30e24fd3-d625-4bbb-8793-0c053c2aae1b,9873f20d-587d-4d34-be17-ad9f06513fa1,22a98387-776e-47fa-be91-891c47adb70a"
+          summary: "Meerdere berichten"
+      style: simple
+      explode: true
