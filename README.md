@@ -1,5 +1,5 @@
 # BRP Asynchrone Berichten API (AB API)
-Deze repository bevat de OpenAPI Specificatie van de AB API en andere informatie over deze voorziening voor berichtuitwisseling, zoals het JSON Schema voor persoonsgegevens.
+Deze repository bevat de OpenAPI Specificatie van de BRP AB API en andere informatie over deze voorziening voor berichtuitwisseling, zoals het JSON Schema voor persoonsgegevens.
 
 ## Uitgangspunten voor de AB API
 
