@@ -1,13 +1,55 @@
-openapi: 3.0.3
+openapi: 3.1.0
 info:
-  title: BRP asynchrone berichten API
+  title: BRP berichten API
   description: |
     Een REST API voor het a-synchroon uitwisselen van berichten welke in het Logisch Ontwerp gedefinieerd zijn.
 
     # Wijzigingshistorie:
+    ## 0.3.0 - Mei 2024
+    - Conversie endpoints
+      - Introductie bericht-conversie (/berichten/conversie) endpoint. Houdt er rekening mee dat de conversie naar reeds JSON opgenomen is, maar nog niet volledig uitgewerkt is.
+    - De API is hernoemd van "BRP A-Synchrone berichten API" naar "BRP berichten API".
+      - Nieuwe URL's demo omgeving:
+        - https://brp-berichten-api.dictua.ictu-sr.nl/api/v1/berichten
+        - https://brp-berichten-api.dictua.ictu-sr.nl/swagger-ui/index.html
+    - Beschikbaarheid endpoint(s)
+      - Er is een tweede ping endpoint bijgekomen waardoor en nu een HEAD of een GET gedaan kan worden. De response blijft hetzelfde. U kunt zelf kiezen welke van deze twee u hanteert.
+      - De noodzaak voor authenticatie op het `ping` endpoint is komen te vervallen. U kunt dus zonder noodzaak van authenticatie vaststellen of de dienst beschikbaar is.
+
+    ## 0.2.2 - April 2024
+    - Ping operatie toegevoegd t.b.v. het verifiëren dat er communicatie met de berichtendienst mogelijks is.
+    - De standaard sortering bij een LIST operatie is op dit moment:
+      1. `Datum + tijdstip van ontvangst` waarbij geldt dat het oudste bericht als eerste wordt weergegeven in de lijst met beschikbare berichten (rationale deze dient als eerste verwerkt worden door de ontvanger).
+      2. Indien `datum + tijdstip van ontvangst` gelijk zijn (wat kan voorkomen aangezien er meerdere berichten tegelijk ingestuurd kunnen worden), dan worden `afzender` en het `messageId` meegenomen in de sortering. De volgorde die de afzender toegekend heen via de messageId is op dat moment dus bepalend.
+
+    ## 0.2.1 - April 2024
+    - Mogelijkheden tot sortering bij een list operatie zijn verwijderd. De standaard sortering wordt nog bepaald.
+    - Demo omgeving is toegevoegd aan de lijst met servers.
+      - API te benaderen via https://async-berichten-api.dictua.ictu-sr.nl/api/v1/berichten
+      - Swagger UI via: https://async-berichten-api.dictua.ictu-sr.nl/swagger-ui/index.html
+      - De OpenAPI specificatie via: https://async-berichten-api.dictua.ictu-sr.nl/openapi.brp-async-berichten-api-v1.yaml
+    - Wachtwoord wijzigingen optie is verwijderd.
+    - Het `berichtFormaat` attribuut is komen te vervallen. Alle berichten zijn nu per definitie in JSON formaat. De eis om de berichtInhoud Base64 te
+      encoderen komt daarmee te vervallen.
+    - Voorbeelddata verbeterd.
+    - Tellingen endpoint toegevoegd welke invulling geeft aan de mailbox Summarize tegenhanger.
+    - Delete endpoint gecorrigeerd. De collectie `succesvolVerwijderdeBerichten` was van het type string i.p.v. berichtTransportId.
+    - Limieten zijn gewijzigd:
+      - Het aantal berichten dat via een PUT verstuurd kan worden is verhoogd naar 25. Uitgaande van een gemiddelde berichtgrootte van 40kb geeft dat een request van 1MB groot.
+      - Het aantal berichten dat via een LIST opgevraagd kan worden is vergroot naar 2000. Daarbij krijgt u de mogelijkheid om dit aantal te beperken.
+        - 2000 berichten in een LIST operatie komt neer op ongeveer 600KB response grootte.
+      - Het aantal berichten dat via een GET ontvangen kan worden is verhoogd naar 100. Dit heeft te maken met de gangbare (veilige) restricties van een URL qua lengte (2KB).
+        - Voor de URL worden 256 bytes gereserveerd.
+          - Voor de UUID blijven dan 1.792 bytes over.
+        - Een BerichtTransportId is 17 bytes groot (UUID + separatie-karakter ',')
+          - Uitgaande van 17 bytes, zou dit 105 keer herhaald kunnen worden. Om aan de veilige kan te zitten en om op een mooi rond getal uit te komen kiezen wij voor 100 als limiet.
+        - Uitgaande van een gemiddelde berichtgrootte van 40KB komt je met 100 berichten uit op 4MB qua response-grootte.
+    - "aantalKeerOpgehaald" en "dtLaatstOpgehaald" zijn verwijderd uit response van LIST (ListMessageKenmerken schema). Wij zien hierin geen meerwaarde voor de aansluitende partijen. Wel kunt u blijven zien OF het bericht is opgehaald (boolean waarde).
+
     ## 0.2.0 - April 2024
     - "List" verzoek is verhuisd van "/berichten/lijst" --> "/berichten"
     - "GET" van meerdere berichten wordt gedaan middels path-parameters i.p.v. query-parameters en is samengevoegd met het endpoint voor het ophalen van een enkel bericht.<br/>
+      (/berichten/?berichtTransportIds=[UUID],[UUID] --> /berichten/[UUID],[UUID])
       (/berichten/?berichtTransportIds=[UUID],[UUID] --> /berichten/[UUID],[UUID])
     - "DELETE" van meerdere berichten wordt gedaan middels path-parameters i.p.v. query-parameters en is samengevoegd met het endpoint voor het verwijderen van een enkel bericht.<br/>
       (/berichten/?berichtTransportIds=[UUID],[UUID] --> /berichten/[UUID],[UUID])
@@ -22,62 +64,65 @@ info:
     Initiële versie.
 
     # In ontwikkeling:
-      - Conversie API om te kunnen vertalen tussen UTF8 / Teletex formaten naar het nieuwe JSON formaat (heen en terug)
-      - Meer duidelijkheid over welke formaten definitief ondersteund gaan worden.
-        - Op dit moment gaan we er vanuit dat JSON het enige ge-accepteerde formaat gaat worden. Gedurende migratie- en/of testtraject kan er gebruikt
-          gemaakt worden van de conversie API om van oud naar nieuw formaat over te gaan. Een PUT request met een oud bericht moet dan vooraf gaan met
-          een dergelijke conversie alvorens de PUT daadwerkelijk plaatsvindt.
-      - Opstellen van de diverse berichtformaten (in JSON) en de realisatie van voorbeeldberichten.
-      - Structuur van de foutmeldingen.
-        - Inclusief het opnemen van mogelijke foutmeldingen in deze API specificatie.
-      - Bepalen of het een checksum op de berichtinhoud van meerwaarde kan zijn.
+    - Conversie API om te kunnen vertalen tussen UTF8 / Teletex formaten naar het nieuwe JSON formaat (heen en terug)
+    - Opstellen van de diverse berichtformaten (in JSON) en de realisatie van voorbeeldberichten.
+    - Structuur van de foutmeldingen.
+      - Inclusief het opnemen van mogelijke foutmeldingen in deze API specificatie.
+    - Bepalen of het een checksum op de berichtinhoud van meerwaarde kan zijn.
+    - Delete operatie implementeren.
 
     # Voorlopige limieten:
     | Waarde | Omschrijving |
     |--------|--------------|
-    | 1      | Ontvanger per bericht. |
-    | 10     | Maximum aantal berichten dat in één PUT request verstuurd meag worden. |
-    | 100    | Maximum aantal berichten dat in één LIST request getoond zal worden. |
-    | 10     | Maximum aantal berichten dat in één GET request ontvangen mag worden. |
-    | 64kb   | Maximum grote van één enkel bericht. Één request zal qua grote dan uitkomen op ((maximale-grote-enkel-bericht * maximaal-aantal-berichten) + overhead). |
+    | 1      | Aantal ontvangers per bericht. |
+    | 25     | Maximum aantal berichten dat in één PUT request verstuurd mag worden. |
+    | 2000   | Maximum aantal berichten dat in één LIST request getoond zal worden. Indien wenselijk kunt u dit aantal middels een query-parameter beperken. |
+    | 100    | Maximum aantal berichten dat in één GET request ontvangen mag worden. |
+    | 64kb   | Maximum grote van één enkel bericht. Één request zal qua grootte dan uitkomen op ((maximale-grootte-enkel-bericht * maximaal-aantal-berichten) + overhead). Houdt er rekening mee dat dit een waarde is die in te toekomst kan gaan groeien. Beperk uw oplossing dus niet op deze waarde! |
 
-  version: 0.2.0
+  version: 0.2.1
 tags:
   - name: Berichtenverkeer
     description: API waarop berichten uitgewisseld kunnen worden.
 servers:
+  - url: https://async-berichten-api.dictua.ictu-sr.nl/
+    description: Demo omgeving (via internet)
+  - url: http://async-berichten-api.gbav-3.dictua.iesprd.ictu-sr.nl:8083/
+    description: Demo omgeving (AP via VPN)
   - url: http://localhost:8083/
-    description: Local ontwikkelomgeving
+    description: Lokale ontwikkelomgeving
+security:
+  - BasicAuth: [ ]
 paths:
-  /api/v1/account/wachtwoord:
-    put:
-      tags:
-        - Accountbeheer
-      summary:
-        Wachtwoord wijzigen
-      description:
-        Stelt een afnemende partij in staat om het wachtwoord van een account te wijzigen.
-      operationId: wijzigWachtwoord
-      requestBody:
-        content:
-          application/json; charset=utf-8:
-            schema:
-              type: object
-              required:
-                - nieuwWachtwoord
-              properties:
-                nieuwWachtwoord:
-                  type: string
-      responses:
-        '204':
-          description: Wachtwoord succesvol gewijzigd
-        '400':
-          description: Wachtwoord wijzigen verzoek niet in orde (bijvoorbeeld wanneer het nieuwe wachtwoord niet aan de vereisten voldoet)
-          content:
-            application/problem+json:
-              schema:
-                allOf:
-                  - $ref: '#/components/schemas/probleem-antwoord'
+  #  /api/v1/account/wachtwoord:
+  #    put:
+  #      tags:
+  #        - Accountbeheer
+  #      summary:
+  #        Wachtwoord wijzigen
+  #      description:
+  #        Stelt een afnemende partij in staat om het wachtwoord van een account te wijzigen.
+  #      operationId: wijzigWachtwoord
+  #      requestBody:
+  #        content:
+  #          application/json; charset=utf-8:
+  #            schema:
+  #              type: object
+  #              required:
+  #                - nieuwWachtwoord
+  #              properties:
+  #                nieuwWachtwoord:
+  #                  type: string
+  #      responses:
+  #        '204':
+  #          description: Wachtwoord succesvol gewijzigd
+  #        '400':
+  #          description: Wachtwoord wijzigen verzoek niet in orde (bijvoorbeeld wanneer het nieuwe wachtwoord niet aan de vereisten voldoet)
+  #          content:
+  #            application/problem+json:
+  #              schema:
+  #                allOf:
+  #                  - $ref: '#/components/schemas/probleem-antwoord'
 
   /api/v1/berichten:
     post: # (= sPd PUT)
@@ -96,7 +141,7 @@ paths:
         '201':
           description: a-Synchrone response. Een eventueel antwoord op een bericht wordt later voor u klaargezet en dient separaat opgehaald te worden.
           content:
-            application/json:
+            application/json; charset=utf-8:
               schema:
                 $ref: '#/components/schemas/put-message-antwoord'
         '500':
@@ -105,18 +150,42 @@ paths:
     get: # (= sPd LIST)
       tags:
         - Berichtenverkeer
-      summary: Het ophalen een lijst met berichten die klaarstaan (LIST).
+      summary: Het ophalen van een lijst met berichten die klaarstaan (LIST).
       description: >
         Dit endpoint gebruikt u om te achterhalen welke berichten er voor u beschikbaar zijn.
       operationId: listMessages
       parameters:
         - $ref: "#/components/parameters/paginaParam"
-        - $ref: "#/components/parameters/sorteringParam"
+        - in: query
+          name: status
+          explode: false
+          style: form
+          schema:
+            type: array
+            default: [ nieuw, gezien-in-lijst ]
+            items:
+              type: string
+              enum: [ nieuw, gezien-in-lijst, opgehaald ]
+          required: false
+          description: >
+            Geeft aan welke berichten opgenomen moeten worden in het resultaat. Comma-gescheiden veld. Indien leeg worden alle niet opgehaalde berichten getoond (`nieuw` + `gezien-in-lijst`).
+
+              - `nieuw`: Geeft berichten welke nog nooit opgehaald zijn en tevens niet in de lijst operatie zijn getoond.
+              - `gezien-in-lijst`: Geeft berichten die nog niet opgehaald zijn, maar al wel gezien zijn in de lijst.
+              - `opgehaald`: Geeft berichten reeds opgehaald zijn.
+        - in: query
+          name: berichtenPerPagina
+          schema:
+            type: integer
+            minimum: 1
+          required: false
+          description: >
+            Het maximum aantal berichten dat geretourneerd mag worden. Indien deze waarde het ingesteld systeemlimiet overschrijdt, dan wordt het systeemlimiet gehanteerd.
       responses:
         '200':
           description: Een opsomming van de berichten die beschikbaar zijn voor de mailbox die gekoppeld is aan het geauthenticeerde account.
           content:
-            application/json:
+            application/json; charset=utf-8:
               schema:
                 $ref: '#/components/schemas/list-message-antwoord'
         '500':
@@ -136,7 +205,7 @@ paths:
         '200':
           description: Deze 200 OK response wordt vrijwel alle situaties geretourneerd, mits er geen technische fouten opgetreden zijn. Indien er bij het ophalen van het bericht iets mis ging, dan vindt u dat per bericht terug in de response.
           content:
-            application/json:
+            application/json; charset=utf-8:
               schema:
                 $ref: '#/components/schemas/get-message-antwoord'
         '500':
@@ -154,11 +223,150 @@ paths:
         '200':
           description: Deze 200 OK response wordt vrijwel alle situaties geretourneerd, mits er geen technische fouten opgetreden zijn. Indien er bij het verwijderen van het bericht iets mis ging, dan vindt u dat per bericht terug in de response.
           content:
-            application/json:
+            application/json; charset=utf-8:
               schema:
                 $ref: '#/components/schemas/delete-message-antwoord'
         '500':
           $ref: '#/components/responses/500'
+
+  /api/v1/berichten/ping:
+    get:
+      security: [ ]
+      tags:
+        - Bereikbaarheid
+      summary: Ping operatie t.b.v. het toetsen van de bereikbaarheid van de API vanuit de aangesloten partij.
+      description: >
+        Deze operatie kan aangeroepen worden door aangesloten partijen om te verifiëren dat er communicatie met de berichtendienst mogelijks is.
+      operationId: ping-get
+      responses:
+        '204':
+          description: Geeft aan dat de API bereikt kon worden.
+    head:
+      security: [ ]
+      tags:
+        - Bereikbaarheid
+      summary: Ping operatie t.b.v. het toetsen van de bereikbaarheid van de API vanuit de aangesloten partij.
+      description: >
+        Deze operatie kan aangeroepen worden door aangesloten partijen om te verifiëren dat er communicatie met de berichtendienst mogelijks is.
+      operationId: ping-head
+      responses:
+        '204':
+          description: Geeft aan dat de API bereikt kon worden.
+
+  /api/v1/berichten/telling:
+    get:
+      tags:
+        - Berichtenverkeer
+      operationId: summarize
+      summary: Voert verschillende soorten tellingen uit waarmee bepaald kan worden hoeveel berichten er verwerkt dienen te worden (SUMMARIZE).
+      parameters:
+        - in: query
+          name: soort
+          style: simple
+          description: >
+            Geeft aan welke telling er uitgevoerd moet worden.
+              - nieuw: Geeft het aantal nieuwe berichten terug dat nog niet gezien is via een LIST operatie en tevens nog niet opgehaald is middels een GET operatie.
+              - gezien-in-lijst-en-niet-opgehaald: Geeft het aantal nieuwe berichten terug dat gezien is via een LIST operatie, maar nog niet opgehaald is middels een GET operatie.
+              - niet-opgehaald: Geeft het aantal nieuwe berichten terug dat nog niet opgehaald is middels een GET operatie.
+          required: true
+          allowEmptyValue: false
+          schema:
+            type: string
+            enum:
+              - nieuw
+              - gezien-in-lijst-en-niet-opgehaald
+              - niet-opgehaald
+      responses:
+        '200':
+          description: Het resultaat van de telling.
+          content:
+            application/json; charset=utf-8:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/generiek-antwoord'
+                  - type: object
+                    required:
+                      - aantalBerichten
+                    properties:
+                      aantalBerichten:
+                        type: integer
+                        description: Het aantal berichten dat voldeed aan de criteria.
+                        example: 156980
+        '400':
+          description: Indien er een telling-soort gevraagd werdt die niet bestaat, of wanneer er geen telling-soort is opgegeven.
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/probleem-antwoord'
+
+  /api/v1/berichten/conversie:
+    post:
+      tags:
+        - Berichtconversie
+      operationId: converteer
+      summary: Dit endpoint faciliteert bij de conversie van berichten tussen de verschillende soorten berichtformaten.
+      requestBody:
+        description: >
+          Er zijn verschillende waarden die voor de headers `Content-Type` en `Accept` gebruikt kunnen worden. Elk van deze waarden stelt een van de bekende formaten voor:
+            - "text/plain; charset=teletex": Het klassieke berichtenformaat waarbij de teletex charset wordt gehanteerd.
+            - "text/plain+base64; charset=teletex": Het klassieke berichtenformaat waarbij de teletex charset wordt gehanteerd. De body is in dit geval Base64 geëncodeerd.
+            - "text/plain; charset=utf-8": Het klassieke berichtenformaat waarbij de UTF-8 charset wordt gehanteerd.
+            - "text/plain+base64; charset=utf-8": Het klassieke berichtenformaat waarbij de UTF-8 charset wordt gehanteerd. De body is in dit geval Base64 geëncodeerd.
+            - "application/json; charset=utf-8": Het meest recente berichtenformaat gebaseerd op JSON en de UTF-8 charset.
+
+          Middels deze waarden kunt u via de Content-Type en Accept headers aanduiden welk formaat u instuurt en welk formaat u terug wenst te ontvangen.
+        content:
+          text/plain; charset=utf-8:
+            schema:
+              type: string
+          text/plain+base64; charset=utf-8:
+            schema:
+              type: string
+              contentEncoding: base64
+          text/plain; charset=teletex:
+            schema:
+              type: string
+              format: binary
+          text/plain+base64; charset=teletex:
+            schema:
+              type: string
+              contentEncoding: base64
+          application/json; charset=utf-8:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Een naar JSON geconverteerd bericht
+          content:
+            application/json; charset=utf-8:
+              schema:
+                type: object
+            text/plain; charset=utf-8:
+              schema:
+                type: string
+            text/plain+base64; charset=utf-8:
+              schema:
+                type: string
+            text/plain; charset=teletex:
+              schema:
+                type: string
+                format: binary
+            text/plain+base64; charset=teletex:
+              schema:
+                type: string
+                contentEncoding: base64
+        '406':
+          description: Wanneer een conversie werd aangevraagd voor een doelformaat dat niet ondersteund wordt.
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/probleem-antwoord"
+        '415':
+          description: Wanneer een conversie werd aangevraagd voor een bronformaat dat niet ondersteund wordt.
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/probleem-antwoord"
 
 components:
   schemas:
@@ -265,10 +473,9 @@ components:
             succesvolVerwijderdeBerichten:
               type: array
               uniqueItems: true
-              description: Berichten die verwijderd zijn.
+              description: In deze collectie staan de berichten die daadwerkelijk verwijderd zijn.
               items:
-                type: string
-                description: In deze collectie staan de berichten die daadwerkelijk verwijderd zijn.
+                $ref: '#/components/schemas/BerichtTransportId'
             nietSuccesvolVerwijderdeBerichten:
               type: array
               uniqueItems: true
@@ -317,10 +524,10 @@ components:
         De PutMessageKenmerken lijken op de PutEnvelope zoals dat gebruikt werdt bij de mailboxserver. Ten
         opzichte van de mailboxserver zijn een aantal velden komen te vervallen een sommige hebben een andere naam gekregen:
           * Attention: Was gereserveerd voor toekomstig gebruik. In deze API niet langer relevant.
-          * ContentType: Dit veldt had altijd een vaste waarde. In deze API niet langer relevant.
+          * ContentType: Dit veld had altijd een vaste waarde. In deze API niet langer relevant.
           * DeferredDeliveryTime: Hiermee kon een gewenst tijdstip van aflevering aangegeven worden. Dit wordt niet door deze API ondersteund.
-          * OriginatorORName: Wordt niet door deze API ondersteund. Dit veldt wordt afgeleid door uit het account waarmee u ingelogd bent.
-          * Priority: Dit veldt had invloed op aflevertijden tussen MTA's. In deze API niet langer relevant.
+          * OriginatorORName: Wordt niet door deze API ondersteund. Dit veld wordt afgeleid door uit het account waarmee u ingelogd bent.
+          * Priority: Dit veld had invloed op aflevertijden tussen MTA's. In deze API niet langer relevant.
 
         Zie toelichting bij "BerichtKenmerken" voor verschillen t.o.v. de MessageHeading van de mailboxserver.
       allOf:
@@ -329,7 +536,6 @@ components:
           required:
             - berichtId
             - berichtType
-            - berichtFormaat
             - ontvanger
           properties:
             ontvanger:
@@ -357,21 +563,15 @@ components:
               type: string
               format: date-time
               description: Het tijdstip waarop het bericht door de berichten API ontvangen is
+              example: "2024-04-26T14:54:08.986661+02:00"
             opgehaald:
               type: boolean
               description: Geeft aan of dit bericht al eens eerder opgehaald is.
-            aantalKeerOpgehaald:
-              type: integer
-              description: Geeft aan hoe vaak dit bericht opgehaald is.
-            dtLaatstOpgehaald:
-              type: string
-              format: date-time
-              description: Het tijdstip waarop dit bericht al eens eerder opgehaald is.
             dtBewaardTot:
               type: string
               format: date-time
               description: Tot dit moment zal het bericht beschikbaar zijn op de berichten API.
-
+              example: "2024-05-03T14:54:08.986661+02:00"
     GetMessageKenmerken:
       allOf:
         - $ref: '#/components/schemas/ListMessageKenmerken'
@@ -389,7 +589,6 @@ components:
       required:
         - berichtId
         - berichtType
-        - berichtFormaat
       properties:
         berichtId:
           $ref: '#/components/schemas/BerichtId'
@@ -397,31 +596,32 @@ components:
           $ref: '#/components/schemas/VerwijzingBerichtId'
         berichtType:
           $ref: '#/components/schemas/BerichtType'
-        berichtFormaat:
-          $ref: '#/components/schemas/BerichtFormaat'
 
     BerichtInhoud:
       type: string
-      maxLength: 102400 # 100 KB
-      description: Een inhoudelijk bericht zoals gespecificeerd in het Logisch Ontwerp, Base64 geëncodeerd.
+      maxLength: 65536 # 64kb
+      description: Een inhoudelijk bericht zoals gespecificeerd in het Logisch Ontwerp in JSON formaat.
 
     OntvangerOfAfzender:
       type: integer
       description: Het unieke nummer van een verzender/ontvanger.
       maximum: 9999999
+      example: 3000200
 
     BerichtId:
       type: integer
       format: int64
       maximum: 999999999999
+      example: 103693694
       description: |
         Het unieke volgnummer dat aan het uitgaande bericht wordt toegekend door de afzender.
-        De "BRP A-Synchrone API" voert geen inhoudelijke controles uit op dit BerichtId.
+        De "BRP berichten API" voert geen inhoudelijke controles uit op dit BerichtId. Maximaal 12 posities.
 
     VerwijzingBerichtId:
       type: integer
       format: int64
       maximum: 999999999999
+      example: 213582583
       description: |
         Indien het bericht een antwoord is op een eerder door het eindsysteem ontvangen bericht: het `berichtId` van het eerder ontvangen bericht. Het veld correspondeert met het "CrossReference" veld van de mailboxserver.
 
@@ -431,7 +631,7 @@ components:
     BerichtTransportId:
       type: string
       format: uuid
-      description: "De is de referentie naar het bericht zoals deze bekend is bij de `BRP asynchrone berichten API` (UUID). Bij elke interactie met deze dienst omtrent een bericht, wordt deze waarde gebruikt. Het mag, net zoals `berichtVolgnummer` gebruikt worden om het bericht uniek te identificeren."
+      description: "De is de referentie naar het bericht zoals deze bekend is bij de `BRP berichten API` (UUID). Bij elke interactie met deze dienst omtrent een bericht, wordt deze waarde gebruikt. Het mag, net zoals `berichtVolgnummer` gebruikt worden om het bericht uniek te identificeren."
       example: 190486a3-cf3d-4622-a6f7-1f2bfcd0abd6
 
     BerichtVolgnummer:
@@ -440,17 +640,9 @@ components:
       description: "Dit volgnummer is het equivalent van het 'Dispatch sequence number'/'MSSequenceNumber' van de mailboxserver. Hiermee kan over verschillende media worden vastgesteld of dit bericht al eerder verwerkt is. Het nummer wordt door deze dienst uniek toegekend aan het bericht."
       example: 500012345678
 
-    BerichtFormaat:
-      type: string
-      maxLength: 24
-      description: >
-        Indicatie welke aangeeft in welk formaat het bericht aangeboden wordt. Bijvoorbeeld: "brp/spd; charset=utf-8", "brp/spd; charset=teletex", "brp/json".
-
-        Zoals te zien is worden er 2 formaten ondersteund. Het klassieke format dat over de mailboxserver uitgewisseld werd/wordt (enkel sPd body)
-        en een nieuwer formaat op basis van een JSON-datastructuur. Voor het klassieke formaat moet aangegeven worden welke charset er gehanteerd wordt.
-
     BerichtType:
       type: string
+      example: "Lg01"
       maxLength: 4
       description: >
         Het soort bericht (zoals gedefinieerd in het berichtenboek in het Logisch Ontwerp).
@@ -543,21 +735,28 @@ components:
       properties:
         pagineringVerzoek:
           "$ref": "#/components/schemas/PagineringVerzoek"
-        sorteringVerzoek:
-          "$ref": "#/components/schemas/SorteringVerzoek"
-        totaalAantalElementen:
+        totaalAantalBerichten:
           type: integer
           format: int64
           default: 0
+          example: 341
+        aantalBerichtenOpDezePagina:
+          type: integer
+          default: 2000
+          example: 2000
         aantalPaginas:
           type: integer
-          default: 0
+          default: 3
+          example: 4
         huidigePagina:
           type: integer
+          example: 2
         eerstePagina:
           type: boolean
+          example: false
         laatstePagina:
           type: boolean
+          example: false
 
     PagineringVerzoek:
       type: object
@@ -565,14 +764,7 @@ components:
         pagina:
           type: integer
           minimum: 0
-
-    SorteringVerzoek:
-      type: object
-      properties:
-        sortering:
-          type: array
-          items:
-            type: string
+          example: 2
 
     Foutmelding:
       type: object
@@ -589,7 +781,7 @@ components:
           description: Korte beschrijving van de foutsituatie
         foutDetails:
           type: string
-          description: De toelichting van de foutsituatie (indien mogelijk) (TODO foutcodes specificeren? / misschien zelfs problem-json structuur)
+          description: De toelichting van de foutsituatie (indien mogelijk)
 
   responses:
     '202':
@@ -603,34 +795,15 @@ components:
           schema:
             $ref: '#/components/schemas/probleem-antwoord'
 
-
   parameters:
     paginaParam:
       in: query
       name: pagina
       schema:
         type: integer
+        default: 1
       required: false
-      description: Pagina nummer, startend bij 1 t/m N (niet 0).
-
-    sorteringParam:
-      in: query
-      name: sortering
-      description: 'Sorteer criteria in het formaat: ?sorting=veld1,asc&sorting=veld2,desc". Standaard sorteermethode is `asc`. Het meerdere keren opgeven van het argument `sorting` worden ondersteund.'
-      examples:
-        enkel:
-          description: "Sorteren op 1 enkel veld"
-          value: "?sorting=berichtId,asc"
-        meerdere:
-          description: "Sorteren op meerdere velden"
-          value: "?sorting=afzender,asc&sorting=berichtId,desc"
-      style: form
-      explode: true
-      schema:
-        type: array
-        items:
-          type: string
-
+      description: Pagina nummer, startend bij 1 t/m N (niet bij 0).
 
     berichtTransportIdsParam:
       in: path
@@ -638,7 +811,7 @@ components:
       required: true
       description: >
         Een UUID of meerdere UUID's van het bericht(en) die opgehaald moet worden. Indien meerdere UUID's, dan scheiden met een komma.
-        Deze query parameter verwijst naar het berichtenId zoals deze bij de "BRP A-Synchrone API" bekend is, niet te verwarren met het
+        Deze query parameter verwijst naar het berichtenId zoals deze bij de "BRP berichten API" bekend is, niet te verwarren met het
         BerichtId dat door de verzender is opgegeven. U verkrijgt deze UUID's middels een request naar `/api/v1/berichten/list`.
       schema:
         type: array
@@ -653,3 +826,9 @@ components:
           summary: "Meerdere berichten"
       style: simple
       explode: true
+
+  securitySchemes:
+    BasicAuth:
+      description: Deze authenticatiemethode is van toepassing op de DEMO omgeving/stub. Login met elk willekeurig account/mailbox-nummer en gebruik daarbij het wachtwoord "password".
+      type: http
+      scheme: basic
