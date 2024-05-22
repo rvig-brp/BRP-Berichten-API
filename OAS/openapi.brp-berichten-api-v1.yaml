@@ -26,9 +26,9 @@ info:
     ## 0.2.1 - April 2024
     - Mogelijkheden tot sortering bij een list operatie zijn verwijderd. De standaard sortering wordt nog bepaald.
     - Demo omgeving is toegevoegd aan de lijst met servers.
-      - API te benaderen via https://async-berichten-api.dictua.ictu-sr.nl/api/v1/berichten
-      - Swagger UI via: https://async-berichten-api.dictua.ictu-sr.nl/swagger-ui/index.html
-      - De OpenAPI specificatie via: https://async-berichten-api.dictua.ictu-sr.nl/openapi.brp-async-berichten-api-v1.yaml
+      - API te benaderen via https://brp-berichten-api.dictua.ictu-sr.nl/api/v1/berichten
+      - Swagger UI via: https://brp-berichten-api.dictua.ictu-sr.nl/swagger-ui/index.html
+      - De OpenAPI specificatie via: https://brp-berichten-api.dictua.ictu-sr.nl/openapi.brp-berichten-api-v1.yaml
     - Wachtwoord wijzigingen optie is verwijderd.
     - Het `berichtFormaat` attribuut is komen te vervallen. Alle berichten zijn nu per definitie in JSON formaat. De eis om de berichtInhoud Base64 te
       encoderen komt daarmee te vervallen.
@@ -869,6 +869,6 @@ components:
 
   securitySchemes:
     BasicAuth:
-      description: Deze authenticatiemethode is van toepassing op de DEMO omgeving/stub. Login met elk willekeurig account/mailbox-nummer en gebruik daarbij het wachtwoord "password".
+      description: Deze authenticatiemethode is van toepassing op de DEMO omgeving/stub. Login met elk willekeurig account/mailbox-nummer. Een wachtwoord kunt u opvragen via s.renkens@dictu.nl en/of maarten.woldring@rvig.nl.
       type: http
       scheme: basic
