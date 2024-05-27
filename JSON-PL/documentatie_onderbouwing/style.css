@@ -1,0 +1,207 @@
+body {
+    background-color: black;
+    margin:0;
+    padding:8px;
+    overflow: hidden;
+}
+
+#alleInhoud {
+    min-width: 960px;
+    max-width: 1400px;
+    margin: auto;
+}
+
+.achtergrond {
+    width:40%;
+    float:left;
+    height: 98vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding-right:8px;
+}
+
+h1, h2, h3, h4, p, textarea, ul {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
+}
+
+.achtergrond h2, .achtergrond h3 {
+    color:darkturquoise;
+    font-weight: lighter;
+}
+
+.achtergrond h4 {
+    color:darkgoldenrod;
+    font-weight: lighter;
+}
+
+h2 {
+    margin-top: 0.5em;
+    font-weight: lighter;
+}
+
+h3, h4 {
+    font-style: oblique;
+    margin-bottom: 0;
+}
+
+p {
+    margin-top: 0.3em;
+    padding-right: 8px;
+    font-weight:lighter;
+    line-height: 130%;
+}
+
+li {
+    line-height: 130%;
+    padding-bottom: 0.2em;
+}
+
+textarea {
+    border-color:darkslateblue;
+    background-color: #111;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 90%;
+    font: 80% 'Source Code Pro', Inconsolata, Menlo, monospace;
+    font-weight:100;
+}
+
+.plDat {
+    float: left;
+    width: 28%;
+    height: 98vh;
+    background-color:darkslateblue;
+    display: flex;
+    flex-flow: column;
+    margin: 0 12px 6px 6px
+}
+.desc {
+    flex: 0 1 320px;
+    padding:0 1em 0 1em;
+    margin:0;
+    background-color: darkslateblue;
+}
+
+.pldc {
+    width:auto;
+    flex: 1 1 auto;
+}
+
+.afbeelding {
+    width: 100%;
+}
+
+.inline {
+    padding-top: 0.5em;
+}
+
+#toonWijzigingen {
+    float:right;
+    margin-top:16px;
+    margin-right: 12px;
+}
+
+#plBevraging {
+    background-color: darkslategray;
+    padding: 4px 8px;
+    width: auto;
+}
+
+#plBevraging p {
+    color:aliceblue;
+    margin-top: 0;
+    margin-bottom: 4px;
+}
+
+#plBevraging p span.val {
+    color:greenyellow;
+}
+
+#plBevraging p span.exp, p.exp {
+    color:darkturquoise;
+    margin-top: 0;
+    margin-bottom: 8px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 90%;
+    display:block;
+}
+
+a, a.visited {
+    color:lightblue
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  vertical-align: middle;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color:darkturquoise;
+  ;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px darkturquoise;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.sliderlabel {
+    padding-left: 16px;
+}
+span.accent {
+    color: darkturquoise
+}
+
+span.grijs {
+    color: #ccc
+}
