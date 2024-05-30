@@ -58,5 +58,5 @@ De demo-omgeving is benaderbaar via de volgende url:
 Voor meer informatie en/of hulpvragen, kunt u contact opnemen met de onderstaande contactpersonen.
 
 * [s.renkens@dictu.nl](mailto:s.renkens@dictu.nl) - Sebastiaan Renkens
-* [maarten.woldring@dictu.nl](mailto:maarten.woldring@rvig.nl) - Maarten Woldring
+* [maarten.woldring@rvig.nl](mailto:maarten.woldring@rvig.nl) - Maarten Woldring
 
