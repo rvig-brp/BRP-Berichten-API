@@ -1,10 +1,17 @@
 openapi: 3.1.0
 info:
   title: BRP berichten API
+  version: 0.4.0
   description: |
     Een REST API voor het a-synchroon uitwisselen van berichten welke in het Logisch Ontwerp gedefinieerd zijn.
 
     # Wijzigingshistorie:
+    ## 0.4.0 Juni 2024
+    - De json-schema's van de berichtsoorten zijn opgenomen in de OpenAPI Specificatie. Voor elke berichtsoort die het LO beschrijft, is opgenomen hoe dit bericht gestructureerd is.
+      - Houdt er rekening mee dat het weergeven van de OpenAPI specificatie in de web-versie va SwaggerUI hierdoor trager geworden is. Het is aan te raden om de alternatieve (redocly) weergave te gebruiken:
+        - https://brp-berichten-api.dictua.ictu-sr.nl/openapi/berichten-api.html
+        - De JSON schema's zijn tevens te vinden op onze Github pagina.
+
     ## 0.3.0 - Mei 2024
     - Conversie endpoints
       - Introductie bericht-conversie (/berichten/conversie) endpoint. Houdt er rekening mee dat de conversie naar JSON opgenomen is, maar nog niet geïmplementeerd is in de demo omgeving.
@@ -12,6 +19,7 @@ info:
     - De API is hernoemd van "BRP A-Synchrone berichten API" naar "BRP berichten API".
       - Nieuwe URL's demo omgeving:
         - https://brp-berichten-api.dictua.ictu-sr.nl/api/v1/berichten
+        - https://brp-berichten-api.dictua.ictu-sr.nl/openapi/berichten-api.html
         - https://brp-berichten-api.dictua.ictu-sr.nl/swagger-ui/index.html
     - Beschikbaarheid endpoint(s)
       - Er is een tweede ping endpoint bijgekomen waardoor en nu een HEAD of een GET gedaan kan worden. De response blijft hetzelfde. U kunt zelf kiezen welke van deze twee u hanteert.
@@ -79,9 +87,8 @@ info:
     | 100     | Maximum aantal berichten dat in één DELETE request verwijderd mag worden |
     | 2000   | Maximum aantal berichten dat in één LIST request getoond zal worden. Indien wenselijk kunt u dit aantal middels een query-parameter beperken. |
     | 100    | Maximum aantal berichten dat in één GET request ontvangen mag worden. |
-    | 64kb   | Maximum grote van één enkel bericht. Één request zal qua grootte dan uitkomen op ((maximale-grootte-enkel-bericht * maximaal-aantal-berichten) + overhead). Houdt er rekening mee dat dit een waarde is die in te toekomst kan gaan groeien. Beperk uw oplossing dus niet op deze waarde! |
+    | 64kb   | Maximum grootte van één enkel bericht. Één request zal qua grootte dan uitkomen op ((maximale-grootte-enkel-bericht * maximaal-aantal-berichten) + overhead). Houdt er rekening mee dat dit een waarde is die in te toekomst kan gaan groeien. Beperk uw oplossing dus niet op deze waarde! |
 
-  version: 0.2.1
 tags:
   - name: Berichtenverkeer
     description: API waarop berichten uitgewisseld kunnen worden.
@@ -358,14 +365,14 @@ paths:
               contentEncoding: base64
           application/json; charset=utf-8:
             schema:
-              type: object
+              $ref: "#/components/schemas/LoBericht"
       responses:
         '200':
           description: Een naar JSON geconverteerd bericht
           content:
             application/json; charset=utf-8:
               schema:
-                type: object
+                $ref: "#/components/schemas/BerichtInhoud"
             text/plain; charset=utf-8:
               schema:
                 type: string
@@ -546,8 +553,8 @@ components:
 
     PutMessageKenmerken:
       description: >
-        De PutMessageKenmerken lijken op de PutEnvelope zoals dat gebruikt werdt bij de mailboxserver. Ten
-        opzichte van de mailboxserver zijn een aantal velden komen te vervallen een sommige hebben een andere naam gekregen:
+        De PutMessageKenmerken lijken op de PutEnvelope zoals dat gebruikt werd bij de mailboxserver. Ten
+        opzichte van de mailboxserver zijn een aantal velden komen te vervallen en sommige hebben een andere naam gekregen:
           * Attention: Was gereserveerd voor toekomstig gebruik. In deze API niet langer relevant.
           * ContentType: Dit veld had altijd een vaste waarde. In deze API niet langer relevant.
           * DeferredDeliveryTime: Hiermee kon een gewenst tijdstip van aflevering aangegeven worden. Dit wordt niet door deze API ondersteund.
@@ -606,7 +613,7 @@ components:
     BerichtKenmerken:
       type: object
       description: >
-        De BerichtKenmerken lijkt op de MessageHeading zoals dat gebruikt werdt bij de mailboxserver. Ten opzichte van de mailboxserver zijn de
+        De BerichtKenmerken lijkt op de MessageHeading zoals dat gebruikt werd bij de mailboxserver. Ten opzichte van de mailboxserver zijn de
         onderstaande velden niet langer aan de orde en sommige hebben een andere naam gekregen.
           * CrossReference --> verwijzingBerichtId
           * MessageId --> berichtId
@@ -625,9 +632,7 @@ components:
           $ref: '#/components/schemas/BerichtType'
 
     BerichtInhoud:
-      type: string
-      maxLength: 65536 # 64kb
-      description: Een inhoudelijk bericht zoals gespecificeerd in het Logisch Ontwerp in JSON formaat.
+      $ref: "#/components/schemas/LoBericht"
 
     OntvangerOfAfzender:
       type: integer
@@ -755,6 +760,27 @@ components:
             * Af01 Fout: plaatsen afnemersindicatie op persoonslijst onmogelijk
             * Av01 Verwijderen afnemersindicatie van persoonslijst
             * Af11 Fout: verwijderen afnemersindicatie van persoonslijst onmogelijk
+        * Overige berichten
+          * Berichten ten behoeve van het onderhouden van de autorisatietabel
+            * Berichten in verband met het onderhoud van de autorisatietabel:
+              * Ct01 Toevoegen tabelregel aan Autorisatietabel
+              * Cw01 Wijzigen tabelregel in Autorisatietabel
+              * Cb01 Beëindigen tabelregel in Autorisatietabel
+            * Berichten ten behoeve van het onderhouden van de overige landelijke tabellen
+              * Dt01 Toevoegen tabelregel
+              * Dw01 Wijzigen tabelregel
+            * De protocolfouten
+              * Berichten om niet voorziene fouten in ontvangen berichten te melden:
+                * Pf01 Fout: cyclus
+                * Pf02 Fout: syntax
+                * Pf03 Fout: inhoudelijk
+            * Het vrije bericht
+              * Bericht, vergelijkbaar met een mededeling op papier en als zodanig te gebruiken:
+                * Vb01 Vrij bericht
+                * Vb02 Vrij bericht via webservice
+            * De verwerkbevestiging
+              * Bericht om de verwerking van bepaalde gegevens te bevestigen:
+                * Null Verwerkbevestiging (Null-bericht)
 
     PagineerbaarResultaat:
       type: object
@@ -823,6 +849,74 @@ components:
           type: string
           description: De toelichting van de foutsituatie (indien mogelijk)
 
+    LoBericht:
+      oneOf:
+        - $ref: "brp/schemas/2024Q3/berichten.schema.json#/berichtsoorten/Af01Bericht"
+        - $ref: "brp/schemas/2024Q3/berichten.schema.json#/berichtsoorten/Af11Bericht"
+        - $ref: "brp/schemas/2024Q3/berichten.schema.json#/berichtsoorten/Ag01Bericht"
+        - $ref: "brp/schemas/2024Q3/berichten.schema.json#/berichtsoorten/Ag11Bericht"
+        - $ref: "brp/schemas/2024Q3/berichten.schema.json#/berichtsoorten/Ag21Bericht"
+        - $ref: "brp/schemas/2024Q3/berichten.schema.json#/berichtsoorten/Ag31Bericht"
+        - $ref: "brp/schemas/2024Q3/berichten.schema.json#/berichtsoorten/Ap01Bericht"
+        - $ref: "brp/schemas/2024Q3/berichten.schema.json#/berichtsoorten/Av01Bericht"
+        - $ref: "brp/schemas/2024Q3/berichten.schema.json#/berichtsoorten/Cb01Bericht"
+        - $ref: "brp/schemas/2024Q3/berichten.schema.json#/berichtsoorten/Ct01Bericht"
+        - $ref: "brp/schemas/2024Q3/berichten.schema.json#/berichtsoorten/Cw01Bericht"
+        - $ref: "brp/schemas/2024Q3/berichten.schema.json#/berichtsoorten/Dt01Bericht"
+        - $ref: "brp/schemas/2024Q3/berichten.schema.json#/berichtsoorten/Dw01Bericht"
+        - $ref: "brp/schemas/2024Q3/berichten.schema.json#/berichtsoorten/Gv01Bericht"
+        - $ref: "brp/schemas/2024Q3/berichten.schema.json#/berichtsoorten/Gv02Bericht"
+        - $ref: "brp/schemas/2024Q3/berichten.schema.json#/berichtsoorten/Ha01Bericht"
+        - $ref: "brp/schemas/2024Q3/berichten.schema.json#/berichtsoorten/Hf01Bericht"
+        - $ref: "brp/schemas/2024Q3/berichten.schema.json#/berichtsoorten/Hq01Bericht"
+        - $ref: "brp/schemas/2024Q3/berichten.schema.json#/berichtsoorten/Ib01Bericht"
+        - $ref: "brp/schemas/2024Q3/berichten.schema.json#/berichtsoorten/If01Bericht"
+        - $ref: "brp/schemas/2024Q3/berichten.schema.json#/berichtsoorten/If21Bericht"
+        - $ref: "brp/schemas/2024Q3/berichten.schema.json#/berichtsoorten/If31Bericht"
+        - $ref: "brp/schemas/2024Q3/berichten.schema.json#/berichtsoorten/If41Bericht"
+        - $ref: "brp/schemas/2024Q3/berichten.schema.json#/berichtsoorten/Ii01Bericht"
+        - $ref: "brp/schemas/2024Q3/berichten.schema.json#/berichtsoorten/Iv01Bericht"
+        - $ref: "brp/schemas/2024Q3/berichten.schema.json#/berichtsoorten/Iv11Bericht"
+        - $ref: "brp/schemas/2024Q3/berichten.schema.json#/berichtsoorten/Iv21Bericht"
+        - $ref: "brp/schemas/2024Q3/berichten.schema.json#/berichtsoorten/Jb01Bericht"
+        - $ref: "brp/schemas/2024Q3/berichten.schema.json#/berichtsoorten/Jf01Bericht"
+        - $ref: "brp/schemas/2024Q3/berichten.schema.json#/berichtsoorten/Jf21Bericht"
+        - $ref: "brp/schemas/2024Q3/berichten.schema.json#/berichtsoorten/Jf31Bericht"
+        - $ref: "brp/schemas/2024Q3/berichten.schema.json#/berichtsoorten/Ji01Bericht"
+        - $ref: "brp/schemas/2024Q3/berichten.schema.json#/berichtsoorten/Jv01Bericht"
+        - $ref: "brp/schemas/2024Q3/berichten.schema.json#/berichtsoorten/La01Bericht"
+        - $ref: "brp/schemas/2024Q3/berichten.schema.json#/berichtsoorten/Lf01Bericht"
+        - $ref: "brp/schemas/2024Q3/berichten.schema.json#/berichtsoorten/Lg01Bericht"
+        - $ref: "brp/schemas/2024Q3/berichten.schema.json#/berichtsoorten/Lq01Bericht"
+        - $ref: "brp/schemas/2024Q3/berichten.schema.json#/berichtsoorten/Ng01Bericht"
+        - $ref: "brp/schemas/2024Q3/berichten.schema.json#/berichtsoorten/NullBericht"
+        - $ref: "brp/schemas/2024Q3/berichten.schema.json#/berichtsoorten/Of11Bericht"
+        - $ref: "brp/schemas/2024Q3/berichten.schema.json#/berichtsoorten/Og11Bericht"
+        - $ref: "brp/schemas/2024Q3/berichten.schema.json#/berichtsoorten/Pf01Bericht"
+        - $ref: "brp/schemas/2024Q3/berichten.schema.json#/berichtsoorten/Pf02Bericht"
+        - $ref: "brp/schemas/2024Q3/berichten.schema.json#/berichtsoorten/Pf03Bericht"
+        - $ref: "brp/schemas/2024Q3/berichten.schema.json#/berichtsoorten/Rb01Bericht"
+        - $ref: "brp/schemas/2024Q3/berichten.schema.json#/berichtsoorten/Rf01Bericht"
+        - $ref: "brp/schemas/2024Q3/berichten.schema.json#/berichtsoorten/Rf31Bericht"
+        - $ref: "brp/schemas/2024Q3/berichten.schema.json#/berichtsoorten/Rv01Bericht"
+        - $ref: "brp/schemas/2024Q3/berichten.schema.json#/berichtsoorten/Sv01Bericht"
+        - $ref: "brp/schemas/2024Q3/berichten.schema.json#/berichtsoorten/Sv11Bericht"
+        - $ref: "brp/schemas/2024Q3/berichten.schema.json#/berichtsoorten/Tb01Bericht"
+        - $ref: "brp/schemas/2024Q3/berichten.schema.json#/berichtsoorten/Tb02Bericht"
+        - $ref: "brp/schemas/2024Q3/berichten.schema.json#/berichtsoorten/Tf01Bericht"
+        - $ref: "brp/schemas/2024Q3/berichten.schema.json#/berichtsoorten/Tf11Bericht"
+        - $ref: "brp/schemas/2024Q3/berichten.schema.json#/berichtsoorten/Tf21Bericht"
+        - $ref: "brp/schemas/2024Q3/berichten.schema.json#/berichtsoorten/Tv01Bericht"
+        - $ref: "brp/schemas/2024Q3/berichten.schema.json#/berichtsoorten/Vb01Bericht"
+        - $ref: "brp/schemas/2024Q3/berichten.schema.json#/berichtsoorten/Vb02Bericht"
+        - $ref: "brp/schemas/2024Q3/berichten.schema.json#/berichtsoorten/Wa01Bericht"
+        - $ref: "brp/schemas/2024Q3/berichten.schema.json#/berichtsoorten/Wa11Bericht"
+        - $ref: "brp/schemas/2024Q3/berichten.schema.json#/berichtsoorten/Wf01Bericht"
+        - $ref: "brp/schemas/2024Q3/berichten.schema.json#/berichtsoorten/Xa01Bericht"
+        - $ref: "brp/schemas/2024Q3/berichten.schema.json#/berichtsoorten/Xf01Bericht"
+        - $ref: "brp/schemas/2024Q3/berichten.schema.json#/berichtsoorten/Xq01Bericht"
+      discriminator:
+        propertyName: berichtType
   responses:
     '202':
       description: Verzoek is geaccepteerd en wordt op een later moment verwerkt.
