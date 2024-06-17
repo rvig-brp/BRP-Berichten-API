@@ -266,11 +266,6 @@
       "minLength" : 1,
       "maxLength" : 1
     },
-    "lengteBericht" : {
-      "type" : "string",
-      "minLength" : 0,
-      "maxLength" : 5
-    },
     "rubrieken" : {
       "type" : "array",
       "items" : {
@@ -1614,14 +1609,11 @@
         "berichtType" : {
           "$ref" : "#/berichtkoppen/berichtType"
         },
-        "lengteBericht" : {
-          "$ref" : "#/berichtkoppen/lengteBericht"
-        },
-        "plData" : {
-          "$ref" : "persoonslijst-data.schema.json"
+        "vrijeTekst" : {
+          "type" : "string"
         }
       },
-      "required" : [ "berichtType", "lengteBericht", "plData" ]
+      "required" : [ "berichtType", "vrijeTekst" ]
     },
     "Vb02Bericht" : {
       "title" : "Vb02",
@@ -1642,14 +1634,11 @@
         "communicatiepartnerVan" : {
           "$ref" : "#/berichtkoppen/communicatiepartner"
         },
-        "lengteBericht" : {
-          "$ref" : "#/berichtkoppen/lengteBericht"
-        },
-        "plData" : {
-          "$ref" : "persoonslijst-data.schema.json"
+        "vrijeTekst" : {
+          "type" : "string"
         }
       },
-      "required" : [ "berichtType", "communicatiepartnerAan", "communicatiepartnerVan", "lengteBericht", "plData" ]
+      "required" : [ "berichtType", "communicatiepartnerAan", "communicatiepartnerVan", "vrijeTekst" ]
     },
     "Wa01Bericht" : {
       "title" : "Wa01",
