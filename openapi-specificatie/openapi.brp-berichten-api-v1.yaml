@@ -331,6 +331,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/probleem-antwoord'
 
+
   /api/v1/berichten/conversie:
     post:
       tags:
@@ -372,7 +373,33 @@ paths:
           content:
             application/json; charset=utf-8:
               schema:
-                $ref: "#/components/schemas/BerichtInhoud"
+                type: object
+                properties:
+                  berichtInhoud:
+                    $ref: "#/components/schemas/BerichtInhoud"
+                  validatieFouten:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                        code:
+                          type: string
+                        message:
+                          type: string
+                        property:
+                          type: string
+                        evaluationPath:
+                          type: string
+                        schemaLocation:
+                          type: string
+                        messageKey:
+                          type: string
+                        arguments:
+                          type: array
+                          items:
+                            type: string
             text/plain; charset=utf-8:
               schema:
                 type: string
