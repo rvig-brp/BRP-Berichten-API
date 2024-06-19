@@ -11,6 +11,7 @@ info:
       - Houdt er rekening mee dat het weergeven van de OpenAPI specificatie in de web-versie va SwaggerUI hierdoor trager geworden is. Het is aan te raden om de alternatieve (redocly) weergave te gebruiken:
         - https://brp-berichten-api.dictua.ictu-sr.nl/openapi/berichten-api.html
         - De JSON schema's zijn tevens te vinden op onze Github pagina.
+    - De JSON-response van het conversie endpoint is iets aangepast zodat naast het geconverteerde bericht tevens validatiefouten opgenomen kunnen worden.
 
     ## 0.3.0 - Mei 2024
     - Conversie endpoints
@@ -352,18 +353,26 @@ paths:
           text/plain; charset=utf-8:
             schema:
               type: string
+              examples:
+                - "00000000Gv01474684504200082070517110008202301027120018Attestatie de Vita8810004020157021711000071200008810000"
           text/plain+base64; charset=utf-8:
             schema:
               type: string
               contentEncoding: base64
+              examples:
+                - "MDAwMDAwMDBHdjAxNDc0Njg0NTA0MjAwMDgyMDcwNTE3MTEwMDA4MjAyMzAxMDI3MTIwMDE4QXR0ZXN0YXRpZSBkZSBWaXRhODgxMDAwNDAyMDE1NzAyMTcxMTAwMDA3MTIwMDAwODgxMDAwMA=="
           text/plain; charset=teletex:
             schema:
               type: string
               format: binary
+              examples:
+                - "00000000Gv01474684504200082070517110008202301027120018Attestatie de Vita8810004020157021711000071200008810000"
           text/plain+base64; charset=teletex:
             schema:
               type: string
               contentEncoding: base64
+              examples:
+                - "MDAwMDAwMDBHdjAxNDc0Njg0NTA0MjAwMDgyMDcwNTE3MTEwMDA4MjAyMzAxMDI3MTIwMDE4QXR0ZXN0YXRpZSBkZSBWaXRhODgxMDAwNDAyMDE1NzAyMTcxMTAwMDA3MTIwMDAwODgxMDAwMA=="
           application/json; charset=utf-8:
             schema:
               $ref: "#/components/schemas/LoBericht"
