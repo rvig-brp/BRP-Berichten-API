@@ -10,26 +10,62 @@ berichtuitwisseling, zoals het JSON Schema voor persoonsgegevens.
 - Berichtinhoud in JSON.
 - Text-encoding UTF-8.
 
-## Specificaties
+## JSON & JSON-Schema's
 
-### OpenAPI specificaties
+De berichtuitwisseling en de data daarmee daadwerkelijk mee uitgewisseld wordt zal via JSON genoteerd worden. Om te
+duiden hoe deze data gestructureerd dient te worden zijn verschillende json-schema's gedefinieerd die hieronder verder
+beschreven worden.
+
+### Persoonslijst & Persoonslijst-data (plData)
+
+Er zijn twee schema-variaties t.b.v. het beschrijven van de structuur rondom een persoonlijst:
+
+1. persoonslijst.schema.json: Dit schema beschrijft de persoonslijst zoals deze opgenomen dient te worden in de
+   synchronisatieberichten. Dit schema is stricter dan de volgende variant.
+
+2. persoonslijst-data.schema.json: Dit schema is nagenoeg gelijk aan het schema dat bij het vorige punt genoemd is, maar
+   veel
+   minder strict. Dit schema wordt gebruikt bij nagenoeg alle andere berichtsoorten die (gedeeltelijke) data van een
+   persoonslijst bevatten.
+
+Documentatie rondom de achtergrond en motivatie/onderbouwing van de structuur is hier interactief in te zien:
+
+* https://html-preview.github.io/?url=https://github.com/rvig-brp/BRP-Berichten-API/blob/main/JSON-PL/documentatie_onderbouwing/readPL.html
+
+### Berichtstructuren
+
+Het schema `berichten.schema.json` bevat alle definities van de berichten zoals deze beschreven zijn in het BRP Logisch
+Ontwerp. Het oude berichtformaat maakte onderscheid tussen kop en inhoud maar dit is het JSON-formaat niet langer
+noodzakelijk.
+
+### Tabelberichten
+
+Het schema `tabelberichten.schema.json` beschrijft hoe de inhoud van een tabelbericht eruit ziet. Dit schema verkeert
+nog in een vroege fase en zal waarschijnlijk nog meer detail gaan krijgen / stricter worden.
+
+### Autorisatieberichten (Ct, Cw, Cb)
+
+Deze berichtsoorten zijn nog niet gedefinieerd in een JSON-schema, dit volgt nog.
+
+## OpenAPI specificaties
 
 De OpenAPI specificatie van deze API is opgenomen in deze repository [in de OAS folder](./OAS/). Daarnaast kunt u
 gebruik maken van de grafische weergave van de OpenAPI
 specificatie:
 
-* https://brp-berichten-api.dictua.ictu-sr.nl/swagger-ui/index.html
+* Redoc:
+    * https://brp-berichten-api.dictua.ictu-sr.nl/openapi/berichten-api.html
+    * Gebruik bij voorkeur deze variant in plaats van de Swagger variant aangezien de laatstgenoemde performance issues
+      heeft.
+* Swagger
+    * https://brp-berichten-api.dictua.ictu-sr.nl/swagger-ui/index.html
+    * Heeft performance-issues vanwege de omvang van de JSON-schema's en de vele berichtsoorten.
 
 De BRP Berichten API is op dit moment in ontwikkeling. Dit betekent dat de mogelijkheden en het koppelvlak in beweging
 zijn. De bestanden in deze repository zullen regelmatig een update krijgen de komende maanden. De OpenAPI specificatie
 bevat een wijzigingshistorie zodat u kunt zien welke wijzigingen er plaatsgevonden hebben.
 
 ![OpenAPI - Swagger UI](images/readme-swagger-ui.png)
-
-### JSON Schema's
-
-Zowel de structuur van de persoonslijst als de berichtformaten zullen vastgelegd dan worden in JSON-Schema's. Zodra deze
-beschikbaar zijn worden deze opgenomen in deze repository.
 
 ## Demo omgeving
 
@@ -52,6 +88,18 @@ De demo-omgeving is benaderbaar via de volgende url:
 
 * Base URL van de API: https://brp-berichten-api.dictua.ictu-sr.nl/api/v1/berichten
   ![Berichten API](images/readme-demo-omgeving.png)
+
+## Berichtconversie API
+
+Om voor u de transitie naar de nieuwe JSON-structuur te bespoedigen, kunt u gebruik maken van conversie endpoint welke
+berichten voor u kan converteren tussen 'oud' en 'nieuw' formaat. In de OpenAPI specificaties staat beschreven hoe dit
+endpoint gebruikt moet worden. Let in het bijzonder op de `Accept` en `Content-Type` headers. Deze gebruikt u om aan te
+geven welke bronformaat aangeleverd wordt en in welk doelformaat u het bericht wenst te ontvangen. Authenticate geschiet
+op dezelfde wijze als bij de berichtuitwisseling.
+
+* https://brp-berichten-api.dictua.ictu-sr.nl/api/v1/berichten/conversie
+
+![voorbeeld berichtconversie in Postman](images/readme-conversie.png)
 
 ## Contactpersonen
 

@@ -1,5 +1,5 @@
 {
-    "$schema": "brpPLAltHistorie.schema.json",
+    "$schema": "persoonslijst.schema.json",
     "c01": [
         {
             "e0110": "1961710350",
