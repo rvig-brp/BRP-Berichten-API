@@ -423,6 +423,12 @@ paths:
               schema:
                 type: string
                 contentEncoding: base64
+        '400':
+          description: Wanneer het aangeleverde bericht niet voldeed en daardoor niet vertaald kon worden.
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/probleem-antwoord"
         '406':
           description: Wanneer een conversie werd aangevraagd voor een doelformaat dat niet ondersteund wordt.
           content:
