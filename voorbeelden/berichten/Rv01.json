@@ -1,0 +1,22 @@
+{
+  "$schema" : "berichten.schema.json#/berichtsoorten/Rv01Bericht",
+  "berichtType" : "Rv01",
+  "herhaling" : "0",
+  "plData" : {
+    "c21" : [ {
+      "e0110" : "6101373903",
+      "e0120" : "304539818",
+      "e0210" : "Vanessa",
+      "e0240" : "Accepteren en eventueel aanpassen, geboortegemeente in Nederland voluit geschreven",
+      "e0310" : "19931008",
+      "e0320" : "0000",
+      "e0330" : "6030",
+      "e0910" : "1997",
+      "e0920" : "20150310",
+      "e7010" : "0",
+      "e8310" : "210320",
+      "e8320" : "20111111",
+      "e8510" : "20150310"
+    } ]
+  }
+}

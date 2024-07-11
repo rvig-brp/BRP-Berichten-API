@@ -1,0 +1,4 @@
+{
+  "$schema" : "berichten.schema.json#/berichtsoorten/Pf02Bericht",
+  "berichtType" : "Pf02"
+}

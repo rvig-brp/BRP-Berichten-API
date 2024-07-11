@@ -1,0 +1,17 @@
+{
+  "$schema" : "berichten.schema.json#/berichtsoorten/Wa01Bericht",
+  "berichtType" : "Wa01",
+  "herhaling" : "0",
+  "aNummer" : "3279217987",
+  "datumGeldigheid" : "20230201",
+  "plData" : {
+    "c01" : [ {
+      "e0110" : "8383838383",
+      "e0210" : "Alexandrijntje",
+      "e0240" : "Bruchs",
+      "e0310" : "19980412",
+      "e0320" : "1904",
+      "e0330" : "6030"
+    } ]
+  }
+}

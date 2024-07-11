@@ -1,0 +1,12 @@
+{
+  "$schema" : "berichten.schema.json#/berichtsoorten/Af11Bericht",
+  "berichtType" : "Af11",
+  "foutreden" : "I",
+  "gemeente" : "0000",
+  "aNummer" : "7165798219",
+  "plData" : {
+    "c01" : [ {
+      "e0110" : "7165798219"
+    } ]
+  }
+}

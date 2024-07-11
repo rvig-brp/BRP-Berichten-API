@@ -1,0 +1,15 @@
+{
+  "$schema" : "berichten.schema.json#/berichtsoorten/If01Bericht",
+  "berichtType" : "If01",
+  "foutreden" : "G",
+  "gemeente" : "0000",
+  "aNummer" : "0000000000",
+  "plData" : {
+    "c01" : [ {
+      "e0210" : "Hendrika Isabella Gerarda Johanna",
+      "e0230" : "de",
+      "e0240" : "Roos",
+      "e0310" : "19550602"
+    } ]
+  }
+}

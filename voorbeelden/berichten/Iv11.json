@@ -1,0 +1,20 @@
+{
+  "$schema" : "berichten.schema.json#/berichtsoorten/Iv11Bericht",
+  "berichtType" : "Iv11",
+  "herhaling" : "0",
+  "plData" : {
+    "c21" : [ {
+      "e0110" : "7874803747",
+      "e0120" : "299990011",
+      "e0210" : "Luke",
+      "e0240" : "Donald",
+      "e0310" : "19771207",
+      "e0320" : "Hemel Hampstead",
+      "e0330" : "6039",
+      "e0910" : "1804",
+      "e0920" : "20130919",
+      "e7010" : "0",
+      "e8510" : "20130919"
+    } ]
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "$schema" : "berichten.schema.json#/berichtsoorten/If31Bericht",
+  "berichtType" : "If31",
+  "plData" : {
+    "c21" : [ {
+      "e0110" : "2595129542"
+    } ]
+  }
+}

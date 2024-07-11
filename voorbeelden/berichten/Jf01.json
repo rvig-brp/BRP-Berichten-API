@@ -1,0 +1,14 @@
+{
+  "$schema" : "berichten.schema.json#/berichtsoorten/Jf01Bericht",
+  "berichtType" : "Jf01",
+  "foutreden" : "A",
+  "gemeente" : "0000",
+  "aNummer" : "1919190725",
+  "plData" : {
+    "c01" : [ {
+      "e0230" : "van 't",
+      "e0240" : "Wiel",
+      "e0310" : "19710107"
+    } ]
+  }
+}
