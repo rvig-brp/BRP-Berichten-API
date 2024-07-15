@@ -1,0 +1,8 @@
+{
+  "$schema" : "berichten.schema.json#/berichtsoorten/Of11Bericht",
+  "berichtType" : "Of11",
+  "foutreden" : "G",
+  "datum" : "00000000",
+  "gemeente" : "0000",
+  "aNummer" : "0000000000"
+}

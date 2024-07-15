@@ -1,0 +1,18 @@
+{
+  "$schema" : "berichten.schema.json#/berichtsoorten/Wa11Bericht",
+  "berichtType" : "Wa11",
+  "aNummer" : "2929292929",
+  "datumGeldigheid" : "20211002",
+  "plData" : {
+    "c01" : [ {
+      "e0110" : "7824352058",
+      "e0210" : "Maria Johanna",
+      "e0220" : "MI",
+      "e0230" : "van",
+      "e0240" : "Amstel",
+      "e0310" : "19420812",
+      "e0320" : "1810",
+      "e0330" : "6030"
+    } ]
+  }
+}

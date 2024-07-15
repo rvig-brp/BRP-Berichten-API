@@ -1,0 +1,9 @@
+{
+  "$schema" : "berichten.schema.json#/berichtsoorten/Rf31Bericht",
+  "berichtType" : "Rf31",
+  "plData" : {
+    "c21" : [ {
+      "e0110" : "5672518136"
+    } ]
+  }
+}

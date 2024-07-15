@@ -1,0 +1,14 @@
+{
+  "$schema" : "berichten.schema.json#/berichtsoorten/Ng01Bericht",
+  "berichtType" : "Ng01",
+  "plData" : {
+    "c01" : [ {
+      "e0110" : "3853458937",
+      "e2020" : "8146315790"
+    } ],
+    "c07" : [ {
+      "e6710" : "20120503",
+      "e6720" : "F"
+    } ]
+  }
+}

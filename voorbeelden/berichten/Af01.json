@@ -1,0 +1,15 @@
+{
+  "$schema" : "berichten.schema.json#/berichtsoorten/Af01Bericht",
+  "berichtType" : "Af01",
+  "foutreden" : "H",
+  "gemeente" : "0000",
+  "aNummer" : "0000000000",
+  "plData" : {
+    "c01" : [ {
+      "historie" : [ {
+        "e0210" : "Michal",
+        "e0240" : "Boris"
+      } ]
+    } ]
+  }
+}

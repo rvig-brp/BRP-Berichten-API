@@ -1,0 +1,12 @@
+{
+  "$schema" : "berichten.schema.json#/berichtsoorten/Lq01Bericht",
+  "berichtType" : "Lq01",
+  "herhaling" : "0",
+  "plData" : {
+    "c01" : [ {
+      "historie" : [ {
+        "e0110" : "7397613143"
+      } ]
+    } ]
+  }
+}

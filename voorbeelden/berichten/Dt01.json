@@ -1,0 +1,15 @@
+{
+  "$schema" : "berichten.schema.json#/berichtsoorten/Dt01Bericht",
+  "berichtType" : "Dt01",
+  "herhaling" : "0",
+  "teWijzigenTabel" : "37",
+  "tabelData" : {
+    "t37" : {
+      "e9610" : "299",
+      "e9620" : "Rijkswet Bijzondere Belgen",
+      "e9630" : "VK",
+      "e9998" : "18530101",
+      "e9999" : "19000101"
+    }
+  }
+}

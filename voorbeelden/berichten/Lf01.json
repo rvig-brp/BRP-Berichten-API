@@ -1,0 +1,11 @@
+{
+  "$schema" : "berichten.schema.json#/berichtsoorten/Lf01Bericht",
+  "berichtType" : "Lf01",
+  "foutreden" : "G",
+  "gemeente" : "0000",
+  "plData" : {
+    "c01" : [ {
+      "e0110" : "1070796815"
+    } ]
+  }
+}

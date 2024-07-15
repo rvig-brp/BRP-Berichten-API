@@ -1,0 +1,13 @@
+{
+  "$schema" : "berichten.schema.json#/berichtsoorten/Ii01Bericht",
+  "berichtType" : "Ii01",
+  "herhaling" : "0",
+  "plData" : {
+    "c01" : [ {
+      "e0210" : "Hendrika Isabella Gerarda Johanna",
+      "e0230" : "de",
+      "e0240" : "Roos",
+      "e0310" : "19550602"
+    } ]
+  }
+}

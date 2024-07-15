@@ -1,0 +1,10 @@
+{
+  "$schema" : "berichten.schema.json#/berichtsoorten/Rf01Bericht",
+  "berichtType" : "Rf01",
+  "foutreden" : "A",
+  "plData" : {
+    "c01" : [ {
+      "e0110" : "7165798219"
+    } ]
+  }
+}

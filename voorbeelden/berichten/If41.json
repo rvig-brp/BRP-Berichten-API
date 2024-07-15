@@ -1,0 +1,12 @@
+{
+  "$schema" : "berichten.schema.json#/berichtsoorten/If41Bericht",
+  "berichtType" : "If41",
+  "foutreden" : "A",
+  "gemeente" : "0000",
+  "aNummer" : "2686181372",
+  "plData" : {
+    "c21" : [ {
+      "e0110" : "2686181372"
+    } ]
+  }
+}

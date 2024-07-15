@@ -1,0 +1,13 @@
+{
+  "$schema" : "berichten.schema.json#/berichtsoorten/Ji01Bericht",
+  "berichtType" : "Ji01",
+  "herhaling" : "0",
+  "plData" : {
+    "c01" : [ {
+      "e0210" : "Paul",
+      "e0230" : "de",
+      "e0240" : "Man",
+      "e0310" : "19490201"
+    } ]
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "$schema" : "berichten.schema.json#/berichtsoorten/Ap01Bericht",
+  "berichtType" : "Ap01",
+  "herhaling" : "0",
+  "plData" : {
+    "c01" : [ {
+      "e0210" : "Angélique",
+      "e0230" : "la",
+      "e0240" : "Vache",
+      "e0310" : "19870410"
+    } ]
+  }
+}

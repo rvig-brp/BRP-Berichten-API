@@ -1,0 +1,12 @@
+{
+  "$schema" : "berichten.schema.json#/berichtsoorten/Tf01Bericht",
+  "berichtType" : "Tf01",
+  "foutreden" : "B",
+  "gemeente" : "1810",
+  "aNummer" : "4942819684",
+  "plData" : {
+    "c01" : [ {
+      "e8120" : "1AA4006"
+    } ]
+  }
+}

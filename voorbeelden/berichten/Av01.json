@@ -1,0 +1,10 @@
+{
+  "$schema" : "berichten.schema.json#/berichtsoorten/Av01Bericht",
+  "berichtType" : "Av01",
+  "herhaling" : "0",
+  "plData" : {
+    "c01" : [ {
+      "e0110" : "7165798219"
+    } ]
+  }
+}

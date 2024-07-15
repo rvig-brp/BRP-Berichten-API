@@ -1,0 +1,15 @@
+{
+  "$schema" : "berichten.schema.json#/berichtsoorten/Dw01Bericht",
+  "berichtType" : "Dw01",
+  "herhaling" : "0",
+  "teWijzigenTabel" : "59",
+  "tabelData" : {
+    "t59" : {
+      "e9710" : "257101",
+      "e9711" : "Gemeente Bronckhorst via Belastingkantoor Twente/Gemeentelijke belastingen (2)",
+      "e9712" : "1",
+      "e9998" : "20221101",
+      "e9999" : "20230201"
+    }
+  }
+}
