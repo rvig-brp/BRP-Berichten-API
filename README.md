@@ -103,8 +103,5 @@ op dezelfde wijze als bij de berichtuitwisseling.
 
 ## Contactpersonen
 
-Voor meer informatie en/of hulpvragen, kunt u contact opnemen met de onderstaande contactpersonen.
-
-* [s.renkens@dictu.nl](mailto:s.renkens@dictu.nl) - Sebastiaan Renkens
-* [maarten.woldring@rvig.nl](mailto:maarten.woldring@rvig.nl) - Maarten Woldring
-
+Voor meer informatie en/of hulpvragen, kunt u contact opnemen via het onderstaande emailadres.
+* [brp.berichtenapi@rvig.nl](mailto:brp.berichtenapi@rvig.nl)
