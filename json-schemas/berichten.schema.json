@@ -219,7 +219,7 @@
       "maxLength" : 7
     },
     "autorisatietabelregel" : {
-      "type" : "string"
+      "$ref" : "autorisatietabel-data.schema.json"
     },
     "berichtType" : {
       "type" : "string",

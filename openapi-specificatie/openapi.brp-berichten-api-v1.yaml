@@ -6,6 +6,11 @@ info:
     Een REST API voor het a-synchroon uitwisselen van berichten welke in het Logisch Ontwerp gedefinieerd zijn.
 
     # Wijzigingshistorie:
+
+    ## 0.4.1 Juli 2024
+     - Het json-schema voor de autorisatieberichten Ct01, Cw01 en Cb01 is toegevoegd.
+     - De ontvanger is opgenomen in de response bij het verzenden van een bericht. Dit is met name relevant wanneer er een bericht naar een berichtgroep gestuurd wordt. In dat geval weet de verzender wie de uiteindelijke ontvangers zijn. Bij het versturen van een bericht naar de een regulier account zal dit nummer 1:1 overeenkomen met de ontvanger die bij het te verzenden bericht is opgegeven.
+    
     ## 0.4.0 Juni 2024
     - De json-schema's van de berichtsoorten zijn opgenomen in de OpenAPI Specificatie. Voor elke berichtsoort die het LO beschrijft, is opgenomen hoe dit bericht gestructureerd is.
       - Houdt er rekening mee dat het weergeven van de OpenAPI specificatie in de web-versie va SwaggerUI hierdoor trager geworden is. Het is aan te raden om de alternatieve (redocly) weergave te gebruiken:
@@ -469,6 +474,8 @@ components:
                   - berichtId
                   - berichtTransportId
                 properties:
+                  ontvanger:
+                    type: int
                   berichtId:
                     $ref: '#/components/schemas/BerichtId'
                   berichtTransportId:
@@ -481,6 +488,8 @@ components:
                   - berichtTransportId
                   - foutmeldingen
                 properties:
+                  ontvanger:
+                    type: int
                   berichtId:
                     $ref: '#/components/schemas/BerichtId'
                   berichtTransportId:

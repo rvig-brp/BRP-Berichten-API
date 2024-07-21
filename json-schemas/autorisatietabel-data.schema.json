@@ -1,0 +1,261 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$ref": "#/$defs/autorisatietabelregel",
+  "$defs": {
+    "autorisatietabelregel" : {
+      "title" : "autorisatietabelregel",
+      "type" : "object",
+      "description" : "Een tabelregel voor Tabel 35 - autorisatietabel die de opsomming van de door de verantwoordelijk Minister geautoriseerde en aangesloten instanties binnen het BRP-stelsel bevat.",
+      "additionalProperties" : false,
+      "unevaluatedProperties" : false,
+      "properties" : {
+        "E9510" : {
+          "type" : "string",
+          "title" : "Afnemersindicatie",
+          "minLength" : 6,
+          "maxLength" : 6
+        },
+        "E9511" : {
+          "title" : "Aantekening",
+          "description" : "Dit veld komt alleen in oude tabelregels voor (N-maal)",
+          "type" : "array",
+          "minItems" : 0,
+          "items" : {
+            "type" : "string",
+            "minLength" : 1,
+            "maxLength" : 24
+          }
+        },
+        "E9512" : {
+          "type" : "string",
+          "title" : "Indicatie geheimhouding",
+          "description" : "Numeriek: 0 = geheimhouding niet van toepassing, 1 = geheimhouding van toepassing",
+          "minLength" : 1,
+          "maxLength" : 1
+        },
+        "E9513" : {
+          "type" : "string",
+          "title" : "Verstrekkingsbeperking",
+          "description" : "Numeriek: 0 = geen beperking, 1 = gevoelig, 2 = geheim",
+          "minLength" : 1,
+          "maxLength" : 1
+        },
+        "E9514" : {
+          "type" : "string",
+          "title" : "Bijzondere betrekking kind verstrekken",
+          "description" : "Numeriek: 0 = niet verstrekken, 1 = verstrekken",
+          "minLength" : 0,
+          "_comment": "Veld min length zou volgens het LO 1 moeten zijn maar in de praktijk kan dit veld ook leeg zijn, blijkt uit test berichten. Daarom is er nu voor gekozen dit veld 0 als waarde te geven.",
+          "maxLength" : 1
+        },
+        "E9520" : {
+          "type" : "string",
+          "title" : "Afnemernaam",
+          "minLength" : 0,
+          "_comment": "Veld min length zou volgens het LO 1 moeten zijn maar in de praktijk kan dit veld ook leeg zijn, blijkt uit test berichten. Daarom is er nu voor gekozen dit veld 0 als waarde te geven.",
+          "maxLength" : 80
+        },
+        "E9540" : {
+          "title" : "Rubrieknummer spontaan",
+          "description": "Numeriek (N maal)",
+          "type" : "array",
+          "minItems" : 0,
+          "items" : {
+            "type" : "string",
+            "minLength" : 6,
+            "maxLength" : 6
+          }
+        },
+        "E9541" : {
+          "type" : "string",
+          "title" : "Voorwaarderegel spontaan",
+          "minLength" : 0,
+          "_comment": "Veld min length zou volgens het LO 1 moeten zijn maar in de praktijk kan dit veld ook leeg zijn, blijkt uit test berichten. Daarom is er nu voor gekozen dit veld 0 als waarde te geven.",
+          "maxLength" : 4096
+        },
+        "E9542" : {
+          "title" : "Sleutelrubriek",
+          "description": "Numeriek (N maal)",
+          "type" : "array",
+          "minItems" : 0,
+          "items" : {
+            "type" : "string",
+            "minLength" : 6,
+            "maxLength" : 6
+          }
+        },
+        "E9543" : {
+          "type" : "string",
+          "title" : "Conditionele verstrekking",
+          "description" : "0 = plaatsen afnemersindicatie, 1 = conditionele gegevensverstrekking",
+          "minLength" : 0,
+          "_comment": "Veld min length zou volgens het LO 1 moeten zijn maar in de praktijk kan dit veld ook leeg zijn, blijkt uit test berichten. Daarom is er nu voor gekozen dit veld 0 als waarde te geven.",
+          "maxLength" : 1
+        },
+        "E9544" : {
+          "type" : "string",
+          "title" : "Medium spontaan, webservice of API",
+          "description" : "N = Berichtendienst, A = alternatief medium",
+          "minLength" : 0,
+          "_comment": "Veld min length zou volgens het LO 1 moeten zijn maar in de praktijk kan dit veld ook leeg zijn, blijkt uit test berichten. Daarom is er nu voor gekozen dit veld 0 als waarde te geven.",
+          "maxLength" : 1
+        },
+        "E9550" : {
+          "title" : "Rubrieknummer selectie",
+          "description": "Numeriek (N maal)",
+          "type" : "array",
+          "minItems" : 0,
+          "items" : {
+            "type" : "string",
+            "minLength" : 6,
+            "maxLength" : 6
+          }
+        },
+        "E9551" : {
+          "type" : "string",
+          "title" : "Voorwaarderegel selectie",
+          "minLength" : 0,
+          "_comment": "Veld min length zou volgens het LO 1 moeten zijn maar in de praktijk kan dit veld ook leeg zijn, blijkt uit test berichten. Daarom is er nu voor gekozen dit veld 0 als waarde te geven.",
+          "maxLength" : 4096
+        },
+        "E9552" : {
+          "type" : "string",
+          "title" : "Selectiesoort",
+          "description" : "Numeriek: 0 = niet plaatsen, 1 = plaatsen, 2 = logisch verwijderen, 3 = voorwaardelijk fysiek verwijderen, 4 = onvoorwaardelijk fysiek verwijderen",
+          "minLength" : 0,
+          "_comment": "Veld min length zou volgens het LO 1 moeten zijn maar in de praktijk kan dit veld ook leeg zijn, blijkt uit test berichten. Daarom is er nu voor gekozen dit veld 0 als waarde te geven.",
+          "maxLength" : 1
+        },
+        "E9553" : {
+          "type" : "string",
+          "title" : "Berichtaanduiding",
+          "description" : "Numeriek: 0 = niet verstrekken, 1 = verstrekken",
+          "minLength" : 0,
+          "_comment": "Veld min length zou volgens het LO 1 moeten zijn maar in de praktijk kan dit veld ook leeg zijn, blijkt uit test berichten. Daarom is er nu voor gekozen dit veld 0 als waarde te geven.",
+          "maxLength" : 1
+        },
+        "E9554" : {
+          "type" : "string",
+          "title" : "Eerste selectiedatum",
+          "description" : "Numeriek: jjjjmmdd",
+          "minLength" : 0,
+          "_comment": "Veld min length zou volgens het LO 8 moeten zijn maar in de praktijk kan dit veld ook leeg zijn, blijkt uit test berichten. Daarom is er nu voor gekozen dit veld 0 als waarde te geven.",
+          "maxLength" : 8
+        },
+        "E9555" : {
+          "type" : "string",
+          "title" : "Selectieperiode",
+          "minLength" : 0,
+          "_comment": "Veld min length zou volgens het LO 2 moeten zijn maar in de praktijk kan dit veld ook leeg zijn, blijkt uit test berichten. Daarom is er nu voor gekozen dit veld 0 als waarde te geven.",
+          "maxLength" : 2
+        },
+        "E9556" : {
+          "type" : "string",
+          "title" : "Medium selectie",
+          "description" : "Alfanumeriek: N = Berichtendienst, webservice of API; A = alternatief medium",
+          "minLength" : 0,
+          "_comment": "Veld min length zou volgens het LO 1 moeten zijn maar in de praktijk kan dit veld ook leeg zijn, blijkt uit test berichten. Daarom is er nu voor gekozen dit veld 0 als waarde te geven.",
+          "maxLength" : 1
+        },
+        "E9560" : {
+          "title" : "Rubrieknummer ad hoc",
+          "description": "Numeriek (N maal)",
+          "type" : "array",
+          "minItems" : 0,
+          "items" : {
+            "type" : "string",
+            "minLength" : 0,
+            "_comment": "Veld min length zou volgens het LO 6 moeten zijn maar in de praktijk kan dit veld ook leeg zijn, blijkt uit test berichten. Daarom is er nu voor gekozen dit veld 0 als waarde te geven.",
+            "maxLength" : 6
+          }
+        },
+        "E9561" : {
+          "type" : "string",
+          "title" : "Voorwaarderegel ad hoc",
+          "minLength" : 0,
+          "_comment": "Veld min length zou volgens het LO 1 moeten zijn maar in de praktijk kan dit veld ook leeg zijn, blijkt uit test berichten. Daarom is er nu voor gekozen dit veld 0 als waarde te geven.",
+          "maxLength" : 4096
+        },
+        "E9562" : {
+          "type" : "string",
+          "title" : "Plaatsingsbevoegdheid persoonslijst",
+          "description" : "Numeriek: 0 = niet bevoegd, 1 = bevoegd",
+          "minLength" : 0,
+          "_comment": "Veld min length zou volgens het LO 1 moeten zijn maar in de praktijk kan dit veld ook leeg zijn, blijkt uit test berichten. Daarom is er nu voor gekozen dit veld 0 als waarde te geven.",
+          "maxLength" : 1
+        },
+        "E9563" : {
+          "title" : "Afnemersverstrekkingen ad hoc",
+          "description": "Numeriek (N maal)",
+          "type" : "array",
+          "minItems" : 0,
+          "items" : {
+            "type" : "string",
+            "minLength" : 6,
+            "maxLength" : 6
+          }
+        },
+        "E9566" : {
+          "type" : "string",
+          "title" : "Adresvraagbevoegdheid",
+          "description" : "Numeriek: 0 = niet bevoegd, 1 = bevoegd",
+          "minLength" : 0,
+          "_comment": "Veld min length zou volgens het LO 1 moeten zijn maar in de praktijk kan dit veld ook leeg zijn, blijkt uit test berichten. Daarom is er nu voor gekozen dit veld 0 als waarde te geven.",
+          "maxLength" : 1
+        },
+        "E9567" : {
+          "type" : "string",
+          "title" : "Medium ad hoc",
+          "description" : "Alfanumeriek: N = Berichtendienst, webservice of API; A = alternatief medium",
+          "minLength" : 0,
+          "_comment": "Veld min length zou volgens het LO 1 moeten zijn maar in de praktijk kan dit veld ook leeg zijn, blijkt uit test berichten. Daarom is er nu voor gekozen dit veld 0 als waarde te geven.",
+          "maxLength" : 1
+        },
+        "E9570" : {
+          "title" : "Rubrieknummer adresgeoriënteerd",
+          "description": "Numeriek: dit veld komt alleen in oude tabelregels voor; N maal",
+          "type" : "array",
+          "minItems" : 0,
+          "items" : {
+            "type" : "string",
+            "minLength" : 6,
+            "maxLength" : 6
+          }
+        },
+        "E9571" : {
+          "type" : "string",
+          "title" : "Voorwaarderegel adresgeoriënteerd",
+          "description": "Alfamumeriek: dit veld komt alleen in oude tabelregels voor",
+          "minLength" : 0,
+          "_comment": "Veld min length zou volgens het LO 1 moeten zijn maar in de praktijk kan dit veld ook leeg zijn, blijkt uit test berichten. Daarom is er nu voor gekozen dit veld 0 als waarde te geven.",
+          "maxLength" : 4096
+        },
+        "E9573" : {
+          "type" : "string",
+          "title" : "Medium adresgeoriënteerd",
+          "description": "Alfamumeriek: N = Berichtendienst, A = alternatief medium; dit veld komt alleen in oude tabelregels voor",
+          "minLength" : 0,
+          "_comment": "Veld min length zou volgens het LO 1 moeten zijn maar in de praktijk kan dit veld ook leeg zijn, blijkt uit test berichten. Daarom is er nu voor gekozen dit veld 0 als waarde te geven.",
+          "maxLength" : 1
+        },
+        "E9998" : {
+          "type" : "string",
+          "title" : "Datum ingang tabelregel",
+          "description" : "Numeriek: jjjjmmdd",
+          "minLength" : 0,
+          "_comment": "Veld min length zou volgens het LO 8 moeten zijn maar in de praktijk kan dit veld ook leeg zijn, blijkt uit test berichten. Daarom is er nu voor gekozen dit veld 0 als waarde te geven.",
+          "maxLength" : 8
+        },
+        "E9999" : {
+          "type" : "string",
+          "title" : "Datum beëindiging tabelregel",
+          "description" : "Numeriek: jjjjmmdd",
+          "minLength" : 0,
+          "_comment": "Veld min length zou volgens het LO 8 moeten zijn maar in de praktijk kan dit veld ook leeg zijn, blijkt uit test berichten. Daarom is er nu voor gekozen dit veld 0 als waarde te geven.",
+          "maxLength" : 8
+        }
+      },
+      "required" : [ "E9510", "E9511", "E9512", "E9513", "E9514", "E9520", "E9540", "E9541", "E9542", "E9543", "E9544", "E9550", "E9551", "E9552", "E9553", "E9554", "E9555", "E9556", "E9560", "E9561",  "E9562", "E9563", "E9566", "E9567", "E9570", "E9571", "E9573","E9998", "E9999" ]
+    }
+  }
+}
