@@ -1,5 +1,6 @@
 {
   "$schema" : "https://json-schema.org/draft/2020-12/schema",
+  "$ref" : "#/$defs/PlData",
   "$defs" : {
     "PlData" : {
       "type" : "object",
@@ -55,6 +56,9 @@
         },
         "c17" : {
           "$ref" : "#/$defs/C17"
+        },
+        "c21" : {
+          "$ref" : "#/$defs/C21"
         }
       }
     },
