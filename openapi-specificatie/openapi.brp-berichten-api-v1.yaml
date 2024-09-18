@@ -1,16 +1,23 @@
 openapi: 3.1.0
 info:
   title: BRP berichten API
-  version: 0.4.0
+  version: 0.5.0
   description: |
     Een REST API voor het a-synchroon uitwisselen van berichten welke in het Logisch Ontwerp gedefinieerd zijn.
 
     # Wijzigingshistorie:
 
+
+    ## 0.5.0 September 2024
+     - Het veld berichtId en verwijzingBerichtId zijn omgezet van type 'integer' naar type 'string' om beter aan te sluiten op de bestaande voorziening.
+     - Het probleem-antwoord response object is overal vervangen met de algemene Foutmelding response welke zich conformeert aan RFC7807.
+     - De velden 'foutTitel', 'foutType', 'foutDetail' zijn aangepast naar 'title, 'type', 'detail' zodat zij zich conformeren aan de RFC7807.
+     - De afhankelijkheid op 'openapi-problem-detail-v1.yml' is komen te vervallen (https://github.com/rvig-brp/BRP-Berichten-API/issues/3).
+
     ## 0.4.1 Juli 2024
      - Het json-schema voor de autorisatieberichten Ct01, Cw01 en Cb01 is toegevoegd.
      - De ontvanger is opgenomen in de response bij het verzenden van een bericht. Dit is met name relevant wanneer er een bericht naar een berichtgroep gestuurd wordt. In dat geval weet de verzender wie de uiteindelijke ontvangers zijn. Bij het versturen van een bericht naar de een regulier account zal dit nummer 1:1 overeenkomen met de ontvanger die bij het te verzenden bericht is opgegeven.
-    
+
     ## 0.4.0 Juni 2024
     - De json-schema's van de berichtsoorten zijn opgenomen in de OpenAPI Specificatie. Voor elke berichtsoort die het LO beschrijft, is opgenomen hoe dit bericht gestructureerd is.
       - Houdt er rekening mee dat het weergeven van de OpenAPI specificatie in de web-versie va SwaggerUI hierdoor trager geworden is. Het is aan te raden om de alternatieve (redocly) weergave te gebruiken:
@@ -79,11 +86,7 @@ info:
     Initiële versie.
 
     # In ontwikkeling:
-    - Conversie API om te kunnen vertalen tussen UTF8 / Teletex formaten naar het nieuwe JSON formaat (heen en terug)
-    - Opstellen van de diverse berichtformaten (in JSON) en de realisatie van voorbeeldberichten.
-    - Beschrijven van alle mogelijke foutmeldingen in deze API spec.
     - Bepalen of het een checksum op de berichtinhoud van meerwaarde kan zijn.
-    - Delete operatie implementeren.
 
     # Voorlopige limieten:
     | Waarde | Omschrijving |
@@ -108,36 +111,6 @@ servers:
 security:
   - BasicAuth: [ ]
 paths:
-  #  /api/v1/account/wachtwoord:
-  #    put:
-  #      tags:
-  #        - Accountbeheer
-  #      summary:
-  #        Wachtwoord wijzigen
-  #      description:
-  #        Stelt een afnemende partij in staat om het wachtwoord van een account te wijzigen.
-  #      operationId: wijzigWachtwoord
-  #      requestBody:
-  #        content:
-  #          application/json; charset=utf-8:
-  #            schema:
-  #              type: object
-  #              required:
-  #                - nieuwWachtwoord
-  #              properties:
-  #                nieuwWachtwoord:
-  #                  type: string
-  #      responses:
-  #        '204':
-  #          description: Wachtwoord succesvol gewijzigd
-  #        '400':
-  #          description: Wachtwoord wijzigen verzoek niet in orde (bijvoorbeeld wanneer het nieuwe wachtwoord niet aan de vereisten voldoet)
-  #          content:
-  #            application/problem+json:
-  #              schema:
-  #                allOf:
-  #                  - $ref: '#/components/schemas/probleem-antwoord'
-
   /api/v1/berichten:
     post: # (= sPd PUT)
       tags:
@@ -158,8 +131,27 @@ paths:
             application/json; charset=utf-8:
               schema:
                 $ref: '#/components/schemas/put-message-antwoord'
+        '400':
+          description: Het verzoek is onjuist en is daarom niet verwerkt.
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/Foutmeldingen/PUT/BBA-PUT-F001'
+        '401':
+          description: Onjuiste of ontbrekende authenticatie
+          content:
+            application/json; charset=utf-8:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/Foutmeldingen/AUTH/BBA-AUTH-F001'
+                  - $ref: '#/components/schemas/Foutmeldingen/AUTH/BBA-AUTH-F002'
+                  - $ref: '#/components/schemas/Foutmeldingen/GENERAL/BBA-F999'
         '500':
-          $ref: '#/components/responses/500'
+          description: Onbekende/technische fout
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/Foutmeldingen/GENERAL/BBA-F999'
 
     get: # (= sPd LIST)
       tags:
@@ -225,6 +217,21 @@ paths:
             application/json; charset=utf-8:
               schema:
                 $ref: '#/components/schemas/list-message-antwoord'
+        '400':
+          description: Onjuist verzoek
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/Foutmeldingen/LIST/BBA-LIST-F001'
+        '401':
+          description: Onjuiste of ontbrekende authenticatie
+          content:
+            application/json; charset=utf-8:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/Foutmeldingen/AUTH/BBA-AUTH-F001'
+                  - $ref: '#/components/schemas/Foutmeldingen/AUTH/BBA-AUTH-F002'
+                  - $ref: '#/components/schemas/Foutmeldingen/GENERAL/BBA-F999'
         '500':
           $ref: '#/components/responses/500'
 
@@ -245,8 +252,27 @@ paths:
             application/json; charset=utf-8:
               schema:
                 $ref: '#/components/schemas/get-message-antwoord'
+        '400':
+          description: Onjuist verzoek
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/Foutmeldingen/GET/BBA-GET-F004'
+        '401':
+          description: Onjuiste of ontbrekende authenticatie
+          content:
+            application/json; charset=utf-8:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/Foutmeldingen/AUTH/BBA-AUTH-F001'
+                  - $ref: '#/components/schemas/Foutmeldingen/AUTH/BBA-AUTH-F002'
+                  - $ref: '#/components/schemas/Foutmeldingen/GENERAL/BBA-F999'
         '500':
-          $ref: '#/components/responses/500'
+          description: Onbekende/technische fout
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/Foutmeldingen/GENERAL/BBA-F999'
     delete: # (= sPd DELETE)
       tags:
         - Berichtenverkeer
@@ -263,8 +289,27 @@ paths:
             application/json; charset=utf-8:
               schema:
                 $ref: '#/components/schemas/delete-message-antwoord'
+        '400':
+          description: Onjuist verzoek
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/Foutmeldingen/DELETE/BBA-DELETE-F004'
+        '401':
+          description: Onjuiste of ontbrekende authenticatie
+          content:
+            application/json; charset=utf-8:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/Foutmeldingen/AUTH/BBA-AUTH-F001'
+                  - $ref: '#/components/schemas/Foutmeldingen/AUTH/BBA-AUTH-F002'
+                  - $ref: '#/components/schemas/Foutmeldingen/GENERAL/BBA-F999'
         '500':
-          $ref: '#/components/responses/500'
+          description: Onbekende/technische fout
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/Foutmeldingen/GENERAL/BBA-F999'
 
   /api/v1/berichten/ping:
     get:
@@ -335,7 +380,16 @@ paths:
           content:
             application/json; charset=utf-8:
               schema:
-                $ref: '#/components/schemas/probleem-antwoord'
+                $ref: '#/components/schemas/Foutmeldingen/SUMMARIZE/BBA-SUMMARIZE-F001'
+        '401':
+          description: Onjuiste of ontbrekende authenticatie
+          content:
+            application/json; charset=utf-8:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/Foutmeldingen/AUTH/BBA-AUTH-F001'
+                  - $ref: '#/components/schemas/Foutmeldingen/AUTH/BBA-AUTH-F002'
+                  - $ref: '#/components/schemas/Foutmeldingen/GENERAL/BBA-F999'
 
 
   /api/v1/berichten/conversie:
@@ -433,19 +487,31 @@ paths:
           content:
             application/json; charset=utf-8:
               schema:
-                $ref: "#/components/schemas/probleem-antwoord"
+                $ref: "#/components/schemas/Foutmeldingen/CONV/BBA-CONV-F001"
+        '401':
+          description: Onjuiste of ontbrekende authenticatie
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/Foutmeldingen/AUTH/BBA-AUTH-F001'
         '406':
           description: Wanneer een conversie werd aangevraagd voor een doelformaat dat niet ondersteund wordt.
           content:
             application/json; charset=utf-8:
               schema:
-                $ref: "#/components/schemas/probleem-antwoord"
+                $ref: "#/components/schemas/Foutmelding"
         '415':
           description: Wanneer een conversie werd aangevraagd voor een bronformaat dat niet ondersteund wordt.
           content:
             application/json; charset=utf-8:
               schema:
-                $ref: "#/components/schemas/probleem-antwoord"
+                $ref: "#/components/schemas/Foutmelding"
+        '500':
+          description: Onbekende/technische fout
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/Foutmeldingen/GENERAL/BBA-F999'
 
 components:
   schemas:
@@ -475,7 +541,7 @@ components:
                   - berichtTransportId
                 properties:
                   ontvanger:
-                    type: int
+                    type: integer
                   berichtId:
                     $ref: '#/components/schemas/BerichtId'
                   berichtTransportId:
@@ -489,7 +555,7 @@ components:
                   - foutmeldingen
                 properties:
                   ontvanger:
-                    type: int
+                    type: integer
                   berichtId:
                     $ref: '#/components/schemas/BerichtId'
                   berichtTransportId:
@@ -497,7 +563,10 @@ components:
                   foutmeldingen:
                     type: array
                     items:
-                      $ref: '#/components/schemas/Foutmelding'
+                      oneOf:
+                        - $ref: '#/components/schemas/Foutmeldingen/PUT/BBA-PUT-F002'
+                        - $ref: '#/components/schemas/Foutmeldingen/PUT/BBA-PUT-F003'
+                        - $ref: '#/components/schemas/Foutmeldingen/PUT/BBA-PUT-F004'
 
     list-message-antwoord:
       allOf:
@@ -546,7 +615,10 @@ components:
                   foutmeldingen:
                     type: array
                     items:
-                      $ref: '#/components/schemas/Foutmelding'
+                      oneOf:
+                        - $ref: '#/components/schemas/Foutmeldingen/GET/BBA-GET-F001'
+                        - $ref: '#/components/schemas/Foutmeldingen/GET/BBA-GET-F002'
+                        - $ref: '#/components/schemas/Foutmeldingen/GET/BBA-GET-F003'
 
     delete-message-antwoord:
       allOf:
@@ -575,7 +647,10 @@ components:
                   foutmeldingen:
                     type: array
                     items:
-                      $ref: '#/components/schemas/Foutmelding'
+                      oneOf:
+                        - $ref: '#/components/schemas/Foutmeldingen/DELETE/BBA-DELETE-F001'
+                        - $ref: '#/components/schemas/Foutmeldingen/DELETE/BBA-DELETE-F002'
+                        - $ref: '#/components/schemas/Foutmeldingen/DELETE/BBA-DELETE-F003'
 
     generiek-antwoord:
       type: object
@@ -586,10 +661,6 @@ components:
           type: string
           format: uuid
           description: Een uniek ID wat aan het HTTP request gekoppeld wordt.
-
-    probleem-antwoord:
-      oneOf:
-        - $ref: '/openapi-problem-detail-v1.yml#/components/schemas/Probleem'
 
     PutMessage:
       type: object
@@ -693,9 +764,8 @@ components:
         - 3000200
 
     BerichtId:
-      type: integer
-      format: int64
-      maximum: 999999999999
+      type: string
+      maxLength: 12
       examples:
         - 103693694
       description: |
@@ -703,9 +773,8 @@ components:
         De "BRP berichten API" voert geen inhoudelijke controles uit op dit BerichtId. Maximaal 12 posities.
 
     VerwijzingBerichtId:
-      type: integer
-      format: int64
-      maximum: 999999999999
+      type: string
+      maxLength: 12
       examples:
         - 213582583
       description: |
@@ -885,21 +954,649 @@ components:
 
     Foutmelding:
       type: object
+      x-class-extra-annotation: "@com.fasterxml.jackson.annotation.JsonInclude(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_EMPTY)"
       required:
-        - foutType
-        - foutTitel
-        - foutDetail
+        - type
+        - title
       properties:
-        foutType:
+        type:
           type: string
-          description: De foutcode horende bij de foutsituatie.
-        foutTitel:
+          examples:
+            - https://www.rvig.nl/berichtenapi/probleem/BBA-AUTH-F001
+          description: >
+            Unieke (RFC7807) foutcode voor het type van de opgetreden fout. Een namespace URI-pad gevolgd door een type fout id in de vorm VVV-DDDD-FFFF waarbij VVV gelijk is
+            aan de afkorting van de voorziening (in dit geval BBA voor BRP Berichten API). DDDD een indicatie geeft van de operatie/domein waar de fout is opgetreden en FFFF een opdeling betreft van specifieke fouten (types)
+            welke binnen een domein zijn identificeert.
+        title:
           type: string
-          description: Korte beschrijving van de foutsituatie
-        foutDetails:
+          description: >
+            De titel (RFC7807) geeft een korte uitleg van het soort fout en in sommige gevallen een toelichting van de oorzaak.
+        detail:
           type: string
-          description: De toelichting van de foutsituatie (indien mogelijk)
+          description: >
+            Dit (RFC7807) veld geeft toelichting die kan helpen om de oorzaak van de fout te achterhalen, of geeft achtergrondinformatie over de foutsituatie.
+        status:
+          type: integer
+          description: Dit (RFC7807) veld beschrijft de HTTP status-code die door de BRP-Berichten-API is toegekend aan de fout (indien van toepassing).
+        instance:
+          type: string
+          description: Dit (RFC7807) veld beschrijft het request waarbij dit probleem is opgetreden (indien van toepassing).
+          examples:
+            - https://www.rvig.nl/brp/berichten-api/request/be215b41-a417-4148-b2bf-911b8b8b0133
+        invalidParameters:
+          $ref: "#/components/schemas/Foutmeldingen/invalidParameters"
+        dateTime:
+          type: string
+          format: date-time
+          description: >
+            Het tijdstip en de datum (ISO date/time) waarop de fout is afgevangen en het foutmelding object is samengesteld.
 
+
+    Foutmeldingen:
+      invalidParameters:
+        type: array
+        items:
+          type: object
+          properties:
+            key:
+              type: string
+            value:
+              type: string
+      AUTH:
+        BBA-AUTH-F001:
+          title: https://www.rvig.nl/berichtenapi/probleem/BBA-AUTH-F001
+          description: Onjuiste of onbekende authenticatie.
+          type: object
+          required:
+            - type
+            - title
+            - detail
+            - status
+          properties:
+            title:
+              description: Authenticatiefout
+              examples:
+                - Authenticatiefout
+              type: string
+            type:
+              examples:
+                - https://www.rvig.nl/berichtenapi/probleem/BBA-AUTH-F001
+              type: string
+              description: https://www.rvig.nl/berichtenapi/probleem/BBA-AUTH-F001
+            detail:
+              examples:
+                - Onjuiste of onbekende authenticatie.
+              type: string
+              description: Onjuiste of onbekende authenticatie.
+            status:
+              examples:
+                - 401
+              type: integer
+              description: 401
+            dateTime:
+              type: string
+              format: date-time
+              examples:
+                - 2024-09-17T09:00:35.374057729+02:00
+            instance:
+              type: string
+              description: Dit (RFC7807) veld beschrijft het request waarbij dit probleem is opgetreden (indien van toepassing).
+              examples:
+                - https://www.rvig.nl/brp/berichten-api/request/be215b41-a417-4148-b2bf-911b8b8b0133
+        BBA-AUTH-F002:
+          title: https://www.rvig.nl/berichtenapi/probleem/BBA-AUTH-F002
+          type: object
+          required:
+            - type
+            - title
+            - detail
+            - status
+          properties:
+            title:
+              examples:
+                - Authenticatiefout
+              type: string
+              description: Authenticatiefout
+            type:
+              examples:
+                - https://www.rvig.nl/berichtenapi/probleem/BBA-AUTH-F002
+              type: string
+              description: https://www.rvig.nl/berichtenapi/probleem/BBA-AUTH-F002
+            detail:
+              examples:
+                - Het account is geblokkeerd.
+              type: string
+              description: Het account is geblokkeerd.
+            status:
+              examples:
+                - 401
+              type: integer
+              description: 401
+            dateTime:
+              type: string
+              format: date-time
+              examples:
+                - 2024-09-17T09:00:35.374057729+02:00
+            instance:
+              type: string
+              description: Dit (RFC7807) veld beschrijft het request waarbij dit probleem is opgetreden (indien van toepassing).
+              examples:
+                - https://www.rvig.nl/brp/berichten-api/request/be215b41-a417-4148-b2bf-911b8b8b0133
+          description: Het account is geblokkeerd.
+      PUT:
+        BBA-PUT-F001:
+          title: https://www.rvig.nl/berichtenapi/probleem/BBA-PUT-F001
+          type: object
+          required:
+            - title
+            - type
+            - detail
+          properties:
+            title:
+              type: string
+              examples:
+                - PUTREQUEST_NUMBER_OF_MESSAGES_IN_REQUEST_EXCEEDS_LIMITS
+              description: PUTREQUEST_NUMBER_OF_MESSAGES_IN_REQUEST_EXCEEDS_LIMITS
+            type:
+              type: string
+              examples:
+                - https://www.rvig.nl/berichtenapi/probleem/BBA-PUT-F001
+              description: https://www.rvig.nl/berichtenapi/probleem/BBA-PUT-F001
+            detail:
+              type: string
+              examples:
+                - Het aantal berichten in het verzoek overschrijd het ingestelde limiet
+              description: Het aantal berichten in het verzoek overschrijd het ingestelde limiet
+            dateTime:
+              type: string
+              format: date-time
+              examples:
+                - 2024-09-17T09:00:35.374057729+02:00
+            instance:
+              type: string
+              description: Dit (RFC7807) veld beschrijft het request waarbij dit probleem is opgetreden (indien van toepassing).
+              examples:
+                - https://www.rvig.nl/brp/berichten-api/request/be215b41-a417-4148-b2bf-911b8b8b0133
+          description: Het aantal berichten in het verzoek overschrijd het ingestelde limiet
+        BBA-PUT-F002:
+          title: https://www.rvig.nl/berichtenapi/probleem/BBA-PUT-F002
+          type: object
+          required:
+            - title
+            - type
+            - detail
+          properties:
+            title:
+              type: string
+              examples:
+                - PUTREQUEST_MESSAGE_PAYLOAD_EXCEEDS_LIMITS
+              description: PUTREQUEST_MESSAGE_PAYLOAD_EXCEEDS_LIMITS
+            type:
+              type: string
+              examples:
+                - https://www.rvig.nl/berichtenapi/probleem/BBA-PUT-F002
+              description: https://www.rvig.nl/berichtenapi/probleem/BBA-PUT-F002
+            detail:
+              type: string
+              examples:
+                - De berichtinhoud van het bericht overschrijdt de maximale grootte
+              description: De berichtinhoud van het bericht overschrijdt de maximale grootte
+            dateTime:
+              type: string
+              format: date-time
+              examples:
+                - 2024-09-17T09:00:35.374057729+02:00
+          description: De berichtinhoud van het bericht overschrijdt de maximale grootte
+        BBA-PUT-F003:
+          title: https://www.rvig.nl/berichtenapi/probleem/BBA-PUT-F003
+          type: object
+          required:
+            - title
+            - type
+            - detail
+          properties:
+            title:
+              type: string
+              examples:
+                - PUTREQUEST_MESSAGE_COULD_NOT_BE_SEND
+              description: PUTREQUEST_MESSAGE_COULD_NOT_BE_SEND
+            type:
+              type: string
+              examples:
+                - https://www.rvig.nl/berichtenapi/probleem/BBA-PUT-F003
+              description: https://www.rvig.nl/berichtenapi/probleem/BBA-PUT-F003
+            detail:
+              type: string
+              examples:
+                - Het bericht kon niet verzonden worden aan de geadresseerde
+              description: Het bericht kon niet verzonden worden aan de geadresseerde
+            dateTime:
+              type: string
+              format: date-time
+              examples:
+                - 2024-09-17T09:00:35.374057729+02:00
+          description: Het bericht kon niet verzonden worden aan de geadresseerde
+        BBA-PUT-F004:
+          title: https://www.rvig.nl/berichtenapi/probleem/BBA-PUT-F004
+          type: object
+          required:
+            - title
+            - type
+            - detail
+          properties:
+            title:
+              type: string
+              examples:
+                - PUTREQUEST_SENDER_ACCOUNT_NOT_AVAILABLE
+              description: PUTREQUEST_SENDER_ACCOUNT_NOT_AVAILABLE
+            type:
+              type: string
+              examples:
+                - https://www.rvig.nl/berichtenapi/probleem/BBA-PUT-F004
+              description: https://www.rvig.nl/berichtenapi/probleem/BBA-PUT-F004
+            detail:
+              type: string
+              examples:
+                - "Het bericht kon niet verzonden worden, uw account is niet beschikbaar"
+              description: "Het bericht kon niet verzonden worden, uw account is niet beschikbaar"
+            dateTime:
+              type: string
+              format: date-time
+              examples:
+                - 2024-09-17T09:00:35.374057729+02:00
+          description: "Het bericht kon niet verzonden worden, uw account is niet beschikbaar"
+      LIST:
+        BBA-LIST-F001:
+          title: https://www.rvig.nl/berichtenapi/probleem/BBA-LIST-F001
+          type: object
+          required:
+            - title
+            - type
+            - detail
+            - invalidParams
+          properties:
+            title:
+              type: string
+              examples:
+                - LIST_MESSAGE_REQUEST_INVALID_PARAMETERS
+              description: LIST_MESSAGE_REQUEST_INVALID_PARAMETERS
+            type:
+              type: string
+              examples:
+                - https://www.rvig.nl/berichtenapi/probleem/BBA-LIST-F001
+              description: https://www.rvig.nl/berichtenapi/probleem/BBA-LIST-F001
+            detail:
+              type: string
+              examples:
+                - Ongeldige zoekfilters opgegeven
+              description: Ongeldige zoekfilters opgegeven
+            dateTime:
+              type: string
+              format: date-time
+              examples:
+                - 2024-09-17T09:00:35.374057729+02:00
+            invalidParameters:
+              $ref: '#/components/schemas/Foutmeldingen/invalidParameters'
+              examples: [ ]
+            instance:
+              type: string
+              description: Dit (RFC7807) veld beschrijft het request waarbij dit probleem is opgetreden (indien van toepassing).
+              examples:
+                - https://www.rvig.nl/brp/berichten-api/request/be215b41-a417-4148-b2bf-911b8b8b0133
+          description: Ongeldige zoekfilters opgegeven
+      GET:
+        BBA-GET-F001:
+          title: https://www.rvig.nl/berichtenapi/probleem/BBA-GET-F001
+          type: object
+          required:
+            - title
+            - type
+            - detail
+          properties:
+            title:
+              type: string
+              examples:
+                - GETREQUEST_MESSAGE_CONTENT_EXPIRED
+              description: GETREQUEST_MESSAGE_CONTENT_EXPIRED
+            type:
+              examples:
+                - https://www.rvig.nl/berichtenapi/probleem/BBA-GET-F001
+              type: string
+              description: https://www.rvig.nl/berichtenapi/probleem/BBA-GET-F001
+            detail:
+              examples:
+                - Het bericht is niet langer beschikbaar omdat de retentietijd verstreken is.
+              type: string
+              description: Het bericht is niet langer beschikbaar omdat de retentietijd verstreken is.
+            dateTime:
+              type: string
+              format: date-time
+              examples:
+                - 2024-09-17T09:00:35.374057729+02:00
+          description: Het bericht is niet langer beschikbaar omdat de retentietijd verstreken is.
+        BBA-GET-F002:
+          title: https://www.rvig.nl/berichtenapi/probleem/BBA-GET-F002
+          type: object
+          required:
+            - title
+            - type
+            - detail
+          properties:
+            title:
+              examples:
+                - GETREQUEST_MESSAGE_CONTENT_DELETED
+              type: string
+              description: GETREQUEST_MESSAGE_CONTENT_DELETED
+            type:
+              examples:
+                - https://www.rvig.nl/berichtenapi/probleem/BBA-GET-F002
+              type: string
+              description: https://www.rvig.nl/berichtenapi/probleem/BBA-GET-F002
+            detail:
+              examples:
+                - Het bericht is niet langer beschikbaar omdat het verwijderd is.
+              type: string
+              description: Het bericht is niet langer beschikbaar omdat het verwijderd is.
+            dateTime:
+              type: string
+              format: date-time
+              examples:
+                - 2024-09-17T09:00:35.374057729+02:00
+          description: Het bericht is niet langer beschikbaar omdat het verwijderd is.
+        BBA-GET-F003:
+          title: https://www.rvig.nl/berichtenapi/probleem/BBA-GET-F003
+          type: object
+          required:
+            - title
+            - type
+            - detail
+          properties:
+            title:
+              examples:
+                - GETREQUEST_MESSAGE_NOT_FOUND
+              type: string
+              description: GETREQUEST_MESSAGE_NOT_FOUND
+            type:
+              examples:
+                - https://www.rvig.nl/berichtenapi/probleem/BBA-GET-F003
+              type: string
+              description: https://www.rvig.nl/berichtenapi/probleem/BBA-GET-F003
+            detail:
+              examples:
+                - Onbekend berichtTransportId
+              type: string
+              description: Onbekend berichtTransportId
+            dateTime:
+              type: string
+              format: date-time
+              examples:
+                - 2024-09-17T09:00:35.374057729+02:00
+          description: Onbekend berichtTransportId
+        BBA-GET-F004:
+          title: https://www.rvig.nl/berichtenapi/probleem/BBA-GET-F004
+          type: object
+          required:
+            - title
+            - type
+            - detail
+          properties:
+            title:
+              examples:
+                - GETREQUEST_REQUESTED_NUMBER_OF_MESSAGES_EXCEEDS_LIMIT
+              type: string
+              description: GETREQUEST_REQUESTED_NUMBER_OF_MESSAGES_EXCEEDS_LIMIT
+            type:
+              examples:
+                - https://www.rvig.nl/berichtenapi/probleem/BBA-GET-F004
+              type: string
+              description: https://www.rvig.nl/berichtenapi/probleem/BBA-GET-F004
+            detail:
+              examples:
+                - Het aantal opgevraagde berichten overschreed het ingestelde limiet
+              type: string
+              description: Het aantal opgevraagde berichten overschreed het ingestelde limiet
+            dateTime:
+              type: string
+              format: date-time
+              examples:
+                - 2024-09-17T09:00:35.374057729+02:00
+            instance:
+              type: string
+              description: Dit (RFC7807) veld beschrijft het request waarbij dit probleem is opgetreden (indien van toepassing).
+              examples:
+                - https://www.rvig.nl/brp/berichten-api/request/be215b41-a417-4148-b2bf-911b8b8b0133
+          description: Het aantal opgevraagde berichten overschreed het ingestelde limiet
+      DELETE:
+        BBA-DELETE-F001:
+          title: https://www.rvig.nl/berichtenapi/probleem/BBA-DELETE-F001
+          type: object
+          required:
+            - title
+            - type
+            - detail
+          properties:
+            title:
+              examples:
+                - DELETEREQUEST_MESSAGE_EXPIRED
+              type: string
+              description: DELETEREQUEST_MESSAGE_EXPIRED
+            type:
+              examples:
+                - https://www.rvig.nl/berichtenapi/probleem/BBA-DELETE-F001
+              type: string
+              description: https://www.rvig.nl/berichtenapi/probleem/BBA-DELETE-F001
+            detail:
+              examples:
+                - Het bericht is niet langer beschikbaar omdat de retentietijd verstreken is.
+              type: string
+              description: Het bericht is niet langer beschikbaar omdat de retentietijd verstreken is.
+            dateTime:
+              type: string
+              format: date-time
+              examples:
+                - 2024-09-17T09:00:35.374057729+02:00
+          description: Het bericht is niet langer beschikbaar omdat de retentietijd verstreken is.
+        BBA-DELETE-F002:
+          title: https://www.rvig.nl/berichtenapi/probleem/BBA-DELETE-F002
+          type: object
+          required:
+            - title
+            - type
+            - detail
+          properties:
+            title:
+              examples:
+                - DELETEREQUEST_MESSAGE_DELETED
+              type: string
+              description: DELETEREQUEST_MESSAGE_DELETED
+            type:
+              examples:
+                - https://www.rvig.nl/berichtenapi/probleem/BBA-DELETE-F002
+              type: string
+              description: https://www.rvig.nl/berichtenapi/probleem/BBA-DELETE-F002
+            detail:
+              examples:
+                - Het bericht is niet langer beschikbaar omdat het reeds verwijderd is.
+              type: string
+              description: Het bericht is niet langer beschikbaar omdat het reeds verwijderd is.
+            dateTime:
+              type: string
+              format: date-time
+              examples:
+                - 2024-09-17T09:00:35.374057729+02:00
+          description: Het bericht is niet langer beschikbaar omdat het reeds verwijderd is.
+        BBA-DELETE-F003:
+          title: https://www.rvig.nl/berichtenapi/probleem/BBA-DELETE-F003
+          type: object
+          required:
+            - title
+            - type
+            - detail
+          properties:
+            title:
+              examples:
+                - DELETEREQUEST_MESSAGE_NOT_FOUND
+              type: string
+              description: DELETEREQUEST_MESSAGE_NOT_FOUND
+            type:
+              examples:
+                - https://www.rvig.nl/berichtenapi/probleem/BBA-DELETE-F003
+              type: string
+              description: https://www.rvig.nl/berichtenapi/probleem/BBA-DELETE-F003
+            detail:
+              examples:
+                - Onbekend berichtTransportId
+              type: string
+              description: Onbekend berichtTransportId
+            dateTime:
+              type: string
+              format: date-time
+              examples:
+                - 2024-09-17T09:00:35.374057729+02:00
+          description: Onbekend berichtTransportId
+        BBA-DELETE-F004:
+          title: https://www.rvig.nl/berichtenapi/probleem/BBA-DELETE-F004
+          type: object
+          required:
+            - title
+            - type
+            - detail
+          properties:
+            title:
+              examples:
+                - DELETEREQUEST_REQUESTED_NUMBER_OF_MESSAGES_EXCEEDS_LIMIT
+              type: string
+              description: DELETEREQUEST_REQUESTED_NUMBER_OF_MESSAGES_EXCEEDS_LIMIT
+            type:
+              examples:
+                - https://www.rvig.nl/berichtenapi/probleem/BBA-DELETE-F004
+              type: string
+              description: https://www.rvig.nl/berichtenapi/probleem/BBA-DELETE-F004
+            detail:
+              examples:
+                - Het aantal berichten dat in dit verzoek verwijderd dient te worden overschrijft het ingestelde limiet
+              type: string
+              description: Het aantal berichten dat in dit verzoek verwijderd dient te worden overschrijft het ingestelde limiet
+            dateTime:
+              type: string
+              format: date-time
+              examples:
+                - 2024-09-17T09:00:35.374057729+02:00
+            instance:
+              type: string
+              description: Dit (RFC7807) veld beschrijft het request waarbij dit probleem is opgetreden (indien van toepassing).
+              examples:
+                - https://www.rvig.nl/brp/berichten-api/request/be215b41-a417-4148-b2bf-911b8b8b0133
+          description: Het aantal berichten dat in dit verzoek verwijderd dient te worden overschrijft het ingestelde limiet
+      SUMMARIZE:
+        BBA-SUMMARIZE-F001:
+          title: https://www.rvig.nl/berichtenapi/probleem/BBA-SUMMARIZE-F001
+          required:
+            - title
+            - type
+          type: object
+          properties:
+            title:
+              examples:
+                - SUMMARIZEREQUEST_INVALID_REQUEST_ERROR
+              type: string
+              description: SUMMARIZEREQUEST_INVALID_REQUEST_ERROR
+            type:
+              examples:
+                - https://www.rvig.nl/berichtenapi/probleem/BBA-SUMMARIZE-F001
+              type: string
+              description: https://www.rvig.nl/berichtenapi/probleem/BBA-SUMMARIZE-F001
+            detail:
+              examples:
+                - Het verzoek is onjuist controleer de zoekparameters.
+              type: string
+              description: Het verzoek is onjuist controleer de zoekparameters.
+            dateTime:
+              type: string
+              format: date-time
+              examples:
+                - 2024-09-17T09:00:35.374057729+02:00
+            invalidParameters:
+              $ref: '#/components/schemas/Foutmeldingen/invalidParameters'
+              examples: [ ]
+            instance:
+              type: string
+              description: Dit (RFC7807) veld beschrijft het request waarbij dit probleem is opgetreden (indien van toepassing).
+              examples:
+                - https://www.rvig.nl/brp/berichten-api/request/be215b41-a417-4148-b2bf-911b8b8b0133
+          description: Het verzoek is onjuist controleer de zoekparameters.
+      CONV:
+        BBA-CONV-F001:
+          title: https://www.rvig.nl/berichtenapi/probleem/BBA-CONV-F001
+          type: object
+          required:
+            - title
+            - type
+            - detail
+            - invalidParameters
+          properties:
+            title:
+              examples:
+                - CONVERSIONREQUEST_INPUT_MESSAGE_INVALID
+              type: string
+              description: CONVERSIONREQUEST_INPUT_MESSAGE_INVALID
+            type:
+              examples:
+                - https://www.rvig.nl/berichtenapi/probleem/BBA-CONV-F001
+              type: string
+              description: https://www.rvig.nl/berichtenapi/probleem/BBA-CONV-F001
+            detail:
+              examples:
+                - Het aangeleverde bericht kon niet ingenomen worden en voldoet waarschijnlijk niet aan de gestelde vereisten.
+              type: string
+              description: Het aangeleverde bericht kon niet ingenomen worden en voldoet waarschijnlijk niet aan de gestelde vereisten.
+            invalidParameters:
+              $ref: '#/components/schemas/Foutmeldingen/invalidParameters'
+            dateTime:
+              type: string
+              format: date-time
+              examples:
+                - 2024-09-17T09:00:35.374057729+02:00
+            instance:
+              type: string
+              description: Dit (RFC7807) veld beschrijft het request waarbij dit probleem is opgetreden (indien van toepassing).
+              examples:
+                - https://www.rvig.nl/brp/berichten-api/request/be215b41-a417-4148-b2bf-911b8b8b0133
+          description: Het aangeleverde bericht kon niet ingenomen worden en voldoet waarschijnlijk niet aan de gestelde vereisten.
+      GENERAL:
+        BBA-F999:
+          title: https://www.rvig.nl/berichtenapi/probleem/BBA-F999
+          required:
+            - title
+            - type
+          type: object
+          properties:
+            title:
+              examples:
+                - SERVER_
+              type: string
+              description: TECHNICAL_ERROR
+            type:
+              examples:
+                - https://www.rvig.nl/berichtenapi/probleem/BBA-F999
+              type: string
+              description: https://www.rvig.nl/berichtenapi/probleem/BBA-F999
+            detail:
+              examples:
+                - Onbekende (/technische) fout.
+              type: string
+              description: Onbekende (/technische) fout.
+            dateTime:
+              type: string
+              format: date-time
+              examples:
+                - 2024-09-17T09:00:35.374057729+02:00
+            instance:
+              type: string
+              description: Dit (RFC7807) veld beschrijft het request waarbij dit probleem is opgetreden (indien van toepassing).
+              examples:
+                - https://www.rvig.nl/brp/berichten-api/request/be215b41-a417-4148-b2bf-911b8b8b0133
+          description: Onbekende (/technische) fout.
     LoBericht:
       oneOf:
         - $ref: "brp/schemas/2024Q3/berichten.schema.json#/berichtsoorten/Af01Bericht"
@@ -978,7 +1675,7 @@ components:
       content:
         application/problem+json:
           schema:
-            $ref: '#/components/schemas/probleem-antwoord'
+            $ref: '#/components/schemas/Foutmelding'
 
   parameters:
     paginaParam:
