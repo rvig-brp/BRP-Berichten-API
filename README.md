@@ -43,10 +43,6 @@ noodzakelijk.
 Het schema `tabelberichten.schema.json` beschrijft hoe de inhoud van een tabelbericht eruit ziet. Dit schema verkeert
 nog in een vroege fase en zal waarschijnlijk nog meer detail gaan krijgen / stricter worden.
 
-### Autorisatieberichten (Ct, Cw, Cb)
-
-Deze berichtsoorten zijn nog niet gedefinieerd in een JSON-schema, dit volgt nog.
-
 ## OpenAPI specificaties
 
 De OpenAPI specificatie van deze API is opgenomen in deze repository [in de OAS folder](./OAS/). Daarnaast kunt u
