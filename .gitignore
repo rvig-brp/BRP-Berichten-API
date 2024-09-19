@@ -25,3 +25,7 @@ replay_pid*
 
 # Intellij
 *.iml
+
+# Readability
+json-format.pl
+json-schemas-formatted
