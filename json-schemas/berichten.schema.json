@@ -1,292 +1,288 @@
-{
-  "$schema" : "https://json-schema.org/draft/2020-12/schema",
+{ "$schema" : "https://json-schema.org/draft/2020-12/schema",
   "title" : "Berichtdefinities",
   "description" : "Beschrijving van de berichtsoorten zoals omschreven in het Logisch Ontwerp BRP",
-  "$defs" : { },
   "properties" : {
     "Af01Bericht" : {
-      "$ref" : "#/berichtsoorten/Af01Bericht"
-    },
+      "$ref" : "#/$defs/berichtsoorten_Af01Bericht"
+      },
     "Af11Bericht" : {
-      "$ref" : "#/berichtsoorten/Af11Bericht"
-    },
+      "$ref" : "#/$defs/berichtsoorten_Af11Bericht"
+      },
     "Ag01Bericht" : {
-      "$ref" : "#/berichtsoorten/Ag01Bericht"
-    },
+      "$ref" : "#/$defs/berichtsoorten_Ag01Bericht"
+      },
     "Ag11Bericht" : {
-      "$ref" : "#/berichtsoorten/Ag11Bericht"
-    },
+      "$ref" : "#/$defs/berichtsoorten_Ag11Bericht"
+      },
     "Ag21Bericht" : {
-      "$ref" : "#/berichtsoorten/Ag21Bericht"
-    },
+      "$ref" : "#/$defs/berichtsoorten_Ag21Bericht"
+      },
     "Ag31Bericht" : {
-      "$ref" : "#/berichtsoorten/Ag31Bericht"
-    },
+      "$ref" : "#/$defs/berichtsoorten_Ag31Bericht"
+      },
     "Ap01Bericht" : {
-      "$ref" : "#/berichtsoorten/Ap01Bericht"
-    },
+      "$ref" : "#/$defs/berichtsoorten_Ap01Bericht"
+      },
     "Av01Bericht" : {
-      "$ref" : "#/berichtsoorten/Av01Bericht"
-    },
+      "$ref" : "#/$defs/berichtsoorten_Av01Bericht"
+      },
     "Cb01Bericht" : {
-      "$ref" : "#/berichtsoorten/Cb01Bericht"
-    },
+      "$ref" : "#/$defs/berichtsoorten_Cb01Bericht"
+      },
     "Ct01Bericht" : {
-      "$ref" : "#/berichtsoorten/Ct01Bericht"
-    },
+      "$ref" : "#/$defs/berichtsoorten_Ct01Bericht"
+      },
     "Cw01Bericht" : {
-      "$ref" : "#/berichtsoorten/Cw01Bericht"
-    },
+      "$ref" : "#/$defs/berichtsoorten_Cw01Bericht"
+      },
     "Dt01Bericht" : {
-      "$ref" : "#/berichtsoorten/Dt01Bericht"
-    },
+      "$ref" : "#/$defs/berichtsoorten_Dt01Bericht"
+      },
     "Dw01Bericht" : {
-      "$ref" : "#/berichtsoorten/Dw01Bericht"
-    },
+      "$ref" : "#/$defs/berichtsoorten_Dw01Bericht"
+      },
     "Gv01Bericht" : {
-      "$ref" : "#/berichtsoorten/Gv01Bericht"
-    },
+      "$ref" : "#/$defs/berichtsoorten_Gv01Bericht"
+      },
     "Gv02Bericht" : {
-      "$ref" : "#/berichtsoorten/Gv02Bericht"
-    },
+      "$ref" : "#/$defs/berichtsoorten_Gv02Bericht"
+      },
     "Ha01Bericht" : {
-      "$ref" : "#/berichtsoorten/Ha01Bericht"
-    },
+      "$ref" : "#/$defs/berichtsoorten_Ha01Bericht"
+      },
     "Hf01Bericht" : {
-      "$ref" : "#/berichtsoorten/Hf01Bericht"
-    },
+      "$ref" : "#/$defs/berichtsoorten_Hf01Bericht"
+      },
     "Hq01Bericht" : {
-      "$ref" : "#/berichtsoorten/Hq01Bericht"
-    },
+      "$ref" : "#/$defs/berichtsoorten_Hq01Bericht"
+      },
     "Ib01Bericht" : {
-      "$ref" : "#/berichtsoorten/Ib01Bericht"
-    },
+      "$ref" : "#/$defs/berichtsoorten_Ib01Bericht"
+      },
     "If01Bericht" : {
-      "$ref" : "#/berichtsoorten/If01Bericht"
-    },
+      "$ref" : "#/$defs/berichtsoorten_If01Bericht"
+      },
     "If21Bericht" : {
-      "$ref" : "#/berichtsoorten/If21Bericht"
-    },
+      "$ref" : "#/$defs/berichtsoorten_If21Bericht"
+      },
     "If31Bericht" : {
-      "$ref" : "#/berichtsoorten/If31Bericht"
-    },
+      "$ref" : "#/$defs/berichtsoorten_If31Bericht"
+      },
     "If41Bericht" : {
-      "$ref" : "#/berichtsoorten/If41Bericht"
-    },
+      "$ref" : "#/$defs/berichtsoorten_If41Bericht"
+      },
     "Ii01Bericht" : {
-      "$ref" : "#/berichtsoorten/Ii01Bericht"
-    },
+      "$ref" : "#/$defs/berichtsoorten_Ii01Bericht"
+      },
     "Iv01Bericht" : {
-      "$ref" : "#/berichtsoorten/Iv01Bericht"
-    },
+      "$ref" : "#/$defs/berichtsoorten_Iv01Bericht"
+      },
     "Iv11Bericht" : {
-      "$ref" : "#/berichtsoorten/Iv11Bericht"
-    },
+      "$ref" : "#/$defs/berichtsoorten_Iv11Bericht"
+      },
     "Iv21Bericht" : {
-      "$ref" : "#/berichtsoorten/Iv21Bericht"
-    },
+      "$ref" : "#/$defs/berichtsoorten_Iv21Bericht"
+      },
     "Jb01Bericht" : {
-      "$ref" : "#/berichtsoorten/Jb01Bericht"
-    },
+      "$ref" : "#/$defs/berichtsoorten_Jb01Bericht"
+      },
     "Jf01Bericht" : {
-      "$ref" : "#/berichtsoorten/Jf01Bericht"
-    },
+      "$ref" : "#/$defs/berichtsoorten_Jf01Bericht"
+      },
     "Jf21Bericht" : {
-      "$ref" : "#/berichtsoorten/Jf21Bericht"
-    },
+      "$ref" : "#/$defs/berichtsoorten_Jf21Bericht"
+      },
     "Jf31Bericht" : {
-      "$ref" : "#/berichtsoorten/Jf31Bericht"
-    },
+      "$ref" : "#/$defs/berichtsoorten_Jf31Bericht"
+      },
     "Ji01Bericht" : {
-      "$ref" : "#/berichtsoorten/Ji01Bericht"
-    },
+      "$ref" : "#/$defs/berichtsoorten_Ji01Bericht"
+      },
     "Jv01Bericht" : {
-      "$ref" : "#/berichtsoorten/Jv01Bericht"
-    },
+      "$ref" : "#/$defs/berichtsoorten_Jv01Bericht"
+      },
     "La01Bericht" : {
-      "$ref" : "#/berichtsoorten/La01Bericht"
-    },
+      "$ref" : "#/$defs/berichtsoorten_La01Bericht"
+      },
     "Lf01Bericht" : {
-      "$ref" : "#/berichtsoorten/Lf01Bericht"
-    },
+      "$ref" : "#/$defs/berichtsoorten_Lf01Bericht"
+      },
     "Lg01Bericht" : {
-      "$ref" : "#/berichtsoorten/Lg01Bericht"
-    },
+      "$ref" : "#/$defs/berichtsoorten_Lg01Bericht"
+      },
     "Lq01Bericht" : {
-      "$ref" : "#/berichtsoorten/Lq01Bericht"
-    },
+      "$ref" : "#/$defs/berichtsoorten_Lq01Bericht"
+      },
     "Ng01Bericht" : {
-      "$ref" : "#/berichtsoorten/Ng01Bericht"
-    },
+      "$ref" : "#/$defs/berichtsoorten_Ng01Bericht"
+      },
     "NullBericht" : {
-      "$ref" : "#/berichtsoorten/NullBericht"
-    },
+      "$ref" : "#/$defs/berichtsoorten_NullBericht"
+      },
     "Of11Bericht" : {
-      "$ref" : "#/berichtsoorten/Of11Bericht"
-    },
+      "$ref" : "#/$defs/berichtsoorten_Of11Bericht"
+      },
     "Og11Bericht" : {
-      "$ref" : "#/berichtsoorten/Og11Bericht"
-    },
+      "$ref" : "#/$defs/berichtsoorten_Og11Bericht"
+      },
     "Pf01Bericht" : {
-      "$ref" : "#/berichtsoorten/Pf01Bericht"
-    },
+      "$ref" : "#/$defs/berichtsoorten_Pf01Bericht"
+      },
     "Pf02Bericht" : {
-      "$ref" : "#/berichtsoorten/Pf02Bericht"
-    },
+      "$ref" : "#/$defs/berichtsoorten_Pf02Bericht"
+      },
     "Pf03Bericht" : {
-      "$ref" : "#/berichtsoorten/Pf03Bericht"
-    },
+      "$ref" : "#/$defs/berichtsoorten_Pf03Bericht"
+      },
     "Rb01Bericht" : {
-      "$ref" : "#/berichtsoorten/Rb01Bericht"
-    },
+      "$ref" : "#/$defs/berichtsoorten_Rb01Bericht"
+      },
     "Rf01Bericht" : {
-      "$ref" : "#/berichtsoorten/Rf01Bericht"
-    },
+      "$ref" : "#/$defs/berichtsoorten_Rf01Bericht"
+      },
     "Rf31Bericht" : {
-      "$ref" : "#/berichtsoorten/Rf31Bericht"
-    },
+      "$ref" : "#/$defs/berichtsoorten_Rf31Bericht"
+      },
     "Rv01Bericht" : {
-      "$ref" : "#/berichtsoorten/Rv01Bericht"
-    },
+      "$ref" : "#/$defs/berichtsoorten_Rv01Bericht"
+      },
     "Sv01Bericht" : {
-      "$ref" : "#/berichtsoorten/Sv01Bericht"
-    },
+      "$ref" : "#/$defs/berichtsoorten_Sv01Bericht"
+      },
     "Sv11Bericht" : {
-      "$ref" : "#/berichtsoorten/Sv11Bericht"
-    },
+      "$ref" : "#/$defs/berichtsoorten_Sv11Bericht"
+      },
     "Tb01Bericht" : {
-      "$ref" : "#/berichtsoorten/Tb01Bericht"
-    },
+      "$ref" : "#/$defs/berichtsoorten_Tb01Bericht"
+      },
     "Tb02Bericht" : {
-      "$ref" : "#/berichtsoorten/Tb02Bericht"
-    },
+      "$ref" : "#/$defs/berichtsoorten_Tb02Bericht"
+      },
     "Tf01Bericht" : {
-      "$ref" : "#/berichtsoorten/Tf01Bericht"
-    },
+      "$ref" : "#/$defs/berichtsoorten_Tf01Bericht"
+      },
     "Tf11Bericht" : {
-      "$ref" : "#/berichtsoorten/Tf11Bericht"
-    },
+      "$ref" : "#/$defs/berichtsoorten_Tf11Bericht"
+      },
     "Tf21Bericht" : {
-      "$ref" : "#/berichtsoorten/Tf21Bericht"
-    },
+      "$ref" : "#/$defs/berichtsoorten_Tf21Bericht"
+      },
     "Tv01Bericht" : {
-      "$ref" : "#/berichtsoorten/Tv01Bericht"
-    },
+      "$ref" : "#/$defs/berichtsoorten_Tv01Bericht"
+      },
     "Vb01Bericht" : {
-      "$ref" : "#/berichtsoorten/Vb01Bericht"
-    },
+      "$ref" : "#/$defs/berichtsoorten_Vb01Bericht"
+      },
     "Vb02Bericht" : {
-      "$ref" : "#/berichtsoorten/Vb02Bericht"
-    },
+      "$ref" : "#/$defs/berichtsoorten_Vb02Bericht"
+      },
     "Wa01Bericht" : {
-      "$ref" : "#/berichtsoorten/Wa01Bericht"
-    },
+      "$ref" : "#/$defs/berichtsoorten_Wa01Bericht"
+      },
     "Wa11Bericht" : {
-      "$ref" : "#/berichtsoorten/Wa11Bericht"
-    },
+      "$ref" : "#/$defs/berichtsoorten_Wa11Bericht"
+      },
     "Wf01Bericht" : {
-      "$ref" : "#/berichtsoorten/Wf01Bericht"
-    },
+      "$ref" : "#/$defs/berichtsoorten_Wf01Bericht"
+      },
     "Xa01Bericht" : {
-      "$ref" : "#/berichtsoorten/Xa01Bericht"
-    },
+      "$ref" : "#/$defs/berichtsoorten_Xa01Bericht"
+      },
     "Xf01Bericht" : {
-      "$ref" : "#/berichtsoorten/Xf01Bericht"
-    },
+      "$ref" : "#/$defs/berichtsoorten_Xf01Bericht"
+      },
     "Xq01Bericht" : {
-      "$ref" : "#/berichtsoorten/Xq01Bericht"
-    }
-  },
-  "berichtkoppen" : {
-    "aNummer" : {
+      "$ref" : "#/$defs/berichtsoorten_Xq01Bericht"
+      }
+    },
+  "$defs" : {
+    "berichtkoppen_aNummer" : {
       "type" : "string",
       "minLength" : 0,
       "maxLength" : 10
-    },
-    "adresfunctie" : {
+      },
+    "berichtkoppen_adresfunctie" : {
       "type" : "string",
       "minLength" : 1,
       "maxLength" : 1
-    },
-    "afnemersindicatie" : {
+      },
+    "berichtkoppen_afnemersindicatie" : {
       "type" : "string",
       "minLength" : 0,
       "maxLength" : 6
-    },
-    "aktenummer" : {
+      },
+    "berichtkoppen_aktenummer" : {
       "type" : "string",
       "minLength" : 0,
       "maxLength" : 7
-    },
-    "autorisatietabelregel" : {
+      },
+    "berichtkoppen_autorisatietabelregel" : {
       "$ref" : "autorisatietabel-data.schema.json"
-    },
-    "berichtType" : {
+      },
+    "berichtkoppen_berichtType" : {
       "type" : "string",
       "minLength" : 0,
       "maxLength" : 4
-    },
-    "communicatiepartner" : {
+      },
+    "berichtkoppen_communicatiepartner" : {
       "type" : "string",
       "minLength" : 0,
       "maxLength" : 7
-    },
-    "datum" : {
+      },
+    "berichtkoppen_datum" : {
       "type" : "string",
       "minLength" : 0,
       "maxLength" : 8
-    },
-    "datumTijd" : {
+      },
+    "berichtkoppen_datumTijd" : {
       "type" : "string",
       "minLength" : 0,
       "maxLength" : 17
-    },
-    "foutreden" : {
+      },
+    "berichtkoppen_foutreden" : {
       "type" : "string",
       "minLength" : 1,
       "maxLength" : 1
-    },
-    "gemeente" : {
+      },
+    "berichtkoppen_gemeente" : {
       "type" : "string",
       "minLength" : 0,
       "maxLength" : 4
-    },
-    "gezochtePersoon" : {
+      },
+    "berichtkoppen_gezochtePersoon" : {
       "type" : "string",
       "minLength" : 1,
       "maxLength" : 2
-    },
-    "herhaling" : {
+      },
+    "berichtkoppen_herhaling" : {
       "type" : "string",
       "minLength" : 0,
       "maxLength" : 1
-    },
-    "identificatie" : {
+      },
+    "berichtkoppen_identificatie" : {
       "type" : "string",
       "minLength" : 1,
       "maxLength" : 1
-    },
-    "rubrieken" : {
+      },
+    "berichtkoppen_rubrieken" : {
       "type" : "array",
       "items" : {
         "type" : "string",
         "minLength" : 6,
         "maxLength" : 6
-      }
-    },
-    "status" : {
+        }
+      },
+    "berichtkoppen_status" : {
       "type" : "string",
       "minLength" : 1,
       "maxLength" : 1
-    },
-    "teWijzigenTabel" : {
+      },
+    "berichtkoppen_teWijzigenTabel" : {
       "type" : "string",
       "minLength" : 0,
       "maxLength" : 2
-    }
-  },
-  "berichtsoorten" : {
-    "Af01Bericht" : {
+      },
+    "berichtsoorten_Af01Bericht" : {
       "title" : "Af01",
       "type" : "object",
       "description" : "Fout: plaatsen afnemersindicatie op persoonslijst onmogelijk - Indien een afnemer een afnemersindicatie wil plaatsen terwijl dat niet mogelijk is, wordt dit bericht verstuurd.",
@@ -295,26 +291,26 @@
       "properties" : {
         "$schema" : {
           "type" : "string"
-        },
+          },
         "berichtType" : {
-          "$ref" : "#/berichtkoppen/berichtType"
-        },
+          "$ref" : "#/$defs/berichtkoppen_berichtType"
+          },
         "foutreden" : {
-          "$ref" : "#/berichtkoppen/foutreden"
-        },
+          "$ref" : "#/$defs/berichtkoppen_foutreden"
+          },
         "gemeente" : {
-          "$ref" : "#/berichtkoppen/gemeente"
-        },
+          "$ref" : "#/$defs/berichtkoppen_gemeente"
+          },
         "aNummer" : {
-          "$ref" : "#/berichtkoppen/aNummer"
-        },
+          "$ref" : "#/$defs/berichtkoppen_aNummer"
+          },
         "plData" : {
           "$ref" : "persoonslijst-data.schema.json"
-        }
-      },
+          }
+        },
       "required" : [ "berichtType", "foutreden", "gemeente", "aNummer", "plData" ]
-    },
-    "Af11Bericht" : {
+      },
+    "berichtsoorten_Af11Bericht" : {
       "title" : "Af11",
       "type" : "object",
       "description" : "Fout: verwijderen afnemersindicatie van persoonslijst onmogelijk - Dit bericht wordt verstuurd, wanneer een afnemer een afnemersindicatie probeert te verwijderen terwijl dat niet mogelijk is.",
@@ -323,26 +319,26 @@
       "properties" : {
         "$schema" : {
           "type" : "string"
-        },
+          },
         "berichtType" : {
-          "$ref" : "#/berichtkoppen/berichtType"
-        },
+          "$ref" : "#/$defs/berichtkoppen_berichtType"
+          },
         "foutreden" : {
-          "$ref" : "#/berichtkoppen/foutreden"
-        },
+          "$ref" : "#/$defs/berichtkoppen_foutreden"
+          },
         "gemeente" : {
-          "$ref" : "#/berichtkoppen/gemeente"
-        },
+          "$ref" : "#/$defs/berichtkoppen_gemeente"
+          },
         "aNummer" : {
-          "$ref" : "#/berichtkoppen/aNummer"
-        },
+          "$ref" : "#/$defs/berichtkoppen_aNummer"
+          },
         "plData" : {
           "$ref" : "persoonslijst-data.schema.json"
-        }
-      },
+          }
+        },
       "required" : [ "berichtType", "foutreden", "gemeente", "aNummer", "plData" ]
-    },
-    "Ag01Bericht" : {
+      },
+    "berichtsoorten_Ag01Bericht" : {
       "title" : "Ag01",
       "type" : "object",
       "description" : "Gegevensverstrekking als gevolg van ad hoc plaatsing afnemersindicatie op  persoonslijst - Dit bericht wordt verstuurd als een afnemer een afnemersindicatie heeft geplaatst bij een persoon. Het bevat alle gegevens van de persoon, waarvoor de afnemer bij spontane gegevensverstrekking geautoriseerd is.",
@@ -351,23 +347,23 @@
       "properties" : {
         "$schema" : {
           "type" : "string"
-        },
+          },
         "berichtType" : {
-          "$ref" : "#/berichtkoppen/berichtType"
-        },
+          "$ref" : "#/$defs/berichtkoppen_berichtType"
+          },
         "status" : {
-          "$ref" : "#/berichtkoppen/status"
-        },
+          "$ref" : "#/$defs/berichtkoppen_status"
+          },
         "datum" : {
-          "$ref" : "#/berichtkoppen/datum"
-        },
+          "$ref" : "#/$defs/berichtkoppen_datum"
+          },
         "plData" : {
           "$ref" : "persoonslijst-data.schema.json"
-        }
-      },
+          }
+        },
       "required" : [ "berichtType", "status", "datum", "plData" ]
-    },
-    "Ag11Bericht" : {
+      },
+    "berichtsoorten_Ag11Bericht" : {
       "title" : "Ag11",
       "type" : "object",
       "description" : "Vulbericht - Dit bericht wordt verstuurd als voor een afnemer een afnemersindicatie is geplaatst bij een persoon. Het bevat alle gegevens van die persoon, waarvoor de afnemer bij spontane gegevensverstrekking geautoriseerd is.",
@@ -376,23 +372,23 @@
       "properties" : {
         "$schema" : {
           "type" : "string"
-        },
+          },
         "berichtType" : {
-          "$ref" : "#/berichtkoppen/berichtType"
-        },
+          "$ref" : "#/$defs/berichtkoppen_berichtType"
+          },
         "status" : {
-          "$ref" : "#/berichtkoppen/status"
-        },
+          "$ref" : "#/$defs/berichtkoppen_status"
+          },
         "datum" : {
-          "$ref" : "#/berichtkoppen/datum"
-        },
+          "$ref" : "#/$defs/berichtkoppen_datum"
+          },
         "plData" : {
           "$ref" : "persoonslijst-data.schema.json"
-        }
-      },
+          }
+        },
       "required" : [ "berichtType", "status", "datum", "plData" ]
-    },
-    "Ag21Bericht" : {
+      },
+    "berichtsoorten_Ag21Bericht" : {
       "title" : "Ag21",
       "type" : "object",
       "description" : "Conditionele gegevensverstrekking - Dit bericht wordt verstuurd als op een PL één of meer sleutelrubrieken van een afnemer wijzigen, de PL vervolgens aan de voorwaarderegel spontaan van de afnemer voldoet en de afnemer geautoriseerd is voor het ontvangen van conditionele verstrekkingen.",
@@ -401,23 +397,23 @@
       "properties" : {
         "$schema" : {
           "type" : "string"
-        },
+          },
         "berichtType" : {
-          "$ref" : "#/berichtkoppen/berichtType"
-        },
+          "$ref" : "#/$defs/berichtkoppen_berichtType"
+          },
         "status" : {
-          "$ref" : "#/berichtkoppen/status"
-        },
+          "$ref" : "#/$defs/berichtkoppen_status"
+          },
         "datum" : {
-          "$ref" : "#/berichtkoppen/datum"
-        },
+          "$ref" : "#/$defs/berichtkoppen_datum"
+          },
         "plData" : {
           "$ref" : "persoonslijst-data.schema.json"
-        }
-      },
+          }
+        },
       "required" : [ "berichtType", "status", "datum", "plData" ]
-    },
-    "Ag31Bericht" : {
+      },
+    "berichtsoorten_Ag31Bericht" : {
       "title" : "Ag31",
       "type" : "object",
       "description" : "Foutherstelbericht - Dit bericht wordt verstuurd als door een opgetreden fout een Ag01-, Ag11-, Ag21-, Gv01- of Gv02-bericht niet of niet correct is verstuurd.",
@@ -426,23 +422,23 @@
       "properties" : {
         "$schema" : {
           "type" : "string"
-        },
+          },
         "berichtType" : {
-          "$ref" : "#/berichtkoppen/berichtType"
-        },
+          "$ref" : "#/$defs/berichtkoppen_berichtType"
+          },
         "status" : {
-          "$ref" : "#/berichtkoppen/status"
-        },
+          "$ref" : "#/$defs/berichtkoppen_status"
+          },
         "datum" : {
-          "$ref" : "#/berichtkoppen/datum"
-        },
+          "$ref" : "#/$defs/berichtkoppen_datum"
+          },
         "plData" : {
           "$ref" : "persoonslijst-data.schema.json"
-        }
-      },
+          }
+        },
       "required" : [ "berichtType", "status", "datum", "plData" ]
-    },
-    "Ap01Bericht" : {
+      },
+    "berichtsoorten_Ap01Bericht" : {
       "title" : "Ap01",
       "type" : "object",
       "description" : "Plaatsen afnemersindicatie op persoonslijst - Het bericht van de afnemer aan BRP-V, waarbij de afnemer aangeeft geïnteresseerd te zijn in een gespecificeerde persoon.",
@@ -451,20 +447,20 @@
       "properties" : {
         "$schema" : {
           "type" : "string"
-        },
+          },
         "berichtType" : {
-          "$ref" : "#/berichtkoppen/berichtType"
-        },
+          "$ref" : "#/$defs/berichtkoppen_berichtType"
+          },
         "herhaling" : {
-          "$ref" : "#/berichtkoppen/herhaling"
-        },
+          "$ref" : "#/$defs/berichtkoppen_herhaling"
+          },
         "plData" : {
           "$ref" : "persoonslijst-data.schema.json"
-        }
-      },
+          }
+        },
       "required" : [ "berichtType", "herhaling", "plData" ]
-    },
-    "Av01Bericht" : {
+      },
+    "berichtsoorten_Av01Bericht" : {
       "title" : "Av01",
       "type" : "object",
       "description" : "Verwijderen afnemersindicatie van persoonslijst - Het bericht van de afnemer aan BRP-V, waarbij de afnemer aangeeft niet langer geïnteresseerd te zijn in een gespecificeerde persoon.",
@@ -473,20 +469,20 @@
       "properties" : {
         "$schema" : {
           "type" : "string"
-        },
+          },
         "berichtType" : {
-          "$ref" : "#/berichtkoppen/berichtType"
-        },
+          "$ref" : "#/$defs/berichtkoppen_berichtType"
+          },
         "herhaling" : {
-          "$ref" : "#/berichtkoppen/herhaling"
-        },
+          "$ref" : "#/$defs/berichtkoppen_herhaling"
+          },
         "plData" : {
           "$ref" : "persoonslijst-data.schema.json"
-        }
-      },
+          }
+        },
       "required" : [ "berichtType", "herhaling", "plData" ]
-    },
-    "Cb01Bericht" : {
+      },
+    "berichtsoorten_Cb01Bericht" : {
       "title" : "Cb01",
       "type" : "object",
       "description" : "Beëindigen tabelregel in Autorisatietabel - Bericht ter beëindiging van een tabelregel in de Autorisatietabel.",
@@ -495,26 +491,26 @@
       "properties" : {
         "$schema" : {
           "type" : "string"
-        },
+          },
         "berichtType" : {
-          "$ref" : "#/berichtkoppen/berichtType"
-        },
+          "$ref" : "#/$defs/berichtkoppen_berichtType"
+          },
         "herhaling" : {
-          "$ref" : "#/berichtkoppen/herhaling"
-        },
+          "$ref" : "#/$defs/berichtkoppen_herhaling"
+          },
         "afnemersindicatie" : {
-          "$ref" : "#/berichtkoppen/afnemersindicatie"
-        },
+          "$ref" : "#/$defs/berichtkoppen_afnemersindicatie"
+          },
         "datumIngang" : {
-          "$ref" : "#/berichtkoppen/datum"
-        },
+          "$ref" : "#/$defs/berichtkoppen_datum"
+          },
         "datumEinde" : {
-          "$ref" : "#/berichtkoppen/datum"
-        }
-      },
+          "$ref" : "#/$defs/berichtkoppen_datum"
+          }
+        },
       "required" : [ "berichtType", "herhaling", "afnemersindicatie", "datumIngang", "datumEinde" ]
-    },
-    "Ct01Bericht" : {
+      },
+    "berichtsoorten_Ct01Bericht" : {
       "title" : "Ct01",
       "type" : "object",
       "description" : "Toevoegen tabelregel aan Autorisatietabel - Bericht ter uitbreiding van de Autorisatietabel.",
@@ -523,20 +519,20 @@
       "properties" : {
         "$schema" : {
           "type" : "string"
-        },
+          },
         "berichtType" : {
-          "$ref" : "#/berichtkoppen/berichtType"
-        },
+          "$ref" : "#/$defs/berichtkoppen_berichtType"
+          },
         "herhaling" : {
-          "$ref" : "#/berichtkoppen/herhaling"
-        },
+          "$ref" : "#/$defs/berichtkoppen_herhaling"
+          },
         "autorisatietabelregel" : {
-          "$ref" : "#/berichtkoppen/autorisatietabelregel"
-        }
-      },
+          "$ref" : "#/$defs/berichtkoppen_autorisatietabelregel"
+          }
+        },
       "required" : [ "berichtType", "herhaling", "autorisatietabelregel" ]
-    },
-    "Cw01Bericht" : {
+      },
+    "berichtsoorten_Cw01Bericht" : {
       "title" : "Cw01",
       "type" : "object",
       "description" : "Wijzigen tabelregel in Autorisatietabel - Bericht ter wijziging van een tabelregel in de Autorisatietabel.",
@@ -545,29 +541,29 @@
       "properties" : {
         "$schema" : {
           "type" : "string"
-        },
+          },
         "berichtType" : {
-          "$ref" : "#/berichtkoppen/berichtType"
-        },
+          "$ref" : "#/$defs/berichtkoppen_berichtType"
+          },
         "herhaling" : {
-          "$ref" : "#/berichtkoppen/herhaling"
-        },
+          "$ref" : "#/$defs/berichtkoppen_herhaling"
+          },
         "afnemersindicatie" : {
-          "$ref" : "#/berichtkoppen/afnemersindicatie"
-        },
+          "$ref" : "#/$defs/berichtkoppen_afnemersindicatie"
+          },
         "datumIngang" : {
-          "$ref" : "#/berichtkoppen/datum"
-        },
+          "$ref" : "#/$defs/berichtkoppen_datum"
+          },
         "datumEinde" : {
-          "$ref" : "#/berichtkoppen/datum"
-        },
+          "$ref" : "#/$defs/berichtkoppen_datum"
+          },
         "autorisatietabelregel" : {
-          "$ref" : "#/berichtkoppen/autorisatietabelregel"
-        }
-      },
+          "$ref" : "#/$defs/berichtkoppen_autorisatietabelregel"
+          }
+        },
       "required" : [ "berichtType", "herhaling", "afnemersindicatie", "datumIngang", "datumEinde", "autorisatietabelregel" ]
-    },
-    "Dt01Bericht" : {
+      },
+    "berichtsoorten_Dt01Bericht" : {
       "title" : "Dt01",
       "type" : "object",
       "description" : "Toevoegen tabelregel - Bericht ter uitbreiding van een tabel niet zijnde de autorisatietabel, de voorvoegseltabel, de tabel adellijke titel/predicaat of PK-afnemerstabel.",
@@ -576,23 +572,23 @@
       "properties" : {
         "$schema" : {
           "type" : "string"
-        },
+          },
         "berichtType" : {
-          "$ref" : "#/berichtkoppen/berichtType"
-        },
+          "$ref" : "#/$defs/berichtkoppen_berichtType"
+          },
         "herhaling" : {
-          "$ref" : "#/berichtkoppen/herhaling"
-        },
+          "$ref" : "#/$defs/berichtkoppen_herhaling"
+          },
         "teWijzigenTabel" : {
-          "$ref" : "#/berichtkoppen/teWijzigenTabel"
-        },
+          "$ref" : "#/$defs/berichtkoppen_teWijzigenTabel"
+          },
         "tabelData" : {
           "$ref" : "tabellen.schema.json"
-        }
-      },
+          }
+        },
       "required" : [ "berichtType", "herhaling", "teWijzigenTabel", "tabelData" ]
-    },
-    "Dw01Bericht" : {
+      },
+    "berichtsoorten_Dw01Bericht" : {
       "title" : "Dw01",
       "type" : "object",
       "description" : "Wijzigen tabelregel - Bericht ter wijziging van een tabel niet zijnde de autorisatietabel, de voorvoegseltabel, de tabel adellijke titel/predicaat of PK-afnemerstabel.",
@@ -601,23 +597,23 @@
       "properties" : {
         "$schema" : {
           "type" : "string"
-        },
+          },
         "berichtType" : {
-          "$ref" : "#/berichtkoppen/berichtType"
-        },
+          "$ref" : "#/$defs/berichtkoppen_berichtType"
+          },
         "herhaling" : {
-          "$ref" : "#/berichtkoppen/herhaling"
-        },
+          "$ref" : "#/$defs/berichtkoppen_herhaling"
+          },
         "teWijzigenTabel" : {
-          "$ref" : "#/berichtkoppen/teWijzigenTabel"
-        },
+          "$ref" : "#/$defs/berichtkoppen_teWijzigenTabel"
+          },
         "tabelData" : {
           "$ref" : "tabellen.schema.json"
-        }
-      },
+          }
+        },
       "required" : [ "berichtType", "herhaling", "teWijzigenTabel", "tabelData" ]
-    },
-    "Gv01Bericht" : {
+      },
+    "berichtsoorten_Gv01Bericht" : {
       "title" : "Gv01",
       "type" : "object",
       "description" : "Spontane mutatie - Kennisgeving van het feit dat er een rubriek, waarvoor de betrokken afnemer bij spontane gegevensverstrekking geautoriseerd is, gewijzigd is bij een persoon waar de afnemer een afnemersindicatie heeft staan.",
@@ -626,20 +622,20 @@
       "properties" : {
         "$schema" : {
           "type" : "string"
-        },
+          },
         "berichtType" : {
-          "$ref" : "#/berichtkoppen/berichtType"
-        },
+          "$ref" : "#/$defs/berichtkoppen_berichtType"
+          },
         "aNummer" : {
-          "$ref" : "#/berichtkoppen/aNummer"
-        },
+          "$ref" : "#/$defs/berichtkoppen_aNummer"
+          },
         "plData" : {
           "$ref" : "persoonslijst-data.schema.json"
-        }
-      },
+          }
+        },
       "required" : [ "berichtType", "aNummer", "plData" ]
-    },
-    "Gv02Bericht" : {
+      },
+    "berichtsoorten_Gv02Bericht" : {
       "title" : "Gv02",
       "type" : "object",
       "description" : "Spontane mutatie: infrastructurele wijziging - Kennisgeving van het feit dat er een rubriek, waarvoor de betrokken afnemer bij spontane gegevensverstrekking geautoriseerd is, gewijzigd is bij een persoon waar de afnemer een afnemersindicatie heeft staan. Deze spontane mutatie wordt alleen verstuurd, indien deze wijziging het gevolg is van een aanpassing van de verblijfplaatsgegevens vanwege een infrastructurele wijziging.",
@@ -648,20 +644,20 @@
       "properties" : {
         "$schema" : {
           "type" : "string"
-        },
+          },
         "berichtType" : {
-          "$ref" : "#/berichtkoppen/berichtType"
-        },
+          "$ref" : "#/$defs/berichtkoppen_berichtType"
+          },
         "aNummer" : {
-          "$ref" : "#/berichtkoppen/aNummer"
-        },
+          "$ref" : "#/$defs/berichtkoppen_aNummer"
+          },
         "plData" : {
           "$ref" : "persoonslijst-data.schema.json"
-        }
-      },
+          }
+        },
       "required" : [ "berichtType", "aNummer", "plData" ]
-    },
-    "Ha01Bericht" : {
+      },
+    "berichtsoorten_Ha01Bericht" : {
       "title" : "Ha01",
       "type" : "object",
       "description" : "Ad hoc antwoord - Antwoord op een gestelde ad hoc vraag. Dit antwoord wordt slechts verstuurd als de afnemer voor alle gebruikte gegevens geautoriseerd is bij de ad hoc gegevensverstrekking.",
@@ -670,23 +666,23 @@
       "properties" : {
         "$schema" : {
           "type" : "string"
-        },
+          },
         "berichtType" : {
-          "$ref" : "#/berichtkoppen/berichtType"
-        },
+          "$ref" : "#/$defs/berichtkoppen_berichtType"
+          },
         "status" : {
-          "$ref" : "#/berichtkoppen/status"
-        },
+          "$ref" : "#/$defs/berichtkoppen_status"
+          },
         "datum" : {
-          "$ref" : "#/berichtkoppen/datum"
-        },
+          "$ref" : "#/$defs/berichtkoppen_datum"
+          },
         "plData" : {
           "$ref" : "persoonslijst-data.schema.json"
-        }
-      },
+          }
+        },
       "required" : [ "berichtType", "status", "datum", "plData" ]
-    },
-    "Hf01Bericht" : {
+      },
+    "berichtsoorten_Hf01Bericht" : {
       "title" : "Hf01",
       "type" : "object",
       "description" : "Fout: ad hoc vraag niet te beantwoorden - Indien de vraag niet te beantwoorden is, wordt deze melding gestuurd.",
@@ -695,29 +691,29 @@
       "properties" : {
         "$schema" : {
           "type" : "string"
-        },
+          },
         "berichtType" : {
-          "$ref" : "#/berichtkoppen/berichtType"
-        },
+          "$ref" : "#/$defs/berichtkoppen_berichtType"
+          },
         "foutreden" : {
-          "$ref" : "#/berichtkoppen/foutreden"
-        },
+          "$ref" : "#/$defs/berichtkoppen_foutreden"
+          },
         "gemeente" : {
-          "$ref" : "#/berichtkoppen/gemeente"
-        },
+          "$ref" : "#/$defs/berichtkoppen_gemeente"
+          },
         "aNummer" : {
-          "$ref" : "#/berichtkoppen/aNummer"
-        },
+          "$ref" : "#/$defs/berichtkoppen_aNummer"
+          },
         "rubrieken" : {
-          "$ref" : "#/berichtkoppen/rubrieken"
-        },
+          "$ref" : "#/$defs/berichtkoppen_rubrieken"
+          },
         "plData" : {
           "$ref" : "persoonslijst-data.schema.json"
-        }
-      },
+          }
+        },
       "required" : [ "berichtType", "foutreden", "gemeente", "aNummer", "rubrieken", "plData" ]
-    },
-    "Hq01Bericht" : {
+      },
+    "berichtsoorten_Hq01Bericht" : {
       "title" : "Hq01",
       "type" : "object",
       "description" : "Ad hoc vraag - Dit bericht wordt door een afnemer verstuurd aan BRP-V met de bedoeling aan de hand van de opgegeven identificatie, gegevens over de persoon verstrekt te krijgen.",
@@ -726,23 +722,23 @@
       "properties" : {
         "$schema" : {
           "type" : "string"
-        },
+          },
         "berichtType" : {
-          "$ref" : "#/berichtkoppen/berichtType"
-        },
+          "$ref" : "#/$defs/berichtkoppen_berichtType"
+          },
         "herhaling" : {
-          "$ref" : "#/berichtkoppen/herhaling"
-        },
+          "$ref" : "#/$defs/berichtkoppen_herhaling"
+          },
         "rubrieken" : {
-          "$ref" : "#/berichtkoppen/rubrieken"
-        },
+          "$ref" : "#/$defs/berichtkoppen_rubrieken"
+          },
         "plData" : {
           "$ref" : "persoonslijst-data.schema.json"
-        }
-      },
+          }
+        },
       "required" : [ "berichtType", "herhaling", "rubrieken", "plData" ]
-    },
-    "Ib01Bericht" : {
+      },
+    "berichtsoorten_Ib01Bericht" : {
       "title" : "Ib01",
       "type" : "object",
       "description" : "Verhuizen PL intergemeentelijk - Het bericht waarmee de gehele PL (inclusief historie) door de gemeente van vertrek naar de gemeente van vestiging gestuurd wordt.",
@@ -751,26 +747,26 @@
       "properties" : {
         "$schema" : {
           "type" : "string"
-        },
+          },
         "berichtType" : {
-          "$ref" : "#/berichtkoppen/berichtType"
-        },
+          "$ref" : "#/$defs/berichtkoppen_berichtType"
+          },
         "herhaling" : {
-          "$ref" : "#/berichtkoppen/herhaling"
-        },
+          "$ref" : "#/$defs/berichtkoppen_herhaling"
+          },
         "status" : {
-          "$ref" : "#/berichtkoppen/status"
-        },
+          "$ref" : "#/$defs/berichtkoppen_status"
+          },
         "datum" : {
-          "$ref" : "#/berichtkoppen/datum"
-        },
+          "$ref" : "#/$defs/berichtkoppen_datum"
+          },
         "plData" : {
           "$ref" : "persoonslijst-data.schema.json"
-        }
-      },
+          }
+        },
       "required" : [ "berichtType", "herhaling", "status", "datum", "plData" ]
-    },
-    "If01Bericht" : {
+      },
+    "berichtsoorten_If01Bericht" : {
       "title" : "If01",
       "type" : "object",
       "description" : "Fout: PL niet te verzenden - Indien de gemeente van vertrek niet in staat is de PL te verzenden, volgt dit bericht onder vermelding van de foutreden die verzending niet mogelijk maakt.",
@@ -779,26 +775,26 @@
       "properties" : {
         "$schema" : {
           "type" : "string"
-        },
+          },
         "berichtType" : {
-          "$ref" : "#/berichtkoppen/berichtType"
-        },
+          "$ref" : "#/$defs/berichtkoppen_berichtType"
+          },
         "foutreden" : {
-          "$ref" : "#/berichtkoppen/foutreden"
-        },
+          "$ref" : "#/$defs/berichtkoppen_foutreden"
+          },
         "gemeente" : {
-          "$ref" : "#/berichtkoppen/gemeente"
-        },
+          "$ref" : "#/$defs/berichtkoppen_gemeente"
+          },
         "aNummer" : {
-          "$ref" : "#/berichtkoppen/aNummer"
-        },
+          "$ref" : "#/$defs/berichtkoppen_aNummer"
+          },
         "plData" : {
           "$ref" : "persoonslijst-data.schema.json"
-        }
-      },
+          }
+        },
       "required" : [ "berichtType", "foutreden", "gemeente", "aNummer", "plData" ]
-    },
-    "If21Bericht" : {
+      },
+    "berichtsoorten_If21Bericht" : {
       "title" : "If21",
       "type" : "object",
       "description" : "Fout: de ontvangen PL is niet de aangevraagde - Indien de gemeente van vestiging een PL ontvangt die niet voldoet aan de opgegeven identificatie, dan volgt dit bericht.",
@@ -807,17 +803,17 @@
       "properties" : {
         "$schema" : {
           "type" : "string"
-        },
+          },
         "berichtType" : {
-          "$ref" : "#/berichtkoppen/berichtType"
-        },
+          "$ref" : "#/$defs/berichtkoppen_berichtType"
+          },
         "plData" : {
           "$ref" : "persoonslijst-data.schema.json"
-        }
-      },
+          }
+        },
       "required" : [ "berichtType", "plData" ]
-    },
-    "If31Bericht" : {
+      },
+    "berichtsoorten_If31Bericht" : {
       "title" : "If31",
       "type" : "object",
       "description" : "Fout: de verwijsgegevens zijn niet correct - Indien de gemeente van vertrek verwijsgegevens ontvangt die niet in overeenstemming zijn met de via het Ib01-bericht verstuurde PL, wordt dit bericht verstuurd.",
@@ -826,17 +822,17 @@
       "properties" : {
         "$schema" : {
           "type" : "string"
-        },
+          },
         "berichtType" : {
-          "$ref" : "#/berichtkoppen/berichtType"
-        },
+          "$ref" : "#/$defs/berichtkoppen_berichtType"
+          },
         "plData" : {
           "$ref" : "persoonslijst-data.schema.json"
-        }
-      },
+          }
+        },
       "required" : [ "berichtType", "plData" ]
-    },
-    "If41Bericht" : {
+      },
+    "berichtsoorten_If41Bericht" : {
       "title" : "If41",
       "type" : "object",
       "description" : "Fout: verwijsgegevens kunnen niet worden opgenomen - Indien de gemeente van vertrek dan wel de RNI niet in staat is de verwijsgegevens op te nemen, volgt dit bericht onder vermelding van de foutreden die opname niet mogelijk maakt.",
@@ -845,26 +841,26 @@
       "properties" : {
         "$schema" : {
           "type" : "string"
-        },
+          },
         "berichtType" : {
-          "$ref" : "#/berichtkoppen/berichtType"
-        },
+          "$ref" : "#/$defs/berichtkoppen_berichtType"
+          },
         "foutreden" : {
-          "$ref" : "#/berichtkoppen/foutreden"
-        },
+          "$ref" : "#/$defs/berichtkoppen_foutreden"
+          },
         "gemeente" : {
-          "$ref" : "#/berichtkoppen/gemeente"
-        },
+          "$ref" : "#/$defs/berichtkoppen_gemeente"
+          },
         "aNummer" : {
-          "$ref" : "#/berichtkoppen/aNummer"
-        },
+          "$ref" : "#/$defs/berichtkoppen_aNummer"
+          },
         "plData" : {
           "$ref" : "persoonslijst-data.schema.json"
-        }
-      },
+          }
+        },
       "required" : [ "berichtType", "foutreden", "gemeente", "aNummer", "plData" ]
-    },
-    "Ii01Bericht" : {
+      },
+    "berichtsoorten_Ii01Bericht" : {
       "title" : "Ii01",
       "type" : "object",
       "description" : "Initiatie intergemeentelijke verhuizing - Het bericht dat de gemeente van vestiging stuurt aan de gemeente van vertrek om kenbaar te maken dat de PL overgezonden dient te worden.",
@@ -873,20 +869,20 @@
       "properties" : {
         "$schema" : {
           "type" : "string"
-        },
+          },
         "berichtType" : {
-          "$ref" : "#/berichtkoppen/berichtType"
-        },
+          "$ref" : "#/$defs/berichtkoppen_berichtType"
+          },
         "herhaling" : {
-          "$ref" : "#/berichtkoppen/herhaling"
-        },
+          "$ref" : "#/$defs/berichtkoppen_herhaling"
+          },
         "plData" : {
           "$ref" : "persoonslijst-data.schema.json"
-        }
-      },
+          }
+        },
       "required" : [ "berichtType", "herhaling", "plData" ]
-    },
-    "Iv01Bericht" : {
+      },
+    "berichtsoorten_Iv01Bericht" : {
       "title" : "Iv01",
       "type" : "object",
       "description" : "Verwijsgegevens - Het bericht waarmee de verwijsgegevens door de gemeente van vestiging naar de gemeente van vertrek gestuurd worden.",
@@ -895,20 +891,20 @@
       "properties" : {
         "$schema" : {
           "type" : "string"
-        },
+          },
         "berichtType" : {
-          "$ref" : "#/berichtkoppen/berichtType"
-        },
+          "$ref" : "#/$defs/berichtkoppen_berichtType"
+          },
         "herhaling" : {
-          "$ref" : "#/berichtkoppen/herhaling"
-        },
+          "$ref" : "#/$defs/berichtkoppen_herhaling"
+          },
         "plData" : {
           "$ref" : "persoonslijst-data.schema.json"
-        }
-      },
+          }
+        },
       "required" : [ "berichtType", "herhaling", "plData" ]
-    },
-    "Iv11Bericht" : {
+      },
+    "berichtsoorten_Iv11Bericht" : {
       "title" : "Iv11",
       "type" : "object",
       "description" : "Verwijsgegevens - Het bericht waarmee de verwijsgegevens door de gemeente van inschrijving dan wel de RNI naar de vorige gemeente van inschrijving dan wel naar de RNI gestuurd worden.",
@@ -917,20 +913,20 @@
       "properties" : {
         "$schema" : {
           "type" : "string"
-        },
+          },
         "berichtType" : {
-          "$ref" : "#/berichtkoppen/berichtType"
-        },
+          "$ref" : "#/$defs/berichtkoppen_berichtType"
+          },
         "herhaling" : {
-          "$ref" : "#/berichtkoppen/herhaling"
-        },
+          "$ref" : "#/$defs/berichtkoppen_herhaling"
+          },
         "plData" : {
           "$ref" : "persoonslijst-data.schema.json"
-        }
-      },
+          }
+        },
       "required" : [ "berichtType", "herhaling", "plData" ]
-    },
-    "Iv21Bericht" : {
+      },
+    "berichtsoorten_Iv21Bericht" : {
       "title" : "Iv21",
       "type" : "object",
       "description" : "Verificatie verwijsgegevens - Het bericht waarmee de verwijsgegevens ter controle door de vorige gemeente van inschrijving dan wel de RNI teruggestuurd worden aan de gemeente van inschrijving dan wel aan de RNI.",
@@ -939,20 +935,20 @@
       "properties" : {
         "$schema" : {
           "type" : "string"
-        },
+          },
         "berichtType" : {
-          "$ref" : "#/berichtkoppen/berichtType"
-        },
+          "$ref" : "#/$defs/berichtkoppen_berichtType"
+          },
         "herhaling" : {
-          "$ref" : "#/berichtkoppen/herhaling"
-        },
+          "$ref" : "#/$defs/berichtkoppen_herhaling"
+          },
         "plData" : {
           "$ref" : "persoonslijst-data.schema.json"
-        }
-      },
+          }
+        },
       "required" : [ "berichtType", "herhaling", "plData" ]
-    },
-    "Jb01Bericht" : {
+      },
+    "berichtsoorten_Jb01Bericht" : {
       "title" : "Jb01",
       "type" : "object",
       "description" : "Verhuizen PL van RNI naar gemeente - Het bericht waarmee de gehele PL (inclusief historie) door de RNI naar de gemeente van vestiging gestuurd wordt.",
@@ -961,26 +957,26 @@
       "properties" : {
         "$schema" : {
           "type" : "string"
-        },
+          },
         "berichtType" : {
-          "$ref" : "#/berichtkoppen/berichtType"
-        },
+          "$ref" : "#/$defs/berichtkoppen_berichtType"
+          },
         "herhaling" : {
-          "$ref" : "#/berichtkoppen/herhaling"
-        },
+          "$ref" : "#/$defs/berichtkoppen_herhaling"
+          },
         "status" : {
-          "$ref" : "#/berichtkoppen/status"
-        },
+          "$ref" : "#/$defs/berichtkoppen_status"
+          },
         "datum" : {
-          "$ref" : "#/berichtkoppen/datum"
-        },
+          "$ref" : "#/$defs/berichtkoppen_datum"
+          },
         "plData" : {
           "$ref" : "persoonslijst-data.schema.json"
-        }
-      },
+          }
+        },
       "required" : [ "berichtType", "herhaling", "status", "datum", "plData" ]
-    },
-    "Jf01Bericht" : {
+      },
+    "berichtsoorten_Jf01Bericht" : {
       "title" : "Jf01",
       "type" : "object",
       "description" : "Fout: PL niet te verzenden - Indien de RNI niet in staat is de PL te verzenden, volgt dit bericht onder vermelding van de foutreden die verzending niet mogelijk maakt.",
@@ -989,26 +985,26 @@
       "properties" : {
         "$schema" : {
           "type" : "string"
-        },
+          },
         "berichtType" : {
-          "$ref" : "#/berichtkoppen/berichtType"
-        },
+          "$ref" : "#/$defs/berichtkoppen_berichtType"
+          },
         "foutreden" : {
-          "$ref" : "#/berichtkoppen/foutreden"
-        },
+          "$ref" : "#/$defs/berichtkoppen_foutreden"
+          },
         "gemeente" : {
-          "$ref" : "#/berichtkoppen/gemeente"
-        },
+          "$ref" : "#/$defs/berichtkoppen_gemeente"
+          },
         "aNummer" : {
-          "$ref" : "#/berichtkoppen/aNummer"
-        },
+          "$ref" : "#/$defs/berichtkoppen_aNummer"
+          },
         "plData" : {
           "$ref" : "persoonslijst-data.schema.json"
-        }
-      },
+          }
+        },
       "required" : [ "berichtType", "foutreden", "gemeente", "aNummer", "plData" ]
-    },
-    "Jf21Bericht" : {
+      },
+    "berichtsoorten_Jf21Bericht" : {
       "title" : "Jf21",
       "type" : "object",
       "description" : "Fout: de ontvangen PL is niet de aangevraagde - Indien de gemeente van vestiging een PL ontvangt die niet voldoet aan de opgegeven identificatie, dan volgt dit bericht.",
@@ -1017,17 +1013,17 @@
       "properties" : {
         "$schema" : {
           "type" : "string"
-        },
+          },
         "berichtType" : {
-          "$ref" : "#/berichtkoppen/berichtType"
-        },
+          "$ref" : "#/$defs/berichtkoppen_berichtType"
+          },
         "plData" : {
           "$ref" : "persoonslijst-data.schema.json"
-        }
-      },
+          }
+        },
       "required" : [ "berichtType", "plData" ]
-    },
-    "Jf31Bericht" : {
+      },
+    "berichtsoorten_Jf31Bericht" : {
       "title" : "Jf31",
       "type" : "object",
       "description" : "Fout: de verwijsgegevens zijn niet correct - Indien de RNI verwijsgegevens ontvangt die niet in overeenstemming zijn met de via het Jb01-bericht verstuurde PL, wordt dit bericht verstuurd.",
@@ -1036,17 +1032,17 @@
       "properties" : {
         "$schema" : {
           "type" : "string"
-        },
+          },
         "berichtType" : {
-          "$ref" : "#/berichtkoppen/berichtType"
-        },
+          "$ref" : "#/$defs/berichtkoppen_berichtType"
+          },
         "plData" : {
           "$ref" : "persoonslijst-data.schema.json"
-        }
-      },
+          }
+        },
       "required" : [ "berichtType", "plData" ]
-    },
-    "Ji01Bericht" : {
+      },
+    "berichtsoorten_Ji01Bericht" : {
       "title" : "Ji01",
       "type" : "object",
       "description" : "Initiatie verhuizing PL van RNI naar gemeente - Het bericht dat de gemeente van vestiging stuurt aan de RNI om kenbaar te maken dat de PL overgezonden dient te worden.",
@@ -1055,20 +1051,20 @@
       "properties" : {
         "$schema" : {
           "type" : "string"
-        },
+          },
         "berichtType" : {
-          "$ref" : "#/berichtkoppen/berichtType"
-        },
+          "$ref" : "#/$defs/berichtkoppen_berichtType"
+          },
         "herhaling" : {
-          "$ref" : "#/berichtkoppen/herhaling"
-        },
+          "$ref" : "#/$defs/berichtkoppen_herhaling"
+          },
         "plData" : {
           "$ref" : "persoonslijst-data.schema.json"
-        }
-      },
+          }
+        },
       "required" : [ "berichtType", "herhaling", "plData" ]
-    },
-    "Jv01Bericht" : {
+      },
+    "berichtsoorten_Jv01Bericht" : {
       "title" : "Jv01",
       "type" : "object",
       "description" : "Verwijsgegevens - Het bericht waarmee de verwijsgegevens door de gemeente van vestiging naar de RNI gestuurd worden.",
@@ -1077,20 +1073,20 @@
       "properties" : {
         "$schema" : {
           "type" : "string"
-        },
+          },
         "berichtType" : {
-          "$ref" : "#/berichtkoppen/berichtType"
-        },
+          "$ref" : "#/$defs/berichtkoppen_berichtType"
+          },
         "herhaling" : {
-          "$ref" : "#/berichtkoppen/herhaling"
-        },
+          "$ref" : "#/$defs/berichtkoppen_herhaling"
+          },
         "plData" : {
           "$ref" : "persoonslijst-data.schema.json"
-        }
-      },
+          }
+        },
       "required" : [ "berichtType", "herhaling", "plData" ]
-    },
-    "La01Bericht" : {
+      },
+    "berichtsoorten_La01Bericht" : {
       "title" : "La01",
       "type" : "object",
       "description" : "Synchronisatieantwoord - Antwoord op het verzoek van BRP-V om een kopie van de PL.",
@@ -1099,17 +1095,17 @@
       "properties" : {
         "$schema" : {
           "type" : "string"
-        },
+          },
         "berichtType" : {
-          "$ref" : "#/berichtkoppen/berichtType"
-        },
+          "$ref" : "#/$defs/berichtkoppen_berichtType"
+          },
         "plData" : {
           "$ref" : "persoonslijst-data.schema.json"
-        }
-      },
+          }
+        },
       "required" : [ "berichtType", "plData" ]
-    },
-    "Lf01Bericht" : {
+      },
+    "berichtsoorten_Lf01Bericht" : {
       "title" : "Lf01",
       "type" : "object",
       "description" : "Fout: synchronisatievraag niet te beantwoorden - Dit bericht wordt verstuurd wanneer de gemeente van inschrijving dan wel de RNI de gevraagde persoon niet in het PL-bestand kan vinden.",
@@ -1118,23 +1114,23 @@
       "properties" : {
         "$schema" : {
           "type" : "string"
-        },
+          },
         "berichtType" : {
-          "$ref" : "#/berichtkoppen/berichtType"
-        },
+          "$ref" : "#/$defs/berichtkoppen_berichtType"
+          },
         "foutreden" : {
-          "$ref" : "#/berichtkoppen/foutreden"
-        },
+          "$ref" : "#/$defs/berichtkoppen_foutreden"
+          },
         "gemeente" : {
-          "$ref" : "#/berichtkoppen/gemeente"
-        },
+          "$ref" : "#/$defs/berichtkoppen_gemeente"
+          },
         "plData" : {
           "$ref" : "persoonslijst-data.schema.json"
-        }
-      },
+          }
+        },
       "required" : [ "berichtType", "foutreden", "gemeente", "plData" ]
-    },
-    "Lg01Bericht" : {
+      },
+    "berichtsoorten_Lg01Bericht" : {
       "title" : "Lg01",
       "type" : "object",
       "description" : "Synchronisatiebericht - Dit bericht wordt verstuurd om:  - of de gegevens van BRP-V te synchroniseren met het PL-bestand van een gemeente of de RNI.  - of om de synchroniciteit van de PL met BRP-V te controleren",
@@ -1143,26 +1139,26 @@
       "properties" : {
         "$schema" : {
           "type" : "string"
-        },
+          },
         "berichtType" : {
-          "$ref" : "#/berichtkoppen/berichtType"
-        },
+          "$ref" : "#/$defs/berichtkoppen_berichtType"
+          },
         "datumTijd" : {
-          "$ref" : "#/berichtkoppen/datumTijd"
-        },
+          "$ref" : "#/$defs/berichtkoppen_datumTijd"
+          },
         "aNummer" : {
-          "$ref" : "#/berichtkoppen/aNummer"
-        },
+          "$ref" : "#/$defs/berichtkoppen_aNummer"
+          },
         "oudANummer" : {
-          "$ref" : "#/berichtkoppen/aNummer"
-        },
+          "$ref" : "#/$defs/berichtkoppen_aNummer"
+          },
         "plData" : {
           "$ref" : "persoonslijst.schema.json"
-        }
-      },
+          }
+        },
       "required" : [ "berichtType", "datumTijd", "aNummer", "oudANummer", "plData" ]
-    },
-    "Lq01Bericht" : {
+      },
+    "berichtsoorten_Lq01Bericht" : {
       "title" : "Lq01",
       "type" : "object",
       "description" : "Synchronisatievraag - Het verzoek van BRP-V om een kopie van de PL te ontvangen.",
@@ -1171,20 +1167,20 @@
       "properties" : {
         "$schema" : {
           "type" : "string"
-        },
+          },
         "berichtType" : {
-          "$ref" : "#/berichtkoppen/berichtType"
-        },
+          "$ref" : "#/$defs/berichtkoppen_berichtType"
+          },
         "herhaling" : {
-          "$ref" : "#/berichtkoppen/herhaling"
-        },
+          "$ref" : "#/$defs/berichtkoppen_herhaling"
+          },
         "plData" : {
           "$ref" : "persoonslijst-data.schema.json"
-        }
-      },
+          }
+        },
       "required" : [ "berichtType", "herhaling", "plData" ]
-    },
-    "Ng01Bericht" : {
+      },
+    "berichtsoorten_Ng01Bericht" : {
       "title" : "Ng01",
       "type" : "object",
       "description" : "Afvoeren PL  Omschrijving Kennisgeving van het feit dat er een PL is afgevoerd aan elke afnemer, die  zijn afnemersindicatie op de betreffende PL heeft geplaatst.  Te verzenden door BRP-V  Te verzenden aan afnemer  Volgt op bericht   Wordt gevolgd door  Kop bevat random key = 8 posities   berichtnummer = 4 posities  Inhoud bevat de rubrieken:  • 01.01.10 A-nummer  • 07.67.10 Datum opschorting bijhouding  • 07.67.20 - Kennisgeving van het feit dat er een PL is afgevoerd aan elke afnemer, die zijn afnemersindicatie op de betreffende PL heeft geplaatst.",
@@ -1193,18 +1189,18 @@
       "properties" : {
         "$schema" : {
           "type" : "string"
-        },
+          },
         "berichtType" : {
-          "$ref" : "#/berichtkoppen/berichtType"
-        },
+          "$ref" : "#/$defs/berichtkoppen_berichtType"
+          },
         "plData" : {
           "$ref" : "persoonslijst-data.schema.json"
-        }
-      },
+          }
+        },
       "required" : [ "berichtType", "plData" ]
-    },
-    "NullBericht" : { },
-    "Of11Bericht" : {
+      },
+    "berichtsoorten_NullBericht" : { },
+    "berichtsoorten_Of11Bericht" : {
       "title" : "Of11",
       "type" : "object",
       "description" : "Fout: opnemen/wijzigen verblijfstitel niet mogelijk - Foutbericht omdat een verzoek tot opnemen/wijzigen van gegevens omtrent de verblijfstitel niet uitgevoerd kan worden en waarom dit niet kan.",
@@ -1213,26 +1209,26 @@
       "properties" : {
         "$schema" : {
           "type" : "string"
-        },
+          },
         "berichtType" : {
-          "$ref" : "#/berichtkoppen/berichtType"
-        },
+          "$ref" : "#/$defs/berichtkoppen_berichtType"
+          },
         "foutreden" : {
-          "$ref" : "#/berichtkoppen/foutreden"
-        },
+          "$ref" : "#/$defs/berichtkoppen_foutreden"
+          },
         "datum" : {
-          "$ref" : "#/berichtkoppen/datum"
-        },
+          "$ref" : "#/$defs/berichtkoppen_datum"
+          },
         "gemeente" : {
-          "$ref" : "#/berichtkoppen/gemeente"
-        },
+          "$ref" : "#/$defs/berichtkoppen_gemeente"
+          },
         "aNummer" : {
-          "$ref" : "#/berichtkoppen/aNummer"
-        }
-      },
+          "$ref" : "#/$defs/berichtkoppen_aNummer"
+          }
+        },
       "required" : [ "berichtType", "foutreden", "datum", "gemeente", "aNummer" ]
-    },
-    "Og11Bericht" : {
+      },
+    "berichtsoorten_Og11Bericht" : {
       "title" : "Og11",
       "type" : "object",
       "description" : "Opnemen/wijzigen gegevens verblijfstitel - Het bericht waarmee de Minister van Justitie gegevens omtrent de verblijfstitel van een bepaalde persoon kenbaar maakt.",
@@ -1241,23 +1237,23 @@
       "properties" : {
         "$schema" : {
           "type" : "string"
-        },
+          },
         "berichtType" : {
-          "$ref" : "#/berichtkoppen/berichtType"
-        },
+          "$ref" : "#/$defs/berichtkoppen_berichtType"
+          },
         "herhaling" : {
-          "$ref" : "#/berichtkoppen/herhaling"
-        },
+          "$ref" : "#/$defs/berichtkoppen_herhaling"
+          },
         "aNummer" : {
-          "$ref" : "#/berichtkoppen/aNummer"
-        },
+          "$ref" : "#/$defs/berichtkoppen_aNummer"
+          },
         "plData" : {
           "$ref" : "persoonslijst-data.schema.json"
-        }
-      },
+          }
+        },
       "required" : [ "berichtType", "herhaling", "aNummer", "plData" ]
-    },
-    "Pf01Bericht" : {
+      },
+    "berichtsoorten_Pf01Bericht" : {
       "title" : "Pf01",
       "type" : "object",
       "description" : "Fout: cyclus - Bericht dat wordt verstuurd indien er een bericht binnenkomt dat niet in een cyclus kan worden geplaatst of waarvan het berichttype niet gedefinieerd is.",
@@ -1266,14 +1262,14 @@
       "properties" : {
         "$schema" : {
           "type" : "string"
-        },
+          },
         "berichtType" : {
-          "$ref" : "#/berichtkoppen/berichtType"
-        }
-      },
+          "$ref" : "#/$defs/berichtkoppen_berichtType"
+          }
+        },
       "required" : [ "berichtType" ]
-    },
-    "Pf02Bericht" : {
+      },
+    "berichtsoorten_Pf02Bericht" : {
       "title" : "Pf02",
       "type" : "object",
       "description" : "Fout: syntax - Bericht dat wordt verstuurd als reactie op een ontvangen bericht dat niet voldoet aan de specificaties van het berichtenuitwisselingsformaat.",
@@ -1282,14 +1278,14 @@
       "properties" : {
         "$schema" : {
           "type" : "string"
-        },
+          },
         "berichtType" : {
-          "$ref" : "#/berichtkoppen/berichtType"
-        }
-      },
+          "$ref" : "#/$defs/berichtkoppen_berichtType"
+          }
+        },
       "required" : [ "berichtType" ]
-    },
-    "Pf03Bericht" : {
+      },
+    "berichtsoorten_Pf03Bericht" : {
       "title" : "Pf03",
       "type" : "object",
       "description" : "Fout: inhoudelijk - Bericht dat wordt verstuurd bij inhoudelijke fouten die zo ernstig zijn dat het bericht niet is te verwerken.",
@@ -1298,14 +1294,14 @@
       "properties" : {
         "$schema" : {
           "type" : "string"
-        },
+          },
         "berichtType" : {
-          "$ref" : "#/berichtkoppen/berichtType"
-        }
-      },
+          "$ref" : "#/$defs/berichtkoppen_berichtType"
+          }
+        },
       "required" : [ "berichtType" ]
-    },
-    "Rb01Bericht" : {
+      },
+    "berichtsoorten_Rb01Bericht" : {
       "title" : "Rb01",
       "type" : "object",
       "description" : "Verhuizen PL van gemeente naar RNI - Het bericht waarmee de gehele PL (inclusief historie) door de gemeente van vertrek naar de RNI gestuurd wordt.",
@@ -1314,26 +1310,26 @@
       "properties" : {
         "$schema" : {
           "type" : "string"
-        },
+          },
         "berichtType" : {
-          "$ref" : "#/berichtkoppen/berichtType"
-        },
+          "$ref" : "#/$defs/berichtkoppen_berichtType"
+          },
         "herhaling" : {
-          "$ref" : "#/berichtkoppen/herhaling"
-        },
+          "$ref" : "#/$defs/berichtkoppen_herhaling"
+          },
         "status" : {
-          "$ref" : "#/berichtkoppen/status"
-        },
+          "$ref" : "#/$defs/berichtkoppen_status"
+          },
         "datum" : {
-          "$ref" : "#/berichtkoppen/datum"
-        },
+          "$ref" : "#/$defs/berichtkoppen_datum"
+          },
         "plData" : {
           "$ref" : "persoonslijst-data.schema.json"
-        }
-      },
+          }
+        },
       "required" : [ "berichtType", "herhaling", "status", "datum", "plData" ]
-    },
-    "Rf01Bericht" : {
+      },
+    "berichtsoorten_Rf01Bericht" : {
       "title" : "Rf01",
       "type" : "object",
       "description" : "Fout: de ontvangen PL kan niet worden opgenomen - Indien de RNI een PL ontvangt die niet kan worden opgenomen, volgt dit bericht onder vermelding van de foutreden die opname niet mogelijk maakt.",
@@ -1342,20 +1338,20 @@
       "properties" : {
         "$schema" : {
           "type" : "string"
-        },
+          },
         "berichtType" : {
-          "$ref" : "#/berichtkoppen/berichtType"
-        },
+          "$ref" : "#/$defs/berichtkoppen_berichtType"
+          },
         "foutreden" : {
-          "$ref" : "#/berichtkoppen/foutreden"
-        },
+          "$ref" : "#/$defs/berichtkoppen_foutreden"
+          },
         "plData" : {
           "$ref" : "persoonslijst-data.schema.json"
-        }
-      },
+          }
+        },
       "required" : [ "berichtType", "foutreden", "plData" ]
-    },
-    "Rf31Bericht" : {
+      },
+    "berichtsoorten_Rf31Bericht" : {
       "title" : "Rf31",
       "type" : "object",
       "description" : "Fout: de verwijsgegevens zijn niet correct - Indien de gemeente van vertrek verwijsgegevens ontvangt die niet in overeenstemming zijn met de via het Rb01-bericht verstuurde PL, wordt dit bericht verstuurd.",
@@ -1364,17 +1360,17 @@
       "properties" : {
         "$schema" : {
           "type" : "string"
-        },
+          },
         "berichtType" : {
-          "$ref" : "#/berichtkoppen/berichtType"
-        },
+          "$ref" : "#/$defs/berichtkoppen_berichtType"
+          },
         "plData" : {
           "$ref" : "persoonslijst-data.schema.json"
-        }
-      },
+          }
+        },
       "required" : [ "berichtType", "plData" ]
-    },
-    "Rv01Bericht" : {
+      },
+    "berichtsoorten_Rv01Bericht" : {
       "title" : "Rv01",
       "type" : "object",
       "description" : "Verwijsgegevens - Het bericht waarmee de verwijsgegevens door de RNI naar de gemeente van vertrek gestuurd worden.",
@@ -1383,20 +1379,20 @@
       "properties" : {
         "$schema" : {
           "type" : "string"
-        },
+          },
         "berichtType" : {
-          "$ref" : "#/berichtkoppen/berichtType"
-        },
+          "$ref" : "#/$defs/berichtkoppen_berichtType"
+          },
         "herhaling" : {
-          "$ref" : "#/berichtkoppen/herhaling"
-        },
+          "$ref" : "#/$defs/berichtkoppen_herhaling"
+          },
         "plData" : {
           "$ref" : "persoonslijst-data.schema.json"
-        }
-      },
+          }
+        },
       "required" : [ "berichtType", "herhaling", "plData" ]
-    },
-    "Sv01Bericht" : {
+      },
+    "berichtsoorten_Sv01Bericht" : {
       "title" : "Sv01",
       "type" : "object",
       "description" : "Selectieverstrekking - Na het draaien van de selectie zonder plaatsing van afnemersindicaties op persoonslijsten wordt voor ieder van de personen die aan de gestelde criteria voldoen, dit bericht verstuurd.",
@@ -1405,23 +1401,23 @@
       "properties" : {
         "$schema" : {
           "type" : "string"
-        },
+          },
         "berichtType" : {
-          "$ref" : "#/berichtkoppen/berichtType"
-        },
+          "$ref" : "#/$defs/berichtkoppen_berichtType"
+          },
         "status" : {
-          "$ref" : "#/berichtkoppen/status"
-        },
+          "$ref" : "#/$defs/berichtkoppen_status"
+          },
         "datum" : {
-          "$ref" : "#/berichtkoppen/datum"
-        },
+          "$ref" : "#/$defs/berichtkoppen_datum"
+          },
         "plData" : {
           "$ref" : "persoonslijst-data.schema.json"
-        }
-      },
+          }
+        },
       "required" : [ "berichtType", "status", "datum", "plData" ]
-    },
-    "Sv11Bericht" : {
+      },
+    "berichtsoorten_Sv11Bericht" : {
       "title" : "Sv11",
       "type" : "object",
       "description" : "Niemand geselecteerd - Indien na het draaien van de selectie door de gemeente blijkt dat niemand aan de gestelde voorwaarden voldoet, wordt dit bericht verstuurd.",
@@ -1430,17 +1426,17 @@
       "properties" : {
         "$schema" : {
           "type" : "string"
-        },
+          },
         "berichtType" : {
-          "$ref" : "#/berichtkoppen/berichtType"
-        },
+          "$ref" : "#/$defs/berichtkoppen_berichtType"
+          },
         "plData" : {
           "$ref" : "persoonslijst-data.schema.json"
-        }
-      },
+          }
+        },
       "required" : [ "berichtType", "plData" ]
-    },
-    "Tb01Bericht" : {
+      },
+    "berichtsoorten_Tb01Bericht" : {
       "title" : "Tb01",
       "type" : "object",
       "description" : "Toevallige geboorte - Indien een kind wordt geboren in een gemeente, waar het volgens de regels niet ingeschreven dient te worden, gaat dit bericht naar de gemeente waar de ouder uit wie het kind is geboren als ingezetene is ingeschreven.",
@@ -1449,26 +1445,26 @@
       "properties" : {
         "$schema" : {
           "type" : "string"
-        },
+          },
         "berichtType" : {
-          "$ref" : "#/berichtkoppen/berichtType"
-        },
+          "$ref" : "#/$defs/berichtkoppen_berichtType"
+          },
         "herhaling" : {
-          "$ref" : "#/berichtkoppen/herhaling"
-        },
+          "$ref" : "#/$defs/berichtkoppen_herhaling"
+          },
         "gezochtePersoon" : {
-          "$ref" : "#/berichtkoppen/gezochtePersoon"
-        },
+          "$ref" : "#/$defs/berichtkoppen_gezochtePersoon"
+          },
         "aktenummer" : {
-          "$ref" : "#/berichtkoppen/aktenummer"
-        },
+          "$ref" : "#/$defs/berichtkoppen_aktenummer"
+          },
         "plData" : {
           "$ref" : "persoonslijst-data.schema.json"
-        }
-      },
+          }
+        },
       "required" : [ "berichtType", "herhaling", "gezochtePersoon", "aktenummer", "plData" ]
-    },
-    "Tb02Bericht" : {
+      },
+    "berichtsoorten_Tb02Bericht" : {
       "title" : "Tb02",
       "type" : "object",
       "description" : "Toevallige gebeurtenis - Indien een akte is opgemaakt, dan wel een latere vermelding is geplaatst op een akte, in een andere gemeente dan waar de hoofdpersoon als ingezetene is ingeschreven, wordt dit bericht verstuurd naar de gemeente van inschrijving van de hoofdpersoon. Indien de opgemaakte akte een overlijden betreft en de overledene is als niet-ingezetene ingeschreven, wordt dit bericht verstuurd aan de RNI.",
@@ -1477,26 +1473,26 @@
       "properties" : {
         "$schema" : {
           "type" : "string"
-        },
+          },
         "berichtType" : {
-          "$ref" : "#/berichtkoppen/berichtType"
-        },
+          "$ref" : "#/$defs/berichtkoppen_berichtType"
+          },
         "herhaling" : {
-          "$ref" : "#/berichtkoppen/herhaling"
-        },
+          "$ref" : "#/$defs/berichtkoppen_herhaling"
+          },
         "rubrieken" : {
-          "$ref" : "#/berichtkoppen/rubrieken"
-        },
+          "$ref" : "#/$defs/berichtkoppen_rubrieken"
+          },
         "aktenummer" : {
-          "$ref" : "#/berichtkoppen/aktenummer"
-        },
+          "$ref" : "#/$defs/berichtkoppen_aktenummer"
+          },
         "plData" : {
           "$ref" : "persoonslijst-data.schema.json"
-        }
-      },
+          }
+        },
       "required" : [ "berichtType", "herhaling", "rubrieken", "aktenummer", "plData" ]
-    },
-    "Tf01Bericht" : {
+      },
+    "berichtsoorten_Tf01Bericht" : {
       "title" : "Tf01",
       "type" : "object",
       "description" : "Fout: persoon niet in te schrijven - Indien de persoon niet in te schrijven is, gaat dit bericht terug naar de gemeente van \"toevallige geboorte\".",
@@ -1505,26 +1501,26 @@
       "properties" : {
         "$schema" : {
           "type" : "string"
-        },
+          },
         "berichtType" : {
-          "$ref" : "#/berichtkoppen/berichtType"
-        },
+          "$ref" : "#/$defs/berichtkoppen_berichtType"
+          },
         "foutreden" : {
-          "$ref" : "#/berichtkoppen/foutreden"
-        },
+          "$ref" : "#/$defs/berichtkoppen_foutreden"
+          },
         "gemeente" : {
-          "$ref" : "#/berichtkoppen/gemeente"
-        },
+          "$ref" : "#/$defs/berichtkoppen_gemeente"
+          },
         "aNummer" : {
-          "$ref" : "#/berichtkoppen/aNummer"
-        },
+          "$ref" : "#/$defs/berichtkoppen_aNummer"
+          },
         "plData" : {
           "$ref" : "persoonslijst-data.schema.json"
-        }
-      },
+          }
+        },
       "required" : [ "berichtType", "foutreden", "gemeente", "aNummer", "plData" ]
-    },
-    "Tf11Bericht" : {
+      },
+    "berichtsoorten_Tf11Bericht" : {
       "title" : "Tf11",
       "type" : "object",
       "description" : "Fout: de verwijsgegevens zijn niet correct - Dit bericht wordt verstuurd, indien de gemeente verwijsgegevens ontvangt van een persoon, die niet corresponderen met de eerder via het Tb01-bericht verstuurde gegevens.",
@@ -1533,17 +1529,17 @@
       "properties" : {
         "$schema" : {
           "type" : "string"
-        },
+          },
         "berichtType" : {
-          "$ref" : "#/berichtkoppen/berichtType"
-        },
+          "$ref" : "#/$defs/berichtkoppen_berichtType"
+          },
         "plData" : {
           "$ref" : "persoonslijst-data.schema.json"
-        }
-      },
+          }
+        },
       "required" : [ "berichtType", "plData" ]
-    },
-    "Tf21Bericht" : {
+      },
+    "berichtsoorten_Tf21Bericht" : {
       "title" : "Tf21",
       "type" : "object",
       "description" : "Fout: gebeurtenisgegevens niet te verwerken - Indien de gemeente van inschrijving of de RNI niet in staat is de gegevens betreffende de gebeurtenis te verwerken, volgt dit bericht onder vermelding van de foutreden die verwerking niet mogelijk maakt.",
@@ -1552,29 +1548,29 @@
       "properties" : {
         "$schema" : {
           "type" : "string"
-        },
+          },
         "berichtType" : {
-          "$ref" : "#/berichtkoppen/berichtType"
-        },
+          "$ref" : "#/$defs/berichtkoppen_berichtType"
+          },
         "foutreden" : {
-          "$ref" : "#/berichtkoppen/foutreden"
-        },
+          "$ref" : "#/$defs/berichtkoppen_foutreden"
+          },
         "gemeente" : {
-          "$ref" : "#/berichtkoppen/gemeente"
-        },
+          "$ref" : "#/$defs/berichtkoppen_gemeente"
+          },
         "aNummer" : {
-          "$ref" : "#/berichtkoppen/aNummer"
-        },
+          "$ref" : "#/$defs/berichtkoppen_aNummer"
+          },
         "rubrieken" : {
-          "$ref" : "#/berichtkoppen/rubrieken"
-        },
+          "$ref" : "#/$defs/berichtkoppen_rubrieken"
+          },
         "plData" : {
           "$ref" : "persoonslijst-data.schema.json"
-        }
-      },
+          }
+        },
       "required" : [ "berichtType", "foutreden", "gemeente", "aNummer", "rubrieken", "plData" ]
-    },
-    "Tv01Bericht" : {
+      },
+    "berichtsoorten_Tv01Bericht" : {
       "title" : "Tv01",
       "type" : "object",
       "description" : "Verwijsgegevens - Het bericht waarmee de verwijsgegevens door de gemeente van eerste inschrijving naar de gemeente van \"toevallige geboorte\" gestuurd worden.",
@@ -1583,20 +1579,20 @@
       "properties" : {
         "$schema" : {
           "type" : "string"
-        },
+          },
         "berichtType" : {
-          "$ref" : "#/berichtkoppen/berichtType"
-        },
+          "$ref" : "#/$defs/berichtkoppen_berichtType"
+          },
         "herhaling" : {
-          "$ref" : "#/berichtkoppen/herhaling"
-        },
+          "$ref" : "#/$defs/berichtkoppen_herhaling"
+          },
         "plData" : {
           "$ref" : "persoonslijst-data.schema.json"
-        }
-      },
+          }
+        },
       "required" : [ "berichtType", "herhaling", "plData" ]
-    },
-    "Vb01Bericht" : {
+      },
+    "berichtsoorten_Vb01Bericht" : {
       "title" : "Vb01",
       "type" : "object",
       "description" : "Vrij bericht - Bericht dat niet automatisch afgehandeld wordt. Het kan binnen de BRP gebruikt worden voor bronmeldingen en foutmeldingen van algemene aard. Het is vergelijkbaar met een notitie op papier.",
@@ -1605,17 +1601,17 @@
       "properties" : {
         "$schema" : {
           "type" : "string"
-        },
+          },
         "berichtType" : {
-          "$ref" : "#/berichtkoppen/berichtType"
-        },
+          "$ref" : "#/$defs/berichtkoppen_berichtType"
+          },
         "vrijeTekst" : {
           "type" : "string"
-        }
-      },
+          }
+        },
       "required" : [ "berichtType", "vrijeTekst" ]
-    },
-    "Vb02Bericht" : {
+      },
+    "berichtsoorten_Vb02Bericht" : {
       "title" : "Vb02",
       "type" : "object",
       "description" : "Vrij bericht via webservice - Bericht dat niet automatisch afgehandeld wordt. Het kan binnen de BRP gebruikt worden voor bronmeldingen en foutmeldingen van algemene aard. Het is vergelijkbaar met een notitie op papier.",
@@ -1624,23 +1620,23 @@
       "properties" : {
         "$schema" : {
           "type" : "string"
-        },
+          },
         "berichtType" : {
-          "$ref" : "#/berichtkoppen/berichtType"
-        },
+          "$ref" : "#/$defs/berichtkoppen_berichtType"
+          },
         "communicatiepartnerAan" : {
-          "$ref" : "#/berichtkoppen/communicatiepartner"
-        },
+          "$ref" : "#/$defs/berichtkoppen_communicatiepartner"
+          },
         "communicatiepartnerVan" : {
-          "$ref" : "#/berichtkoppen/communicatiepartner"
-        },
+          "$ref" : "#/$defs/berichtkoppen_communicatiepartner"
+          },
         "vrijeTekst" : {
           "type" : "string"
-        }
-      },
+          }
+        },
       "required" : [ "berichtType", "communicatiepartnerAan", "communicatiepartnerVan", "vrijeTekst" ]
-    },
-    "Wa01Bericht" : {
+      },
+    "berichtsoorten_Wa01Bericht" : {
       "title" : "Wa01",
       "type" : "object",
       "description" : "Wijziging A-nummer - Indien het A-nummer wijzigt, wordt dit bericht verstuurd aan de gemeente dan wel de RNI met verwijsgegevens.",
@@ -1649,26 +1645,26 @@
       "properties" : {
         "$schema" : {
           "type" : "string"
-        },
+          },
         "berichtType" : {
-          "$ref" : "#/berichtkoppen/berichtType"
-        },
+          "$ref" : "#/$defs/berichtkoppen_berichtType"
+          },
         "herhaling" : {
-          "$ref" : "#/berichtkoppen/herhaling"
-        },
+          "$ref" : "#/$defs/berichtkoppen_herhaling"
+          },
         "aNummer" : {
-          "$ref" : "#/berichtkoppen/aNummer"
-        },
+          "$ref" : "#/$defs/berichtkoppen_aNummer"
+          },
         "datumGeldigheid" : {
-          "$ref" : "#/berichtkoppen/datum"
-        },
+          "$ref" : "#/$defs/berichtkoppen_datum"
+          },
         "plData" : {
           "$ref" : "persoonslijst-data.schema.json"
-        }
-      },
+          }
+        },
       "required" : [ "berichtType", "herhaling", "aNummer", "datumGeldigheid", "plData" ]
-    },
-    "Wa11Bericht" : {
+      },
+    "berichtsoorten_Wa11Bericht" : {
       "title" : "Wa11",
       "type" : "object",
       "description" : "Wijziging A-nummer ten behoeve van afnemers - Melding van een wijziging van het A-nummer aan elke afnemer die zijn afnemersindicatie op de betreffende PL heeft geplaatst.",
@@ -1677,23 +1673,23 @@
       "properties" : {
         "$schema" : {
           "type" : "string"
-        },
+          },
         "berichtType" : {
-          "$ref" : "#/berichtkoppen/berichtType"
-        },
+          "$ref" : "#/$defs/berichtkoppen_berichtType"
+          },
         "aNummer" : {
-          "$ref" : "#/berichtkoppen/aNummer"
-        },
+          "$ref" : "#/$defs/berichtkoppen_aNummer"
+          },
         "datumGeldigheid" : {
-          "$ref" : "#/berichtkoppen/datum"
-        },
+          "$ref" : "#/$defs/berichtkoppen_datum"
+          },
         "plData" : {
           "$ref" : "persoonslijst-data.schema.json"
-        }
-      },
+          }
+        },
       "required" : [ "berichtType", "aNummer", "datumGeldigheid", "plData" ]
-    },
-    "Wf01Bericht" : {
+      },
+    "berichtsoorten_Wf01Bericht" : {
       "title" : "Wf01",
       "type" : "object",
       "description" : "Fout: A-nummerwijziging niet te verwerken - Indien de gemeente dan wel de RNI een wijziging in het A-nummer ontvangt die niet te verwerken is, wordt dit bericht verstuurd.",
@@ -1702,20 +1698,20 @@
       "properties" : {
         "$schema" : {
           "type" : "string"
-        },
+          },
         "berichtType" : {
-          "$ref" : "#/berichtkoppen/berichtType"
-        },
+          "$ref" : "#/$defs/berichtkoppen_berichtType"
+          },
         "foutreden" : {
-          "$ref" : "#/berichtkoppen/foutreden"
-        },
+          "$ref" : "#/$defs/berichtkoppen_foutreden"
+          },
         "plData" : {
           "$ref" : "persoonslijst-data.schema.json"
-        }
-      },
+          }
+        },
       "required" : [ "berichtType", "foutreden", "plData" ]
-    },
-    "Xa01Bericht" : {
+      },
+    "berichtsoorten_Xa01Bericht" : {
       "title" : "Xa01",
       "type" : "object",
       "description" : "Ad hoc adresantwoord - De A-nummers en verder gevraagde gegevens van de op het opgegeven adres ingeschreven personen.",
@@ -1724,20 +1720,20 @@
       "properties" : {
         "$schema" : {
           "type" : "string"
-        },
+          },
         "berichtType" : {
-          "$ref" : "#/berichtkoppen/berichtType"
-        },
+          "$ref" : "#/$defs/berichtkoppen_berichtType"
+          },
         "plDataSet" : {
           "type" : "array",
           "items" : {
             "$ref" : "persoonslijst-data.schema.json"
+            }
           }
-        }
-      },
+        },
       "required" : [ "berichtType", "plDataSet" ]
-    },
-    "Xf01Bericht" : {
+      },
+    "berichtsoorten_Xf01Bericht" : {
       "title" : "Xf01",
       "type" : "object",
       "description" : "Fout: ad hoc adresvraag niet te beantwoorden - Indien de gestelde ad hoc adresvraag niet te beantwoorden is, wordt dit bericht teruggestuurd.",
@@ -1746,29 +1742,29 @@
       "properties" : {
         "$schema" : {
           "type" : "string"
-        },
+          },
         "berichtType" : {
-          "$ref" : "#/berichtkoppen/berichtType"
-        },
+          "$ref" : "#/$defs/berichtkoppen_berichtType"
+          },
         "foutreden" : {
-          "$ref" : "#/berichtkoppen/foutreden"
-        },
+          "$ref" : "#/$defs/berichtkoppen_foutreden"
+          },
         "rubrieken" : {
-          "$ref" : "#/berichtkoppen/rubrieken"
-        },
+          "$ref" : "#/$defs/berichtkoppen_rubrieken"
+          },
         "adresfunctie" : {
-          "$ref" : "#/berichtkoppen/adresfunctie"
-        },
+          "$ref" : "#/$defs/berichtkoppen_adresfunctie"
+          },
         "identificatie" : {
-          "$ref" : "#/berichtkoppen/identificatie"
-        },
+          "$ref" : "#/$defs/berichtkoppen_identificatie"
+          },
         "plData" : {
           "$ref" : "persoonslijst-data.schema.json"
-        }
-      },
+          }
+        },
       "required" : [ "berichtType", "foutreden", "rubrieken", "adresfunctie", "identificatie", "plData" ]
-    },
-    "Xq01Bericht" : {
+      },
+    "berichtsoorten_Xq01Bericht" : {
       "title" : "Xq01",
       "type" : "object",
       "description" : "Ad hoc adresvraag - Op basis van de in dit bericht verstrekte unieke adresidentificatie dan wel persoonsidentificatie worden de A-nummers en de verder gevraagde gegevens van de actueel op dat adres ingeschreven personen verstrekt, indien bij persoonsidentificatie geldt dat de persoon tot de doelgroep van de afnemer m.b.t. ad hoc gegevensverstrekking behoort en bij adresidentificatie tenminste een van die personen tot de doelgroep van de afnemer m.b.t. ad hoc gegevensverstrekking behoort.",
@@ -1777,27 +1773,27 @@
       "properties" : {
         "$schema" : {
           "type" : "string"
-        },
+          },
         "berichtType" : {
-          "$ref" : "#/berichtkoppen/berichtType"
-        },
+          "$ref" : "#/$defs/berichtkoppen_berichtType"
+          },
         "herhaling" : {
-          "$ref" : "#/berichtkoppen/herhaling"
-        },
+          "$ref" : "#/$defs/berichtkoppen_herhaling"
+          },
         "rubrieken" : {
-          "$ref" : "#/berichtkoppen/rubrieken"
-        },
+          "$ref" : "#/$defs/berichtkoppen_rubrieken"
+          },
         "adresfunctie" : {
-          "$ref" : "#/berichtkoppen/adresfunctie"
-        },
+          "$ref" : "#/$defs/berichtkoppen_adresfunctie"
+          },
         "identificatie" : {
-          "$ref" : "#/berichtkoppen/identificatie"
-        },
+          "$ref" : "#/$defs/berichtkoppen_identificatie"
+          },
         "plData" : {
           "$ref" : "persoonslijst-data.schema.json"
-        }
-      },
+          }
+        },
       "required" : [ "berichtType", "herhaling", "rubrieken", "adresfunctie", "identificatie", "plData" ]
+      }
     }
   }
-}
