@@ -7,6 +7,8 @@ info:
 
     # Wijzigingshistorie:
 
+    ## 0.5.1 Oktober 2024
+     - De fout BBA-PUT-F002 is aangepast naar een algemene fout voor onjuiste velden in een PutMessage, via het veld "invalidParams" in de response word aangegeven welke velden onjuist zijn en waarom.
 
     ## 0.5.0 September 2024
      - Het veld berichtId en verwijzingBerichtId zijn omgezet van type 'integer' naar type 'string' om beter aan te sluiten op de bestaande voorziening.
@@ -1125,12 +1127,13 @@ components:
             - title
             - type
             - detail
+            - invalidParameters
           properties:
             title:
               type: string
               examples:
-                - PUTREQUEST_MESSAGE_PAYLOAD_EXCEEDS_LIMITS
-              description: PUTREQUEST_MESSAGE_PAYLOAD_EXCEEDS_LIMITS
+                - PUTREQUEST_INVALID_FIELD_ERROR
+              description: PUTREQUEST_INVALID_FIELD_ERROR
             type:
               type: string
               examples:
@@ -1139,14 +1142,17 @@ components:
             detail:
               type: string
               examples:
-                - De berichtinhoud van het bericht overschrijdt de maximale grootte
-              description: De berichtinhoud van het bericht overschrijdt de maximale grootte
+                - Een of meerdere velden in het bericht voldoen niet aan de gestelde eisen
+              description: Een of meerdere velden in het bericht voldoen niet aan de gestelde eisen
             dateTime:
               type: string
               format: date-time
               examples:
                 - 2024-09-17T09:00:35.374057729+02:00
-          description: De berichtinhoud van het bericht overschrijdt de maximale grootte
+            invalidParameters:
+              $ref: '#/components/schemas/Foutmeldingen/invalidParameters'
+              examples: [ ]
+          description: Een of meerdere velden in het bericht voldoen niet aan de gestelde eisen
         BBA-PUT-F003:
           title: https://www.rvig.nl/berichtenapi/probleem/BBA-PUT-F003
           type: object
