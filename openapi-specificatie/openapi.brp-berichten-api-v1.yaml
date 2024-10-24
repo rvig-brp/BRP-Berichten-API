@@ -1,11 +1,15 @@
 openapi: 3.1.0
 info:
   title: BRP berichten API
-  version: 0.5.0
+  version: 0.5.1
   description: |
     Een REST API voor het a-synchroon uitwisselen van berichten welke in het Logisch Ontwerp gedefinieerd zijn.
 
     # Wijzigingshistorie:
+
+    ## 0.5.2 Oktober 2024
+    - De request die volledig afgekeurd worden en een statuscode 4xx of 5xx retourneren, doen dit nu met de response header 'Content-Type: application/problem+json'.
+    - Requests die een 2xx response in JSON formaat retourneren, doen dit met "Content-Type: application/json" ipv "Content-Type: application/json: charset=utf-8". Conform rfc8259 (https://www.rfc-editor.org/rfc/rfc8259) is JSON altijd in UTF-8 formaat en heeft dit type geen charset parameter.
 
     ## 0.5.1 Oktober 2024
      - De fout BBA-PUT-F002 is aangepast naar een algemene fout voor onjuiste velden in een PutMessage, via het veld "invalidParams" in de response word aangegeven welke velden onjuist zijn en waarom.
@@ -104,9 +108,9 @@ tags:
   - name: Berichtenverkeer
     description: API waarop berichten uitgewisseld kunnen worden.
 servers:
-  - url: https://async-berichten-api.dictua.ictu-sr.nl/
+  - url: https://brp-berichten-api.dictua.ictu-sr.nl/
     description: Demo omgeving (via internet)
-  - url: http://async-berichten-api.gbav-3.dictua.iesprd.ictu-sr.nl:8083/
+  - url: http://berichten-api.gbav-3.dictua.iesprd.ictu-sr.nl:8083/
     description: Demo omgeving (AP via VPN)
   - url: http://localhost:8083/
     description: Lokale ontwikkelomgeving
@@ -123,26 +127,26 @@ paths:
       operationId: putMessages
       requestBody:
         content:
-          application/json; charset=utf-8:
+          application/json:
             schema:
               $ref: '#/components/schemas/put-message-request'
       responses:
         '201':
           description: a-Synchrone response. Een eventueel antwoord op een bericht wordt later voor u klaargezet en dient separaat opgehaald te worden.
           content:
-            application/json; charset=utf-8:
+            application/json:
               schema:
                 $ref: '#/components/schemas/put-message-antwoord'
         '400':
           description: Het verzoek is onjuist en is daarom niet verwerkt.
           content:
-            application/json; charset=utf-8:
+            application/problem+json:
               schema:
                 $ref: '#/components/schemas/Foutmeldingen/PUT/BBA-PUT-F001'
         '401':
           description: Onjuiste of ontbrekende authenticatie
           content:
-            application/json; charset=utf-8:
+            application/problem+json:
               schema:
                 oneOf:
                   - $ref: '#/components/schemas/Foutmeldingen/AUTH/BBA-AUTH-F001'
@@ -151,7 +155,7 @@ paths:
         '500':
           description: Onbekende/technische fout
           content:
-            application/json; charset=utf-8:
+            application/problem+json:
               schema:
                 $ref: '#/components/schemas/Foutmeldingen/GENERAL/BBA-F999'
 
@@ -216,19 +220,19 @@ paths:
         '200':
           description: Een opsomming van de berichten die beschikbaar zijn voor de mailbox die gekoppeld is aan het geauthenticeerde account.
           content:
-            application/json; charset=utf-8:
+            application/json:
               schema:
                 $ref: '#/components/schemas/list-message-antwoord'
         '400':
           description: Onjuist verzoek
           content:
-            application/json; charset=utf-8:
+            application/problem+json:
               schema:
                 $ref: '#/components/schemas/Foutmeldingen/LIST/BBA-LIST-F001'
         '401':
           description: Onjuiste of ontbrekende authenticatie
           content:
-            application/json; charset=utf-8:
+            application/problem+json:
               schema:
                 oneOf:
                   - $ref: '#/components/schemas/Foutmeldingen/AUTH/BBA-AUTH-F001'
@@ -251,19 +255,19 @@ paths:
         '200':
           description: Deze 200 OK response wordt vrijwel alle situaties geretourneerd, mits er geen technische fouten opgetreden zijn. Indien er bij het ophalen van het bericht iets mis ging, dan vindt u dat per bericht terug in de response.
           content:
-            application/json; charset=utf-8:
+            application/json:
               schema:
                 $ref: '#/components/schemas/get-message-antwoord'
         '400':
           description: Onjuist verzoek
           content:
-            application/json; charset=utf-8:
+            application/problem+json:
               schema:
                 $ref: '#/components/schemas/Foutmeldingen/GET/BBA-GET-F004'
         '401':
           description: Onjuiste of ontbrekende authenticatie
           content:
-            application/json; charset=utf-8:
+            application/problem+json:
               schema:
                 oneOf:
                   - $ref: '#/components/schemas/Foutmeldingen/AUTH/BBA-AUTH-F001'
@@ -272,7 +276,7 @@ paths:
         '500':
           description: Onbekende/technische fout
           content:
-            application/json; charset=utf-8:
+            application/problem+json:
               schema:
                 $ref: '#/components/schemas/Foutmeldingen/GENERAL/BBA-F999'
     delete: # (= sPd DELETE)
@@ -288,19 +292,19 @@ paths:
         '200':
           description: Deze 200 OK response wordt vrijwel alle situaties geretourneerd, mits er geen technische fouten opgetreden zijn. Indien er bij het verwijderen van het bericht iets mis ging, dan vindt u dat per bericht terug in de response.
           content:
-            application/json; charset=utf-8:
+            application/json:
               schema:
                 $ref: '#/components/schemas/delete-message-antwoord'
         '400':
           description: Onjuist verzoek
           content:
-            application/json; charset=utf-8:
+            application/problem+json:
               schema:
                 $ref: '#/components/schemas/Foutmeldingen/DELETE/BBA-DELETE-F004'
         '401':
           description: Onjuiste of ontbrekende authenticatie
           content:
-            application/json; charset=utf-8:
+            application/problem+json:
               schema:
                 oneOf:
                   - $ref: '#/components/schemas/Foutmeldingen/AUTH/BBA-AUTH-F001'
@@ -309,7 +313,7 @@ paths:
         '500':
           description: Onbekende/technische fout
           content:
-            application/json; charset=utf-8:
+            application/problem+json:
               schema:
                 $ref: '#/components/schemas/Foutmeldingen/GENERAL/BBA-F999'
 
@@ -364,7 +368,7 @@ paths:
         '200':
           description: Het resultaat van de telling.
           content:
-            application/json; charset=utf-8:
+            application/json:
               schema:
                 allOf:
                   - $ref: '#/components/schemas/generiek-antwoord'
@@ -380,13 +384,13 @@ paths:
         '400':
           description: Indien er een telling-soort gevraagd werdt die niet bestaat, of wanneer er geen telling-soort is opgegeven.
           content:
-            application/json; charset=utf-8:
+            application/problem+json:
               schema:
                 $ref: '#/components/schemas/Foutmeldingen/SUMMARIZE/BBA-SUMMARIZE-F001'
         '401':
           description: Onjuiste of ontbrekende authenticatie
           content:
-            application/json; charset=utf-8:
+            application/problem+json:
               schema:
                 oneOf:
                   - $ref: '#/components/schemas/Foutmeldingen/AUTH/BBA-AUTH-F001'
@@ -407,7 +411,7 @@ paths:
             - "text/plain+base64; charset=teletex": Het klassieke berichtenformaat waarbij de teletex charset wordt gehanteerd. De body is in dit geval Base64 geëncodeerd.
             - "text/plain; charset=utf-8": Het klassieke berichtenformaat waarbij de UTF-8 charset wordt gehanteerd.
             - "text/plain+base64; charset=utf-8": Het klassieke berichtenformaat waarbij de UTF-8 charset wordt gehanteerd. De body is in dit geval Base64 geëncodeerd.
-            - "application/json; charset=utf-8": Het meest recente berichtenformaat gebaseerd op JSON en de UTF-8 charset.
+            - "application/json": Het meest recente berichtenformaat gebaseerd op JSON en de UTF-8 charset.
 
           Middels deze waarden kunt u via de Content-Type en Accept headers aanduiden welk formaat u instuurt en welk formaat u terug wenst te ontvangen.
         content:
@@ -434,14 +438,14 @@ paths:
               contentEncoding: base64
               examples:
                 - "MDAwMDAwMDBHdjAxNDc0Njg0NTA0MjAwMDgyMDcwNTE3MTEwMDA4MjAyMzAxMDI3MTIwMDE4QXR0ZXN0YXRpZSBkZSBWaXRhODgxMDAwNDAyMDE1NzAyMTcxMTAwMDA3MTIwMDAwODgxMDAwMA=="
-          application/json; charset=utf-8:
+          application/json:
             schema:
               $ref: "#/components/schemas/LoBericht"
       responses:
         '200':
           description: Een naar JSON geconverteerd bericht
           content:
-            application/json; charset=utf-8:
+            application/json:
               schema:
                 type: object
                 properties:
@@ -487,31 +491,31 @@ paths:
         '400':
           description: Wanneer het aangeleverde bericht niet voldeed en daardoor niet vertaald kon worden.
           content:
-            application/json; charset=utf-8:
+            application/problem+json:
               schema:
                 $ref: "#/components/schemas/Foutmeldingen/CONV/BBA-CONV-F001"
         '401':
           description: Onjuiste of ontbrekende authenticatie
           content:
-            application/json; charset=utf-8:
+            application/problem+json:
               schema:
                 $ref: '#/components/schemas/Foutmeldingen/AUTH/BBA-AUTH-F001'
         '406':
           description: Wanneer een conversie werd aangevraagd voor een doelformaat dat niet ondersteund wordt.
           content:
-            application/json; charset=utf-8:
+            application/problem+json:
               schema:
                 $ref: "#/components/schemas/Foutmelding"
         '415':
           description: Wanneer een conversie werd aangevraagd voor een bronformaat dat niet ondersteund wordt.
           content:
-            application/json; charset=utf-8:
+            application/problem+json:
               schema:
                 $ref: "#/components/schemas/Foutmelding"
         '500':
           description: Onbekende/technische fout
           content:
-            application/json; charset=utf-8:
+            application/problem+json:
               schema:
                 $ref: '#/components/schemas/Foutmeldingen/GENERAL/BBA-F999'
 
@@ -1671,6 +1675,7 @@ components:
         - $ref: "brp/schemas/2024Q3/berichten.schema.json#/berichtsoorten/Xq01Bericht"
       discriminator:
         propertyName: berichtType
+
   responses:
     '202':
       description: Verzoek is geaccepteerd en wordt op een later moment verwerkt.
