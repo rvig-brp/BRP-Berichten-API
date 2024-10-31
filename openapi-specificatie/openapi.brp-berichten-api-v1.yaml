@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
   title: BRP berichten API
-  version: 0.5.1
+  version: 0.5.2
   description: |
     Een REST API voor het a-synchroon uitwisselen van berichten welke in het Logisch Ontwerp gedefinieerd zijn.
 
