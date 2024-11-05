@@ -1,0 +1,11 @@
+{
+    "$schema": "berichten.schema.json#/berichtsoorten/Tf11Bericht",
+    "berichtType": "Tf11",
+    "plData": {
+      "c01": [
+        {
+          "e0110": "3474548513"
+        }
+      ]
+    }
+}

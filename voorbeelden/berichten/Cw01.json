@@ -1,0 +1,47 @@
+{
+  "$schema": "berichten.schema.json#/berichtsoorten/Cw01Bericht",
+  "berichtType": "Cw01",
+  "herhaling": "0",
+  "afnemersindicatie": "252901",
+  "datumIngang": "20190101",
+  "datumEinde": "20231001",
+  "autorisatietabelregel": {
+    "E9510": "252901",
+    "E9511": [],
+    "E9512": "0",
+    "E9513": "0",
+    "E9514": "0",
+    "E9520": "Belastingkantoor Rivierenland/Gemeentelijke en waterschapsbelastingen",
+    "E9540": [
+      "010110"
+    ],
+    "E9541": "KV 01.01.20 ENVWD KNV 06.08.10",
+    "E9542": [
+      "010120"
+    ],
+    "E9543": "1",
+    "E9544": "N",
+    "E9550": [
+      "010110"
+    ],
+    "E9551": "14.40.10 GA1 252901",
+    "E9552": "2",
+    "E9553": "1",
+    "E9554": "20231001",
+    "E9555": "00",
+    "E9556": "N",
+    "E9560": [
+      "010310"
+    ],
+    "E9561": "KNV 07.67.20",
+    "E9562": "0",
+    "E9563": [],
+    "E9566": "0",
+    "E9567": "A",
+    "E9570": [],
+    "E9571": "",
+    "E9573": "",
+    "E9998": "20231001",
+    "E9999": ""
+  }
+}

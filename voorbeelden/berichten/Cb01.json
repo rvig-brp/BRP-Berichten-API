@@ -1,0 +1,8 @@
+{
+  "$schema": "berichten.schema.json#/berichtsoorten/Cb01Bericht",
+  "berichtType": "Cb01",
+  "herhaling": "0",
+  "afnemersindicatie": "253702",
+  "datumIngang": "20150901",
+  "datumEinde": "20240201"
+}
