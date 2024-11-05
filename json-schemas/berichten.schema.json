@@ -1429,12 +1429,9 @@
           },
         "berichtType" : {
           "$ref" : "#/$defs/berichtkoppen_berichtType"
-          },
-        "plData" : {
-          "$ref" : "persoonslijst-data.schema.json"
           }
         },
-      "required" : [ "berichtType", "plData" ]
+      "required" : [ "berichtType" ]
       },
     "berichtsoorten_Tb01Bericht" : {
       "title" : "Tb01",
