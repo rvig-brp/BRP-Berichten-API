@@ -1,11 +1,15 @@
 openapi: 3.1.0
 info:
   title: BRP berichten API
-  version: 0.5.2
+  version: 0.5.3
   description: |
     Een REST API voor het a-synchroon uitwisselen van berichten welke in het Logisch Ontwerp gedefinieerd zijn.
 
     # Wijzigingshistorie:
+
+    ## 0.5.3 November 2024
+    - Het Sv11 bericht is qua schema aangepast aangezien deze onterecht de property plData bevatte. Deze property is verwijderd uit dit bericht.
+    - Foutsituaties zijn voorzien van discriminators ten behoeve van het onderscheiden van foutsituatie subtypes door de gegenereerde client.
 
     ## 0.5.2 Oktober 2024
     - De request die volledig afgekeurd worden en een statuscode 4xx of 5xx retourneren, doen dit nu met de response header 'Content-Type: application/problem+json'.
@@ -152,6 +156,12 @@ paths:
                   - $ref: '#/components/schemas/Foutmeldingen/AUTH/BBA-AUTH-F001'
                   - $ref: '#/components/schemas/Foutmeldingen/AUTH/BBA-AUTH-F002'
                   - $ref: '#/components/schemas/Foutmeldingen/GENERAL/BBA-F999'
+                discriminator:
+                  propertyName: type
+                  mapping:
+                    "https://www.rvig.nl/brp/berichten-api/probleem/BBA-AUTH-F001": '#/components/schemas/Foutmeldingen/AUTH/BBA-AUTH-F001'
+                    "https://www.rvig.nl/brp/berichten-api/probleem/BBA-AUTH-F002": '#/components/schemas/Foutmeldingen/AUTH/BBA-AUTH-F002'
+                    "https://www.rvig.nl/brp/berichten-api/probleem/BBA-F999": '#/components/schemas/Foutmeldingen/GENERAL/BBA-F999'
         '500':
           description: Onbekende/technische fout
           content:
@@ -238,6 +248,12 @@ paths:
                   - $ref: '#/components/schemas/Foutmeldingen/AUTH/BBA-AUTH-F001'
                   - $ref: '#/components/schemas/Foutmeldingen/AUTH/BBA-AUTH-F002'
                   - $ref: '#/components/schemas/Foutmeldingen/GENERAL/BBA-F999'
+                discriminator:
+                  propertyName: type
+                  mapping:
+                    "https://www.rvig.nl/brp/berichten-api/probleem/BBA-AUTH-F001": '#/components/schemas/Foutmeldingen/AUTH/BBA-AUTH-F001'
+                    "https://www.rvig.nl/brp/berichten-api/probleem/BBA-AUTH-F002": '#/components/schemas/Foutmeldingen/AUTH/BBA-AUTH-F002'
+                    "https://www.rvig.nl/brp/berichten-api/probleem/BBA-F999": '#/components/schemas/Foutmeldingen/GENERAL/BBA-F999'
         '500':
           $ref: '#/components/responses/500'
 
@@ -273,6 +289,12 @@ paths:
                   - $ref: '#/components/schemas/Foutmeldingen/AUTH/BBA-AUTH-F001'
                   - $ref: '#/components/schemas/Foutmeldingen/AUTH/BBA-AUTH-F002'
                   - $ref: '#/components/schemas/Foutmeldingen/GENERAL/BBA-F999'
+                discriminator:
+                  propertyName: type
+                  mapping:
+                    "https://www.rvig.nl/brp/berichten-api/probleem/BBA-AUTH-F001": '#/components/schemas/Foutmeldingen/AUTH/BBA-AUTH-F001'
+                    "https://www.rvig.nl/brp/berichten-api/probleem/BBA-AUTH-F002": '#/components/schemas/Foutmeldingen/AUTH/BBA-AUTH-F002'
+                    "https://www.rvig.nl/brp/berichten-api/probleem/BBA-F999": '#/components/schemas/Foutmeldingen/GENERAL/BBA-F999'
         '500':
           description: Onbekende/technische fout
           content:
@@ -310,6 +332,12 @@ paths:
                   - $ref: '#/components/schemas/Foutmeldingen/AUTH/BBA-AUTH-F001'
                   - $ref: '#/components/schemas/Foutmeldingen/AUTH/BBA-AUTH-F002'
                   - $ref: '#/components/schemas/Foutmeldingen/GENERAL/BBA-F999'
+                discriminator:
+                  propertyName: type
+                  mapping:
+                    "https://www.rvig.nl/brp/berichten-api/probleem/BBA-AUTH-F001": '#/components/schemas/Foutmeldingen/AUTH/BBA-AUTH-F001'
+                    "https://www.rvig.nl/brp/berichten-api/probleem/BBA-AUTH-F002": '#/components/schemas/Foutmeldingen/AUTH/BBA-AUTH-F002'
+                    "https://www.rvig.nl/brp/berichten-api/probleem/BBA-F999": '#/components/schemas/Foutmeldingen/GENERAL/BBA-F999'
         '500':
           description: Onbekende/technische fout
           content:
@@ -396,7 +424,12 @@ paths:
                   - $ref: '#/components/schemas/Foutmeldingen/AUTH/BBA-AUTH-F001'
                   - $ref: '#/components/schemas/Foutmeldingen/AUTH/BBA-AUTH-F002'
                   - $ref: '#/components/schemas/Foutmeldingen/GENERAL/BBA-F999'
-
+                discriminator:
+                  propertyName: type
+                  mapping:
+                    "https://www.rvig.nl/brp/berichten-api/probleem/BBA-AUTH-F001": '#/components/schemas/Foutmeldingen/AUTH/BBA-AUTH-F001'
+                    "https://www.rvig.nl/brp/berichten-api/probleem/BBA-AUTH-F002": '#/components/schemas/Foutmeldingen/AUTH/BBA-AUTH-F002'
+                    "https://www.rvig.nl/brp/berichten-api/probleem/BBA-F999": '#/components/schemas/Foutmeldingen/GENERAL/BBA-F999'
 
   /api/v1/berichten/conversie:
     post:
@@ -573,6 +606,12 @@ components:
                         - $ref: '#/components/schemas/Foutmeldingen/PUT/BBA-PUT-F002'
                         - $ref: '#/components/schemas/Foutmeldingen/PUT/BBA-PUT-F003'
                         - $ref: '#/components/schemas/Foutmeldingen/PUT/BBA-PUT-F004'
+                      discriminator:
+                        propertyName: type
+                        mapping:
+                          "https://www.rvig.nl/brp/berichten-api/probleem/BBA-PUT-F002": '#/components/schemas/Foutmeldingen/PUT/BBA-PUT-F002'
+                          "https://www.rvig.nl/brp/berichten-api/probleem/BBA-PUT-F003": '#/components/schemas/Foutmeldingen/PUT/BBA-PUT-F003'
+                          "https://www.rvig.nl/brp/berichten-api/probleem/BBA-PUT-F004": '#/components/schemas/Foutmeldingen/PUT/BBA-PUT-F004'
 
     list-message-antwoord:
       allOf:
@@ -625,6 +664,12 @@ components:
                         - $ref: '#/components/schemas/Foutmeldingen/GET/BBA-GET-F001'
                         - $ref: '#/components/schemas/Foutmeldingen/GET/BBA-GET-F002'
                         - $ref: '#/components/schemas/Foutmeldingen/GET/BBA-GET-F003'
+                    discriminator:
+                      propertyName: type
+                      mapping:
+                        "https://www.rvig.nl/brp/berichten-api/probleem/BBA-GET-F001": '#/components/schemas/Foutmeldingen/GET/BBA-GET-F001'
+                        "https://www.rvig.nl/brp/berichten-api/probleem/BBA-GET-F002": '#/components/schemas/Foutmeldingen/GET/BBA-GET-F002'
+                        "https://www.rvig.nl/brp/berichten-api/probleem/BBA-GET-F003": '#/components/schemas/Foutmeldingen/GET/BBA-GET-F003'
 
     delete-message-antwoord:
       allOf:
@@ -657,6 +702,12 @@ components:
                         - $ref: '#/components/schemas/Foutmeldingen/DELETE/BBA-DELETE-F001'
                         - $ref: '#/components/schemas/Foutmeldingen/DELETE/BBA-DELETE-F002'
                         - $ref: '#/components/schemas/Foutmeldingen/DELETE/BBA-DELETE-F003'
+                    discriminator:
+                      propertyName: type
+                      mapping:
+                        "https://www.rvig.nl/brp/berichten-api/probleem/BBA-DELETE-F001": '#/components/schemas/Foutmeldingen/DELETE/BBA-DELETE-F001'
+                        "https://www.rvig.nl/brp/berichten-api/probleem/BBA-DELETE-F002": '#/components/schemas/Foutmeldingen/DELETE/BBA-DELETE-F002'
+                        "https://www.rvig.nl/brp/berichten-api/probleem/BBA-DELETE-F003": '#/components/schemas/Foutmeldingen/DELETE/BBA-DELETE-F003'
 
     generiek-antwoord:
       type: object
