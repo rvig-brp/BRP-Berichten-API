@@ -1203,7 +1203,22 @@
       },
       "required" : [ "berichtType", "plData" ]
     },
-    "NullBericht" : { },
+    "NullBericht" : {
+      "title" : "Null",
+      "type" : "object",
+      "description" : "verwerkbevestiging (Null-bericht) - Bericht dat in bepaalde cycli wordt verstuurd ter bevestiging van de verwerking van de gegevens die opgenomen zijn in het eraan voorafgaande bericht in de cyclus.",
+      "additionalProperties" : false,
+      "unevaluatedProperties" : false,
+      "properties" : {
+        "$schema" : {
+          "type" : "string"
+        },
+        "berichtType" : {
+          "$ref" : "#/berichtkoppen/berichtType"
+        }
+      },
+      "required" : [ "berichtType" ]
+    },
     "Of11Bericht" : {
       "title" : "Of11",
       "type" : "object",

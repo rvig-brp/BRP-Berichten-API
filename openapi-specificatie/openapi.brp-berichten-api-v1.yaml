@@ -1,11 +1,16 @@
 openapi: 3.1.0
 info:
   title: BRP berichten API
-  version: 0.5.3
+  version: 0.5.4
   description: |
     Een REST API voor het a-synchroon uitwisselen van berichten welke in het Logisch Ontwerp gedefinieerd zijn.
 
     # Wijzigingshistorie:
+
+    ## 0.5.4 November 2024
+    - Properties van PagineringResultaat en PagineerbaarResultaat welke altijd aanwezig zullen zijn bij een list-request required gemaakt.
+    - Required properties van put-message-antwoord gecorrigeerd.
+    - Schema van het Null bericht gecorrigeerd.
 
     ## 0.5.3 November 2024
     - Het Sv11 bericht is qua schema aangepast aangezien deze onterecht de property plData bevatte. Deze property is verwijderd uit dit bericht.
@@ -569,8 +574,8 @@ components:
         - $ref: '#/components/schemas/generiek-antwoord'
         - type: object
           required:
-            - succesvolVerwerkteBerichten
-            - nietSuccesvolVerwerkteBerichten
+            - verwerkteBerichten
+            - nietVerwerkteBerichten
           properties:
             verwerkteBerichten:
               type: array
@@ -962,12 +967,22 @@ components:
     PagineerbaarResultaat:
       type: object
       description: Structuur bij responses die grotere data sets kunnen opleveren.
+      required:
+        - paginering
       properties:
         paginering:
           $ref: "#/components/schemas/PagineringResultaat"
 
     PagineringResultaat:
       type: object
+      required:
+        - pagineringVerzoek
+        - aantalPaginas
+        - eerstePagina
+        - huidigePagina
+        - laatstePagina
+        - aantalBerichtenOpDezePagina
+        - totaalAantalBerichten
       properties:
         pagineringVerzoek:
           "$ref": "#/components/schemas/PagineringVerzoek"
@@ -1002,6 +1017,8 @@ components:
 
     PagineringVerzoek:
       type: object
+      required:
+        - pagina
       properties:
         pagina:
           type: integer
