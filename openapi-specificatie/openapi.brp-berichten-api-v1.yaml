@@ -1,11 +1,15 @@
 openapi: 3.1.0
 info:
-  title: BRP berichten API
-  version: 0.5.4
+  title: BRP Berichten API
+  version: 0.5.5
   description: |
     Een REST API voor het a-synchroon uitwisselen van berichten welke in het Logisch Ontwerp gedefinieerd zijn.
 
     # Wijzigingshistorie:
+
+    ## 0.5.5 November 2024
+    - 'berichtVolgnummer' en 'afzender' required gemaakt in ListMessageKenmerken (en daardoor ook in GetMessageKenmerken).
+    - De GET en DELETE foutsituaties zijn voorzien van discriminators ten behoeve van het onderscheiden van foutsituatie subtypes door de gegenereerde client.
 
     ## 0.5.4 November 2024
     - Properties van PagineringResultaat en PagineerbaarResultaat welke altijd aanwezig zullen zijn bij een list-request required gemaakt.
@@ -669,12 +673,12 @@ components:
                         - $ref: '#/components/schemas/Foutmeldingen/GET/BBA-GET-F001'
                         - $ref: '#/components/schemas/Foutmeldingen/GET/BBA-GET-F002'
                         - $ref: '#/components/schemas/Foutmeldingen/GET/BBA-GET-F003'
-                    discriminator:
-                      propertyName: type
-                      mapping:
-                        "https://www.rvig.nl/brp/berichten-api/probleem/BBA-GET-F001": '#/components/schemas/Foutmeldingen/GET/BBA-GET-F001'
-                        "https://www.rvig.nl/brp/berichten-api/probleem/BBA-GET-F002": '#/components/schemas/Foutmeldingen/GET/BBA-GET-F002'
-                        "https://www.rvig.nl/brp/berichten-api/probleem/BBA-GET-F003": '#/components/schemas/Foutmeldingen/GET/BBA-GET-F003'
+                      discriminator:
+                        propertyName: type
+                        mapping:
+                          "https://www.rvig.nl/brp/berichten-api/probleem/BBA-GET-F001": '#/components/schemas/Foutmeldingen/GET/BBA-GET-F001'
+                          "https://www.rvig.nl/brp/berichten-api/probleem/BBA-GET-F002": '#/components/schemas/Foutmeldingen/GET/BBA-GET-F002'
+                          "https://www.rvig.nl/brp/berichten-api/probleem/BBA-GET-F003": '#/components/schemas/Foutmeldingen/GET/BBA-GET-F003'
 
     delete-message-antwoord:
       allOf:
@@ -707,12 +711,12 @@ components:
                         - $ref: '#/components/schemas/Foutmeldingen/DELETE/BBA-DELETE-F001'
                         - $ref: '#/components/schemas/Foutmeldingen/DELETE/BBA-DELETE-F002'
                         - $ref: '#/components/schemas/Foutmeldingen/DELETE/BBA-DELETE-F003'
-                    discriminator:
-                      propertyName: type
-                      mapping:
-                        "https://www.rvig.nl/brp/berichten-api/probleem/BBA-DELETE-F001": '#/components/schemas/Foutmeldingen/DELETE/BBA-DELETE-F001'
-                        "https://www.rvig.nl/brp/berichten-api/probleem/BBA-DELETE-F002": '#/components/schemas/Foutmeldingen/DELETE/BBA-DELETE-F002'
-                        "https://www.rvig.nl/brp/berichten-api/probleem/BBA-DELETE-F003": '#/components/schemas/Foutmeldingen/DELETE/BBA-DELETE-F003'
+                      discriminator:
+                        propertyName: type
+                        mapping:
+                          "https://www.rvig.nl/brp/berichten-api/probleem/BBA-DELETE-F001": '#/components/schemas/Foutmeldingen/DELETE/BBA-DELETE-F001'
+                          "https://www.rvig.nl/brp/berichten-api/probleem/BBA-DELETE-F002": '#/components/schemas/Foutmeldingen/DELETE/BBA-DELETE-F002'
+                          "https://www.rvig.nl/brp/berichten-api/probleem/BBA-DELETE-F003": '#/components/schemas/Foutmeldingen/DELETE/BBA-DELETE-F003'
 
     generiek-antwoord:
       type: object
@@ -763,6 +767,8 @@ components:
         - type: object
           required:
             - berichtTransportId
+            - berichtVolgnummer
+            - afzender
             - dtOntvangen
             - opgehaald
             - dtBewaardTot
