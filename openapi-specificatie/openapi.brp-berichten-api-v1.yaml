@@ -1,11 +1,18 @@
 openapi: 3.1.0
 info:
   title: BRP Berichten API
-  version: 0.5.5
+  version: 0.6.0
   description: |
     Een REST API voor het a-synchroon uitwisselen van berichten welke in het Logisch Ontwerp gedefinieerd zijn.
 
     # Wijzigingshistorie:
+
+    ## 0.6.0 Januari 2025
+    - Servers toegevoegd.
+      - Hiervoor moesten de paden van de endpoints aangepast worden. Hierdoor is '/api/v1' komen te vervallen bij de endpoints. Dit is verhuist naar de base-url's van de genoemde servers.
+    - Authenticatie details toegevoegd.
+    - Foutmeldingen bij het conversie endpoint bijgewerkt.
+    - Alle namespace paden van de foutmeldingen nagelopen en gecorrigeerd daar waar nodig. Dit zodat ze consistent starten met: "https://www.rvig.nl/brp/berichten-api/probleem/".
 
     ## 0.5.5 November 2024
     - 'berichtVolgnummer' en 'afzender' required gemaakt in ListMessageKenmerken (en daardoor ook in GetMessageKenmerken).
@@ -120,17 +127,29 @@ info:
 tags:
   - name: Berichtenverkeer
     description: API waarop berichten uitgewisseld kunnen worden.
+
 servers:
-  - url: https://brp-berichten-api.dictua.ictu-sr.nl/
-    description: Demo omgeving (via internet)
-  - url: http://berichten-api.gbav-3.dictua.iesprd.ictu-sr.nl:8083/
-    description: Demo omgeving (AP via VPN)
-  - url: http://localhost:8083/
-    description: Lokale ontwikkelomgeving
+  - description: Productieomgeving (PRD)
+    url: https://apigw.idm.diginetwerk.net/api/brp/berichten/v1/
+  - description: Proefomgeving (LAP)
+    url: https://apigw.npr.idm.diginetwerk.net/lap/api/brp/berichten/v1/
+  - description: Acceptatieomgeving (ACC)
+    url: https://apigw.npr.idm.diginetwerk.net/acc/api/brp/berichten/v1/
+  - description: Demo omgeving (via internet)
+    url: https://brp-berichten-api.dictua.ictu-sr.nl/api/v1/
+  - description: Demo omgeving (AP via VPN)
+    url: http://berichten-api.gbav-3.dictua.iesprd.ictu-sr.nl:8083/api/v1/
+  - description: Lokale ontwikkelomgeving
+    url: http://localhost:8083/api/v1/
+
 security:
-  - BasicAuth: [ ]
+  - DemoBasicAuth: [ ]
+  - DemoOAuth: [ ]
+  - AccOAuth: [ ]
+  - LapOAuth: [ ]
+  - PrdOAuth: [ ]
 paths:
-  /api/v1/berichten:
+  /berichten:
     post: # (= sPd PUT)
       tags:
         - Berichtenverkeer
@@ -266,7 +285,7 @@ paths:
         '500':
           $ref: '#/components/responses/500'
 
-  /api/v1/berichten/{berichtTransportIdsParam}:
+  /berichten/{berichtTransportIdsParam}:
     get: # (=sPd GET, 1 of meerdere bericht)
       tags:
         - Berichtenverkeer
@@ -354,7 +373,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Foutmeldingen/GENERAL/BBA-F999'
 
-  /api/v1/berichten/ping:
+  /berichten/ping:
     get:
       security: [ ]
       tags:
@@ -378,7 +397,7 @@ paths:
         '204':
           description: Geeft aan dat de API bereikt kon worden.
 
-  /api/v1/berichten/telling:
+  /berichten/telling:
     get:
       tags:
         - Berichtenverkeer
@@ -440,7 +459,7 @@ paths:
                     "https://www.rvig.nl/brp/berichten-api/probleem/BBA-AUTH-F002": '#/components/schemas/Foutmeldingen/AUTH/BBA-AUTH-F002'
                     "https://www.rvig.nl/brp/berichten-api/probleem/BBA-F999": '#/components/schemas/Foutmeldingen/GENERAL/BBA-F999'
 
-  /api/v1/berichten/conversie:
+  /berichten/conversie:
     post:
       tags:
         - Berichtconversie
@@ -535,7 +554,20 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "#/components/schemas/Foutmeldingen/CONV/BBA-CONV-F001"
+                oneOf:
+                  - $ref: '#/components/schemas/Foutmeldingen/CONV/BBA-CONV-F001'
+                  - $ref: '#/components/schemas/Foutmeldingen/CONV/BBA-CONV-F002'
+                  - $ref: '#/components/schemas/Foutmeldingen/CONV/BBA-CONV-F003'
+                  - $ref: '#/components/schemas/Foutmeldingen/CONV/BBA-CONV-F004'
+                  - $ref: '#/components/schemas/Foutmeldingen/CONV/BBA-CONV-F005'
+                  - $ref: '#/components/schemas/Foutmeldingen/CONV/BBA-CONV-F006'
+                  - $ref: '#/components/schemas/Foutmeldingen/GENERAL/BBA-F999'
+                discriminator:
+                  propertyName: type
+                  mapping:
+                    "https://www.rvig.nl/brp/berichten-api/probleem/BBA-CONV-F004": '#/components/schemas/Foutmeldingen/CONV/BBA-CONV-F004'
+                    "https://www.rvig.nl/brp/berichten-api/probleem/BBA-CONV-F006": '#/components/schemas/Foutmeldingen/CONV/BBA-CONV-F006'
+                    "https://www.rvig.nl/brp/berichten-api/probleem/BBA-F999": '#/components/schemas/Foutmeldingen/GENERAL/BBA-F999'
         '401':
           description: Onjuiste of ontbrekende authenticatie
           content:
@@ -547,13 +579,27 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: "#/components/schemas/Foutmelding"
+                oneOf:
+                  - $ref: '#/components/schemas/Foutmeldingen/CONV/BBA-CONV-F001'
+                  - $ref: '#/components/schemas/Foutmeldingen/CONV/BBA-CONV-F005'
+                discriminator:
+                  propertyName: type
+                  mapping:
+                    "https://www.rvig.nl/brp/berichten-api/probleem/BBA-CONV-F001": '#/components/schemas/Foutmeldingen/CONV/BBA-CONV-F001'
+                    "https://www.rvig.nl/brp/berichten-api/probleem/BBA-CONV-F005": '#/components/schemas/Foutmeldingen/CONV/BBA-CONV-F005'
         '415':
           description: Wanneer een conversie werd aangevraagd voor een bronformaat dat niet ondersteund wordt.
           content:
             application/problem+json:
               schema:
-                $ref: "#/components/schemas/Foutmelding"
+                oneOf:
+                  - $ref: '#/components/schemas/Foutmeldingen/CONV/BBA-CONV-F002'
+                  - $ref: '#/components/schemas/Foutmeldingen/CONV/BBA-CONV-F003'
+                discriminator:
+                  propertyName: type
+                  mapping:
+                    "https://www.rvig.nl/brp/berichten-api/probleem/BBA-CONV-F001": '#/components/schemas/Foutmeldingen/CONV/BBA-CONV-F002'
+                    "https://www.rvig.nl/brp/berichten-api/probleem/BBA-CONV-F005": '#/components/schemas/Foutmeldingen/CONV/BBA-CONV-F003'
         '500':
           description: Onbekende/technische fout
           content:
@@ -1042,7 +1088,7 @@ components:
         type:
           type: string
           examples:
-            - https://www.rvig.nl/berichtenapi/probleem/BBA-AUTH-F001
+            - https://www.rvig.nl/brp/berichten-api/probleem/BBA-AUTH-F001
           description: >
             Unieke (RFC7807) foutcode voor het type van de opgetreden fout. Een namespace URI-pad gevolgd door een type fout id in de vorm VVV-DDDD-FFFF waarbij VVV gelijk is
             aan de afkorting van de voorziening (in dit geval BBA voor BRP Berichten API). DDDD een indicatie geeft van de operatie/domein waar de fout is opgetreden en FFFF een opdeling betreft van specifieke fouten (types)
@@ -1084,7 +1130,7 @@ components:
               type: string
       AUTH:
         BBA-AUTH-F001:
-          title: https://www.rvig.nl/berichtenapi/probleem/BBA-AUTH-F001
+          title: https://www.rvig.nl/brp/berichten-api/probleem/BBA-AUTH-F001
           description: Onjuiste of onbekende authenticatie.
           type: object
           required:
@@ -1100,9 +1146,9 @@ components:
               type: string
             type:
               examples:
-                - https://www.rvig.nl/berichtenapi/probleem/BBA-AUTH-F001
+                - https://www.rvig.nl/brp/berichten-api/probleem/BBA-AUTH-F001
               type: string
-              description: https://www.rvig.nl/berichtenapi/probleem/BBA-AUTH-F001
+              description: https://www.rvig.nl/brp/berichten-api/probleem/BBA-AUTH-F001
             detail:
               examples:
                 - Onjuiste of onbekende authenticatie.
@@ -1124,7 +1170,7 @@ components:
               examples:
                 - https://www.rvig.nl/brp/berichten-api/request/be215b41-a417-4148-b2bf-911b8b8b0133
         BBA-AUTH-F002:
-          title: https://www.rvig.nl/berichtenapi/probleem/BBA-AUTH-F002
+          title: https://www.rvig.nl/brp/berichten-api/probleem/BBA-AUTH-F002
           type: object
           required:
             - type
@@ -1139,9 +1185,9 @@ components:
               description: Authenticatiefout
             type:
               examples:
-                - https://www.rvig.nl/berichtenapi/probleem/BBA-AUTH-F002
+                - https://www.rvig.nl/brp/berichten-api/probleem/BBA-AUTH-F002
               type: string
-              description: https://www.rvig.nl/berichtenapi/probleem/BBA-AUTH-F002
+              description: https://www.rvig.nl/brp/berichten-api/probleem/BBA-AUTH-F002
             detail:
               examples:
                 - Het account is geblokkeerd.
@@ -1165,7 +1211,7 @@ components:
           description: Het account is geblokkeerd.
       PUT:
         BBA-PUT-F001:
-          title: https://www.rvig.nl/berichtenapi/probleem/BBA-PUT-F001
+          title: https://www.rvig.nl/brp/berichten-api/probleem/BBA-PUT-F001
           type: object
           required:
             - title
@@ -1180,8 +1226,8 @@ components:
             type:
               type: string
               examples:
-                - https://www.rvig.nl/berichtenapi/probleem/BBA-PUT-F001
-              description: https://www.rvig.nl/berichtenapi/probleem/BBA-PUT-F001
+                - https://www.rvig.nl/brp/berichten-api/probleem/BBA-PUT-F001
+              description: https://www.rvig.nl/brp/berichten-api/probleem/BBA-PUT-F001
             detail:
               type: string
               examples:
@@ -1199,7 +1245,7 @@ components:
                 - https://www.rvig.nl/brp/berichten-api/request/be215b41-a417-4148-b2bf-911b8b8b0133
           description: Het aantal berichten in het verzoek overschrijd het ingestelde limiet
         BBA-PUT-F002:
-          title: https://www.rvig.nl/berichtenapi/probleem/BBA-PUT-F002
+          title: https://www.rvig.nl/brp/berichten-api/probleem/BBA-PUT-F002
           type: object
           required:
             - title
@@ -1215,8 +1261,8 @@ components:
             type:
               type: string
               examples:
-                - https://www.rvig.nl/berichtenapi/probleem/BBA-PUT-F002
-              description: https://www.rvig.nl/berichtenapi/probleem/BBA-PUT-F002
+                - https://www.rvig.nl/brp/berichten-api/probleem/BBA-PUT-F002
+              description: https://www.rvig.nl/brp/berichten-api/probleem/BBA-PUT-F002
             detail:
               type: string
               examples:
@@ -1232,7 +1278,7 @@ components:
               examples: [ ]
           description: Een of meerdere velden in het bericht voldoen niet aan de gestelde eisen
         BBA-PUT-F003:
-          title: https://www.rvig.nl/berichtenapi/probleem/BBA-PUT-F003
+          title: https://www.rvig.nl/brp/berichten-api/probleem/BBA-PUT-F003
           type: object
           required:
             - title
@@ -1247,8 +1293,8 @@ components:
             type:
               type: string
               examples:
-                - https://www.rvig.nl/berichtenapi/probleem/BBA-PUT-F003
-              description: https://www.rvig.nl/berichtenapi/probleem/BBA-PUT-F003
+                - https://www.rvig.nl/brp/berichten-api/probleem/BBA-PUT-F003
+              description: https://www.rvig.nl/brp/berichten-api/probleem/BBA-PUT-F003
             detail:
               type: string
               examples:
@@ -1261,7 +1307,7 @@ components:
                 - 2024-09-17T09:00:35.374057729+02:00
           description: Het bericht kon niet verzonden worden aan de geadresseerde
         BBA-PUT-F004:
-          title: https://www.rvig.nl/berichtenapi/probleem/BBA-PUT-F004
+          title: https://www.rvig.nl/brp/berichten-api/probleem/BBA-PUT-F004
           type: object
           required:
             - title
@@ -1276,8 +1322,8 @@ components:
             type:
               type: string
               examples:
-                - https://www.rvig.nl/berichtenapi/probleem/BBA-PUT-F004
-              description: https://www.rvig.nl/berichtenapi/probleem/BBA-PUT-F004
+                - https://www.rvig.nl/brp/berichten-api/probleem/BBA-PUT-F004
+              description: https://www.rvig.nl/brp/berichten-api/probleem/BBA-PUT-F004
             detail:
               type: string
               examples:
@@ -1291,7 +1337,7 @@ components:
           description: "Het bericht kon niet verzonden worden, uw account is niet beschikbaar"
       LIST:
         BBA-LIST-F001:
-          title: https://www.rvig.nl/berichtenapi/probleem/BBA-LIST-F001
+          title: https://www.rvig.nl/brp/berichten-api/probleem/BBA-LIST-F001
           type: object
           required:
             - title
@@ -1307,8 +1353,8 @@ components:
             type:
               type: string
               examples:
-                - https://www.rvig.nl/berichtenapi/probleem/BBA-LIST-F001
-              description: https://www.rvig.nl/berichtenapi/probleem/BBA-LIST-F001
+                - https://www.rvig.nl/brp/berichten-api/probleem/BBA-LIST-F001
+              description: https://www.rvig.nl/brp/berichten-api/probleem/BBA-LIST-F001
             detail:
               type: string
               examples:
@@ -1330,7 +1376,7 @@ components:
           description: Ongeldige zoekfilters opgegeven
       GET:
         BBA-GET-F001:
-          title: https://www.rvig.nl/berichtenapi/probleem/BBA-GET-F001
+          title: https://www.rvig.nl/brp/berichten-api/probleem/BBA-GET-F001
           type: object
           required:
             - title
@@ -1344,9 +1390,9 @@ components:
               description: GETREQUEST_MESSAGE_CONTENT_EXPIRED
             type:
               examples:
-                - https://www.rvig.nl/berichtenapi/probleem/BBA-GET-F001
+                - https://www.rvig.nl/brp/berichten-api/probleem/BBA-GET-F001
               type: string
-              description: https://www.rvig.nl/berichtenapi/probleem/BBA-GET-F001
+              description: https://www.rvig.nl/brp/berichten-api/probleem/BBA-GET-F001
             detail:
               examples:
                 - Het bericht is niet langer beschikbaar omdat de retentietijd verstreken is.
@@ -1359,7 +1405,7 @@ components:
                 - 2024-09-17T09:00:35.374057729+02:00
           description: Het bericht is niet langer beschikbaar omdat de retentietijd verstreken is.
         BBA-GET-F002:
-          title: https://www.rvig.nl/berichtenapi/probleem/BBA-GET-F002
+          title: https://www.rvig.nl/brp/berichten-api/probleem/BBA-GET-F002
           type: object
           required:
             - title
@@ -1373,9 +1419,9 @@ components:
               description: GETREQUEST_MESSAGE_CONTENT_DELETED
             type:
               examples:
-                - https://www.rvig.nl/berichtenapi/probleem/BBA-GET-F002
+                - https://www.rvig.nl/brp/berichten-api/probleem/BBA-GET-F002
               type: string
-              description: https://www.rvig.nl/berichtenapi/probleem/BBA-GET-F002
+              description: https://www.rvig.nl/brp/berichten-api/probleem/BBA-GET-F002
             detail:
               examples:
                 - Het bericht is niet langer beschikbaar omdat het verwijderd is.
@@ -1388,7 +1434,7 @@ components:
                 - 2024-09-17T09:00:35.374057729+02:00
           description: Het bericht is niet langer beschikbaar omdat het verwijderd is.
         BBA-GET-F003:
-          title: https://www.rvig.nl/berichtenapi/probleem/BBA-GET-F003
+          title: https://www.rvig.nl/brp/berichten-api/probleem/BBA-GET-F003
           type: object
           required:
             - title
@@ -1402,9 +1448,9 @@ components:
               description: GETREQUEST_MESSAGE_NOT_FOUND
             type:
               examples:
-                - https://www.rvig.nl/berichtenapi/probleem/BBA-GET-F003
+                - https://www.rvig.nl/brp/berichten-api/probleem/BBA-GET-F003
               type: string
-              description: https://www.rvig.nl/berichtenapi/probleem/BBA-GET-F003
+              description: https://www.rvig.nl/brp/berichten-api/probleem/BBA-GET-F003
             detail:
               examples:
                 - Onbekend berichtTransportId
@@ -1417,7 +1463,7 @@ components:
                 - 2024-09-17T09:00:35.374057729+02:00
           description: Onbekend berichtTransportId
         BBA-GET-F004:
-          title: https://www.rvig.nl/berichtenapi/probleem/BBA-GET-F004
+          title: https://www.rvig.nl/brp/berichten-api/probleem/BBA-GET-F004
           type: object
           required:
             - title
@@ -1431,9 +1477,9 @@ components:
               description: GETREQUEST_REQUESTED_NUMBER_OF_MESSAGES_EXCEEDS_LIMIT
             type:
               examples:
-                - https://www.rvig.nl/berichtenapi/probleem/BBA-GET-F004
+                - https://www.rvig.nl/brp/berichten-api/probleem/BBA-GET-F004
               type: string
-              description: https://www.rvig.nl/berichtenapi/probleem/BBA-GET-F004
+              description: https://www.rvig.nl/brp/berichten-api/probleem/BBA-GET-F004
             detail:
               examples:
                 - Het aantal opgevraagde berichten overschreed het ingestelde limiet
@@ -1452,7 +1498,7 @@ components:
           description: Het aantal opgevraagde berichten overschreed het ingestelde limiet
       DELETE:
         BBA-DELETE-F001:
-          title: https://www.rvig.nl/berichtenapi/probleem/BBA-DELETE-F001
+          title: https://www.rvig.nl/brp/berichten-api/probleem/BBA-DELETE-F001
           type: object
           required:
             - title
@@ -1466,9 +1512,9 @@ components:
               description: DELETEREQUEST_MESSAGE_EXPIRED
             type:
               examples:
-                - https://www.rvig.nl/berichtenapi/probleem/BBA-DELETE-F001
+                - https://www.rvig.nl/brp/berichten-api/probleem/BBA-DELETE-F001
               type: string
-              description: https://www.rvig.nl/berichtenapi/probleem/BBA-DELETE-F001
+              description: https://www.rvig.nl/brp/berichten-api/probleem/BBA-DELETE-F001
             detail:
               examples:
                 - Het bericht is niet langer beschikbaar omdat de retentietijd verstreken is.
@@ -1481,7 +1527,7 @@ components:
                 - 2024-09-17T09:00:35.374057729+02:00
           description: Het bericht is niet langer beschikbaar omdat de retentietijd verstreken is.
         BBA-DELETE-F002:
-          title: https://www.rvig.nl/berichtenapi/probleem/BBA-DELETE-F002
+          title: https://www.rvig.nl/brp/berichten-api/probleem/BBA-DELETE-F002
           type: object
           required:
             - title
@@ -1495,9 +1541,9 @@ components:
               description: DELETEREQUEST_MESSAGE_DELETED
             type:
               examples:
-                - https://www.rvig.nl/berichtenapi/probleem/BBA-DELETE-F002
+                - https://www.rvig.nl/brp/berichten-api/probleem/BBA-DELETE-F002
               type: string
-              description: https://www.rvig.nl/berichtenapi/probleem/BBA-DELETE-F002
+              description: https://www.rvig.nl/brp/berichten-api/probleem/BBA-DELETE-F002
             detail:
               examples:
                 - Het bericht is niet langer beschikbaar omdat het reeds verwijderd is.
@@ -1510,7 +1556,7 @@ components:
                 - 2024-09-17T09:00:35.374057729+02:00
           description: Het bericht is niet langer beschikbaar omdat het reeds verwijderd is.
         BBA-DELETE-F003:
-          title: https://www.rvig.nl/berichtenapi/probleem/BBA-DELETE-F003
+          title: https://www.rvig.nl/brp/berichten-api/probleem/BBA-DELETE-F003
           type: object
           required:
             - title
@@ -1524,9 +1570,9 @@ components:
               description: DELETEREQUEST_MESSAGE_NOT_FOUND
             type:
               examples:
-                - https://www.rvig.nl/berichtenapi/probleem/BBA-DELETE-F003
+                - https://www.rvig.nl/brp/berichten-api/probleem/BBA-DELETE-F003
               type: string
-              description: https://www.rvig.nl/berichtenapi/probleem/BBA-DELETE-F003
+              description: https://www.rvig.nl/brp/berichten-api/probleem/BBA-DELETE-F003
             detail:
               examples:
                 - Onbekend berichtTransportId
@@ -1539,7 +1585,7 @@ components:
                 - 2024-09-17T09:00:35.374057729+02:00
           description: Onbekend berichtTransportId
         BBA-DELETE-F004:
-          title: https://www.rvig.nl/berichtenapi/probleem/BBA-DELETE-F004
+          title: https://www.rvig.nl/brp/berichten-api/probleem/BBA-DELETE-F004
           type: object
           required:
             - title
@@ -1553,9 +1599,9 @@ components:
               description: DELETEREQUEST_REQUESTED_NUMBER_OF_MESSAGES_EXCEEDS_LIMIT
             type:
               examples:
-                - https://www.rvig.nl/berichtenapi/probleem/BBA-DELETE-F004
+                - https://www.rvig.nl/brp/berichten-api/probleem/BBA-DELETE-F004
               type: string
-              description: https://www.rvig.nl/berichtenapi/probleem/BBA-DELETE-F004
+              description: https://www.rvig.nl/brp/berichten-api/probleem/BBA-DELETE-F004
             detail:
               examples:
                 - Het aantal berichten dat in dit verzoek verwijderd dient te worden overschrijft het ingestelde limiet
@@ -1574,7 +1620,7 @@ components:
           description: Het aantal berichten dat in dit verzoek verwijderd dient te worden overschrijft het ingestelde limiet
       SUMMARIZE:
         BBA-SUMMARIZE-F001:
-          title: https://www.rvig.nl/berichtenapi/probleem/BBA-SUMMARIZE-F001
+          title: https://www.rvig.nl/brp/berichten-api/probleem/BBA-SUMMARIZE-F001
           required:
             - title
             - type
@@ -1587,9 +1633,9 @@ components:
               description: SUMMARIZEREQUEST_INVALID_REQUEST_ERROR
             type:
               examples:
-                - https://www.rvig.nl/berichtenapi/probleem/BBA-SUMMARIZE-F001
+                - https://www.rvig.nl/brp/berichten-api/probleem/BBA-SUMMARIZE-F001
               type: string
-              description: https://www.rvig.nl/berichtenapi/probleem/BBA-SUMMARIZE-F001
+              description: https://www.rvig.nl/brp/berichten-api/probleem/BBA-SUMMARIZE-F001
             detail:
               examples:
                 - Het verzoek is onjuist controleer de zoekparameters.
@@ -1611,7 +1657,8 @@ components:
           description: Het verzoek is onjuist controleer de zoekparameters.
       CONV:
         BBA-CONV-F001:
-          title: https://www.rvig.nl/berichtenapi/probleem/BBA-CONV-F001
+          title: https://www.rvig.nl/brp/berichten-api/probleem/BBA-CONV-F001
+          description: Bronformaat en doelformaat zijn gelijk aan elkaar
           type: object
           required:
             - title
@@ -1621,19 +1668,19 @@ components:
           properties:
             title:
               examples:
-                - CONVERSIONREQUEST_INPUT_MESSAGE_INVALID
+                - Bronformaat en doelformaat zijn gelijk aan elkaar
               type: string
-              description: CONVERSIONREQUEST_INPUT_MESSAGE_INVALID
+              description: Bronformaat en doelformaat zijn gelijk aan elkaar
             type:
               examples:
-                - https://www.rvig.nl/berichtenapi/probleem/BBA-CONV-F001
+                - https://www.rvig.nl/brp/berichten-api/probleem/BBA-CONV-F001
               type: string
-              description: https://www.rvig.nl/berichtenapi/probleem/BBA-CONV-F001
+              description: https://www.rvig.nl/brp/berichten-api/probleem/BBA-CONV-F001
             detail:
               examples:
-                - Het aangeleverde bericht kon niet ingenomen worden en voldoet waarschijnlijk niet aan de gestelde vereisten.
+                - bronformaat 'UTF8' is gelijk aan doelformaat 'UTF8'
               type: string
-              description: Het aangeleverde bericht kon niet ingenomen worden en voldoet waarschijnlijk niet aan de gestelde vereisten.
+              description: bronformaat '[bronformaat]' is gelijk aan doelformaat '[doelformaat]'
             invalidParameters:
               $ref: '#/components/schemas/Foutmeldingen/invalidParameters'
             dateTime:
@@ -1646,10 +1693,179 @@ components:
               description: Dit (RFC7807) veld beschrijft het request waarbij dit probleem is opgetreden (indien van toepassing).
               examples:
                 - https://www.rvig.nl/brp/berichten-api/request/be215b41-a417-4148-b2bf-911b8b8b0133
-          description: Het aangeleverde bericht kon niet ingenomen worden en voldoet waarschijnlijk niet aan de gestelde vereisten.
+        BBA-CONV-F002:
+          title: https://www.rvig.nl/brp/berichten-api/probleem/BBA-CONV-F002
+          description: Content-Type header niet aanwezig
+          type: object
+          required:
+            - title
+            - type
+            - detail
+          properties:
+            title:
+              examples:
+                - Content-Type header niet aanwezig
+              type: string
+              description: Content-Type header niet aanwezig
+            type:
+              examples:
+                - https://www.rvig.nl/brp/berichten-api/probleem/BBA-CONV-F002
+              type: string
+              description: https://www.rvig.nl/brp/berichten-api/probleem/BBA-CONV-F002
+            detail:
+              examples:
+                - Er is geen 'Content-Type:' header meegegeven waardoor niet bepaald kon worden welk bron formaat er geleverd is.
+              type: string
+              description: Er is geen 'Content-Type:' header meegegeven waardoor niet bepaald kon worden welk bron formaat er geleverd is.
+            dateTime:
+              type: string
+              format: date-time
+              examples:
+                - 2024-09-17T09:00:35.374057729+02:00
+            instance:
+              type: string
+              description: Dit (RFC7807) veld beschrijft het request waarbij dit probleem is opgetreden (indien van toepassing).
+              examples:
+                - https://www.rvig.nl/brp/berichten-api/request/be215b41-a417-4148-b2bf-911b8b8b0133
+        BBA-CONV-F003:
+          title: https://www.rvig.nl/brp/berichten-api/probleem/BBA-CONV-F003
+          description: Er is geen 'Content-Type:' header meegegeven waardoor niet bepaald kon worden welk bron formaat er geleverd is.
+          type: object
+          required:
+            - title
+            - type
+            - detail
+          properties:
+            title:
+              examples:
+                - Ongeldig bronformaat aangevraagd in 'Content-Type' header
+              type: string
+              description: Ongeldig bronformaat aangevraagd in 'Content-Type' header
+            type:
+              examples:
+                - https://www.rvig.nl/brp/berichten-api/probleem/BBA-CONV-F003
+              type: string
+              description: https://www.rvig.nl/brp/berichten-api/probleem/BBA-CONV-F003
+            detail:
+              examples:
+                - Kon bronformaat niet bepalen a.d.h.v. Content-type header text/xml.
+              type: string
+              description: Kon bronformaat niet bepalen a.d.h.v. Content-type header [content-type].
+            dateTime:
+              type: string
+              format: date-time
+              examples:
+                - 2024-09-17T09:00:35.374057729+02:00
+            instance:
+              type: string
+              description: Dit (RFC7807) veld beschrijft het request waarbij dit probleem is opgetreden (indien van toepassing).
+              examples:
+                - https://www.rvig.nl/brp/berichten-api/request/be215b41-a417-4148-b2bf-911b8b8b0133
+        BBA-CONV-F004:
+          title: https://www.rvig.nl/brp/berichten-api/probleem/BBA-CONV-F004
+          description: Accept header niet aanwezig
+          type: object
+          required:
+            - title
+            - type
+            - detail
+          properties:
+            title:
+              examples:
+                - Accept header niet aanwezig
+              type: string
+              description: Accept header niet aanwezig
+            type:
+              examples:
+                - https://www.rvig.nl/brp/berichten-api/probleem/BBA-CONV-F004
+              type: string
+              description: https://www.rvig.nl/brp/berichten-api/probleem/BBA-CONV-F004
+            detail:
+              examples:
+                - Er is geen 'Accept:' header meegegeven waardoor niet bepaald kon worden welk doelformaat er gevraagd is.
+              type: string
+              description: Er is geen 'Accept:' header meegegeven waardoor niet bepaald kon worden welk doelformaat er gevraagd is.
+            dateTime:
+              type: string
+              format: date-time
+              examples:
+                - 2024-09-17T09:00:35.374057729+02:00
+            instance:
+              type: string
+              description: Dit (RFC7807) veld beschrijft het request waarbij dit probleem is opgetreden (indien van toepassing).
+              examples:
+                - https://www.rvig.nl/brp/berichten-api/request/be215b41-a417-4148-b2bf-911b8b8b0133
+        BBA-CONV-F005:
+          title: https://www.rvig.nl/brp/berichten-api/probleem/BBA-CONV-F005
+          description: Ongeldig doelformaat aangevraagd in 'Accept' header
+          type: object
+          required:
+            - title
+            - type
+            - detail
+          properties:
+            title:
+              examples:
+                - Ongeldig doelformaat aangevraagd in 'Accept' header
+              type: string
+              description: Ongeldig doelformaat aangevraagd in 'Accept' header
+            type:
+              examples:
+                - https://www.rvig.nl/brp/berichten-api/probleem/BBA-CONV-F005
+              type: string
+              description: https://www.rvig.nl/brp/berichten-api/probleem/BBA-CONV-F005
+            detail:
+              examples:
+                - "Kon doelformaat niet bepalen a.d.h.v. Accept header: text/xml"
+              type: string
+              description: "Kon doelformaat niet bepalen a.d.h.v. Accept header: [accept-header]"
+            dateTime:
+              type: string
+              format: date-time
+              examples:
+                - 2024-09-17T09:00:35.374057729+02:00
+            instance:
+              type: string
+              description: Dit (RFC7807) veld beschrijft het request waarbij dit probleem is opgetreden (indien van toepassing).
+              examples:
+                - https://www.rvig.nl/brp/berichten-api/request/be215b41-a417-4148-b2bf-911b8b8b0133
+        BBA-CONV-F006:
+          title: https://www.rvig.nl/brp/berichten-api/probleem/BBA-CONV-F006
+          description: Inputbericht is niet valide
+          type: object
+          required:
+            - title
+            - type
+            - detail
+          properties:
+            title:
+              examples:
+                - Inputbericht is niet valide
+              type: string
+              description: Inputbericht is niet valide
+            type:
+              examples:
+                - https://www.rvig.nl/brp/berichten-api/probleem/BBA-CONV-F006
+              type: string
+              description: https://www.rvig.nl/brp/berichten-api/probleem/BBA-CONV-F006
+            detail:
+              examples:
+                - "Het aangeleverde bericht kon niet ingenomen worden en voldoet waarschijnlijk niet aan de gestelde vereisten, foutmelding was: Inconsistente berichtlengte"
+              type: string
+              description: "Het aangeleverde bericht kon niet ingenomen worden en voldoet waarschijnlijk niet aan de gestelde vereisten, foutmelding was: [foutmelding]"
+            dateTime:
+              type: string
+              format: date-time
+              examples:
+                - 2024-09-17T09:00:35.374057729+02:00
+            instance:
+              type: string
+              description: Dit (RFC7807) veld beschrijft het request waarbij dit probleem is opgetreden (indien van toepassing).
+              examples:
+                - https://www.rvig.nl/brp/berichten-api/request/be215b41-a417-4148-b2bf-911b8b8b0133
       GENERAL:
         BBA-F999:
-          title: https://www.rvig.nl/berichtenapi/probleem/BBA-F999
+          title: https://www.rvig.nl/brp/berichten-api/probleem/BBA-F999
           required:
             - title
             - type
@@ -1662,9 +1878,9 @@ components:
               description: TECHNICAL_ERROR
             type:
               examples:
-                - https://www.rvig.nl/berichtenapi/probleem/BBA-F999
+                - https://www.rvig.nl/brp/berichten-api/probleem/BBA-F999
               type: string
-              description: https://www.rvig.nl/berichtenapi/probleem/BBA-F999
+              description: https://www.rvig.nl/brp/berichten-api/probleem/BBA-F999
             detail:
               examples:
                 - Onbekende (/technische) fout.
@@ -1779,7 +1995,7 @@ components:
       description: >
         Een UUID of meerdere UUID's van het bericht(en) die opgehaald moet worden. Indien meerdere UUID's, dan scheiden met een komma.
         Deze query parameter verwijst naar het berichtenId zoals deze bij de "BRP berichten API" bekend is, niet te verwarren met het
-        BerichtId dat door de verzender is opgegeven. U verkrijgt deze UUID's middels een request naar `/api/v1/berichten/list`.
+        BerichtId dat door de verzender is opgegeven. U verkrijgt deze UUID's middels een request naar `/berichten/list`.
       schema:
         type: array
         items:
@@ -1795,7 +2011,51 @@ components:
       explode: true
 
   securitySchemes:
-    BasicAuth:
-      description: Deze authenticatiemethode is van toepassing op de DEMO omgeving/stub. Login met elk willekeurig account/mailbox-nummer. Een wachtwoord kunt u opvragen via s.renkens@dictu.nl en/of maarten.woldring@rvig.nl.
+    DemoBasicAuth:
+      description: "Demo-omgeving (DEMO). Login met elk willekeurig account/mailbox-nummer als gebruikersnaam. Een wachtwoord kunt u opvragen via brp.berichtenapi@rvig.nl."
       type: http
       scheme: basic
+    DemoOAuth:
+      type: oauth2
+      description: "Demo-omgeving (DEMO) - Let op, extra parameter resourceServer moet toegevoegd worden. client_id = het mailboxnummer, client_secret kunt u opvragen via brp.berichtenapi@rvig.nl."
+      flows:
+        clientCredentials:
+          tokenUrl: https://keycloak.gbav-1.dictua.iesprd.ictu-sr.nl/realms/brp/protocol/openid-connect/token
+          scopes:
+            demo-bba-mailboxid: "'mailboxid' dient vervangen te worden met het daadwerkelijke nummer van de mailbox."
+          x-custom-parameters:
+            - name: resourceServer
+              description: "Een noodzakelijke additionele property. In de demo omgeving heeft deze de waarde 'ResourceServer01'."
+    AccOAuth:
+      type: oauth2
+      description: "Acceptatieomgeving (ACC) - Let op, extra parameter resourceServer moet toegevoegd worden"
+      flows:
+        clientCredentials:
+          tokenUrl: https://auth.npr.idm.diginetwerk.net/nidp/oauth/nam/token
+          scopes:
+            acc-bba-mailboxid: "'mailboxid' dient vervangen te worden met het daadwerkelijke nummer van de mailbox."
+          x-custom-parameters:
+            - name: resourceServer
+              description: "Een noodzakelijke additionele property."
+    LapOAuth:
+      type: oauth2
+      description: "Proefomgeving (LAP) - Let op, extra parameter resourceServer moet toegevoegd worden"
+      flows:
+        clientCredentials:
+          tokenUrl: https://auth.npr.idm.diginetwerk.net/nidp/oauth/nam/token
+          scopes:
+            lap-bba-mailboxid: "'mailboxid' dient vervangen te worden met het daadwerkelijke nummer van de mailbox."
+          x-custom-parameters:
+            - name: resourceServer
+              description: "Een noodzakelijke additionele property."
+    PrdOAuth:
+      type: oauth2
+      description: "Productieomgeving (PRD) - Let op, extra parameter resourceServer moet toegevoegd worden"
+      flows:
+        clientCredentials:
+          tokenUrl: https://auth.idm.diginetwerk.net/nidp/oauth/nam/token
+          scopes:
+            bba-mailboxid: "'mailboxid' dient vervangen te worden met het daadwerkelijke nummer van de mailbox."
+          x-custom-parameters:
+            - name: resourceServer
+              description: "Een noodzakelijke additionele property."
