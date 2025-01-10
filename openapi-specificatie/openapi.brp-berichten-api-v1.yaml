@@ -7,6 +7,9 @@ info:
 
     # Wijzigingshistorie:
 
+    ## 0.6.1 Januari 2025
+    - Ping endpoints zijn niet langer bereikbaar zonder eerst te authenticeren.
+
     ## 0.6.0 Januari 2025
     - Servers toegevoegd.
       - Hiervoor moesten de paden van de endpoints aangepast worden. Hierdoor is '/api/v1' komen te vervallen bij de endpoints. Dit is verhuist naar de base-url's van de genoemde servers.
@@ -375,7 +378,6 @@ paths:
 
   /berichten/ping:
     get:
-      security: [ ]
       tags:
         - Bereikbaarheid
       summary: Ping operatie t.b.v. het toetsen van de bereikbaarheid van de API vanuit de aangesloten partij.
@@ -386,7 +388,6 @@ paths:
         '204':
           description: Geeft aan dat de API bereikt kon worden.
     head:
-      security: [ ]
       tags:
         - Bereikbaarheid
       summary: Ping operatie t.b.v. het toetsen van de bereikbaarheid van de API vanuit de aangesloten partij.
