@@ -1,11 +1,14 @@
 openapi: 3.1.0
 info:
   title: BRP Berichten API
-  version: 0.6.0
+  version: 0.6.2
   description: |
     Een REST API voor het a-synchroon uitwisselen van berichten welke in het Logisch Ontwerp gedefinieerd zijn.
 
     # Wijzigingshistorie:
+
+    ## 0.6.2 Januari 2025
+    - OAuth endpoint demo omgeving gecorrigeerd.
 
     ## 0.6.1 Januari 2025
     - Ping endpoints zijn niet langer bereikbaar zonder eerst te authenticeren.
@@ -2021,7 +2024,7 @@ components:
       description: "Demo-omgeving (DEMO) - Let op, extra parameter resourceServer moet toegevoegd worden. client_id = het mailboxnummer, client_secret kunt u opvragen via brp.berichtenapi@rvig.nl."
       flows:
         clientCredentials:
-          tokenUrl: https://keycloak.gbav-1.dictua.iesprd.ictu-sr.nl/realms/brp/protocol/openid-connect/token
+          tokenUrl: https://brp-berichten-api.dictua.ictu-sr.nl/api/v1/demo-accounts/oauth2/token
           scopes:
             demo-bba-mailboxid: "'mailboxid' dient vervangen te worden met het daadwerkelijke nummer van de mailbox."
           x-custom-parameters:
