@@ -1,11 +1,14 @@
 openapi: 3.1.0
 info:
   title: BRP Berichten API
-  version: 0.6.2
+  version: 0.6.3
   description: |
     Een REST API voor het a-synchroon uitwisselen van berichten welke in het Logisch Ontwerp gedefinieerd zijn.
 
     # Wijzigingshistorie:
+
+    ## 0.6.3 Januari 2025
+    - Tekstuele verwijzing naar '/berichten/list' vervangen door '/berichten'.
 
     ## 0.6.2 Januari 2025
     - OAuth endpoint demo omgeving gecorrigeerd.
@@ -1999,7 +2002,7 @@ components:
       description: >
         Een UUID of meerdere UUID's van het bericht(en) die opgehaald moet worden. Indien meerdere UUID's, dan scheiden met een komma.
         Deze query parameter verwijst naar het berichtenId zoals deze bij de "BRP berichten API" bekend is, niet te verwarren met het
-        BerichtId dat door de verzender is opgegeven. U verkrijgt deze UUID's middels een request naar `/berichten/list`.
+        BerichtId dat door de verzender is opgegeven. U verkrijgt deze UUID's middels een request naar `/berichten`.
       schema:
         type: array
         items:
