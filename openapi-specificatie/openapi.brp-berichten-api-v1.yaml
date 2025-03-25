@@ -1,11 +1,14 @@
 openapi: 3.1.0
 info:
   title: BRP Berichten API
-  version: 0.6.3
+  version: 0.6.4
   description: |
     Een REST API voor het a-synchroon uitwisselen van berichten welke in het Logisch Ontwerp gedefinieerd zijn.
 
     # Wijzigingshistorie:
+
+    ## 0.6.4 Maart 2025
+    - Details rondom MutualTLS/tweezijdig-TLS d.m.v. PKI-Overheid toegevoegd.
 
     ## 0.6.3 Januari 2025
     - Tekstuele verwijzing naar '/berichten/list' vervangen door '/berichten'.
@@ -138,25 +141,28 @@ tags:
     description: API waarop berichten uitgewisseld kunnen worden.
 
 servers:
-  - description: Productieomgeving (PRD)
+  - description: Productieomgeving (PRD, MutualTLS m.b.v. PKI-O in combinatie met OAuth2)
     url: https://apigw.idm.diginetwerk.net/api/brp/berichten/v1/
-  - description: Proefomgeving (LAP)
+  - description: Proefomgeving (LAP, MutualTLS m.b.v. PKI-O in combinatie met OAuth2)
     url: https://apigw.npr.idm.diginetwerk.net/lap/api/brp/berichten/v1/
-  - description: Acceptatieomgeving (ACC)
+  - description: Acceptatieomgeving (ACC, MutualTLS m.b.v. PKI-O in combinatie met OAuth2)
     url: https://apigw.npr.idm.diginetwerk.net/acc/api/brp/berichten/v1/
-  - description: Demo omgeving (via internet)
+  - description: Demo omgeving (via internet, BasicAuth OF OAuth2, geen MutualTLS)
     url: https://brp-berichten-api.dictua.ictu-sr.nl/api/v1/
-  - description: Demo omgeving (AP via VPN)
+  - description: Demo omgeving (AP via VPN, BasicAuth OF OAuth2, geen MutualTLS)
     url: http://berichten-api.gbav-3.dictua.iesprd.ictu-sr.nl:8083/api/v1/
-  - description: Lokale ontwikkelomgeving
+  - description: Lokale ontwikkelomgeving (BasicAuth OF OAuth2, geen MutualTLS)
     url: http://localhost:8083/api/v1/
 
 security:
   - DemoBasicAuth: [ ]
   - DemoOAuth: [ ]
   - AccOAuth: [ ]
+    MutualTLSWithPKIOverheid: [ ]
   - LapOAuth: [ ]
+    MutualTLSWithPKIOverheid: [ ]
   - PrdOAuth: [ ]
+    MutualTLSWithPKIOverheid: [ ]
 paths:
   /berichten:
     post: # (= sPd PUT)
@@ -2066,3 +2072,6 @@ components:
           x-custom-parameters:
             - name: resourceServer
               description: "Een noodzakelijke additionele property."
+    MutualTLSWithPKIOverheid:
+      type: mutualTLS
+      description: "In de Acceptatieomgeving (ACC), Proefomgeving (LAP) en Productieomgeving (PRD) is tweezijdig TLS middels een geldig PKI-Overheid certificaat vereist. Raadpleeg voor meer informatie de voorschriften van Logius: Digikoppeling Beveiligingstandaarden en voorschriften (https://gitdocumentatie.logius.nl/publicatie/dk/beveilig/)"
