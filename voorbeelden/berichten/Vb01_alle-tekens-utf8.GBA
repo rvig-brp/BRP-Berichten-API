@@ -1,0 +1,165 @@
+00000000Vb0108136
++-------------------------------------------------+
+| *****   Vrij bericht Teletex-tekens       ***** |
+| *****   versie 3.0     februari 1998      ***** |
++-------------------------------------------------+
+
+Dit bericht is uitsluitend bedoeld om de ontvanger de gelegenheid
+te geven na te gaan of alle vereiste TELETEX tekens op de juiste
+wijze worden gerepresenteerd op terminal en/of printer. Ondanks
+het feit dat u dit bericht tot zover hebt kunnen lezen, hetgeen
+uiteraard op een zekere mate van betrouwbaarheid wijst, kan een
+wat systematischer aanpak geen kwaad. We beginnen derhalve met
+de gebruikelijke alfanumerieke tekenset.
+
+---- Het alfabet in hoofdletters in beide richtingen ----
+
+ABCDEFGHIJKLMNOPQRSTUVWXYZ
+ZYXWVUTSRQPONMLKJIHGFEDCBA
+
+--- Het alfabet in kleine letters in beide richtingen ---
+
+abcdefghijklmnopqrstuvwxyz
+zyxwvutsrqponmlkjihgfedcba
+
+------------ Alle cijfers in beide richtingen -----------
+
+0123456789
+9876543210
+
+Ingeval u zowel deze tekensets als alle voorgaande tekst netjes
+gecentreerd hebt kunnen lezen, worden naast de spatie  <sp>
+tevens de "carriage return" <cr> en de "linefeed" <lf> goed
+afgehandeld. Twee van de drie besturingskarakters uit
+het LO, zijn daarmee reeds aan de orde geweest.
+
+In onderstaande tabel, ontleend aan het LO, zijn alle nog niet
+eerder opgesomde TELETEX tekens uit de linkerkant
+van de tabel in het LO opgenomen.
+.b
++-----------------------------------------------------+
+|      Naam          Graph |      Naam          Graph |
+|--------------------------+--------------------------|
+|  exclamation mark ... !  |  solidus ............ /  |
+|  quotation mark ..... "  |  colon .............. :  |
+|  percent sign ....... %  |  semicolon .......... ;  |
+|  ampersand .......... &  |  less-than sign ..... <  |
+|  apostrophe ......... '  |  equals sign ........ =  |
+|  left parenthesis ... (  |  greater than sign .. >  |
+|  right parenthesis .. )  |  question mark ...... ?  |
+|  asterisk ........... *  |  commercial at ...... @  |
+|  plus sign .......... +  |  left  square bracket [  |
+|  comma .............. ,  |  right square bracket ]  |
+|  hyphen,minus sign .. -  |  low line ........... _  |
+|  full stop, period .. .  |  vertical bar ....... |  |
++-----------------------------------------------------+
+
+In de nu volgende tabel, ontleend aan het LO,vindt u alle
+TELETEX tekens uit de rechterkant van de tabel, uitgezonderd
+de diakrieten (kolom C).
+
++----------------------------------------------------------+
+|        Naam          Graph |        Naam           Graph |
+|----------------------------+-----------------------------|
+|  inv.exclamation mark . ¡  |  ohm sign .............. Ω  |
+|  cent sign ............ ¢  |  capital AE diphtong ... Æ  |
+|  pound sign ........... £  |  capital D with stroke . Đ  |
+|  dollar sign .......... $  |  ord.ind.,feminine ..... ª  |
+|  yen sign ............. ¥  |  capital H with stroke . Ħ  |
+|  number sign .......... #  |                             |
+|  section sign ......... §  |  capital L with mid.dot  Ŀ  |
+|  currency symbol ...... ¤  |  capital L with stroke . Ł  |
+|  angle quot.mark left . «  |  capital O with slash .. Ø  |
+|  degree sign .......... °  |  capital OE ligature ... Œ  |
+|  plus/minus sign ...... ±  |  ord.ind.,masculine .... º  |
+|  superscript 2 ........ ²  |  capital thorn,Icelandic Þ  |
+|  superscript 3 ........ ³  |  capital T with stroke . Ŧ  |
+|  multiply sign ........ ×  |  capital eng, Lapp ..... Ŋ  |
+|  micro sign ........... µ  |  small n with apostrophe ŉ  |
+|  paragraph sign ....... ¶  |  small k, Greenlandic .. ĸ  |
+|  middle dot ........... ·  |  small ae diphtong ..... æ  |
+|  divide sign .......... ÷  |  small d with stroke ... đ  |
+|  angle quot.mark right. »  |  small eth, Icelandic .. ð  |
+|  fraction one quarter . ¼  |  small h with stroke ... ħ  |
+|  fraction one half .... ½  |  small i without dot ... ı  |
+|  fract.three quarters . ¾  |                             |
+|  inverted question mark ¿  |  small l with middle dot ŀ  |
+|                            |  small l with stroke ... ł  |
+|                            |  small o with slash .... ø  |
+|                            |  small oe ligature ..... œ  |
+|                            |  small sharp s, German . ß  |
+|                            |  small thorn,Icelandic . þ  |
+|                            |  small t with stroke ... ŧ  |
+|                            |  small eng, Lapp ....... ŋ  |
++----------------------------------------------------------+
+
+
+In deze voorlaatste tabel, ontleend aan het LO, vindt u een
+opsomming van de verplichte letterdiakriet combinaties
+van A t/m N die moeten worden ondersteund.
+
++-----------------------------------------------------+
+|     Naam         H/K     |       Naam         H/K   |
+|--------------------------+--------------------------|
+|   A acute ...... Á/á   |   G acute ......   /ģ   |
+|   A grave ...... À/à   |   G circumflex . Ĝ/ĝ   |
+|   A circumflex . Â/â   |   G breve ...... Ğ/ğ   |
+|   A diaeresis .. Ä/ä   |   G dot ........ Ġ/ġ   |
+|   A tilde ...... Ã/ã   |   G cedilla .... Ģ/     |
+|   A breve ...... Ă/ă   |                          |
+|   A ring ....... Å/å   |   H circumflex . Ĥ/ĥ   |
+|   A macron ..... Ā/ā   |                          |
+|   A ogonek ..... Ą/ą   |   I acute ...... Í/í   |
+|                          |   I grave ...... Ì/ì   |
+|   C acute ...... Ć/ć   |   I circumflex . Î/î   |
+|   C circumflex . Ĉ/ĉ   |   I diaeresis .. Ï/ï   |
+|   C caron ...... Č/č   |   I tilde ...... Ĩ/ĩ   |
+|   C dot ........ Ċ/ċ   |   I dot ........ İ/     |
+|   C cedilla .... Ç/ç   |   I macron ..... Ī/ī   |
+|                          |   I ogonek ..... Į/į   |
+|   D caron ...... Ď/ď   |                          |
+|                          |   J circumflex . Ĵ/ĵ   |
+|   E acute ...... É/é   |                          |
+|   E grave ...... È/è   |   K cedilla .... Ķ/ķ   |
+|   E circumflex . Ê/ê   |                          |
+|   E diaeresis .. Ë/ë   |   L acute ...... Ĺ/ĺ   |
+|   E caron ...... Ě/ě   |   L caron ...... Ľ/ľ   |
+|   E dot ........ Ė/ė   |   L cedilla .... Ļ/ļ   |
+|   E macron ..... Ē/ē   |                          |
+|   E ogonek ..... Ę/ę   |   N acute ...... Ń/ń   |
+|                          |   N tilde ...... Ñ/ñ   |
+|                          |   N caron ...... Ň/ň   |
+|                          |   N cedilla .... Ņ/ņ   |
++-----------------------------------------------------+
+
+
+In deze laatste tabel, ontleend aan het LO, vindt u een
+opsomming van de verplichte letterdiakriet combinaties
+van O t/m Z die moeten worden ondersteund.
+
++-----------------------  ----------------------------+
+|     Naam         H/K     |     Naam         H/K     |
+|--------------------------+--------------------------|
+|   O acute ...... Ó/ó   |   U acute ...... Ú/ú   |
+|   O grave ...... Ò/ò   |   U grave ...... Ù/ù   |
+|   O circumflex . Ô/ô   |   U circumflex . Û/û   |
+|   O diaeresis .. Ö/ö   |   U diaeresis .. Ü/ü   |
+|   O tilde ...... Õ/õ   |   U tilde ...... Ũ/ũ   |
+|   O double acute Ő/ő   |   U breve ...... Ŭ/ŭ   |
+|   O macron ..... Ō/ō   |   U double acute Ű/ű   |
+|                          |   U ring ....... Ů/ů   |
+|   R acute ...... Ŕ/ŕ   |   U macron ..... Ū/ū   |
+|   R caron ...... Ř/ř   |   U ogonek ..... Ų/ų   |
+|   R cedilla .... Ŗ/ŗ   |                          |
+|                          |   W circumflex . Ŵ/ŵ   |
+|   S acute ...... Ś/ś   |                          |
+|   S circumflex . Ŝ/ŝ   |   Y acute ...... Ý/ý   |
+|   S caron ...... Š/š   |   Y circumflex . Ŷ/ŷ   |
+|   S cedilla .... Ş/ş   |   Y diaeresis .. Ÿ/ÿ   |
+|                          |                          |
+|   T caron ...... Ť/ť   |   Z acute ...... Ź/ź   |
+|   T cedilla .... Ţ/ţ   |   Z caron ...... Ž/ž   |
+|                          |   Z dot ........ Ż/ż   |
++-----------------------------------------------------+
+
+------------------->> einde bericht <<-------------------------
