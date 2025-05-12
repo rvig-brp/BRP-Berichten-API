@@ -1,5 +1,5 @@
 {
-  "$schema" : "berichten.schema.json#/berichtsoorten/Ag21Bericht",
+  "$schema" : "berichten.schema.json#/$defs/berichtsoorten/$defs/Ag21Bericht",
   "berichtType" : "Ag21",
   "status" : "E",
   "datum" : "20180330",

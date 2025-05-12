@@ -1,5 +1,5 @@
 {
-  "$schema" : "berichten.schema.json#/berichtsoorten/Rb01Bericht",
+  "$schema" : "berichten.schema.json#/$defs/berichtsoorten/$defs/Rb01Bericht",
   "berichtType" : "Rb01",
   "herhaling" : "0",
   "status" : "E",

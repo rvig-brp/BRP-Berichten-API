@@ -1,5 +1,5 @@
 {
-    "$schema": "berichten.schema.json#/berichtsoorten/Tf11Bericht",
+    "$schema": "berichten.schema.json#/$defs/berichtsoorten/$defs/Tf11Bericht",
     "berichtType": "Tf11",
     "plData": {
       "c01": [

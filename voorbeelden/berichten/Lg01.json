@@ -1,5 +1,5 @@
 {
-  "$schema" : "berichten.schema.json#/berichtsoorten/Lg01Bericht",
+  "$schema" : "berichten.schema.json#/$defs/berichtsoorten/$defs/Lg01Bericht",
   "berichtType" : "Lg01",
   "datumTijd" : "20120402000000000",
   "aNummer" : "1839305202",

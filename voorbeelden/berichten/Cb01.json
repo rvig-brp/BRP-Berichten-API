@@ -1,5 +1,5 @@
 {
-  "$schema": "berichten.schema.json#/berichtsoorten/Cb01Bericht",
+  "$schema": "berichten.schema.json#/$defs/berichtsoorten/$defs/Cb01Bericht",
   "berichtType": "Cb01",
   "herhaling": "0",
   "afnemersindicatie": "253702",
