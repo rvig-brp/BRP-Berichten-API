@@ -1,4 +1,4 @@
 {
-  "$schema" : "berichten.schema.json#/berichtsoorten/NullBericht",
+  "$schema" : "berichten.schema.json#/$defs/berichtsoorten/$defs/NullBericht",
   "berichtType" : "Null"
 }

@@ -1,5 +1,5 @@
 {
-  "$schema" : "berichten.schema.json#/berichtsoorten/Wa01Bericht",
+  "$schema" : "berichten.schema.json#/$defs/berichtsoorten/$defs/Wa01Bericht",
   "berichtType" : "Wa01",
   "herhaling" : "0",
   "aNummer" : "3279217987",

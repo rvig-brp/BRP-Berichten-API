@@ -1,5 +1,5 @@
 {
-  "$schema" : "berichten.schema.json#/berichtsoorten/Gv02Bericht",
+  "$schema" : "berichten.schema.json#/$defs/berichtsoorten/$defs/Gv02Bericht",
   "berichtType" : "Gv02",
   "aNummer" : "8478102473",
   "plData" : {

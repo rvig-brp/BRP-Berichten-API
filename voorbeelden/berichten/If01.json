@@ -1,5 +1,5 @@
 {
-  "$schema" : "berichten.schema.json#/berichtsoorten/If01Bericht",
+  "$schema" : "berichten.schema.json#/$defs/berichtsoorten/$defs/If01Bericht",
   "berichtType" : "If01",
   "foutreden" : "G",
   "gemeente" : "0000",

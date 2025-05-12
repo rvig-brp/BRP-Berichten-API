@@ -1,4 +1,4 @@
 {
-  "$schema" : "berichten.schema.json#/berichtsoorten/Pf01Bericht",
+  "$schema" : "berichten.schema.json#/$defs/berichtsoorten/$defs/Pf01Bericht",
   "berichtType" : "Pf01"
 }

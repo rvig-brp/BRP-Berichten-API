@@ -1,5 +1,5 @@
 {
-  "$schema" : "berichten.schema.json#/berichtsoorten/Sv01Bericht",
+  "$schema" : "berichten.schema.json#/$defs/berichtsoorten/$defs/Sv01Bericht",
   "berichtType" : "Sv01",
   "status" : "E",
   "datum" : "20121201",

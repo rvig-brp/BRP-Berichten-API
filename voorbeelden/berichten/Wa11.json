@@ -1,5 +1,5 @@
 {
-  "$schema" : "berichten.schema.json#/berichtsoorten/Wa11Bericht",
+  "$schema" : "berichten.schema.json#/$defs/berichtsoorten/$defs/Wa11Bericht",
   "berichtType" : "Wa11",
   "aNummer" : "2929292929",
   "datumGeldigheid" : "20211002",

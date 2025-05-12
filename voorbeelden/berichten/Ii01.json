@@ -1,5 +1,5 @@
 {
-  "$schema" : "berichten.schema.json#/berichtsoorten/Ii01Bericht",
+  "$schema" : "berichten.schema.json#/$defs/berichtsoorten/$defs/Ii01Bericht",
   "berichtType" : "Ii01",
   "herhaling" : "0",
   "plData" : {

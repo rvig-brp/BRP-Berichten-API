@@ -1,5 +1,5 @@
 {
-  "$schema" : "berichten.schema.json#/berichtsoorten/Tb02Bericht",
+  "$schema" : "berichten.schema.json#/$defs/berichtsoorten/$defs/Tb02Bericht",
   "berichtType" : "Tb02",
   "herhaling" : "0",
   "rubrieken" : [ "010110", "010120", "510210", "510240", "510310", "510320", "510330", "510410" ],
