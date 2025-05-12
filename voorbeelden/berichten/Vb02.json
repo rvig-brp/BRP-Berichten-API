@@ -1,0 +1,7 @@
+{
+    "$schema": "berichten.schema.json#/$defs/berichtsoorten/$defs/Vb02Bericht",
+    "berichtType": "Vb02",
+    "communicatiepartnerAan": "1111111",
+    "communicatiepartnerVan": "2222222",
+    "vrijeTekst": "Just a test"
+  }

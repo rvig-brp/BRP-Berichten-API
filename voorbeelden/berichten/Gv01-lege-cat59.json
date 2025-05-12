@@ -1,0 +1,15 @@
+{
+    "$schema": "berichten.schema.json#/$defs/berichtsoorten/$defs/Gv01Bericht",
+    "berichtType": "Gv01",
+    "aNummer": "6127281791",
+    "plData": {
+      "c09": [
+        {
+          "e0240": "Sijp",
+          "historie": [
+            {}
+          ]
+        }
+      ]
+    }
+  }
