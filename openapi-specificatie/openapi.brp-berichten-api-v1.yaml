@@ -1,11 +1,13 @@
 openapi: 3.1.0
 info:
   title: BRP Berichten API
-  version: 0.7.0
+  version: 0.7.1
   description: |
     Een REST API voor het a-synchroon uitwisselen van berichten welke in het Logisch Ontwerp gedefinieerd zijn.
 
     # Wijzigingshistorie:
+    ## 0.7.1 September 2025
+    - OAuth2 scopes beschreven zoals ze zijn in LAP en PRD.
 
     ## 0.7.0 April 2025
     - Aanpassingen in de structuur van de onderliggende JSON schema's, de inhoud is onveranderd gebleven.
@@ -917,7 +919,7 @@ components:
     BerichtTransportId:
       type: string
       format: uuid
-      description: "De is de referentie naar het bericht zoals deze bekend is bij de `BRP berichten API` (UUID). Bij elke interactie met deze dienst omtrent een bericht, wordt deze waarde gebruikt. Het mag, net zoals `berichtVolgnummer` gebruikt worden om het bericht uniek te identificeren."
+      description: "Dit is de referentie naar het bericht zoals deze bekend is bij de `BRP berichten API` (UUID). Bij elke interactie met deze dienst omtrent een bericht, wordt deze waarde gebruikt. Het mag, net zoals `berichtVolgnummer` gebruikt worden om het bericht uniek te identificeren."
       examples:
         - 190486a3-cf3d-4622-a6f7-1f2bfcd0abd6
 
@@ -2034,7 +2036,7 @@ components:
       scheme: basic
     DemoOAuth:
       type: oauth2
-      description: "Demo-omgeving (DEMO) - Let op, extra parameter resourceServer moet toegevoegd worden. client_id = het mailboxnummer, client_secret kunt u opvragen via brp.berichtenapi@rvig.nl."
+      description: "Demo-omgeving (DEMO) - Let op, extra parameter resourceServer moet toegevoegd worden bij het uitvoeren van een token request.. client_id = het mailboxnummer, client_secret kunt u opvragen via brp.berichtenapi@rvig.nl."
       flows:
         clientCredentials:
           tokenUrl: https://brp-berichten-api.dictua.ictu-sr.nl/api/v1/demo-accounts/oauth2/token
@@ -2045,7 +2047,7 @@ components:
               description: "Een noodzakelijke additionele property. In de demo omgeving heeft deze de waarde 'ResourceServer01'."
     AccOAuth:
       type: oauth2
-      description: "Acceptatieomgeving (ACC) - Let op, extra parameter resourceServer moet toegevoegd worden"
+      description: "Acceptatieomgeving (ACC) - Let op, extra parameter resourceServer moet toegevoegd worden bij het uitvoeren van een token request.."
       flows:
         clientCredentials:
           tokenUrl: https://auth.npr.idm.diginetwerk.net/nidp/oauth/nam/token
@@ -2056,23 +2058,23 @@ components:
               description: "Een noodzakelijke additionele property."
     LapOAuth:
       type: oauth2
-      description: "Proefomgeving (LAP) - Let op, extra parameter resourceServer moet toegevoegd worden"
+      description: "Proefomgeving (LAP) - Let op, extra parameter resourceServer moet toegevoegd worden bij het uitvoeren van een token request.."
       flows:
         clientCredentials:
           tokenUrl: https://auth.npr.idm.diginetwerk.net/nidp/oauth/nam/token
           scopes:
-            lap-bba-mailboxid: "'mailboxid' dient vervangen te worden met het daadwerkelijke nummer van de mailbox."
+            afnemercode-oin: "'afnemercode' dient vervangen te worden met het daadwerkelijke afnemerId van de deelnemer (zie tabel35). 'oin' Dient vervangen te worden met het organisatie-identificatie-nummer van de deelnemer (zie https://oinregister.logius.nl/oin-register) en dient tevens overeen te komen met het OIN dat in het client-certificaat is opgenomen dat gebruik wordt voor mTLS."
           x-custom-parameters:
             - name: resourceServer
               description: "Een noodzakelijke additionele property."
     PrdOAuth:
       type: oauth2
-      description: "Productieomgeving (PRD) - Let op, extra parameter resourceServer moet toegevoegd worden"
+      description: "Productieomgeving (PRD) - Let op, extra parameter resourceServer moet toegevoegd worden bij het uitvoeren van een token request.."
       flows:
         clientCredentials:
           tokenUrl: https://auth.idm.diginetwerk.net/nidp/oauth/nam/token
           scopes:
-            bba-mailboxid: "'mailboxid' dient vervangen te worden met het daadwerkelijke nummer van de mailbox."
+            afnemercode-oin: "'afnemercode' dient vervangen te worden met het daadwerkelijke afnemerId van de deelnemer (zie tabel35). 'oin' dient vervangen te worden met het organisatie-identificatie-nummer van de deelnemer (zie https://oinregister.logius.nl/oin-register) en dient tevens overeen te komen met het OIN dat in het client-certificaat is opgenomen dat gebruik wordt voor mTLS."
           x-custom-parameters:
             - name: resourceServer
               description: "Een noodzakelijke additionele property."
