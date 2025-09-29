@@ -1,11 +1,19 @@
 openapi: 3.1.0
 info:
   title: BRP Berichten API
-  version: 0.7.1
+  version: 0.7.3
   description: |
     Een REST API voor het a-synchroon uitwisselen van berichten welke in het Logisch Ontwerp gedefinieerd zijn.
 
     # Wijzigingshistorie:
+    ## 0.7.3 September 2025
+    - Aangeduid dat request-body bij POST requests aanwezig moeten zijn.
+    - Aangeduid dat `status` bij een Foutmelding verplicht is.
+
+    ## 0.7.2 September 2025
+    - HTTP response bij het versturen berichten aangepast van 201 naar 200. De implementatie van de berichten-api gaf al 200.
+    - Beschrijving van het response bij het versturen van berichten aangepast expliciter wordt gemaakt dat de response gecontrolleerd moet worden op succesvol en niet-succesvol verstuurde berichten. 
+
     ## 0.7.1 September 2025
     - OAuth2 scopes beschreven zoals ze zijn in LAP en PRD.
 
@@ -179,13 +187,14 @@ paths:
         Dit endpoint gebruikt u om berichten zoals gespecificeerd in het Logisch Ontwerp te versturen.
       operationId: putMessages
       requestBody:
+        required: true
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/put-message-request'
       responses:
-        '201':
-          description: a-Synchrone response. Een eventueel antwoord op een bericht wordt later voor u klaargezet en dient separaat opgehaald te worden.
+        '200':
+          description: Uw berichten zijn succesvol aangeboden ter verwerking. In de response wordt aangeven welke berichten wel en niet succesvol verwerkt konden worden. Een 200 OK betekend dus nog niet zonder meer dat alle berichten succesvol verwerkt zijn. Controlleer dus altijd de response!
           content:
             application/json:
               schema:
@@ -485,6 +494,7 @@ paths:
       operationId: converteer
       summary: Dit endpoint faciliteert bij de conversie van berichten tussen de verschillende soorten berichtformaten.
       requestBody:
+        required: true
         description: >
           Er zijn verschillende waarden die voor de headers `Content-Type` en `Accept` gebruikt kunnen worden. Elk van deze waarden stelt een van de bekende formaten voor:
             - "text/plain; charset=teletex": Het klassieke berichtenformaat waarbij de teletex charset wordt gehanteerd.
@@ -1103,6 +1113,7 @@ components:
       required:
         - type
         - title
+        - status
       properties:
         type:
           type: string
