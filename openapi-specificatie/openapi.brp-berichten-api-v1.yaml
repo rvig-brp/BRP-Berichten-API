@@ -1,18 +1,22 @@
 openapi: 3.1.0
 info:
   title: BRP Berichten API
-  version: 0.7.3
+  version: 0.7.4
   description: |
     Een REST API voor het a-synchroon uitwisselen van berichten welke in het Logisch Ontwerp gedefinieerd zijn.
 
     # Wijzigingshistorie:
+
+    ## 0.7.4 October 2025
+    - Aanpassing autorisatietabel elementen: De hoofdletter E is nu een kleine letter e, conform de elementen van andere berichtsoorten.
+
     ## 0.7.3 September 2025
     - Aangeduid dat request-body bij POST requests aanwezig moeten zijn.
     - Aangeduid dat `status` bij een Foutmelding verplicht is.
 
     ## 0.7.2 September 2025
     - HTTP response bij het versturen berichten aangepast van 201 naar 200. De implementatie van de berichten-api gaf al 200.
-    - Beschrijving van het response bij het versturen van berichten aangepast expliciter wordt gemaakt dat de response gecontrolleerd moet worden op succesvol en niet-succesvol verstuurde berichten. 
+    - Beschrijving van het response bij het versturen van berichten aangepast explicieter wordt gemaakt dat de response gecontroleerd moet worden op succesvol en niet-succesvol verstuurde berichten.
 
     ## 0.7.1 September 2025
     - OAuth2 scopes beschreven zoals ze zijn in LAP en PRD.
@@ -35,7 +39,7 @@ info:
 
     ## 0.6.0 Januari 2025
     - Servers toegevoegd.
-      - Hiervoor moesten de paden van de endpoints aangepast worden. Hierdoor is '/api/v1' komen te vervallen bij de endpoints. Dit is verhuist naar de base-url's van de genoemde servers.
+      - Hiervoor moesten de paden van de endpoints aangepast worden. Hierdoor is '/api/v1' komen te vervallen bij de endpoints. Dit is verhuisd naar de base-url's van de genoemde servers.
     - Authenticatie details toegevoegd.
     - Foutmeldingen bij het conversie endpoint bijgewerkt.
     - Alle namespace paden van de foutmeldingen nagelopen en gecorrigeerd daar waar nodig. Dit zodat ze consistent starten met: "https://www.rvig.nl/brp/berichten-api/probleem/".
