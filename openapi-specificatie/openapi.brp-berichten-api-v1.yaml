@@ -1,13 +1,16 @@
 openapi: 3.1.0
 info:
   title: BRP Berichten API
-  version: 0.7.4
+  version: 0.7.5
   description: |
     Een REST API voor het a-synchroon uitwisselen van berichten welke in het Logisch Ontwerp gedefinieerd zijn.
 
     # Wijzigingshistorie:
 
-    ## 0.7.4 October 2025
+    ## 0.7.5 Oktober 2025
+    - "Ontvanger" toegevoegd aan apiGetBerichtKenmerken en apiListBerichtKenemerken. In principe weet de ontvanger tijdens het moment van ontvangen dat deze berichten voor hem bestemd zijn. Echter in andere situaties waarbij berichten (buiten de context van de berichten-api) verwerkt worden, kan het relevant zijn dat zowel de verzender als de ontvanger gedefineerd zijn bij het bericht.
+
+    ## 0.7.4 Oktober 2025
     - Aanpassing autorisatietabel elementen: De hoofdletter E is nu een kleine letter e, conform de elementen van andere berichtsoorten.
 
     ## 0.7.3 September 2025
@@ -859,6 +862,8 @@ components:
             verwijzingBerichtId:
               $ref: '#/components/schemas/VerwijzingBerichtId'
             afzender:
+              $ref: '#/components/schemas/OntvangerOfAfzender'
+            ontvanger:
               $ref: '#/components/schemas/OntvangerOfAfzender'
             dtOntvangen:
               type: string
