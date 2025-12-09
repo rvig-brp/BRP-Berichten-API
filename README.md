@@ -40,22 +40,30 @@ noodzakelijk.
 
 ### Tabelberichten
 
-Het schema `tabelberichten.schema.json` beschrijft hoe de inhoud van een tabelbericht eruit ziet. Dit schema verkeert
-nog in een vroege fase en zal waarschijnlijk nog meer detail gaan krijgen / stricter worden.
+Het schema `tabelberichten.schema.json` beschrijft hoe de inhoud van een tabelbericht eruit ziet.
+
+### AM-formaat (Alternatief Medium)
+
+De JSON-schema's rondom AM beschrijven het formaat van een AM-Bestand. AM is voluit geschreven "Alternatief Medium". Partijen kunnen dit formaat
+gebruiken als ze (om uiteenlopende redenen) berichten-sets met elkaar willen uitwisselen zonder tussenkomst van een dienst zoals de Berichten-API. Het
+AM-Bestand is een combinatie van:
+
+- Een ZIP-file met daarin:
+  - Een metadata bestand (am-metadata.json), welke informatie levert m.b.t. het AM-bestand (afzender, datum-tijd, etc...). Tevens bevat deze een
+    checksum t.b.v. integriteitscontrole op het bestand met de daadwerkelijke inhoud.
+  - Een bestand met daarin de berichten (berichtregels.jsonl). De jsonl extensie staat voor `jsonlines` waarover meer te lezen valt in
+    op [jsonlines.org](https://jsonlines.org/). In de basis komt het er op neer dat elk regel in de file 1 bericht bevat. Met name voor grotere
+    data-sets is het daardoor te overwegen om een dergelijke dataset op een streaming wijze te produceren/consumeren.
+
 
 ## OpenAPI specificaties
 
-De OpenAPI specificatie van deze API is opgenomen in deze repository [in de OAS folder](./OAS/). Daarnaast kunt u
+De OpenAPI specificatie van deze API is opgenomen in deze repository [in de openapi-specificatie folder](./openapi-specificatie/). Daarnaast kunt u
 gebruik maken van de grafische weergave van de OpenAPI
 specificatie:
 
 * Redoc:
     * https://brp-berichten-api.dictua.ictu-sr.nl/openapi/berichten-api.html
-    * Gebruik bij voorkeur deze variant in plaats van de Swagger variant aangezien de laatstgenoemde performance issues
-      heeft.
-* Swagger
-    * https://brp-berichten-api.dictua.ictu-sr.nl/swagger-ui/index.html
-    * Heeft performance-issues vanwege de omvang van de JSON-schema's en de vele berichtsoorten.
 
 De BRP Berichten API is op dit moment in ontwikkeling. Dit betekent dat de mogelijkheden en het koppelvlak in beweging
 zijn. De bestanden in deze repository zullen regelmatig een update krijgen de komende maanden. De OpenAPI specificatie
