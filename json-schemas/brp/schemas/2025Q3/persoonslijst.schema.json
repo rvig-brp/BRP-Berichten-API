@@ -1,0 +1,2716 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$ref": "#/$defs/PlData",
+  "$defs": {
+    "PlData": {
+      "type": "object",
+      "unevaluatedProperties": false,
+      "properties": {
+        "c01": {
+          "$ref": "#/$defs/C01"
+        },
+        "c02": {
+          "$ref": "#/$defs/C02"
+        },
+        "c03": {
+          "$ref": "#/$defs/C03"
+        },
+        "c04": {
+          "$ref": "#/$defs/C04"
+        },
+        "c05": {
+          "$ref": "#/$defs/C05"
+        },
+        "c06": {
+          "$ref": "#/$defs/C06"
+        },
+        "c07": {
+          "$ref": "#/$defs/C07"
+        },
+        "c08": {
+          "$ref": "#/$defs/C08"
+        },
+        "c09": {
+          "$ref": "#/$defs/C09"
+        },
+        "c10": {
+          "$ref": "#/$defs/C10"
+        },
+        "c11": {
+          "$ref": "#/$defs/C11"
+        },
+        "c12": {
+          "$ref": "#/$defs/C12"
+        },
+        "c13": {
+          "$ref": "#/$defs/C13"
+        },
+        "c14": {
+          "$ref": "#/$defs/C14"
+        },
+        "c15": {
+          "$ref": "#/$defs/C15"
+        },
+        "c16": {
+          "$ref": "#/$defs/C16"
+        },
+        "c17": {
+          "$ref": "#/$defs/C17"
+        },
+        "c21": {
+          "$ref": "#/$defs/C21"
+        }
+      }
+    },
+    "C01": {
+      "title": "Categorie 01: Persoon",
+      "description": "Gegevens over de ingeschrevene",
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 1,
+      "items": {
+        "type": "object",
+        "unevaluatedProperties": false,
+        "allOf": [
+          {
+            "$ref": "#/$defs/G01"
+          },
+          {
+            "$ref": "#/$defs/G02"
+          },
+          {
+            "$ref": "#/$defs/G03"
+          },
+          {
+            "$ref": "#/$defs/G04"
+          },
+          {
+            "$ref": "#/$defs/G20"
+          },
+          {
+            "$ref": "#/$defs/G61"
+          },
+          {
+            "$ref": "#/$defs/G81"
+          },
+          {
+            "$ref": "#/$defs/G82"
+          },
+          {
+            "$ref": "#/$defs/G83"
+          },
+          {
+            "$ref": "#/$defs/G84"
+          },
+          {
+            "$ref": "#/$defs/G85"
+          },
+          {
+            "$ref": "#/$defs/G86"
+          },
+          {
+            "$ref": "#/$defs/G88"
+          },
+          {
+            "properties": {
+              "historie": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "object",
+                  "unevaluatedProperties": false,
+                  "allOf": [
+                    {
+                      "$ref": "#/$defs/G01"
+                    },
+                    {
+                      "$ref": "#/$defs/G02"
+                    },
+                    {
+                      "$ref": "#/$defs/G03"
+                    },
+                    {
+                      "$ref": "#/$defs/G04"
+                    },
+                    {
+                      "$ref": "#/$defs/G20"
+                    },
+                    {
+                      "$ref": "#/$defs/G61"
+                    },
+                    {
+                      "$ref": "#/$defs/G81"
+                    },
+                    {
+                      "$ref": "#/$defs/G82"
+                    },
+                    {
+                      "$ref": "#/$defs/G83"
+                    },
+                    {
+                      "$ref": "#/$defs/G84"
+                    },
+                    {
+                      "$ref": "#/$defs/G85"
+                    },
+                    {
+                      "$ref": "#/$defs/G86"
+                    },
+                    {
+                      "$ref": "#/$defs/G88"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "C02": {
+      "title": "Categorie 02: Ouder1",
+      "description": "Gegevens over de ouder1 van de ingeschrevene.",
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 1,
+      "items": {
+        "type": "object",
+        "unevaluatedProperties": false,
+        "allOf": [
+          {
+            "$ref": "#/$defs/G01"
+          },
+          {
+            "$ref": "#/$defs/G02"
+          },
+          {
+            "$ref": "#/$defs/G03"
+          },
+          {
+            "$ref": "#/$defs/G04"
+          },
+          {
+            "$ref": "#/$defs/G62"
+          },
+          {
+            "$ref": "#/$defs/G81"
+          },
+          {
+            "$ref": "#/$defs/G82"
+          },
+          {
+            "$ref": "#/$defs/G83"
+          },
+          {
+            "$ref": "#/$defs/G84"
+          },
+          {
+            "$ref": "#/$defs/G85"
+          },
+          {
+            "$ref": "#/$defs/G86"
+          },
+          {
+            "properties": {
+              "historie": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "object",
+                  "unevaluatedProperties": false,
+                  "allOf": [
+                    {
+                      "$ref": "#/$defs/G01"
+                    },
+                    {
+                      "$ref": "#/$defs/G02"
+                    },
+                    {
+                      "$ref": "#/$defs/G03"
+                    },
+                    {
+                      "$ref": "#/$defs/G04"
+                    },
+                    {
+                      "$ref": "#/$defs/G62"
+                    },
+                    {
+                      "$ref": "#/$defs/G81"
+                    },
+                    {
+                      "$ref": "#/$defs/G82"
+                    },
+                    {
+                      "$ref": "#/$defs/G83"
+                    },
+                    {
+                      "$ref": "#/$defs/G84"
+                    },
+                    {
+                      "$ref": "#/$defs/G85"
+                    },
+                    {
+                      "$ref": "#/$defs/G86"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "C03": {
+      "title": "Categorie 03: Ouder2",
+      "description": "Gegevens over de ouder2 van de ingeschrevene.",
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 1,
+      "items": {
+        "type": "object",
+        "unevaluatedProperties": false,
+        "allOf": [
+          {
+            "$ref": "#/$defs/G01"
+          },
+          {
+            "$ref": "#/$defs/G02"
+          },
+          {
+            "$ref": "#/$defs/G03"
+          },
+          {
+            "$ref": "#/$defs/G04"
+          },
+          {
+            "$ref": "#/$defs/G62"
+          },
+          {
+            "$ref": "#/$defs/G81"
+          },
+          {
+            "$ref": "#/$defs/G82"
+          },
+          {
+            "$ref": "#/$defs/G83"
+          },
+          {
+            "$ref": "#/$defs/G84"
+          },
+          {
+            "$ref": "#/$defs/G85"
+          },
+          {
+            "$ref": "#/$defs/G86"
+          },
+          {
+            "properties": {
+              "historie": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "object",
+                  "unevaluatedProperties": false,
+                  "allOf": [
+                    {
+                      "$ref": "#/$defs/G01"
+                    },
+                    {
+                      "$ref": "#/$defs/G02"
+                    },
+                    {
+                      "$ref": "#/$defs/G03"
+                    },
+                    {
+                      "$ref": "#/$defs/G04"
+                    },
+                    {
+                      "$ref": "#/$defs/G62"
+                    },
+                    {
+                      "$ref": "#/$defs/G81"
+                    },
+                    {
+                      "$ref": "#/$defs/G82"
+                    },
+                    {
+                      "$ref": "#/$defs/G83"
+                    },
+                    {
+                      "$ref": "#/$defs/G84"
+                    },
+                    {
+                      "$ref": "#/$defs/G85"
+                    },
+                    {
+                      "$ref": "#/$defs/G86"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "C04": {
+      "title": "Nationaliteit",
+      "description": "Gegevens over een nationaliteit van de ingeschrevene.",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "unevaluatedProperties": false,
+        "allOf": [
+          {
+            "$ref": "#/$defs/G05"
+          },
+          {
+            "$ref": "#/$defs/G63"
+          },
+          {
+            "$ref": "#/$defs/G64"
+          },
+          {
+            "$ref": "#/$defs/G65"
+          },
+          {
+            "$ref": "#/$defs/G73"
+          },
+          {
+            "$ref": "#/$defs/G82"
+          },
+          {
+            "$ref": "#/$defs/G83"
+          },
+          {
+            "$ref": "#/$defs/G84"
+          },
+          {
+            "$ref": "#/$defs/G85"
+          },
+          {
+            "$ref": "#/$defs/G86"
+          },
+          {
+            "$ref": "#/$defs/G88"
+          },
+          {
+            "properties": {
+              "historie": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "object",
+                  "unevaluatedProperties": false,
+                  "allOf": [
+                    {
+                      "$ref": "#/$defs/G05"
+                    },
+                    {
+                      "$ref": "#/$defs/G63"
+                    },
+                    {
+                      "$ref": "#/$defs/G64"
+                    },
+                    {
+                      "$ref": "#/$defs/G65"
+                    },
+                    {
+                      "$ref": "#/$defs/G73"
+                    },
+                    {
+                      "$ref": "#/$defs/G82"
+                    },
+                    {
+                      "$ref": "#/$defs/G83"
+                    },
+                    {
+                      "$ref": "#/$defs/G84"
+                    },
+                    {
+                      "$ref": "#/$defs/G85"
+                    },
+                    {
+                      "$ref": "#/$defs/G86"
+                    },
+                    {
+                      "$ref": "#/$defs/G88"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "C05": {
+      "title": "Huwelijk/geregistreerd partnerschap",
+      "description": "Gegevens over een gesloten of ontbonden huwelijk/geregistreerd partnerschap van de ingeschrevene.",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "unevaluatedProperties": false,
+        "allOf": [
+          {
+            "$ref": "#/$defs/G01"
+          },
+          {
+            "$ref": "#/$defs/G02"
+          },
+          {
+            "$ref": "#/$defs/G03"
+          },
+          {
+            "$ref": "#/$defs/G04"
+          },
+          {
+            "$ref": "#/$defs/G06"
+          },
+          {
+            "$ref": "#/$defs/G07"
+          },
+          {
+            "$ref": "#/$defs/G15"
+          },
+          {
+            "$ref": "#/$defs/G81"
+          },
+          {
+            "$ref": "#/$defs/G82"
+          },
+          {
+            "$ref": "#/$defs/G83"
+          },
+          {
+            "$ref": "#/$defs/G84"
+          },
+          {
+            "$ref": "#/$defs/G85"
+          },
+          {
+            "$ref": "#/$defs/G86"
+          },
+          {
+            "properties": {
+              "historie": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "object",
+                  "unevaluatedProperties": false,
+                  "allOf": [
+                    {
+                      "$ref": "#/$defs/G01"
+                    },
+                    {
+                      "$ref": "#/$defs/G02"
+                    },
+                    {
+                      "$ref": "#/$defs/G03"
+                    },
+                    {
+                      "$ref": "#/$defs/G04"
+                    },
+                    {
+                      "$ref": "#/$defs/G06"
+                    },
+                    {
+                      "$ref": "#/$defs/G07"
+                    },
+                    {
+                      "$ref": "#/$defs/G15"
+                    },
+                    {
+                      "$ref": "#/$defs/G81"
+                    },
+                    {
+                      "$ref": "#/$defs/G82"
+                    },
+                    {
+                      "$ref": "#/$defs/G83"
+                    },
+                    {
+                      "$ref": "#/$defs/G84"
+                    },
+                    {
+                      "$ref": "#/$defs/G85"
+                    },
+                    {
+                      "$ref": "#/$defs/G86"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "C06": {
+      "title": "Overlijden",
+      "description": "Gegevens over het overlijden van de ingeschrevene.",
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 1,
+      "items": {
+        "type": "object",
+        "unevaluatedProperties": false,
+        "allOf": [
+          {
+            "$ref": "#/$defs/G08"
+          },
+          {
+            "$ref": "#/$defs/G81"
+          },
+          {
+            "$ref": "#/$defs/G82"
+          },
+          {
+            "$ref": "#/$defs/G83"
+          },
+          {
+            "$ref": "#/$defs/G84"
+          },
+          {
+            "$ref": "#/$defs/G85"
+          },
+          {
+            "$ref": "#/$defs/G86"
+          },
+          {
+            "$ref": "#/$defs/G88"
+          },
+          {
+            "properties": {
+              "historie": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "object",
+                  "unevaluatedProperties": false,
+                  "allOf": [
+                    {
+                      "$ref": "#/$defs/G08"
+                    },
+                    {
+                      "$ref": "#/$defs/G81"
+                    },
+                    {
+                      "$ref": "#/$defs/G82"
+                    },
+                    {
+                      "$ref": "#/$defs/G83"
+                    },
+                    {
+                      "$ref": "#/$defs/G84"
+                    },
+                    {
+                      "$ref": "#/$defs/G85"
+                    },
+                    {
+                      "$ref": "#/$defs/G86"
+                    },
+                    {
+                      "$ref": "#/$defs/G88"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "C07": {
+      "title": "Inschrijving",
+      "description": "Gegevens over de opneming en de status van de PL.",
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 1,
+      "items": {
+        "type": "object",
+        "unevaluatedProperties": false,
+        "allOf": [
+          {
+            "$ref": "#/$defs/G66"
+          },
+          {
+            "$ref": "#/$defs/G67"
+          },
+          {
+            "$ref": "#/$defs/G68"
+          },
+          {
+            "$ref": "#/$defs/G69"
+          },
+          {
+            "$ref": "#/$defs/G70"
+          },
+          {
+            "$ref": "#/$defs/G71"
+          },
+          {
+            "$ref": "#/$defs/G80"
+          },
+          {
+            "$ref": "#/$defs/G87"
+          },
+          {
+            "$ref": "#/$defs/G88"
+          }
+        ]
+      }
+    },
+    "C08": {
+      "title": "Verblijfplaats",
+      "description": "Gegevens over het verblijf en adres van de ingeschrevene.",
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 1,
+      "items": {
+        "type": "object",
+        "unevaluatedProperties": false,
+        "allOf": [
+          {
+            "$ref": "#/$defs/G09"
+          },
+          {
+            "$ref": "#/$defs/G10"
+          },
+          {
+            "$ref": "#/$defs/G11"
+          },
+          {
+            "$ref": "#/$defs/G12"
+          },
+          {
+            "$ref": "#/$defs/G13"
+          },
+          {
+            "$ref": "#/$defs/G14"
+          },
+          {
+            "$ref": "#/$defs/G72"
+          },
+          {
+            "$ref": "#/$defs/G75"
+          },
+          {
+            "$ref": "#/$defs/G83"
+          },
+          {
+            "$ref": "#/$defs/G84"
+          },
+          {
+            "$ref": "#/$defs/G85"
+          },
+          {
+            "$ref": "#/$defs/G86"
+          },
+          {
+            "$ref": "#/$defs/G88"
+          },
+          {
+            "properties": {
+              "historie": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "object",
+                  "unevaluatedProperties": false,
+                  "allOf": [
+                    {
+                      "$ref": "#/$defs/G09"
+                    },
+                    {
+                      "$ref": "#/$defs/G10"
+                    },
+                    {
+                      "$ref": "#/$defs/G11"
+                    },
+                    {
+                      "$ref": "#/$defs/G12"
+                    },
+                    {
+                      "$ref": "#/$defs/G13"
+                    },
+                    {
+                      "$ref": "#/$defs/G14"
+                    },
+                    {
+                      "$ref": "#/$defs/G72"
+                    },
+                    {
+                      "$ref": "#/$defs/G75"
+                    },
+                    {
+                      "$ref": "#/$defs/G83"
+                    },
+                    {
+                      "$ref": "#/$defs/G84"
+                    },
+                    {
+                      "$ref": "#/$defs/G85"
+                    },
+                    {
+                      "$ref": "#/$defs/G86"
+                    },
+                    {
+                      "$ref": "#/$defs/G88"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "C09": {
+      "title": "Kind",
+      "description": "Gegevens over een kind van de ingeschrevene.",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "unevaluatedProperties": false,
+        "allOf": [
+          {
+            "$ref": "#/$defs/G01"
+          },
+          {
+            "$ref": "#/$defs/G02"
+          },
+          {
+            "$ref": "#/$defs/G03"
+          },
+          {
+            "$ref": "#/$defs/G81"
+          },
+          {
+            "$ref": "#/$defs/G82"
+          },
+          {
+            "$ref": "#/$defs/G83"
+          },
+          {
+            "$ref": "#/$defs/G84"
+          },
+          {
+            "$ref": "#/$defs/G85"
+          },
+          {
+            "$ref": "#/$defs/G86"
+          },
+          {
+            "$ref": "#/$defs/G89"
+          },
+          {
+            "properties": {
+              "historie": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "object",
+                  "unevaluatedProperties": false,
+                  "allOf": [
+                    {
+                      "$ref": "#/$defs/G01"
+                    },
+                    {
+                      "$ref": "#/$defs/G02"
+                    },
+                    {
+                      "$ref": "#/$defs/G03"
+                    },
+                    {
+                      "$ref": "#/$defs/G81"
+                    },
+                    {
+                      "$ref": "#/$defs/G82"
+                    },
+                    {
+                      "$ref": "#/$defs/G83"
+                    },
+                    {
+                      "$ref": "#/$defs/G84"
+                    },
+                    {
+                      "$ref": "#/$defs/G85"
+                    },
+                    {
+                      "$ref": "#/$defs/G86"
+                    },
+                    {
+                      "$ref": "#/$defs/G89"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "C10": {
+      "title": "Verblijfstitel",
+      "description": "Gegevens over de verblijfsrechtelijke status van de ingeschrevene.",
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 1,
+      "items": {
+        "type": "object",
+        "unevaluatedProperties": false,
+        "allOf": [
+          {
+            "$ref": "#/$defs/G39"
+          },
+          {
+            "$ref": "#/$defs/G83"
+          },
+          {
+            "$ref": "#/$defs/G84"
+          },
+          {
+            "$ref": "#/$defs/G85"
+          },
+          {
+            "$ref": "#/$defs/G86"
+          },
+          {
+            "properties": {
+              "historie": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "object",
+                  "unevaluatedProperties": false,
+                  "allOf": [
+                    {
+                      "$ref": "#/$defs/G39"
+                    },
+                    {
+                      "$ref": "#/$defs/G83"
+                    },
+                    {
+                      "$ref": "#/$defs/G84"
+                    },
+                    {
+                      "$ref": "#/$defs/G85"
+                    },
+                    {
+                      "$ref": "#/$defs/G86"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "C11": {
+      "title": "Gezagsverhouding",
+      "description": "Gegevens betreffende het gezag over de ingeschrevene.",
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 1,
+      "items": {
+        "type": "object",
+        "unevaluatedProperties": false,
+        "allOf": [
+          {
+            "$ref": "#/$defs/G32"
+          },
+          {
+            "$ref": "#/$defs/G33"
+          },
+          {
+            "$ref": "#/$defs/G82"
+          },
+          {
+            "$ref": "#/$defs/G83"
+          },
+          {
+            "$ref": "#/$defs/G84"
+          },
+          {
+            "$ref": "#/$defs/G85"
+          },
+          {
+            "$ref": "#/$defs/G86"
+          },
+          {
+            "properties": {
+              "historie": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "object",
+                  "unevaluatedProperties": false,
+                  "allOf": [
+                    {
+                      "$ref": "#/$defs/G32"
+                    },
+                    {
+                      "$ref": "#/$defs/G33"
+                    },
+                    {
+                      "$ref": "#/$defs/G82"
+                    },
+                    {
+                      "$ref": "#/$defs/G83"
+                    },
+                    {
+                      "$ref": "#/$defs/G84"
+                    },
+                    {
+                      "$ref": "#/$defs/G85"
+                    },
+                    {
+                      "$ref": "#/$defs/G86"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "C12": {
+      "title": "Reisdocument",
+      "description": "Gegevens over een reisdocument van de ingeschrevene.",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "unevaluatedProperties": false,
+        "allOf": [
+          {
+            "$ref": "#/$defs/G35"
+          },
+          {
+            "$ref": "#/$defs/G36"
+          },
+          {
+            "$ref": "#/$defs/G37"
+          },
+          {
+            "$ref": "#/$defs/G82"
+          },
+          {
+            "$ref": "#/$defs/G83"
+          },
+          {
+            "$ref": "#/$defs/G85"
+          },
+          {
+            "$ref": "#/$defs/G86"
+          }
+        ]
+      }
+    },
+    "C13": {
+      "title": "Kiesrecht",
+      "description": "Gegevens over het kiesrecht van de ingeschrevene.",
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 1,
+      "items": {
+        "type": "object",
+        "unevaluatedProperties": false,
+        "allOf": [
+          {
+            "$ref": "#/$defs/G31"
+          },
+          {
+            "$ref": "#/$defs/G38"
+          },
+          {
+            "$ref": "#/$defs/G82"
+          }
+        ]
+      }
+    },
+    "C14": {
+      "title": "Afnemersindicatie bij de persoonslijst",
+      "description": "persoonslijst is wel of niet meer onderdeel van de doelgroep van een afnemer of derde.",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "unevaluatedProperties": false,
+        "allOf": [
+          {
+            "$ref": "#/$defs/G40"
+          },
+          {
+            "$ref": "#/$defs/G85"
+          },
+          {
+            "properties": {
+              "historie": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "object",
+                  "unevaluatedProperties": false,
+                  "allOf": [
+                    {
+                      "$ref": "#/$defs/G40"
+                    },
+                    {
+                      "$ref": "#/$defs/G85"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "C15": {
+      "title": "Aantekening",
+      "description": "Gegevens over een aantekening uit vak 6 of vak 23 van de PK van de ingeschrevene.",
+      "deprecated": true,
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "unevaluatedProperties": false,
+        "allOf": [
+          {
+            "$ref": "#/$defs/G42"
+          }
+        ]
+      }
+    },
+    "C16": {
+      "title": "Tijdelijk verblijfsadres",
+      "description": "Adres waar betrokkene tijdelijk woont tijdens diens verblijf in Nederland.",
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 1,
+      "items": {
+        "type": "object",
+        "unevaluatedProperties": false,
+        "allOf": [
+          {
+            "$ref": "#/$defs/G09"
+          },
+          {
+            "$ref": "#/$defs/G11"
+          },
+          {
+            "$ref": "#/$defs/G18"
+          },
+          {
+            "$ref": "#/$defs/G19"
+          },
+          {
+            "$ref": "#/$defs/G72"
+          },
+          {
+            "$ref": "#/$defs/G83"
+          },
+          {
+            "$ref": "#/$defs/G84"
+          },
+          {
+            "$ref": "#/$defs/G85"
+          },
+          {
+            "$ref": "#/$defs/G86"
+          },
+          {
+            "$ref": "#/$defs/G88"
+          },
+          {
+            "properties": {
+              "historie": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "object",
+                  "unevaluatedProperties": false,
+                  "allOf": [
+                    {
+                      "$ref": "#/$defs/G09"
+                    },
+                    {
+                      "$ref": "#/$defs/G11"
+                    },
+                    {
+                      "$ref": "#/$defs/G18"
+                    },
+                    {
+                      "$ref": "#/$defs/G19"
+                    },
+                    {
+                      "$ref": "#/$defs/G72"
+                    },
+                    {
+                      "$ref": "#/$defs/G83"
+                    },
+                    {
+                      "$ref": "#/$defs/G84"
+                    },
+                    {
+                      "$ref": "#/$defs/G85"
+                    },
+                    {
+                      "$ref": "#/$defs/G86"
+                    },
+                    {
+                      "$ref": "#/$defs/G88"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "C17": {
+      "title": "Contactgegevens",
+      "description": "Telefoonnummer en/of e-mailadres waarop betrokkene bereikbaar is tijdens diens verblijf in Nederland.",
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 1,
+      "items": {
+        "type": "object",
+        "unevaluatedProperties": false,
+        "allOf": [
+          {
+            "$ref": "#/$defs/G16"
+          },
+          {
+            "$ref": "#/$defs/G17"
+          },
+          {
+            "$ref": "#/$defs/G88"
+          }
+        ]
+      }
+    },
+    "C21": {
+      "title": "Verwijzing",
+      "description": "Gegevens over de eerste of volgende gemeente van inschrijving of de RNI van de ingeschrevene.",
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 1,
+      "items": {
+        "type": "object",
+        "unevaluatedProperties": false,
+        "allOf": [
+          {
+            "$ref": "#/$defs/G01"
+          },
+          {
+            "$ref": "#/$defs/G02"
+          },
+          {
+            "$ref": "#/$defs/G03"
+          },
+          {
+            "$ref": "#/$defs/G09"
+          },
+          {
+            "$ref": "#/$defs/G70"
+          },
+          {
+            "$ref": "#/$defs/G83"
+          },
+          {
+            "$ref": "#/$defs/G84"
+          },
+          {
+            "$ref": "#/$defs/G85"
+          },
+          {
+            "$ref": "#/$defs/G86"
+          },
+          {
+            "properties": {
+              "historie": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "object",
+                  "unevaluatedProperties": false,
+                  "allOf": [
+                    {
+                      "$ref": "#/$defs/G01"
+                    },
+                    {
+                      "$ref": "#/$defs/G02"
+                    },
+                    {
+                      "$ref": "#/$defs/G03"
+                    },
+                    {
+                      "$ref": "#/$defs/G09"
+                    },
+                    {
+                      "$ref": "#/$defs/G70"
+                    },
+                    {
+                      "$ref": "#/$defs/G83"
+                    },
+                    {
+                      "$ref": "#/$defs/G84"
+                    },
+                    {
+                      "$ref": "#/$defs/G85"
+                    },
+                    {
+                      "$ref": "#/$defs/G86"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "G01": {
+      "type": "object",
+      "title": "Identificatienummers",
+      "properties": {
+        "e0110": {
+          "$ref": "#/$defs/E0110"
+        },
+        "e0120": {
+          "$ref": "#/$defs/E0120"
+        }
+      }
+    },
+    "G02": {
+      "type": "object",
+      "title": "Naam",
+      "properties": {
+        "e0210": {
+          "$ref": "#/$defs/E0210"
+        },
+        "e0220": {
+          "$ref": "#/$defs/E0220"
+        },
+        "e0230": {
+          "$ref": "#/$defs/E0230"
+        },
+        "e0240": {
+          "$ref": "#/$defs/E0240"
+        }
+      }
+    },
+    "G03": {
+      "type": "object",
+      "title": "Geboorte",
+      "properties": {
+        "e0310": {
+          "$ref": "#/$defs/E0310"
+        },
+        "e0320": {
+          "$ref": "#/$defs/E0320"
+        },
+        "e0330": {
+          "$ref": "#/$defs/E0330"
+        }
+      }
+    },
+    "G04": {
+      "type": "object",
+      "title": "Geslacht",
+      "properties": {
+        "e0410": {
+          "$ref": "#/$defs/E0410"
+        }
+      }
+    },
+    "G05": {
+      "type": "object",
+      "title": "Telefoon",
+      "properties": {
+        "e0510": {
+          "$ref": "#/$defs/E0510"
+        }
+      }
+    },
+    "G06": {
+      "type": "object",
+      "title": "Huwelijkssluiting/aangaan geregistreerd partnerschap",
+      "properties": {
+        "e0610": {
+          "$ref": "#/$defs/E0610"
+        },
+        "e0620": {
+          "$ref": "#/$defs/E0620"
+        },
+        "e0630": {
+          "$ref": "#/$defs/E0630"
+        }
+      }
+    },
+    "G07": {
+      "type": "object",
+      "title": "Ontbinding huwelijk/geregistreerd partnerschap",
+      "properties": {
+        "e0710": {
+          "$ref": "#/$defs/E0710"
+        },
+        "e0720": {
+          "$ref": "#/$defs/E0720"
+        },
+        "e0730": {
+          "$ref": "#/$defs/E0730"
+        },
+        "e0740": {
+          "$ref": "#/$defs/E0740"
+        }
+      }
+    },
+    "G08": {
+      "type": "object",
+      "title": "Overlijden",
+      "properties": {
+        "e0810": {
+          "$ref": "#/$defs/E0810"
+        },
+        "e0820": {
+          "$ref": "#/$defs/E0820"
+        },
+        "e0830": {
+          "$ref": "#/$defs/E0830"
+        }
+      }
+    },
+    "G09": {
+      "type": "object",
+      "title": "Gemeente",
+      "properties": {
+        "e0910": {
+          "$ref": "#/$defs/E0910"
+        },
+        "e0920": {
+          "$ref": "#/$defs/E0920"
+        }
+      }
+    },
+    "G10": {
+      "type": "object",
+      "title": "Adreshouding",
+      "properties": {
+        "e1010": {
+          "$ref": "#/$defs/E1010"
+        },
+        "e1020": {
+          "$ref": "#/$defs/E1020"
+        },
+        "e1030": {
+          "$ref": "#/$defs/E1030"
+        }
+      }
+    },
+    "G11": {
+      "type": "object",
+      "title": "Adres",
+      "properties": {
+        "e1110": {
+          "$ref": "#/$defs/E1110"
+        },
+        "e1115": {
+          "$ref": "#/$defs/E1115"
+        },
+        "e1120": {
+          "$ref": "#/$defs/E1120"
+        },
+        "e1130": {
+          "$ref": "#/$defs/E1130"
+        },
+        "e1140": {
+          "$ref": "#/$defs/E1140"
+        },
+        "e1150": {
+          "$ref": "#/$defs/E1150"
+        },
+        "e1160": {
+          "$ref": "#/$defs/E1160"
+        },
+        "e1170": {
+          "$ref": "#/$defs/E1170"
+        },
+        "e1180": {
+          "$ref": "#/$defs/E1180"
+        },
+        "e1190": {
+          "$ref": "#/$defs/E1190"
+        }
+      }
+    },
+    "G12": {
+      "type": "object",
+      "title": "Locatie",
+      "properties": {
+        "e1210": {
+          "$ref": "#/$defs/E1210"
+        }
+      }
+    },
+    "G13": {
+      "type": "object",
+      "title": "Adres buitenland",
+      "properties": {
+        "e1310": {
+          "$ref": "#/$defs/E1310"
+        },
+        "e1320": {
+          "$ref": "#/$defs/E1320"
+        },
+        "e1330": {
+          "$ref": "#/$defs/E1330"
+        },
+        "e1340": {
+          "$ref": "#/$defs/E1340"
+        },
+        "e1350": {
+          "$ref": "#/$defs/E1350"
+        }
+      }
+    },
+    "G14": {
+      "type": "object",
+      "title": "Immigratie",
+      "properties": {
+        "e1410": {
+          "$ref": "#/$defs/E1410"
+        },
+        "e1420": {
+          "$ref": "#/$defs/E1420"
+        }
+      }
+    },
+    "G15": {
+      "type": "object",
+      "title": "Soort verbintenis",
+      "properties": {
+        "e1510": {
+          "$ref": "#/$defs/E1510"
+        }
+      }
+    },
+    "G16": {
+      "type": "object",
+      "title": "Telefoon",
+      "properties": {
+        "e1610": {
+          "$ref": "#/$defs/E1610"
+        },
+        "e1620": {
+          "$ref": "#/$defs/E1620"
+        },
+        "e1630": {
+          "$ref": "#/$defs/E1630"
+        }
+      }
+    },
+    "G17": {
+      "type": "object",
+      "title": "E-mailadres",
+      "properties": {
+        "e1710": {
+          "$ref": "#/$defs/E1710"
+        },
+        "e1720": {
+          "$ref": "#/$defs/E1720"
+        },
+        "e1730": {
+          "$ref": "#/$defs/E1730"
+        }
+      }
+    },
+    "G18": {
+      "type": "object",
+      "title": "Einde geldigheid",
+      "properties": {
+        "e1810": {
+          "$ref": "#/$defs/E1810"
+        }
+      }
+    },
+    "G19": {
+      "type": "object",
+      "title": "Adrestype",
+      "properties": {
+        "e1910": {
+          "$ref": "#/$defs/E1910"
+        }
+      }
+    },
+    "G20": {
+      "type": "object",
+      "title": "A-nummerverwijzingen",
+      "properties": {
+        "e2010": {
+          "$ref": "#/$defs/E2010"
+        },
+        "e2020": {
+          "$ref": "#/$defs/E2020"
+        }
+      }
+    },
+    "G31": {
+      "type": "object",
+      "title": "Europees kiesrecht",
+      "properties": {
+        "e3110": {
+          "$ref": "#/$defs/E3110"
+        },
+        "e3120": {
+          "$ref": "#/$defs/E3120"
+        },
+        "e3130": {
+          "$ref": "#/$defs/E3130"
+        },
+        "e3140": {
+          "$ref": "#/$defs/E3140"
+        },
+        "e3150": {
+          "$ref": "#/$defs/E3150"
+        },
+        "e3160": {
+          "$ref": "#/$defs/E3160"
+        }
+      }
+    },
+    "G32": {
+      "type": "object",
+      "title": "Gezag minderjarige",
+      "properties": {
+        "e3210": {
+          "$ref": "#/$defs/E3210"
+        }
+      }
+    },
+    "G33": {
+      "type": "object",
+      "title": "Curatele",
+      "properties": {
+        "e3310": {
+          "$ref": "#/$defs/E3310"
+        }
+      }
+    },
+    "G35": {
+      "type": "object",
+      "title": "Nederlands reisdocument",
+      "properties": {
+        "e3510": {
+          "$ref": "#/$defs/E3510"
+        },
+        "e3520": {
+          "$ref": "#/$defs/E3520"
+        },
+        "e3530": {
+          "$ref": "#/$defs/E3530"
+        },
+        "e3540": {
+          "$ref": "#/$defs/E3540"
+        },
+        "e3550": {
+          "$ref": "#/$defs/E3550"
+        },
+        "e3560": {
+          "$ref": "#/$defs/E3560"
+        },
+        "e3570": {
+          "$ref": "#/$defs/E3570"
+        },
+        "e3580": {
+          "$ref": "#/$defs/E3580"
+        }
+      }
+    },
+    "G36": {
+      "type": "object",
+      "title": "Signalering",
+      "properties": {
+        "e3610": {
+          "$ref": "#/$defs/E3610"
+        }
+      }
+    },
+    "G37": {
+      "type": "object",
+      "title": "Buitenlands reisdocument",
+      "deprecated": true,
+      "properties": {
+        "e3710": {
+          "$ref": "#/$defs/E3710"
+        }
+      }
+    },
+    "G38": {
+      "type": "object",
+      "title": "Uitsluiting kiesrecht",
+      "properties": {
+        "e3810": {
+          "$ref": "#/$defs/E3810"
+        },
+        "e3820": {
+          "$ref": "#/$defs/E3820"
+        }
+      }
+    },
+    "G39": {
+      "type": "object",
+      "title": "Verblijfstitel",
+      "properties": {
+        "e3910": {
+          "$ref": "#/$defs/E3910"
+        },
+        "e3920": {
+          "$ref": "#/$defs/E3920"
+        },
+        "e3930": {
+          "$ref": "#/$defs/E3930"
+        }
+      }
+    },
+    "G40": {
+      "type": "object",
+      "title": "Afnemer",
+      "properties": {
+        "e4010": {
+          "$ref": "#/$defs/E4010"
+        }
+      }
+    },
+    "G42": {
+      "type": "object",
+      "title": "Aantekening",
+      "properties": {
+        "e4210": {
+          "$ref": "#/$defs/E4210"
+        }
+      }
+    },
+    "G61": {
+      "type": "object",
+      "title": "Naamgebruik",
+      "properties": {
+        "e6110": {
+          "$ref": "#/$defs/E6110"
+        }
+      }
+    },
+    "G62": {
+      "type": "object",
+      "title": "Familierechtelijke betrekking",
+      "properties": {
+        "e6210": {
+          "$ref": "#/$defs/E6210"
+        }
+      }
+    },
+    "G63": {
+      "type": "object",
+      "title": "Opnemen nationaliteit",
+      "properties": {
+        "e6310": {
+          "$ref": "#/$defs/E6310"
+        }
+      }
+    },
+    "G64": {
+      "type": "object",
+      "title": "Beëindigen nationaliteit",
+      "properties": {
+        "e6410": {
+          "$ref": "#/$defs/E6410"
+        }
+      }
+    },
+    "G65": {
+      "type": "object",
+      "title": "Bijzonder Nederlanderschap",
+      "properties": {
+        "e6510": {
+          "$ref": "#/$defs/E6510"
+        }
+      }
+    },
+    "G66": {
+      "type": "object",
+      "title": "Blokkering",
+      "properties": {
+        "e6620": {
+          "$ref": "#/$defs/E6620"
+        }
+      }
+    },
+    "G67": {
+      "type": "object",
+      "title": "Opschorting",
+      "properties": {
+        "e6710": {
+          "$ref": "#/$defs/E6710"
+        },
+        "e6720": {
+          "$ref": "#/$defs/E6720"
+        }
+      }
+    },
+    "G68": {
+      "type": "object",
+      "title": "Opname",
+      "properties": {
+        "e6810": {
+          "$ref": "#/$defs/E6810"
+        }
+      }
+    },
+    "G69": {
+      "type": "object",
+      "title": "Gemeente PK",
+      "properties": {
+        "e6910": {
+          "$ref": "#/$defs/E6910"
+        }
+      }
+    },
+    "G70": {
+      "type": "object",
+      "title": "Geheim",
+      "properties": {
+        "e7010": {
+          "$ref": "#/$defs/E7010"
+        }
+      }
+    },
+    "G71": {
+      "type": "object",
+      "title": "Verificatie",
+      "properties": {
+        "e7110": {
+          "$ref": "#/$defs/E7110"
+        },
+        "e7120": {
+          "$ref": "#/$defs/E7120"
+        }
+      }
+    },
+    "G72": {
+      "type": "object",
+      "title": "Adresaangifte",
+      "properties": {
+        "e7210": {
+          "$ref": "#/$defs/E7210"
+        }
+      }
+    },
+    "G73": {
+      "type": "object",
+      "title": "Buitenlands persoonsnummer",
+      "properties": {
+        "e7310": {
+          "$ref": "#/$defs/E7310"
+        }
+      }
+    },
+    "G75": {
+      "type": "object",
+      "title": "Documentindicatie",
+      "properties": {
+        "e7510": {
+          "$ref": "#/$defs/E7510"
+        }
+      }
+    },
+    "G80": {
+      "type": "object",
+      "title": "Synchroniciteit",
+      "properties": {
+        "e8010": {
+          "$ref": "#/$defs/E8010"
+        },
+        "e8020": {
+          "$ref": "#/$defs/E8020"
+        }
+      }
+    },
+    "G81": {
+      "type": "object",
+      "title": "Akte",
+      "properties": {
+        "e8110": {
+          "$ref": "#/$defs/E8110"
+        },
+        "e8120": {
+          "$ref": "#/$defs/E8120"
+        }
+      }
+    },
+    "G82": {
+      "type": "object",
+      "title": "Document",
+      "properties": {
+        "e8210": {
+          "$ref": "#/$defs/E8210"
+        },
+        "e8220": {
+          "$ref": "#/$defs/E8220"
+        },
+        "e8230": {
+          "$ref": "#/$defs/E8230"
+        }
+      }
+    },
+    "G83": {
+      "type": "object",
+      "title": "Procedure",
+      "properties": {
+        "e8310": {
+          "$ref": "#/$defs/E8310"
+        },
+        "e8320": {
+          "$ref": "#/$defs/E8320"
+        },
+        "e8330": {
+          "$ref": "#/$defs/E8330"
+        }
+      }
+    },
+    "G84": {
+      "type": "object",
+      "title": "Onjuist",
+      "properties": {
+        "e8410": {
+          "$ref": "#/$defs/E8410"
+        }
+      }
+    },
+    "G85": {
+      "type": "object",
+      "title": "Geldigheid",
+      "properties": {
+        "e8510": {
+          "$ref": "#/$defs/E8510"
+        }
+      }
+    },
+    "G86": {
+      "type": "object",
+      "title": "Opneming",
+      "properties": {
+        "e8610": {
+          "$ref": "#/$defs/E8610"
+        }
+      }
+    },
+    "G87": {
+      "type": "object",
+      "title": "PK-conversie",
+      "properties": {
+        "e8710": {
+          "$ref": "#/$defs/E8710"
+        }
+      }
+    },
+    "G88": {
+      "type": "object",
+      "title": "RNI-deelnemer",
+      "properties": {
+        "e8810": {
+          "$ref": "#/$defs/E8810"
+        },
+        "e8820": {
+          "$ref": "#/$defs/E8820"
+        }
+      }
+    },
+    "G89": {
+      "type": "object",
+      "title": "Registratie afstamming",
+      "properties": {
+        "e8910": {
+          "$ref": "#/$defs/E8910"
+        }
+      }
+    },
+    "E0110": {
+      "type": "string",
+      "title": "A-nummer",
+      "description": "Het administratienummer, bedoeld in artikel 4.9 van de Wet BRP.\n⦿ Groep: Identificatienummers (01)\n⦿ Element: A-nummer (01.10)",
+      "$ref": "#/$defs/AnummerRegex"
+    },
+    "E0120": {
+      "type": "string",
+      "title": "Burgerservicenummer",
+      "description": "Het burgerservicenummer, bedoeld in artikel 1.1 van de Wet algemene bepalingen burgerservicenummer.\n⦿ Groep: Identificatienummers (01)\n⦿ Element: Burgerservicenummer (01.20)",
+      "$ref": "#/$defs/BSNRegex"
+    },
+    "E0210": {
+      "type": "string",
+      "title": "Voornamen",
+      "description": "De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. Indien aanwezig, wordt het predicaat (tabel 38) afgesplitst.\n⦿ Groep: Naam (02)\n⦿ Element: Voornamen (02.10)",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "E0220": {
+      "type": "string",
+      "title": "Adellijke titel/predicaat",
+      "description": "Een code, voorkomend in Tabel 38, Tabel Adellijke titel/predicaat, die aangeeft welke titel of welk predicaat behoort tot de naam (bij adellijke titel geslachtsnaam, bij predicaat voornaam).\n⦿ Groep: Naam (02)\n⦿ Element: Adellijke titel/predicaat (02.20)",
+      "pattern": "^[a-zA-Z]{1,2}$"
+    },
+    "E0230": {
+      "type": "string",
+      "title": "Voorvoegsel geslachtsnaam",
+      "description": "Dat deel van de geslachtsnaam dat voorkomt in Tabel 36, Voorvoegseltabel en, gescheiden door een spatie, voorafgaat aan de rest van de geslachtsnaam.\n⦿ Groep: Naam (02)\n⦿ Element: Voorvoegsel geslachtsnaam (02.30)",
+      "minLength": 1,
+      "maxLength": 10
+    },
+    "E0240": {
+      "type": "string",
+      "title": "Geslachtsnaam",
+      "description": "De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels (tabel 36) en adellijke titel/predicaat (tabel 38) zijn afgesplitst.\n⦿ Groep: Naam (02)\n⦿ Element: Geslachtsnaam (02.40)",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "E0310": {
+      "type": "string",
+      "title": "Geboortedatum",
+      "description": "De datum waarop de persoon is geboren.\n⦿ Groep: Geboorte (03)\n⦿ Element: Geboortedatum (03.10)",
+      "$ref": "#/$defs/DatumDeelsOnbekendRegex"
+    },
+    "E0320": {
+      "type": "string",
+      "title": "Geboorteplaats",
+      "description": "Een code, opgenomen in Tabel 33, Gemeententabel of een buitenlandse plaats of een plaatsbepaling, die aangeeft waar de persoon is geboren.\n⦿ Groep: Geboorte (03)\n⦿ Element: Geboorteplaats (03.20)",
+      "minLength": 1,
+      "maxLength": 40
+    },
+    "E0330": {
+      "type": "string",
+      "title": "Geboorteland",
+      "description": "Een code, opgenomen in Tabel 34, Landentabel, die het land aangeeft waar de persoon is geboren.\n⦿ Groep: Geboorte (03)\n⦿ Element: Geboorteland (03.30)",
+      "minLength": 4,
+      "maxLength": 4
+    },
+    "E0410": {
+      "type": "string",
+      "title": "Geslachtsaanduiding",
+      "description": "Een aanduiding die aangeeft dat de ingeschrevene een man of een vrouw is, of dat het geslacht (nog) onbekend is.\n⦿ Groep: Geslacht (04)\n⦿ Element: Geslachtsaanduiding (04.10)",
+      "minLength": 1,
+      "maxLength": 1
+    },
+    "E0510": {
+      "type": "string",
+      "title": "Nationaliteit",
+      "description": "Een code, opgenomen in Tabel 32, Nationaliteitentabel, die aangeeft welke nationaliteit de ingeschrevene bezit.\n⦿ Groep: Nationaliteit (05)\n⦿ Element: Nationaliteit (05.10)",
+      "minLength": 4,
+      "maxLength": 4
+    },
+    "E0610": {
+      "type": "string",
+      "title": "Datum huwelijkssluiting/aangaan geregistreerd partnerschap",
+      "description": "De datum waarop het huwelijk is voltrokken of het partnerschap is aangegaan.\n⦿ Groep: Huwelijkssluiting/aangaan geregistreerd partnerschap (06)\n⦿ Element: Datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10)",
+      "$ref": "#/$defs/DatumDeelsOnbekendRegex"
+    },
+    "E0620": {
+      "type": "string",
+      "title": "Plaats huwelijkssluiting/aangaan geregistreerd partnerschap",
+      "description": "Een code, opgenomen in Tabel 33, Gemeententabel of een buitenlandse plaats of een plaatsbepaling, die aangeeft waar het huwelijk is voltrokken of het partnerschap is aangegaan.\n⦿ Groep: Huwelijkssluiting/aangaan geregistreerd partnerschap (06)\n⦿ Element: Plaats huwelijkssluiting/aangaan geregistreerd partnerschap (06.20)",
+      "minLength": 1,
+      "maxLength": 40
+    },
+    "E0630": {
+      "type": "string",
+      "title": "Land huwelijkssluiting/aangaan geregistreerd partnerschap",
+      "description": "Een code, opgenomen in Tabel 34, Landentabel, die het land aangeeft waar het huwelijk is voltrokken of het partnerschap is aangegaan.\n⦿ Groep: Huwelijkssluiting/aangaan geregistreerd partnerschap (06)\n⦿ Element: Land huwelijkssluiting/aangaan geregistreerd partnerschap (06.30)",
+      "minLength": 4,
+      "maxLength": 4
+    },
+    "E0710": {
+      "type": "string",
+      "title": "Datum ontbinding huwelijk/geregistreerd partnerschap",
+      "description": "De datum waarop het huwelijk/geregistreerd partnerschap is ontbonden of nietig verklaard.\n⦿ Groep: Ontbinding huwelijk/geregistreerd partnerschap (07)\n⦿ Element: Datum ontbinding huwelijk/geregistreerd partnerschap (07.10)",
+      "$ref": "#/$defs/DatumDeelsOnbekendRegex"
+    },
+    "E0720": {
+      "type": "string",
+      "title": "Plaats ontbinding huwelijk/geregistreerd partnerschap",
+      "description": "Een code, opgenomen in Tabel 33, Gemeententabel of een buitenlandse plaats of een plaatsbepaling die aangeeft waar het huwelijk/ geregistreerd partnerschap is ontbonden of nietig verklaard.\n⦿ Groep: Ontbinding huwelijk/geregistreerd partnerschap (07)\n⦿ Element: Plaats ontbinding huwelijk/geregistreerd partnerschap (07.20)",
+      "minLength": 1,
+      "maxLength": 40
+    },
+    "E0730": {
+      "type": "string",
+      "title": "Land ontbinding huwelijk/geregistreerd partnerschap",
+      "description": "Een code, opgenomen in Tabel 34, Landentabel, die het land aangeeft waar het huwelijk/geregistreerd partnerschap is ontbonden of nietig verklaard.\n⦿ Groep: Ontbinding huwelijk/geregistreerd partnerschap (07)\n⦿ Element: Land ontbinding huwelijk/geregistreerd partnerschap (07.30)",
+      "minLength": 4,
+      "maxLength": 4
+    },
+    "E0740": {
+      "type": "string",
+      "title": "Reden ontbinding huwelijk/geregistreerd partnerschap",
+      "description": "Een code, opgenomen in Tabel 41, Tabel Reden ontbinding/ nietigverklaring huwelijk/geregistreerd partnerschap, die aangeeft om welke reden het huwelijk/geregistreerd partnerschap is ontbonden of nietig verklaard.\n⦿ Groep: Ontbinding huwelijk/geregistreerd partnerschap (07)\n⦿ Element: Reden ontbinding huwelijk/geregistreerd partnerschap (07.40)",
+      "minLength": 1,
+      "maxLength": 1
+    },
+    "E0810": {
+      "type": "string",
+      "title": "Datum overlijden",
+      "description": "De datum van overlijden.\n⦿ Groep: Overlijden (08)\n⦿ Element: Datum overlijden (08.10)",
+      "$ref": "#/$defs/DatumDeelsOnbekendRegex"
+    },
+    "E0820": {
+      "type": "string",
+      "title": "Plaats overlijden",
+      "description": "Een code, opgenomen in Tabel 33, Gemeententabel of een buitenlandse plaats of een plaatsbepaling, die aangeeft waar het overlijden heeft plaatsgevonden.\n⦿ Groep: Overlijden (08)\n⦿ Element: Plaats overlijden (08.20)",
+      "minLength": 1,
+      "maxLength": 40
+    },
+    "E0830": {
+      "type": "string",
+      "title": "Land overlijden",
+      "description": "Een code, opgenomen in Tabel 34, Landentabel, die het land aangeeft waar de persoon is overleden.\n⦿ Groep: Overlijden (08)\n⦿ Element: Land overlijden (08.30)",
+      "minLength": 4,
+      "maxLength": 4
+    },
+    "E0910": {
+      "type": "string",
+      "title": "Gemeente van inschrijving",
+      "description": "Een code, opgenomen in Tabel 33, Gemeententabel, die aangeeft in welke gemeente de PL zich bevindt of de gemeente waarnaar de PL is uitgeschreven of de gemeente waar de PL voor de eerste keer is opgenomen. In categorie 16 betreft het de gemeente waar zich het tijdelijk verblijfsadres bevindt.\n⦿ Groep: Gemeente (09)\n⦿ Element: Gemeente van inschrijving (09.10)",
+      "minLength": 4,
+      "maxLength": 4
+    },
+    "E0920": {
+      "type": "string",
+      "title": "Datum inschrijving",
+      "description": "Bij een tijdige aangifte (tussen vier weken voor en vijf dagen na de verhuizing) van vestiging in de gemeente is dit de in de aangifte vermelde datum van adreswijziging. Bij een niet tijdige aangifte is dit de aangiftedatum. Bij inschrijving op grond van een geboorteakte is dit de geboortedatum. Bij ambtshalve inschrijving is dit de datum waarop de betrokkene schriftelijk van het voornemen van ambtshalve opneming mededeling is gedaan. In categorie 16 betreft het de datum waarop betrokkene voor het eerst op het tijdelijk verblijfsadres in deze gemeente is gaan wonen, mits deze adressen in de tijd aaneengesloten zijn.\n⦿ Groep: Gemeente (09)\n⦿ Element: Datum inschrijving (09.20)",
+      "$ref": "#/$defs/DatumDeelsOnbekendRegex"
+    },
+    "E1010": {
+      "type": "string",
+      "title": "Functie adres",
+      "description": "De aanduiding die aangeeft of het adres de functie heeft van woonadres of briefadres.\n⦿ Groep: Adreshouding (10)\n⦿ Element: Functie adres (10.10)",
+      "minLength": 1,
+      "maxLength": 1
+    },
+    "E1020": {
+      "type": "string",
+      "title": "Gemeentedeel",
+      "description": "Een geografisch bepaald gebied dat een deel is van het gemeentelijk grondgebied.  Dit element wordt gebruikt als nadere plaatsbepaling van een straat of locatie, indien deze binnen de gemeente niet uniek is.\n⦿ Groep: Adreshouding (10)\n⦿ Element: Gemeentedeel (10.20)",
+      "minLength": 1,
+      "maxLength": 24
+    },
+    "E1030": {
+      "type": "string",
+      "title": "Datum aanvang adreshouding",
+      "description": "De datum van aangifte of ambtshalve melding van verblijf en adres. Bij een tijdige aangifte (tussen vier weken voor en vijf dagen na de verhuizing) van vestiging op het adres is dit de in de aangifte vermelde datum van adreswijziging. Bij een niet tijdige aangifte is dit de aangiftedatum. Bij inschrijving op grond van een geboorteakte is dit de geboortedatum. Bij ambtshalve inschrijving is dit de datum waarop de betrokkene schriftelijk van het voornemen van ambtshalve opneming mededeling is gedaan.\n⦿ Groep: Adreshouding (10)\n⦿ Element: Datum aanvang adreshouding (10.30)",
+      "$ref": "#/$defs/DatumDeelsOnbekendRegex"
+    },
+    "E1110": {
+      "type": "string",
+      "title": "Straatnaam",
+      "description": "De officiële straatnaam zoals door het gemeentebestuur is vastgesteld dan wel een kopie van de inhoud van element 11.15 Naam openbare ruimte,  indien noodzakelijk afgekort volgens de NEN-5825 [2002] norm.\n⦿ Groep: Adres (11)\n⦿ Element: Straatnaam (11.10)",
+      "minLength": 1,
+      "maxLength": 24
+    },
+    "E1115": {
+      "type": "string",
+      "title": "Naam Openbare ruimte",
+      "description": "Een naam die aan een openbare ruimte is toegekend in een daartoe strekkend formeel gemeentelijk besluit. Een openbare ruimte is een door het bevoegde gemeentelijke orgaan als zodanig aangewezen benaming van een binnen één woonplaats gelegen buitenruimte. Voor 'Naam openbare ruimte' mag 'officiële straatnaam' gelezen worden.\n⦿ Groep: Adres (11)\n⦿ Element: Naam openbare ruimte (11.15)",
+      "minLength": 1,
+      "maxLength": 80
+    },
+    "E1120": {
+      "type": "string",
+      "title": "Huisnummer",
+      "description": "De numerieke aanduiding zoals deze door het gemeentebestuur aan het object is toegekend dan wel een door of namens het bevoegde gemeentelijke orgaan ten aanzien van een adresseerbaar object toegekende nummering.\n⦿ Groep: Adres (11)\n⦿ Element: Huisnummer (11.20)",
+      "minLength": 1,
+      "maxLength": 5
+    },
+    "E1130": {
+      "type": "string",
+      "title": "Huisletter",
+      "description": "Een alfabetisch teken achter het huisnummer zoals dit door het gemeentebestuur is toegekend dan wel een door of namens het bevoegde gemeentelijke orgaan ten aanzien van een adresseerbaar object toegekende toevoeging aan een huisnummer in de vorm van een alfabetisch teken.\n⦿ Groep: Adres (11)\n⦿ Element: Huisletter (11.30)",
+      "minLength": 1,
+      "maxLength": 1
+    },
+    "E1140": {
+      "type": "string",
+      "title": "Huisnummertoevoeging",
+      "description": "Die letters of tekens die noodzakelijk zijn om, naast huisnummer en -letter, de brievenbus te vinden dan wel een door of namens het bevoegde gemeentelijke orgaan ten aanzien van een adresseerbaar object toegekende toevoeging aan een huisnummer of een combinatie van huisletter en huisnummer.\n⦿ Groep: Adres (11)\n⦿ Element: Huisnummertoevoeging (11.40)",
+      "minLength": 1,
+      "maxLength": 4
+    },
+    "E1150": {
+      "type": "string",
+      "title": "Aanduiding bij huisnummer",
+      "description": "De aanduiding die wordt gebruikt voor adressen die niet zijn voorzien van de gebruikelijke straatnaam en huisnummeraanduidingen.\n⦿ Groep: Adres (11)\n⦿ Element: Aanduiding bij huisnummer (11.50)",
+      "minLength": 2,
+      "maxLength": 2
+    },
+    "E1160": {
+      "type": "string",
+      "title": "Postcode",
+      "description": "De door de PostNL vastgestelde code behorend bij de straatnaam en het huisnummer dan wel de door PostNL vastgestelde code behorende bij een bepaalde combinatie van een naam openbare ruimte en een huisnummer.\n⦿ Groep: Adres (11)\n⦿ Element: Postcode (11.60)",
+      "pattern": "^[1-9]{1}[0-9]{3}[A-Za-z]{2}$"
+    },
+    "E1170": {
+      "type": "string",
+      "title": "Woonplaatsnaam",
+      "description": "Een woonplaatsnaam is de naam van een door het bevoegde gemeentelijke orgaan als zodanig aangewezen gedeelte van het gemeentelijk grondgebied.\n⦿ Groep: Adres (11)\n⦿ Element: Woonplaatsnaam (11.70)",
+      "minLength": 1,
+      "maxLength": 80
+    },
+    "E1180": {
+      "type": "string",
+      "title": "Identificatiecode verblijfplaats",
+      "description": "Een verblijfplaats kan een ligplaats, een standplaats of een verblijfsobject in een of meerdere panden zijn, waaraan respectievelijk een ligplaatsidentificatie, standplaatsidentificatie of verblijfsobjectidentificatie is toegekend.  De Identificatiecode verblijfplaats is een combinatie van een viercijferige gemeentecode, een tweecijferige objecttypecode die aangeeft of de aanduiding een verblijfsobject (01), ligplaats (02) of standplaats (03) betreft en een voor het betreffende objecttype binnen een gemeente uniek tiencijferig volgnummer.\n⦿ Groep: Adres (11)\n⦿ Element: Identificatiecode verblijfplaats (11.80)",
+      "minLength": 16,
+      "maxLength": 16
+    },
+    "E1190": {
+      "type": "string",
+      "title": "Identificatiecode nummeraanduiding",
+      "description": "De unieke aanduiding van een nummeraanduiding. Een nummeraanduiding is een door het bevoegde gemeentelijke orgaan als zodanig toegekende aanduiding van een adresseerbaar object.  De Identificatiecode nummeraanduiding is een combinatie van een viercijferige gemeentecode, de tweecijferige objecttypecode 20 die aangeeft dat het om een nummeraanduiding gaat en een voor het betreffende objecttype binnen een gemeente uniek tiencijferig volgnummer.\n⦿ Groep: Adres (11)\n⦿ Element: Identificatiecode nummeraanduiding (11.90)",
+      "minLength": 16,
+      "maxLength": 16
+    },
+    "E1210": {
+      "type": "string",
+      "title": "Locatiebeschrijving",
+      "description": "Een geheel of gedeeltelijke omschrijving van de ligging van een object, indien dit niet kan worden aangegeven in de groep 11 Adres.\n⦿ Groep: Locatie (12)\n⦿ Element: Locatiebeschrijving (12.10)",
+      "minLength": 1,
+      "maxLength": 35
+    },
+    "E1310": {
+      "type": "string",
+      "title": "Land adres buitenland",
+      "description": "Een code, opgenomen in Tabel 34, Landentabel, die het land (buiten Nederland) aangeeft alwaar de ingeschrevene verblijft. In tegenstelling tot bij de gemeente, kan bij de RNI kan de waarde Nederland (6030) wel voorkomen.  Bij het ingaan van een Ministerieel besluit dient hier de standaardwaarde opgenomen te worden.\n⦿ Groep: Adres buitenland (13)\n⦿ Element: Land adres buitenland (13.10)",
+      "minLength": 4,
+      "maxLength": 4
+    },
+    "E1320": {
+      "type": "string",
+      "title": "Datum aanvang adres buitenland",
+      "description": "De datum van aangifte of ambtshalve melding van verblijf op het buitenlands adres.  Bij emigratie is dit de datum van vertrek naar het buitenland. Bij ambtshalve uitschrijving is dit de datum waarop de betrokkene schriftelijk van het voornemen tot ambtshalve uitschrijving mededeling is gedaan. Bij uitschrijving wegens het ingaan van een Ministerieel besluit is dit de datum van dat besluit. In alle andere gevallen is dit de datum waarop de aangifte is ontvangen.\n⦿ Groep: Adres buitenland (13)\n⦿ Element: Datum aanvang adres buitenland (13.20)",
+      "$ref": "#/$defs/DatumDeelsOnbekendRegex"
+    },
+    "E1330": {
+      "type": "string",
+      "title": "Regel 1 adres buitenland",
+      "description": "Eerste deel van het adres in het buitenland, met uitzondering van het land.\n⦿ Groep: Adres buitenland (13)\n⦿ Element: Regel 1 adres buitenland (13.30)",
+      "minLength": 1,
+      "maxLength": 35
+    },
+    "E1340": {
+      "type": "string",
+      "title": "Regel 2 adres buitenland",
+      "description": "Tweede deel van het adres in het buitenland, met uitzondering van het land.\n⦿ Groep: Adres buitenland (13)\n⦿ Element: Regel 2 adres buitenland (13.40)",
+      "minLength": 1,
+      "maxLength": 35
+    },
+    "E1350": {
+      "type": "string",
+      "title": "Regel 3 adres buitenland",
+      "description": "Derde deel van het adres in het buitenland, met uitzondering van het land.\n⦿ Groep: Adres buitenland (13)\n⦿ Element: Regel 3 adres buitenland (13.50)",
+      "minLength": 1,
+      "maxLength": 35
+    },
+    "E1410": {
+      "type": "string",
+      "title": "Land vanwaar ingeschreven",
+      "description": "Een code, opgenomen in Tabel 34, Landentabel, die het land aangeeft waar de ingeschrevene verblijf hield voor (her)vestiging in Nederland. Bij het opheffen van een Ministerieel besluit dient hier de standaardwaarde opgenomen te worden.\n⦿ Groep: Immigratie (14)\n⦿ Element: Land vanwaar ingeschreven (14.10)",
+      "minLength": 4,
+      "maxLength": 4
+    },
+    "E1420": {
+      "type": "string",
+      "title": "Datum vestiging in Nederland",
+      "description": "De datum van inschrijving in Nederland.  Bij ambtshalve inschrijving is dit de datum waarop de betrokkene schriftelijk van het voornemen tot ambtshalve inschrijving mededeling is gedaan. In alle andere gevallen is dit de datum waarop de aangifte is ontvangen.\n⦿ Groep: Immigratie (14)\n⦿ Element: Datum vestiging in Nederland (14.20)",
+      "$ref": "#/$defs/DatumDeelsOnbekendRegex"
+    },
+    "E1510": {
+      "type": "string",
+      "title": "Soort verbintenis",
+      "description": "Een aanduiding voor de soort verbintenis die is aangegaan.\n⦿ Groep: Soort verbintenis (15)\n⦿ Element: Soort verbintenis (15.10)",
+      "minLength": 1,
+      "maxLength": 1
+    },
+    "E1610": {
+      "type": "string",
+      "title": "Telefoonnummer",
+      "description": "Het telefoonnummer waarop betrokkene bereikbaar is.\n⦿ Groep: Telefoon (16)\n⦿ Element: Telefoonnummer (16.10)",
+      "minLength": 1,
+      "maxLength": 15
+    },
+    "E1620": {
+      "type": "string",
+      "title": "Verificatie-indicatie",
+      "description": "Een aanduiding die aangeeft of is vastgesteld dat het een geldig telefoonnummer is en of is vastgesteld dat de betrokken persoon via dit telefoonnummer kan worden bereikt.\n⦿ Groep: Telefoon (16)\n⦿ Element: Verificatie-indicatie (16.20)",
+      "minLength": 2,
+      "maxLength": 2
+    },
+    "E1630": {
+      "type": "string",
+      "title": "Geldig vanaf",
+      "description": "De datum waarop dit telefoonnummer is geregistreerd.\n⦿ Groep: Telefoon (16)\n⦿ Element: Geldig vanaf (16.30)",
+      "$ref": "#/$defs/DatumDeelsOnbekendRegex"
+    },
+    "E1710": {
+      "type": "string",
+      "title": "E-mailadres",
+      "description": "Het e-mailadres waarop betrokkene bereikbaar is.\n⦿ Groep: E-mailadres (17)\n⦿ Element: E-mailadres (17.10)",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "E1720": {
+      "type": "string",
+      "title": "Verificatie-indicatie",
+      "description": "Een aanduiding die aangeeft of is vastgesteld dat het een geldig e-mailadres is en of is vastgesteld dat de betrokken persoon via dit e-mailadres kan worden bereikt.\n⦿ Groep: E-mailadres (17)\n⦿ Element: Verificatie-indicatie (17.20)",
+      "minLength": 2,
+      "maxLength": 2
+    },
+    "E1730": {
+      "type": "string",
+      "title": "Geldig vanaf",
+      "description": "De datum waarop dit e-mailadres is geregistreerd.\n⦿ Groep: E-mailadres (17)\n⦿ Element: Geldig vanaf (17.30)",
+      "$ref": "#/$defs/DatumDeelsOnbekendRegex"
+    },
+    "E1810": {
+      "type": "string",
+      "title": "Einddatum geldigheid",
+      "description": "De datum waarop betrokkene niet meer zijn tijdelijk verblijfsadres op dit adres houdt.\n⦿ Groep: Einde geldigheid (18)\n⦿ Element: Einddatum geldigheid (18.10)",
+      "$ref": "#/$defs/DatumDeelsOnbekendRegex"
+    },
+    "E1910": {
+      "type": "string",
+      "title": "Type adres",
+      "description": "Beschrijving wat de relatie van de betrokken persoon met dit adres.\n⦿ Groep: Type adres (19)\n⦿ Element: Type adres (19.10)",
+      "minLength": 1,
+      "maxLength": 1
+    },
+    "E2010": {
+      "type": "string",
+      "title": "Vorig A-nummer",
+      "description": "Het administratienummer dat eerder aan de betrokken persoon is toegekend geweest.\n⦿ Groep: A-nummerverwijzingen (20)\n⦿ Element: Vorig A-nummer (20.10)",
+      "$ref": "#/$defs/AnummerRegex"
+    },
+    "E2020": {
+      "type": "string",
+      "title": "Volgend A-nummer",
+      "description": "Het administratienummer dat nadien aan de betrokken persoon is toegekend.\n⦿ Groep: A-nummerverwijzingen (20)\n⦿ Element: Volgend A-nummer (20.20)",
+      "$ref": "#/$defs/AnummerRegex"
+    },
+    "E3110": {
+      "type": "string",
+      "title": "Aanduiding Europees kiesrecht",
+      "description": "Een aanduiding die aangeeft of de persoon een oproep moet ontvangen voor verkiezingen voor het Europees parlement.\n⦿ Groep: Europees kiesrecht (31)\n⦿ Element: Aanduiding Europees kiesrecht (31.10)",
+      "minLength": 1,
+      "maxLength": 1
+    },
+    "E3120": {
+      "type": "string",
+      "title": "Datum verzoek of mededeling Europees kiesrecht",
+      "description": "De datum waarop de persoon een verzoek heeft gedaan met betrekking tot het uitoefenen van zijn kiesrecht voor het Europees parlement of de datum waarop de gemeente een melding heeft ontvangen dat de persoon is uitgesloten van deelname aan verkiezingen voor het Europees parlement.\n⦿ Groep: Europees kiesrecht (31)\n⦿ Element: Datum verzoek of mededeling Europees kiesrecht (31.20)",
+      "$ref": "#/$defs/DatumDeelsOnbekendRegex"
+    },
+    "E3130": {
+      "type": "string",
+      "title": "Einddatum uitsluiting Europees kiesrecht",
+      "description": "De datum waarop een uitsluiting voor deelname aan verkiezingen voor het Europees parlement niet meer van toepassing is.  Dit element wordt uitsluitend opgenomen indien er sprake is van een uitsluiting voor bepaalde tijd.\n⦿ Groep: Europees kiesrecht (31)\n⦿ Element: Einddatum uitsluiting Europees kiesrecht (31.30)",
+      "$ref": "#/$defs/DatumDeelsOnbekendRegex"
+    },
+    "E3140": {
+      "type": "string",
+      "title": "Adres EU-lidstaat van herkomst",
+      "description": "Het adres (zonder de plaatsnaam) in de EU-lidstaat waarvan de ingeschrevene de nationaliteit bezit en waar de ingeschrevene het laatst als kiezer was geregistreerd.\n⦿ Groep: Europees kiesrecht (31)\n⦿ Element: Adres EU-lidstaat van herkomst (31.40)",
+      "minLength": 1,
+      "maxLength": 50
+    },
+    "E3150": {
+      "type": "string",
+      "title": "Plaats EU-lidstaat van herkomst",
+      "description": "Plaatsnaam in de EU-lidstaat waarvan de ingeschrevene de nationaliteit bezit en waar de ingeschrevene het laatst als kiezer was geregistreerd.\n⦿ Groep: Europees kiesrecht (31)\n⦿ Element: Plaats EU-lidstaat van herkomst (31.50)",
+      "minLength": 1,
+      "maxLength": 50
+    },
+    "E3160": {
+      "type": "string",
+      "title": "Land EU-lidstaat van herkomst",
+      "description": "Een code, opgenomen in Tabel 34, Landentabel, dat het land (de EU-lidstaat) aangeeft waarvan de ingeschrevene de nationaliteit bezit en waar de ingeschrevene het laatst als kiezer was geregistreerd.\n⦿ Groep: Europees kiesrecht (31)\n⦿ Element: Land EU-lidstaat van herkomst (31.60)",
+      "minLength": 4,
+      "maxLength": 4
+    },
+    "E3210": {
+      "type": "string",
+      "title": "Indicatie gezag minderjarige",
+      "description": "Een aanduiding die aangeeft wie belast is met het gezag over de minderjarige ingeschrevene.\n⦿ Groep: Gezag minderjarige (32)\n⦿ Element: Indicatie gezag minderjarige (32.10)",
+      "minLength": 1,
+      "maxLength": 2
+    },
+    "E3310": {
+      "type": "string",
+      "title": "Indicatie curateleregister",
+      "description": "Een aanduiding dat de ingeschrevene onder curatele is gesteld.\n⦿ Groep: Curatele (33)\n⦿ Element: Indicatie curateleregister (33.10)",
+      "minLength": 1,
+      "maxLength": 1
+    },
+    "E3510": {
+      "type": "string",
+      "title": "Soort Nederlands reisdocument",
+      "description": "Een codering, opgenomen in Tabel 48, Tabel Nederlands reisdocument, die aangeeft welk Nederlands reisdocument is verstrekt of in welk reisdocument de ingeschrevene is bijgeschreven.\n⦿ Groep: Nederlands reisdocument (35)\n⦿ Element: Soort Nederlands reisdocument (35.10)",
+      "minLength": 2,
+      "maxLength": 2
+    },
+    "E3520": {
+      "type": "string",
+      "title": "Nummer Nederlands reisdocument",
+      "description": "Het nummer van het verstrekte Nederlandse reisdocument of het nummer van het Nederlandse reisdocument waarin de ingeschrevene is bijgeschreven.\n⦿ Groep: Nederlands reisdocument (35)\n⦿ Element: Nummer Nederlands reisdocument (35.20)",
+      "minLength": 9,
+      "maxLength": 9
+    },
+    "E3530": {
+      "type": "string",
+      "title": "Datum uitgifte Nederlands reisdocument",
+      "description": "De datum waarop het Nederlands reisdocument is uitgegeven of de datum van bijschrijving van de ingeschrevene in een Nederlands reisdocument.\n⦿ Groep: Nederlands reisdocument (35)\n⦿ Element: Datum uitgifte Nederlands reisdocument (35.30)",
+      "$ref": "#/$defs/DatumDeelsOnbekendRegex"
+    },
+    "E3540": {
+      "type": "string",
+      "title": "Autoriteit van afgifte Nederlands reisdocument",
+      "description": "Een codering, opgenomen in Tabel 49, Tabel Autoriteit van afgifte Nederlands reisdocument, die aangeeft welke autoriteit het Nederlands reisdocument heeft verstrekt of de bijschrijving heeft verricht.\n⦿ Groep: Nederlands reisdocument (35)\n⦿ Element: Autoriteit van afgifte Nederlands reisdocument (35.40)",
+      "minLength": 2,
+      "maxLength": 6
+    },
+    "E3550": {
+      "type": "string",
+      "title": "Datum einde geldigheid Nederlands reisdocument",
+      "description": "De datum waarop een Nederlands reisdocument, dat aan de ingeschrevene is verstrekt of waarin de ingeschrevene is bijgeschreven, zijn geldigheid verliest.\n⦿ Groep: Nederlands reisdocument (35)\n⦿ Element: Datum einde geldigheid Nederlands reisdocument (35.50)",
+      "$ref": "#/$defs/DatumDeelsOnbekendRegex"
+    },
+    "E3560": {
+      "type": "string",
+      "title": "Datum inhouding dan wel vermissing Nederlands reisdocument",
+      "description": "De datum waarop een Nederlands reisdocument is vermist, ingehouden, ingeleverd, dan wel van rechtswege is vervallen.\n⦿ Groep: Nederlands reisdocument (35)\n⦿ Element: Datum inhouding dan wel vermissing Nederlands reisdocument (35.60)",
+      "$ref": "#/$defs/DatumDeelsOnbekendRegex"
+    },
+    "E3570": {
+      "type": "string",
+      "title": "Aanduiding inhouding dan wel vermissing Nederlands reisdocument",
+      "description": "Een aanduiding dat een Nederlands reisdocument is vermist, ingehouden, ingeleverd, dan wel van rechtswege is vervallen.\n⦿ Groep: Nederlands reisdocument (35)\n⦿ Element: Aanduiding inhouding dan wel vermissing Nederlands reisdocument (35.70)",
+      "minLength": 1,
+      "maxLength": 1
+    },
+    "E3580": {
+      "type": "string",
+      "title": "Lengte houder",
+      "description": "De lengte van de ingeschrevene in hele centimeters zoals vermeld in het Nederlands reisdocument.\n⦿ Groep: Nederlands reisdocument (35)\n⦿ Element: Lengte van de houder van het Nederlands reisdocument (35.80)",
+      "deprecated": true,
+      "minLength": 3,
+      "maxLength": 3
+    },
+    "E3610": {
+      "type": "string",
+      "title": "Signalering met betrekking tot het verstrekken van een Nederlands reisdocument",
+      "description": "Een aanduiding dat aan de ingeschrevene geen reisdocument mag worden verstrekt.\n⦿ Groep: Signalering (36)\n⦿ Element: Signalering met betrekking tot verstrekken Nederlands reisdocument (36.10)",
+      "minLength": 1,
+      "maxLength": 1
+    },
+    "E3710": {
+      "type": "string",
+      "title": "Aanduiding bezit buitenlands reisdocument",
+      "deprecated": true,
+      "description": "Een aanduiding dat de ingeschrevene beschikt over één of meer buitenlandse reisdocumenten.\n⦿ Groep: Buitenlands reisdocument (37)\n⦿ Element: Aanduiding dat de ingeschrevene beschikt over één of meer buitenlandse reisdocumenten (37.10)",
+      "minLength": 1,
+      "maxLength": 1
+    },
+    "E3810": {
+      "type": "string",
+      "title": "Aanduiding uitgesloten kiesrecht",
+      "description": "Een aanduiding ter uitvoering van de Kieswet.\n⦿ Groep: Uitsluiting kiesrecht (38)\n⦿ Element: Aanduiding uitgesloten kiesrecht (38.10)",
+      "minLength": 1,
+      "maxLength": 1
+    },
+    "E3820": {
+      "type": "string",
+      "title": "Einddatum uitsluiting kiesrecht",
+      "description": "De datum waarop een uitsluiting kiesrecht niet meer van toepassing is. Dit element wordt uitsluitend opgenomen indien er sprake is van een uitsluiting voor bepaalde tijd. Bij een uitsluiting voor het leven komt het element niet voor.\n⦿ Groep: Uitsluiting kiesrecht (38)\n⦿ Element: Einddatum uitsluiting kiesrecht (38.20)",
+      "$ref": "#/$defs/DatumDeelsOnbekendRegex"
+    },
+    "E3910": {
+      "type": "string",
+      "title": "Aanduiding verblijfstitel",
+      "description": "Een code, opgenomen in Tabel 56, Verblijfstiteltabel, die aangeeft over welke verblijfsrechtelijke status de ingeschrevene beschikt.\n⦿ Groep: Verblijfstitel (39)\n⦿ Element: Aanduiding verblijfstitel (39.10)",
+      "minLength": 2,
+      "maxLength": 2
+    },
+    "E3920": {
+      "type": "string",
+      "title": "Datum einde verblijfstitel",
+      "description": "De datum waarop de verblijfstitel zijn geldigheid verliest.  Dit element wordt uitsluitend opgenomen indien er sprake is van een verblijfstitel voor bepaalde tijd. Bij een verblijfstitel voor het leven komt het element niet voor.\n⦿ Groep: Verblijfstitel (39)\n⦿ Element: Datum einde verblijfstitel (39.20)",
+      "$ref": "#/$defs/DatumDeelsOnbekendRegex"
+    },
+    "E3930": {
+      "type": "string",
+      "title": "Ingangsdatum verblijfstitel",
+      "description": "De datum waarop de verblijfstitel zijn geldigheid krijgt.\n⦿ Groep: Verblijfstitel (39)\n⦿ Element: Ingangsdatum verblijfstitel (39.30)",
+      "$ref": "#/$defs/DatumDeelsOnbekendRegex"
+    },
+    "E4010": {
+      "type": "string",
+      "title": "Afnemersindicatie",
+      "description": "Een code, opgenomen in Tabel 35, Autorisatietabel, die het nummer aangeeft dat door RvIG wordt toegekend aan een geautoriseerde afnemer of derde die recht heeft op verstrekking van spontane mutaties.\n⦿ Groep: Afnemer (40)\n⦿ Element: Afnemersindicatie (40.10)",
+      "minLength": 6,
+      "maxLength": 6
+    },
+    "E4210": {
+      "type": "string",
+      "title": "Aantekening",
+      "description": "Een uit vak 6 of vak 23 van de PK afkomstige afnemersaantekening.\n⦿ Groep: Aantekening (42)\n⦿ Element: Aantekening (42.10)",
+      "deprecated": true,
+      "minLength": 1,
+      "maxLength": 24
+    },
+    "E6110": {
+      "type": "string",
+      "title": "Aanduiding naamgebruik",
+      "description": "Een aanduiding voor de wijze van aanschrijving van de ingeschrevene.\n⦿ Groep: Naamgebruik (61)\n⦿ Element: Aanduiding naamgebruik (61.10)",
+      "minLength": 1,
+      "maxLength": 1
+    },
+    "E6210": {
+      "type": "string",
+      "title": "Datum ingang familierechtelijke betrekking",
+      "description": "De datum waarop de familierechtelijke betrekking is ontstaan.\n⦿ Groep: Familierechtelijke betrekking (62)\n⦿ Element: Datum ingang familierechtelijke betrekking (62.10)",
+      "$ref": "#/$defs/DatumDeelsOnbekendRegex"
+    },
+    "E6310": {
+      "type": "string",
+      "title": "Reden opname nationaliteit",
+      "description": "Een code, opgenomen in Tabel 37, Tabel Reden opnemen/beëindigen nationaliteit, die aanduidt op grond waarvan de ingeschrevene de Nederlandse nationaliteit verkregen heeft dan wel de reden waarom een niet-Nederlandse nationaliteit is opgenomen, dan wel dat het een persoon is waarop het bijzonder Nederlanderschap van toepassing is.\n⦿ Groep: Opnemen nationaliteit (63)\n⦿ Element: Reden opname nationaliteit (63.10)",
+      "minLength": 3,
+      "maxLength": 3
+    },
+    "E6410": {
+      "type": "string",
+      "title": "Reden beëindigen nationaliteit",
+      "description": "Een code, opgenomen in Tabel 37, Tabel Reden opnemen/beëindigen nationaliteit, die aanduidt op grond waarvan de ingeschrevene de Nederlandse nationaliteit verloren heeft dan wel de reden waarom een niet-Nederlandse nationaliteit is beëindigd, dan wel dat voor een persoon het bijzonder Nederlanderschap niet langer van toepassing is.\n⦿ Groep: Beëindigen nationaliteit (64)\n⦿ Element: Reden beëindigen nationaliteit (64.10)",
+      "minLength": 3,
+      "maxLength": 3
+    },
+    "E6510": {
+      "type": "string",
+      "title": "Aanduiding bijzonder Nederlanderschap",
+      "description": "Een aanduiding die of aangeeft dat de ingeschrevene behandeld wordt als Nederlander, of dat door de rechter is vastgesteld dat de ingeschrevene niet de Nederlandse nationaliteit bezit.\n⦿ Groep: Bijzonder Nederlanderschap (65)\n⦿ Element: Aanduiding bijzonder Nederlanderschap (65.10)",
+      "minLength": 1,
+      "maxLength": 1
+    },
+    "E6620": {
+      "type": "string",
+      "title": "Datum ingang blokkering PL",
+      "description": "De datum waarop de gemeente de PL naar een andere gemeente of de RNI stuurt.\n⦿ Groep: Blokkering (66)\n⦿ Element: Datum ingang blokkering PL (66.20)",
+      "$ref": "#/$defs/DatumDeelsOnbekendRegex"
+    },
+    "E6710": {
+      "type": "string",
+      "title": "Datum opschorting bijhouding",
+      "description": "De datum waarop de bijhouding van de PL (gedeeltelijk) is opgeschort.\n⦿ Groep: Opschorting (67)\n⦿ Element: Datum opschorting bijhouding (67.10)",
+      "$ref": "#/$defs/DatumDeelsOnbekendRegex"
+    },
+    "E6720": {
+      "type": "string",
+      "title": "Omschrijving reden opschorting bijhouding",
+      "description": "Een aanduiding van de reden waarom de bijhouding van de PL geheel of gedeeltelijk is opgeschort.\n⦿ Groep: Opschorting (67)\n⦿ Element: Omschrijving reden opschorting bijhouding (67.20)",
+      "minLength": 1,
+      "maxLength": 1
+    },
+    "E6810": {
+      "type": "string",
+      "title": "Datum eerste inschrijving BRP",
+      "description": "Dit is de datum vanaf wanneer de persoon is ingeschreven in de BRP.\n⦿ Groep: Opname (68)\n⦿ Element: Datum eerste inschrijving BRP (68.10)",
+      "$ref": "#/$defs/DatumDeelsOnbekendRegex"
+    },
+    "E6910": {
+      "type": "string",
+      "title": "Gemeente waar de PK zich bevindt",
+      "description": "Een code, opgenomen in Tabel 33, Gemeententabel, die aangeeft in welke gemeente de PK zich bevindt.\n⦿ Groep: Gemeente PK (69)\n⦿ Element: Gemeente waar de PK zich bevindt (69.10)",
+      "minLength": 4,
+      "maxLength": 4
+    },
+    "E7010": {
+      "type": "string",
+      "title": "Indicatie geheim",
+      "description": "Een aanduiding die aangeeft dat gegevens wel of niet verstrekt mogen worden.\n⦿ Groep: Geheim (70)\n⦿ Element: Indicatie geheim (70.10)",
+      "minLength": 1,
+      "maxLength": 1
+    },
+    "E7110": {
+      "type": "string",
+      "title": "Datum verificatie",
+      "description": "De datum waarop de verificatie van gegevens op de PL in de RNI heeft plaatsgevonden.\n⦿ Groep: Verificatie (71)\n⦿ Element: Datum verificatie (71.10)",
+      "$ref": "#/$defs/DatumDeelsOnbekendRegex"
+    },
+    "E7120": {
+      "type": "string",
+      "title": "Omschrijving verificatie",
+      "description": "De omschrijving op welke wijze de verificatie van gegevens op de PL in de RNI heeft plaatsgevonden.\n⦿ Groep: Verificatie (71)\n⦿ Element: Omschrijving verificatie (71.20)",
+      "minLength": 1,
+      "maxLength": 50
+    },
+    "E7210": {
+      "type": "string",
+      "title": "Omschrijving van de aangifte adreshouding",
+      "description": "Een aanduiding van de persoon door wie de aangifte van verblijf en adres is gedaan.\n⦿ Groep: Adresaangifte (72)\n⦿ Element: Omschrijving van de aangifte adreshouding (72.10)",
+      "minLength": 1,
+      "maxLength": 1
+    },
+    "E7310": {
+      "type": "string",
+      "title": "EU-persoonsnummer",
+      "description": "Het persoonsnummer dat door een EU-land is afgegeven aan een onderdaan en dat van het overgelegde reisdocument is afgeleid.\n⦿ Groep: Buitenlands persoonsnummer (73)\n⦿ Element: EU-persoonsnummer (73.10)",
+      "minLength": 1,
+      "maxLength": 40
+    },
+    "E7510": {
+      "type": "string",
+      "title": "Indicatie document",
+      "description": "Een aanduiding dat gedurende de opschorting van de bijhouding van de PL documenten zijn binnengekomen, die na de beëindiging van de opschorting verwerkt moeten worden.\n⦿ Groep: Documentindicatie (75)\n⦿ Element: Indicatie document (75.10)",
+      "minLength": 1,
+      "maxLength": 1
+    },
+    "E8010": {
+      "type": "string",
+      "title": "Versienummer",
+      "description": "Een nummer waarmee de versie van de PL aangegeven wordt.\n⦿ Groep: Synchroniciteit (80)\n⦿ Element: Versienummer (80.10)",
+      "minLength": 4,
+      "maxLength": 4
+    },
+    "E8020": {
+      "type": "string",
+      "title": "Datumtijdstempel",
+      "description": "Dit is de datum en tijd waarop de laatste wijziging of de eerste inschrijving van de PL heeft plaatsgevonden. De op te nemen tijd is Greenwich Mean Time (GMT).\n⦿ Groep: Synchroniciteit (80)\n⦿ Element: Datumtijdstempel (80.20)",
+      "minLength": 17,
+      "maxLength": 17
+    },
+    "E8110": {
+      "type": "string",
+      "title": "Registergemeente akte",
+      "description": "Een code, opgenomen in Tabel 33, Gemeententabel, die aangeeft in welke gemeente de akte in de registers van de burgerlijke stand in Nederland is opgenomen.\n⦿ Groep: Akte (81)\n⦿ Element: Registergemeente akte (81.10)",
+      "minLength": 4,
+      "maxLength": 4
+    },
+    "E8120": {
+      "type": "string",
+      "title": "Aktenummer",
+      "description": "Een aanduiding van de akte die is opgenomen in de registers van de burgerlijke stand in Nederland.  De eerste drie posities van het aktenummer dienen conform Tabel 39, Tabel Akteaanduiding te zijn. De laatste 4 posities bevatten een volgnummer van de akte.\n⦿ Groep: Akte (81)\n⦿ Element: Aktenummer (81.20)",
+      "minLength": 7,
+      "maxLength": 7
+    },
+    "E8210": {
+      "type": "string",
+      "title": "Gemeente document",
+      "description": "Een code, opgenomen in Tabel 33, Gemeententabel, die aangeeft in welke gemeente de ontlening aan of de afleiding uit het document heeft plaatsgevonden.\n⦿ Groep: Document (82)\n⦿ Element: Gemeente document (82.10)",
+      "minLength": 4,
+      "maxLength": 4
+    },
+    "E8220": {
+      "type": "string",
+      "title": "Datum document",
+      "description": "De datum waarop de ontlening aan of de afleiding uit het document heeft plaatsgevonden.\n⦿ Groep: Document (82)\n⦿ Element: Datum document (82.20)",
+      "$ref": "#/$defs/DatumDeelsOnbekendRegex"
+    },
+    "E8230": {
+      "type": "string",
+      "title": "Beschrijving document",
+      "description": "Beschrijving van het document waaraan de gegevens zijn ontleend of waaruit de gegevens zijn afgeleid.\n⦿ Groep: Document (82)\n⦿ Element: Beschrijving document (82.30)",
+      "minLength": 1,
+      "maxLength": 40
+    },
+    "E8310": {
+      "type": "string",
+      "title": "Aanduiding gegevens in onderzoek",
+      "description": "Een aanduiding dat in een categorie één of meer gegevens met betrekking tot de onjuistheid of de strijdigheid met de openbare orde zijn of worden onderzocht. In categorie 08 Verblijfplaats kan de aanduiding tevens aangeven dat er is vastgesteld dat betrokkene niet op het geregistreerde adres woont.\n⦿ Groep: Procedure (83)\n⦿ Element: Aanduiding gegevens in onderzoek (83.10)",
+      "minLength": 6,
+      "maxLength": 6
+    },
+    "E8320": {
+      "type": "string",
+      "title": "Datum ingang onderzoek",
+      "description": "De datum waarop een onderzoek inzake de onjuistheid of de strijdigheid met de openbare orde is gestart.\n⦿ Groep: Procedure (83)\n⦿ Element: Datum ingang onderzoek (83.20)",
+      "$ref": "#/$defs/DatumDeelsOnbekendRegex"
+    },
+    "E8330": {
+      "type": "string",
+      "title": "Datum einde onderzoek",
+      "description": "De datum waarop een onderzoek inzake de onjuistheid of de strijdigheid met de openbare orde is beéindigd.\n⦿ Groep: Procedure (83)\n⦿ Element: Datum einde onderzoek (83.30)",
+      "$ref": "#/$defs/DatumDeelsOnbekendRegex"
+    },
+    "E8410": {
+      "type": "string",
+      "title": "Indicatie onjuist, dan wel strijdigheid met de openbare orde",
+      "description": "Een aanduiding dat één of meer gegevens onjuist of strijdig zijn met de openbare orde.\n⦿ Groep: Onjuist (84)\n⦿ Element: Indicatie onjuist, dan wel strijdigheid met de openbare orde (84.10)",
+      "minLength": 1,
+      "maxLength": 1
+    },
+    "E8510": {
+      "type": "string",
+      "title": "Ingangsdatum geldigheid",
+      "description": "De datum waarop het geheel van gegevens geldig is geworden.\n⦿ Groep: Geldigheid (85)\n⦿ Element: Ingangsdatum geldigheid (85.10)",
+      "$ref": "#/$defs/DatumDeelsOnbekendRegex"
+    },
+    "E8610": {
+      "type": "string",
+      "title": "Datum van opneming",
+      "description": "De datum waarop het geheel van gegevens daadwerkelijk in de BRP is opgenomen.\n⦿ Groep: Opneming (86)\n⦿ Element: Datum van opneming (86.10)",
+      "$ref": "#/$defs/DatumDeelsOnbekendRegex"
+    },
+    "E8710": {
+      "type": "string",
+      "title": "PK-gegevens volledig meegeconverteerd",
+      "description": "Een aanduiding dat gegevens over alle kinderen van de PK zijn opgenomen in de BRP.\n⦿ Groep: PK-conversie (87)\n⦿ Element: PK-gegevens volledig meegeconverteerd (87.10)",
+      "minLength": 1,
+      "maxLength": 1
+    },
+    "E8810": {
+      "type": "string",
+      "title": "RNI-deelnemer",
+      "description": "Een code, voorkomend in Tabel 60, RNI-deelnemerstabel, die aangeeft welke RNI-deelnemer (een deel van) de gegevens in de betrokken categorie heeft aangeleverd.\n⦿ Groep: RNI-deelnemer (88)\n⦿ Element: RNI-deelnemer (88.10)",
+      "minLength": 4,
+      "maxLength": 4
+    },
+    "E8820": {
+      "type": "string",
+      "title": "Omschrijving verdrag",
+      "description": "Een aanduiding van het verdrag op basis waarvan (een deel van) de gegevens in de betrokken categorie door een buitenlandse zusterorganisatie van een RNI-deelnemer aan die deelnemer zijn aangeleverd.\n⦿ Groep: RNI-deelnemer (88)\n⦿ Element: Omschrijving verdrag (88.20)",
+      "minLength": 1,
+      "maxLength": 50
+    },
+    "E8910": {
+      "type": "string",
+      "title": "Registratie betrekking",
+      "description": "De indicatie dat een kind levenloos is geboren.\n⦿ Groep: Registratie afstamming (89)\n⦿ Element: Registratie betrekking (89.10)",
+      "minLength": 1,
+      "maxLength": 1
+    },
+    "DatumDeelsOnbekendRegex": {
+      "pattern": "^(18|19|20|21|22)[0-9]{2}((0[1-9]|1[0-2])((0[1-9]|[12][0-9]|3[01])|00)|0000)|00000000$"
+    },
+    "AnummerRegex": {
+      "pattern": "^(?!.*([0-9])\\1)[1-9][0-9]{9}$"
+    },
+    "BSNRegex": {
+      "pattern": "^[0-9]{9}$"
+    }
+  }
+}

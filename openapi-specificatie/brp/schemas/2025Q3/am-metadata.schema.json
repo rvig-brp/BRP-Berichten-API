@@ -1,0 +1,35 @@
+{
+  "$id" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/am-metadata/20253",
+  "$version" : "20253",
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
+  "title" : "Alternatieve Media formaat BRP berichten API — kopregel",
+  "description" : "Dit schema valideert het bestand am-metadata.json uit een AM zip bestand. Een am zip bestand moet altijd een bestand am-metadata.json bevatten en een bestand berichtregels.jsonl. Versie semantiek is veranderd t.o.v. oude AM-formaat, nog steeds 5 tekens maar nu jaar en kwartaal (YYYYQ) LO, bijvoorbeeld 20253.",
+  "type" : "object",
+  "properties" : {
+    "afzender" : {
+      "type" : "integer",
+      "maximum" : 9999999,
+      "description" : "Adres/mailbox waar de gegevensdrager is aangemaakt"
+    },
+    "aantalBerichten" : {
+      "type" : "integer",
+      "minimum" : 0,
+      "description" : "Aantal berichtregels in berichtregels.jsonl"
+    },
+    "checksum-sha256" : {
+      "type" : "string",
+      "pattern" : "^[a-fA-F0-9]{64}$",
+      "description" : "SHA-256-hash van 64 hexadecimale tekens (bijv. a3f5c3d2e9b... enz.) gemaakt van de inhoud van de berichtregels.jsonl file. SHA-256-hash als 64-teken hex-string (lowercase) van de raw bytes van het object; bereken digest met SHA-256 (FIPS 180-4) over de exacte byte-volgorde zoals opgeslagen/transmissiedata, encodeer resultaat als 64 hex tekens zonder prefix of scheidingstekens (bijv. \\\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\\\"). Linux CLI voorbeelden: sha256sum bestand.bin; of: openssl dgst -sha256 -binary bestand.bin | xxd -p -c 256"
+    },
+    "datumTijd" : {
+      "type" : "string",
+      "format" : "date-time",
+      "description" : "Datum en tijd van state-freeze/transactie voor het aanmaken AM-export in ISO 8601-formaat (bijv. 2025-10-08T14:30:00Z of 2025-10-08T16:30:00+02:00)."
+    },
+    "versie" : {
+      "$ref" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/am-berichtregel/20253#/$defs/versie"
+    }
+  },
+  "required" : [ "afzender", "datumTijd", "versie", "aantalBerichten", "checksum" ],
+  "additionalProperties" : false
+}

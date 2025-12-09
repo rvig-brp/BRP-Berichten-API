@@ -1,0 +1,20 @@
+{
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
+  "title" : "Tabelberichten",
+  "description" : "Beschrijving van de inhoud van de tabelberichten",
+  "type" : "object",
+  "unevaluatedProperties" : false,
+  "additionalProperties" : false,
+  "patternProperties" : {
+    "^t\\d{2}$" : {
+      "type" : "object",
+      "unevaluatedProperties" : false,
+      "additionalProperties" : false,
+      "patternProperties" : {
+        "^e\\d{4}$" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}
