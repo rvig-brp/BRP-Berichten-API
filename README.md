@@ -30,7 +30,7 @@ Er zijn twee schema-variaties t.b.v. het beschrijven van de structuur rondom een
 
 Documentatie rondom de achtergrond en motivatie/onderbouwing van de structuur is hier interactief in te zien:
 
-* https://html-preview.github.io/?url=https://github.com/rvig-brp/BRP-Berichten-API/blob/main/JSON-PL/documentatie_onderbouwing/readPL.html
+* https://htmlpreview.github.io/?https://github.com/rvig-brp/BRP-Berichten-API/blob/main/JSON-PL/documentatie_onderbouwing/readPL.html
 
 ### Berichtstructuren
 
