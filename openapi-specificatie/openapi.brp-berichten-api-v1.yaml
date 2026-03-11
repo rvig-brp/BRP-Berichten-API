@@ -1,11 +1,14 @@
 openapi: 3.1.0
 info:
   title: BRP Berichten API
-  version: 0.7.6
+  version: 0.7.7
   description: |
     Een REST API voor het a-synchroon uitwisselen van berichten welke in het Logisch Ontwerp gedefinieerd zijn.
 
     # Wijzigingshistorie:
+
+    ## 0.7.7 Februari 2026
+    - Verwijderen van velden uit AM-Schema: berichtTransportId, berichtVolgnummer, dtOntvangen.
 
     ## 0.7.6 November 2025
     - Verwijzingen aangepast naar LO2025Q3 versie berichten schema's. Dit is puur een actualisatieslag, datamodel-technisch zijn er geen wijzigingen t.o.v. de vorige schema-versie. De wijzigingen beperken zich tot tekstuele wijzigen van de omschrijvingen.
