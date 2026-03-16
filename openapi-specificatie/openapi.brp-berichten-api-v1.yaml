@@ -1,11 +1,15 @@
 openapi: 3.1.0
 info:
   title: BRP Berichten API
-  version: 0.7.7
+  version: 0.8.0
   description: |
     Een REST API voor het a-synchroon uitwisselen van berichten welke in het Logisch Ontwerp gedefinieerd zijn.
 
     # Wijzigingshistorie:
+
+    ## 0.8.0 April 2026
+    - LoBerichten component is opgedeeld in `MailboxserverCompatibleBerichten` en `IncompatibleMailboxserverBerichten`. Het component `IncompatibleMailboxserverBerichten` gaat nieuwe berichttypen bevatten niet geconverteerd kunnen worden naar het oude formaat en daardoor niet compatible zijn met partijen die aangesloten zijn via de mailboxserver.
+    - Nieuwe berichttypen Og21 en Of21 toegevoegd t.b.v. het uitwisselen gezagsinformatie (CGR) naar gemeenten (LO-455 / W214).
 
     ## 0.7.7 Februari 2026
     - Verwijderen van velden uit AM-Schema: berichtTransportId, berichtVolgnummer, dtOntvangen.
@@ -35,7 +39,6 @@ info:
 
     ## 0.6.4 Maart 2025
     - Details rondom MutualTLS/tweezijdig-TLS d.m.v. PKI-Overheid toegevoegd.
-
 
     ## 0.6.3 Januari 2025
     - Tekstuele verwijzing naar '/berichten/list' vervangen door '/berichten'.
@@ -543,7 +546,7 @@ paths:
                 - "MDAwMDAwMDBHdjAxNDc0Njg0NTA0MjAwMDgyMDcwNTE3MTEwMDA4MjAyMzAxMDI3MTIwMDE4QXR0ZXN0YXRpZSBkZSBWaXRhODgxMDAwNDAyMDE1NzAyMTcxMTAwMDA3MTIwMDAwODgxMDAwMA=="
           application/json:
             schema:
-              $ref: "#/components/schemas/LoBericht"
+              $ref: "#/components/schemas/MailboxserverCompatibleBerichten"
       responses:
         '200':
           description: Een naar JSON geconverteerd bericht
@@ -912,7 +915,9 @@ components:
           $ref: '#/components/schemas/BerichtType'
 
     BerichtInhoud:
-      $ref: "#/components/schemas/LoBericht"
+      oneOf:
+        - $ref: "#/components/schemas/MailboxserverCompatibleBerichten"
+        - $ref: "#/components/schemas/IncompatibleMailboxserverBerichten"
 
     OntvangerOfAfzender:
       type: integer
@@ -1004,6 +1009,9 @@ components:
             * Berichten in verband met verblijfstitel:
               * Og11 Opnemen gegevens verblijfstitel
               * Of11 Fout: opnemen/wijzigen verblijfstitel niet mogelijk
+            * Berichten in verband met gezag:
+              *	Og21 Opnemen/wijzigen gegevens omtrent gezag
+              * Of21 Fout: opnemen/wijzigen gegevens omtrent gezag niet mogelijk
           * Berichten ten behoeve van het bijhouden van de persoonsgegevens in BRP-V
             * Berichten in verband met synchronisatie met BRP-V:
               * Lg01 Synchronisatiebericht
@@ -1942,74 +1950,90 @@ components:
               examples:
                 - https://www.rvig.nl/brp/berichten-api/request/be215b41-a417-4148-b2bf-911b8b8b0133
           description: Onbekende (/technische) fout.
-    LoBericht:
-      oneOf:
-        - $ref: "brp/schemas/2025Q3/berichten.schema.json#/$defs/berichtsoorten/$defs/Af01Bericht"
-        - $ref: "brp/schemas/2025Q3/berichten.schema.json#/$defs/berichtsoorten/$defs/Af11Bericht"
-        - $ref: "brp/schemas/2025Q3/berichten.schema.json#/$defs/berichtsoorten/$defs/Ag01Bericht"
-        - $ref: "brp/schemas/2025Q3/berichten.schema.json#/$defs/berichtsoorten/$defs/Ag11Bericht"
-        - $ref: "brp/schemas/2025Q3/berichten.schema.json#/$defs/berichtsoorten/$defs/Ag21Bericht"
-        - $ref: "brp/schemas/2025Q3/berichten.schema.json#/$defs/berichtsoorten/$defs/Ag31Bericht"
-        - $ref: "brp/schemas/2025Q3/berichten.schema.json#/$defs/berichtsoorten/$defs/Ap01Bericht"
-        - $ref: "brp/schemas/2025Q3/berichten.schema.json#/$defs/berichtsoorten/$defs/Av01Bericht"
-        - $ref: "brp/schemas/2025Q3/berichten.schema.json#/$defs/berichtsoorten/$defs/Cb01Bericht"
-        - $ref: "brp/schemas/2025Q3/berichten.schema.json#/$defs/berichtsoorten/$defs/Ct01Bericht"
-        - $ref: "brp/schemas/2025Q3/berichten.schema.json#/$defs/berichtsoorten/$defs/Cw01Bericht"
-        - $ref: "brp/schemas/2025Q3/berichten.schema.json#/$defs/berichtsoorten/$defs/Dt01Bericht"
-        - $ref: "brp/schemas/2025Q3/berichten.schema.json#/$defs/berichtsoorten/$defs/Dw01Bericht"
-        - $ref: "brp/schemas/2025Q3/berichten.schema.json#/$defs/berichtsoorten/$defs/Gv01Bericht"
-        - $ref: "brp/schemas/2025Q3/berichten.schema.json#/$defs/berichtsoorten/$defs/Gv02Bericht"
-        - $ref: "brp/schemas/2025Q3/berichten.schema.json#/$defs/berichtsoorten/$defs/Ha01Bericht"
-        - $ref: "brp/schemas/2025Q3/berichten.schema.json#/$defs/berichtsoorten/$defs/Hf01Bericht"
-        - $ref: "brp/schemas/2025Q3/berichten.schema.json#/$defs/berichtsoorten/$defs/Hq01Bericht"
-        - $ref: "brp/schemas/2025Q3/berichten.schema.json#/$defs/berichtsoorten/$defs/Ib01Bericht"
-        - $ref: "brp/schemas/2025Q3/berichten.schema.json#/$defs/berichtsoorten/$defs/If01Bericht"
-        - $ref: "brp/schemas/2025Q3/berichten.schema.json#/$defs/berichtsoorten/$defs/If21Bericht"
-        - $ref: "brp/schemas/2025Q3/berichten.schema.json#/$defs/berichtsoorten/$defs/If31Bericht"
-        - $ref: "brp/schemas/2025Q3/berichten.schema.json#/$defs/berichtsoorten/$defs/If41Bericht"
-        - $ref: "brp/schemas/2025Q3/berichten.schema.json#/$defs/berichtsoorten/$defs/Ii01Bericht"
-        - $ref: "brp/schemas/2025Q3/berichten.schema.json#/$defs/berichtsoorten/$defs/Iv01Bericht"
-        - $ref: "brp/schemas/2025Q3/berichten.schema.json#/$defs/berichtsoorten/$defs/Iv11Bericht"
-        - $ref: "brp/schemas/2025Q3/berichten.schema.json#/$defs/berichtsoorten/$defs/Iv21Bericht"
-        - $ref: "brp/schemas/2025Q3/berichten.schema.json#/$defs/berichtsoorten/$defs/Jb01Bericht"
-        - $ref: "brp/schemas/2025Q3/berichten.schema.json#/$defs/berichtsoorten/$defs/Jf01Bericht"
-        - $ref: "brp/schemas/2025Q3/berichten.schema.json#/$defs/berichtsoorten/$defs/Jf21Bericht"
-        - $ref: "brp/schemas/2025Q3/berichten.schema.json#/$defs/berichtsoorten/$defs/Jf31Bericht"
-        - $ref: "brp/schemas/2025Q3/berichten.schema.json#/$defs/berichtsoorten/$defs/Ji01Bericht"
-        - $ref: "brp/schemas/2025Q3/berichten.schema.json#/$defs/berichtsoorten/$defs/Jv01Bericht"
-        - $ref: "brp/schemas/2025Q3/berichten.schema.json#/$defs/berichtsoorten/$defs/La01Bericht"
-        - $ref: "brp/schemas/2025Q3/berichten.schema.json#/$defs/berichtsoorten/$defs/Lf01Bericht"
-        - $ref: "brp/schemas/2025Q3/berichten.schema.json#/$defs/berichtsoorten/$defs/Lg01Bericht"
-        - $ref: "brp/schemas/2025Q3/berichten.schema.json#/$defs/berichtsoorten/$defs/Lq01Bericht"
-        - $ref: "brp/schemas/2025Q3/berichten.schema.json#/$defs/berichtsoorten/$defs/Ng01Bericht"
-        - $ref: "brp/schemas/2025Q3/berichten.schema.json#/$defs/berichtsoorten/$defs/NullBericht"
-        - $ref: "brp/schemas/2025Q3/berichten.schema.json#/$defs/berichtsoorten/$defs/Of11Bericht"
-        - $ref: "brp/schemas/2025Q3/berichten.schema.json#/$defs/berichtsoorten/$defs/Og11Bericht"
-        - $ref: "brp/schemas/2025Q3/berichten.schema.json#/$defs/berichtsoorten/$defs/Pf01Bericht"
-        - $ref: "brp/schemas/2025Q3/berichten.schema.json#/$defs/berichtsoorten/$defs/Pf02Bericht"
-        - $ref: "brp/schemas/2025Q3/berichten.schema.json#/$defs/berichtsoorten/$defs/Pf03Bericht"
-        - $ref: "brp/schemas/2025Q3/berichten.schema.json#/$defs/berichtsoorten/$defs/Rb01Bericht"
-        - $ref: "brp/schemas/2025Q3/berichten.schema.json#/$defs/berichtsoorten/$defs/Rf01Bericht"
-        - $ref: "brp/schemas/2025Q3/berichten.schema.json#/$defs/berichtsoorten/$defs/Rf31Bericht"
-        - $ref: "brp/schemas/2025Q3/berichten.schema.json#/$defs/berichtsoorten/$defs/Rv01Bericht"
-        - $ref: "brp/schemas/2025Q3/berichten.schema.json#/$defs/berichtsoorten/$defs/Sv01Bericht"
-        - $ref: "brp/schemas/2025Q3/berichten.schema.json#/$defs/berichtsoorten/$defs/Sv11Bericht"
-        - $ref: "brp/schemas/2025Q3/berichten.schema.json#/$defs/berichtsoorten/$defs/Tb01Bericht"
-        - $ref: "brp/schemas/2025Q3/berichten.schema.json#/$defs/berichtsoorten/$defs/Tb02Bericht"
-        - $ref: "brp/schemas/2025Q3/berichten.schema.json#/$defs/berichtsoorten/$defs/Tf01Bericht"
-        - $ref: "brp/schemas/2025Q3/berichten.schema.json#/$defs/berichtsoorten/$defs/Tf11Bericht"
-        - $ref: "brp/schemas/2025Q3/berichten.schema.json#/$defs/berichtsoorten/$defs/Tf21Bericht"
-        - $ref: "brp/schemas/2025Q3/berichten.schema.json#/$defs/berichtsoorten/$defs/Tv01Bericht"
-        - $ref: "brp/schemas/2025Q3/berichten.schema.json#/$defs/berichtsoorten/$defs/Vb01Bericht"
-        - $ref: "brp/schemas/2025Q3/berichten.schema.json#/$defs/berichtsoorten/$defs/Vb02Bericht"
-        - $ref: "brp/schemas/2025Q3/berichten.schema.json#/$defs/berichtsoorten/$defs/Wa01Bericht"
-        - $ref: "brp/schemas/2025Q3/berichten.schema.json#/$defs/berichtsoorten/$defs/Wa11Bericht"
-        - $ref: "brp/schemas/2025Q3/berichten.schema.json#/$defs/berichtsoorten/$defs/Wf01Bericht"
-        - $ref: "brp/schemas/2025Q3/berichten.schema.json#/$defs/berichtsoorten/$defs/Xa01Bericht"
-        - $ref: "brp/schemas/2025Q3/berichten.schema.json#/$defs/berichtsoorten/$defs/Xf01Bericht"
-        - $ref: "brp/schemas/2025Q3/berichten.schema.json#/$defs/berichtsoorten/$defs/Xq01Bericht"
+    # Berichten die NIET door de mailboxserver ondersteund worden, maar WEL door de BRP Berichten API.
+    #   - Aangezien de berichten niet door de mailboxserver ondersteund worden, zijn deze ook niet
+    #     aan te bieden bij de berichtconversie endpoints.
+    IncompatibleMailboxserverBerichten:
+      title: Incompatible mailboxserver berichten
+      description: Berichten die niet meer door de mailboxserver verwerkt kunnen worden.
       discriminator:
         propertyName: berichtType
+      oneOf:
+        - $ref: "brp/schemas/2026Q4/berichten.schema.json#/$defs/berichtsoorten/$defs/Of21Bericht"
+        - $ref: "brp/schemas/2026Q4/berichten.schema.json#/$defs/berichtsoorten/$defs/Og21Bericht"
+
+    # Berichten welke door de mailboxserver en de BRP Berichten API kunnen worden verwerkt en die
+    # ondersteund worden door de berichtconversie endpoints.
+    MailboxserverCompatibleBerichten:
+      title: Mailboxserver compatible berichten
+      description: Berichten welke door de mailboxserver en de BRP Berichten API kunnen worden verwerkt.
+      discriminator:
+        propertyName: berichtType
+      oneOf:
+        - $ref: "brp/schemas/2026Q4/berichten.schema.json#/$defs/berichtsoorten/$defs/Af01Bericht"
+        - $ref: "brp/schemas/2026Q4/berichten.schema.json#/$defs/berichtsoorten/$defs/Af11Bericht"
+        - $ref: "brp/schemas/2026Q4/berichten.schema.json#/$defs/berichtsoorten/$defs/Ag01Bericht"
+        - $ref: "brp/schemas/2026Q4/berichten.schema.json#/$defs/berichtsoorten/$defs/Ag11Bericht"
+        - $ref: "brp/schemas/2026Q4/berichten.schema.json#/$defs/berichtsoorten/$defs/Ag21Bericht"
+        - $ref: "brp/schemas/2026Q4/berichten.schema.json#/$defs/berichtsoorten/$defs/Ag31Bericht"
+        - $ref: "brp/schemas/2026Q4/berichten.schema.json#/$defs/berichtsoorten/$defs/Ap01Bericht"
+        - $ref: "brp/schemas/2026Q4/berichten.schema.json#/$defs/berichtsoorten/$defs/Av01Bericht"
+        - $ref: "brp/schemas/2026Q4/berichten.schema.json#/$defs/berichtsoorten/$defs/Cb01Bericht"
+        - $ref: "brp/schemas/2026Q4/berichten.schema.json#/$defs/berichtsoorten/$defs/Ct01Bericht"
+        - $ref: "brp/schemas/2026Q4/berichten.schema.json#/$defs/berichtsoorten/$defs/Cw01Bericht"
+        - $ref: "brp/schemas/2026Q4/berichten.schema.json#/$defs/berichtsoorten/$defs/Dt01Bericht"
+        - $ref: "brp/schemas/2026Q4/berichten.schema.json#/$defs/berichtsoorten/$defs/Dw01Bericht"
+        - $ref: "brp/schemas/2026Q4/berichten.schema.json#/$defs/berichtsoorten/$defs/Gv01Bericht"
+        - $ref: "brp/schemas/2026Q4/berichten.schema.json#/$defs/berichtsoorten/$defs/Gv02Bericht"
+        - $ref: "brp/schemas/2026Q4/berichten.schema.json#/$defs/berichtsoorten/$defs/Ha01Bericht"
+        - $ref: "brp/schemas/2026Q4/berichten.schema.json#/$defs/berichtsoorten/$defs/Hf01Bericht"
+        - $ref: "brp/schemas/2026Q4/berichten.schema.json#/$defs/berichtsoorten/$defs/Hq01Bericht"
+        - $ref: "brp/schemas/2026Q4/berichten.schema.json#/$defs/berichtsoorten/$defs/Ib01Bericht"
+        - $ref: "brp/schemas/2026Q4/berichten.schema.json#/$defs/berichtsoorten/$defs/If01Bericht"
+        - $ref: "brp/schemas/2026Q4/berichten.schema.json#/$defs/berichtsoorten/$defs/If21Bericht"
+        - $ref: "brp/schemas/2026Q4/berichten.schema.json#/$defs/berichtsoorten/$defs/If31Bericht"
+        - $ref: "brp/schemas/2026Q4/berichten.schema.json#/$defs/berichtsoorten/$defs/If41Bericht"
+        - $ref: "brp/schemas/2026Q4/berichten.schema.json#/$defs/berichtsoorten/$defs/Ii01Bericht"
+        - $ref: "brp/schemas/2026Q4/berichten.schema.json#/$defs/berichtsoorten/$defs/Iv01Bericht"
+        - $ref: "brp/schemas/2026Q4/berichten.schema.json#/$defs/berichtsoorten/$defs/Iv11Bericht"
+        - $ref: "brp/schemas/2026Q4/berichten.schema.json#/$defs/berichtsoorten/$defs/Iv21Bericht"
+        - $ref: "brp/schemas/2026Q4/berichten.schema.json#/$defs/berichtsoorten/$defs/Jb01Bericht"
+        - $ref: "brp/schemas/2026Q4/berichten.schema.json#/$defs/berichtsoorten/$defs/Jf01Bericht"
+        - $ref: "brp/schemas/2026Q4/berichten.schema.json#/$defs/berichtsoorten/$defs/Jf21Bericht"
+        - $ref: "brp/schemas/2026Q4/berichten.schema.json#/$defs/berichtsoorten/$defs/Jf31Bericht"
+        - $ref: "brp/schemas/2026Q4/berichten.schema.json#/$defs/berichtsoorten/$defs/Ji01Bericht"
+        - $ref: "brp/schemas/2026Q4/berichten.schema.json#/$defs/berichtsoorten/$defs/Jv01Bericht"
+        - $ref: "brp/schemas/2026Q4/berichten.schema.json#/$defs/berichtsoorten/$defs/La01Bericht"
+        - $ref: "brp/schemas/2026Q4/berichten.schema.json#/$defs/berichtsoorten/$defs/Lf01Bericht"
+        - $ref: "brp/schemas/2026Q4/berichten.schema.json#/$defs/berichtsoorten/$defs/Lg01Bericht"
+        - $ref: "brp/schemas/2026Q4/berichten.schema.json#/$defs/berichtsoorten/$defs/Lq01Bericht"
+        - $ref: "brp/schemas/2026Q4/berichten.schema.json#/$defs/berichtsoorten/$defs/Ng01Bericht"
+        - $ref: "brp/schemas/2026Q4/berichten.schema.json#/$defs/berichtsoorten/$defs/NullBericht"
+        - $ref: "brp/schemas/2026Q4/berichten.schema.json#/$defs/berichtsoorten/$defs/Of11Bericht"
+        - $ref: "brp/schemas/2026Q4/berichten.schema.json#/$defs/berichtsoorten/$defs/Og11Bericht"
+        - $ref: "brp/schemas/2026Q4/berichten.schema.json#/$defs/berichtsoorten/$defs/Pf01Bericht"
+        - $ref: "brp/schemas/2026Q4/berichten.schema.json#/$defs/berichtsoorten/$defs/Pf02Bericht"
+        - $ref: "brp/schemas/2026Q4/berichten.schema.json#/$defs/berichtsoorten/$defs/Pf03Bericht"
+        - $ref: "brp/schemas/2026Q4/berichten.schema.json#/$defs/berichtsoorten/$defs/Rb01Bericht"
+        - $ref: "brp/schemas/2026Q4/berichten.schema.json#/$defs/berichtsoorten/$defs/Rf01Bericht"
+        - $ref: "brp/schemas/2026Q4/berichten.schema.json#/$defs/berichtsoorten/$defs/Rf31Bericht"
+        - $ref: "brp/schemas/2026Q4/berichten.schema.json#/$defs/berichtsoorten/$defs/Rv01Bericht"
+        - $ref: "brp/schemas/2026Q4/berichten.schema.json#/$defs/berichtsoorten/$defs/Sv01Bericht"
+        - $ref: "brp/schemas/2026Q4/berichten.schema.json#/$defs/berichtsoorten/$defs/Sv11Bericht"
+        - $ref: "brp/schemas/2026Q4/berichten.schema.json#/$defs/berichtsoorten/$defs/Tb01Bericht"
+        - $ref: "brp/schemas/2026Q4/berichten.schema.json#/$defs/berichtsoorten/$defs/Tb02Bericht"
+        - $ref: "brp/schemas/2026Q4/berichten.schema.json#/$defs/berichtsoorten/$defs/Tf01Bericht"
+        - $ref: "brp/schemas/2026Q4/berichten.schema.json#/$defs/berichtsoorten/$defs/Tf11Bericht"
+        - $ref: "brp/schemas/2026Q4/berichten.schema.json#/$defs/berichtsoorten/$defs/Tf21Bericht"
+        - $ref: "brp/schemas/2026Q4/berichten.schema.json#/$defs/berichtsoorten/$defs/Tv01Bericht"
+        - $ref: "brp/schemas/2026Q4/berichten.schema.json#/$defs/berichtsoorten/$defs/Vb01Bericht"
+        - $ref: "brp/schemas/2026Q4/berichten.schema.json#/$defs/berichtsoorten/$defs/Vb02Bericht"
+        - $ref: "brp/schemas/2026Q4/berichten.schema.json#/$defs/berichtsoorten/$defs/Wa01Bericht"
+        - $ref: "brp/schemas/2026Q4/berichten.schema.json#/$defs/berichtsoorten/$defs/Wa11Bericht"
+        - $ref: "brp/schemas/2026Q4/berichten.schema.json#/$defs/berichtsoorten/$defs/Wf01Bericht"
+        - $ref: "brp/schemas/2026Q4/berichten.schema.json#/$defs/berichtsoorten/$defs/Xa01Bericht"
+        - $ref: "brp/schemas/2026Q4/berichten.schema.json#/$defs/berichtsoorten/$defs/Xf01Bericht"
+        - $ref: "brp/schemas/2026Q4/berichten.schema.json#/$defs/berichtsoorten/$defs/Xq01Bericht"
 
   responses:
     '202':
