@@ -1,0 +1,19 @@
+= Autorisatie(code)
+
+Om toegang te krijgen tot de BRP dient je organisatie te beschikken over een autorisatiebesluit.
+Aan een autorisatiebesluit is een afnemercode/afnemerid verbonden.
+Deze 6-cijferige code wordt gebruikt bij jouw mailboxnummer en in de OAuth2 scope die je aanvraagt.
+
+Organisaties die willen migreren naar de {apiname} zullen al over een dergelijk besluit beschikken.
+Je kunt je autorisatiebesluit hier opzoeken:
+
+* https://publicaties.rvig.nl/zoeken[window=_blank]
+* https://publicaties.rvig.nl/zoekpagina-tabel-35-autorisatietabel[window=_blank]
+
+Indien je organisatie nog geen autorisatiebesluit heeft, dan kan deze aangevraagd worden.
+Meer over dit autorisatieproces leest je op:
+
+* https://developer.rvig.nl/lo-brp/LO-BRP/#_autorisatie_van_afnemers_gemeenten_en_rni[window=_blank]
+* https://developer.rvig.nl/lo-brp/LO-BRP/#_autorisatie_en_toegang[window=_blank]
+* https://www.rvig.nl/de-brp-gebruiken[window=_blank]
+* https://www.rvig.nl/werken-met-de-brp-achtergrond[window=_blank]

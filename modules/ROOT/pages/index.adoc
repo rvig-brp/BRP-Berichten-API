@@ -1,0 +1,73 @@
+= Welkom bij de {apiname}
+
+Sinds 1992 wisselen gemeenten en afnemers persoonsgegevens uit via de BRP-berichtendienst.
+Jaarlijks worden ongeveer 185 miljoen berichten via deze dienst verstuurd.
+Het BRP-berichtenverkeer verliep voorheen via de mailboxserver en de webservice StuurGBAbericht.
+Deze worden beide vervangen door de {apiname}.
+
+Het vervangen van de mailboxserver is nodig om ervoor te zorgen dat het berichtenverkeer ook in de toekomst goed blijft werken.
+De huidige dienst wordt uitgevoerd door een externe leverancier.
+Het contract voor deze dienst kan niet langer worden verlengd.
+Bovendien gebruikt de mailboxserver verouderde technologie, wat op termijn risico’s met zich meebrengt voor de continuïteit en beveiliging van de dienstverlening.
+
+De nieuwe {apiname} is gebaseerd op courante technologische standaarden, zoals:
+
+* REST API (een standaard voor het transporteren van gegevens);
+* JSON (een standaard voor het structureren van berichten);
+* UTF-8 (een standaard voor het coderen van tekens).
+
+Lees verder op: https://www.rvig.nl/vervanging-mailboxserver[window=_blank]
+
+== Context
+
+=== De BRP
+
+De Basisregistratie Persoonsgegevens (BRP) is een landelijke registratie van personen die in gemeenten, in de Registratie Niet-Ingezetenen (RNI) en bij de openbare lichamen Bonaire, Sint Eustatius en Saba ingeschreven zijn.
+
+De BRP wordt gedecentraliseerd "bijgehouden".
+Dat wil zeggen dat persoongegevens vastgelegd worden bij "bijhouders" zoals die hierboven genoemd zijn (gemeenten, RNI, etc).
+Vervolgens wordt dit gesynchroniseerd met de landelijke BRP(-V).
+
+Alle overheidsinstellingen en bestuursorganen zijn voor de uitvoering van hun wettelijke taken verplicht om gebruik te maken van de persoonsgegevens in de BRP.
+De communicatie tussen de applicaties van deze overheidsinstellingen en bestuursorganen vindt geautomatiseerd plaats via webservices, API's en de berichtendienst.
+
+=== Berichten gerelateerd aan de BRP
+
+Om het BRP-stelsel te laten functioneren is er afgesproken hoe informatie tussen bijhouders/gemeenten, de BRP en afnemers uitgewisseld wordt.
+Deze afspraken zijn vastgelegd in het {lo-naam}.
+In dit {lo-naam} vindt je bericht-cycli waarin berichten genoemd worden en per bericht wordt aangeduid wat het doel van een dergelijk bericht is en welke gegevens deze bevat.
+Deze berichten worden uitgewisseld via "de berichtendienst".
+
+=== De berichtendienst
+
+Met de berichtendienst wordt het geheel van applicaties en koppelvlakken bedoeld dat de a-synchrone uitwisseling van BRP-berichten tussen overheidsinstellingen en bestuursorganen mogelijk maakt.
+Er zijn momenteel drie manieren van berichtuitwisseling:
+
+* via de mailboxserver
+* via de webservice StuurGBAbericht
+* via de {apiname}
+
+=== De {apiname}
+
+De {apiname} zal in eerste instantie de mailboxserver vervangen.
+De mailboxserver maakt nog gebruik van verouderde technologie.
+Later zal ook de webservice StuurGBAbericht vervangen worden door de {apiname}.
+
+Ontwikkelaars van (ICT-leveranciers van) overheidsinstellingen en bestuursorganen kunnen de documentatie van deze website gebruiken om hun applicaties aan te passen en over te stappen op de {apiname}.
+
+== Welke informatie kun je hier verwachten
+
+De volgende zaken kunt je verwachten op deze pagina's:
+
+* Handleidingen: praktische gidsen die jou helpen bij het implementeren van de {apiname} in je applicatie.
+* Concepten: toelichting over diverse zaken die relevant zijn voor {apiname}.
+Dit zijn zowel zaken die relevant zijn voor het domein waarin de {apiname} opereert als ook technische zaken die relevant zijn.
+* Aansluitinstructies: informatie rondom het aansluiten op de {apiname} en de processen die daarbij betrokken zijn.
+
+== Contact
+
+* Storing melden?
+Neem contact op met de RvIG frontoffice: op werkdagen telefonisch bereikbaar tussen 08.30 en 17.00 uur via 088-9001000. Vanuit het buitenland bel je naar: +31 707511000. Je kunt ook een e-mail sturen naar {rvig-email}
+* Bug Melden? {github-url}/issues[Maak een issue aan, window=_blank]
+* Verbetersuggestie doen voor de {apiname} of de documentatie op deze portal? {github-url}/issues[Maak een issue aan, window=_blank]
+* Voor meer informatie en/of hulpvragen kun je contact opnemen via onderstaand e-mailadres: {rvig-email}

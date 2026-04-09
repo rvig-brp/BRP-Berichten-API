@@ -1,0 +1,19 @@
+{
+  "iss" : "https://auth.npr.idm.diginetwerk.net/nidp/oauth/nam",
+  "jti" : "c1d26125-3cd0-465f-a4ad-44acf945893f",
+  "aud" : "06f0bd83-1f11-4086-80cd-ec04c00f8eab",
+  "exp" : 1736436136,
+  "iat" : 1736435536,
+  "nbf" : 1736435506,
+  "sub" : "06f0bd83-1f11-4086-80cd-ec04c00f8eab",
+  "_pvt" : "<xxx>",
+  "scope" : [
+    "999903-00000001822100824000"
+  ],
+  "claims" : [
+    "mailboxid=9999030",
+    "endpoint=brp-berichten-lap",
+    "OIN=00000001822100824000"
+  ],
+  "_target" : "ResourceServer01"
+}

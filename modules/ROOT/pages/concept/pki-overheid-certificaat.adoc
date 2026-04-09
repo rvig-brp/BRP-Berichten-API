@@ -1,0 +1,21 @@
+= PKI-Overheid certificaat
+
+De {apiname} vereist dat je een verbinding opzet middels mTLS (tweezijdig TLS) waarbij je client-certificaat een PKI-Overheid certificaat moet zijn MET daarin een vermelding van de xref:concept/organisatie-identificatie-nummer.adoc[OIN] van je organisatie.
+
+Dit certificaat wordt gebruikt om te verifiëren dat je namens de organisatie, die gekoppeld is aan het xref:concept/organisatie-identificatie-nummer.adoc[OIN], mag communiceren.
+Je authenticeert je namens deze organisatie.
+Het aanvraagproces van een dergelijk certificaat borgt dat een dergelijk certificaat enkel uitgegeven wordt aan de organisatie die houder is van het betreffende xref:concept/organisatie-identificatie-nummer.adoc[OIN].
+
+*Goed om te weten:*
+
+* Het certificaat met xref:concept/organisatie-identificatie-nummer.adoc[OIN] voor de proefomgeving kunt je ook gebruiken in de productieomgeving.
+* Gebruikt je organisatie al een PKI-Overheid certificaat voor een ander product van RvIG?
+Dan kun je dat certificaat opnieuw gebruiken.
+** Je organisatie besluit zelf of dit wenselijk is.
+Soms wordt er ook voor gekozen om meerdere client certificaten te hanteren om uiteenlopende redenen.
+
+Lees verder:
+
+* https://www.pkioverheid.nl/[window=_blank]
+* https://www.logius.nl/onze-dienstverlening/toegang/pkioverheid[window=_blank]
+* https://logius-standaarden.github.io/Digikoppeling-Gebruik-en-achtergrond-certificaten/[window=_blank]

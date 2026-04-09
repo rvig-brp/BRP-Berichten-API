@@ -1,0 +1,57 @@
+= Persoonslijst
+
+Een persoonslijst is het geheel van persoonsgegevens dat over een persoon in de BRP is opgenomen.
+De PL is onderverdeeld in een aantal categorieën met bij elkaar horende gegevens.
+Deze onderverdeling is schematisch weergegeven in onderstaande figuren.
+
+.Voorbeeld van een persoonlijst voor een ingezetene.
+image::persoonslijst-categorieen-ingezetene.png[width=450]
+
+Voor de meest recente indeling van de persoonlijsten raadpleegt je het {lo-naam}.
+
+* https://developer.rvig.nl/lo-brp/LO-BRP/#_de_persoonslijst[window=_blank]
+
+== Categorieën, groepen en elementen
+
+De binnen de BRP te registreren gegevens zijn ten behoeve van de overzichtelijkheid onderverdeeld in groepen met sterk aan elkaar gerelateerde gegevens.
+Te denken valt hierbij aan naamgegevens (voornamen, geslachtsnaam) of geboortegegevens (datum, plaats).
+Een gegeven in een bepaalde groep is een element.
+Een element wordt aangeduid met een elementnummer.
+
+De persoonslijst, de verwijzing en de landelijke tabellen zijn opgebouwd uit deze groepen.
+
+Een gegeven in een bepaalde categorie van de PL, in de verwijzing, in de afnemersindicatie of in een bepaalde landelijke tabel, is een rubriek.
+Een rubriek wordt aangeduid door middel van een rubrieknummer.
+
+De opbouw van het element- en rubrieknummer is weergegeven in onderstaand schema.
+
+image::persoonslijst-rubriek-en-elementnummer.png[]
+
+Het rubrieknummer bestaat uit zes cijfers.
+De eerste twee cijfers geven het categorienummer op de PL, de code voor verwijsgegevens of de code voor de landelijke tabel weer.
+De laatste vier cijfers geven het elementnummer aan.
+Het elementnummer is weer opgebouwd uit een tweecijferig groepsnummer gevolgd door een nummer voor het gegeven binnen de groep.
+
+Lees verder over dit onderwerp in het {lo-naam}:
+
+* https://developer.rvig.nl/lo-brp/LO-BRP/#_aanduiding_van_de_gegevens[window=_blank]
+* https://developer.rvig.nl/lo-brp/LO-BRP/#_beschrijving_van_de_categorie%C3%ABn[https://developer.rvig.nl/lo-brp/LO-BRP/#_beschrijving_van_de_categorieën,window=_blank]
+* https://developer.rvig.nl/lo-brp/LO-BRP/#_beschrijving_van_de_groepen[window=_blank]
+* https://developer.rvig.nl/lo-brp/LO-BRP/#_beschrijving_van_de_elementen[window=_blank]
+
+== JSON & JSON-Schema's
+
+De berichtuitwisseling en de data die daarmee daadwerkelijk mee uitgewisseld wordt zal via JSON genoteerd worden.
+Om te duiden hoe een persoonslijst gestructureerd moet worden zijn verschillende json-schema’s gedefinieerd die hieronder beschreven worden.
+
+Persoonslijst & Persoonslijst-data (plData) Er zijn twee schema-variaties t.b.v. het beschrijven van de structuur rondom een persoonlijst:
+
+* persoonslijst.schema.json: Dit schema beschrijft de persoonslijst zoals deze opgenomen dient te worden in de synchronisatieberichten.
+Dit schema is stricter dan de volgende variant.
+
+* persoonslijst-data.schema.json: Dit schema is nagenoeg gelijk aan het schema dat bij het vorige punt genoemd is, maar veel minder strict.
+Dit schema wordt gebruikt bij nagenoeg alle andere berichtsoorten die (gedeeltelijke) data van een persoonslijst bevatten.
+
+Documentatie rondom de achtergrond en motivatie/onderbouwing van de structuur is hier interactief in te zien:
+
+* https://htmlpreview.github.io/?https://github.com/rvig-brp/BRP-Berichten-API/blob/main/JSON-PL/documentatie_onderbouwing/readPL.html[window=_blank]

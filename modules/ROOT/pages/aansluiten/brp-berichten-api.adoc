@@ -1,0 +1,50 @@
+= Aansluiten op de {apiname}
+
+Om aan te sluiten op de {apiname} doorloop je de volgende fases:
+
+1. *Aansluiten op de demo-omgeving* +
+Dit is een laagdrempelige omgeving welke gebruikt kan worden om in een vroeg stadium een client-implementatie op te ontwikkelen en te beproeven.
+Er is op deze omgeving geen sprake van een aangesloten keten.
+Je zorgt hier zelf voor het inschieten van berichten waarmee je wilt testen.
+
+2. *Je realiseert een aansluiting op xref:concept/diginetwerk.adoc[Diginetwerk]* +
+Randvoorwaardelijk voor de aansluiting op de proef en productieomgevingen.
+Veel partijen beschikken al over een dergelijke aansluiting, dus controleer of dit voor jou van toepassing is.
+
+3. *Aansluiten op de proef/ketentest-omgeving.* +
+Als je applicatie klaar is om te testen en je beschikt over een aansluiting op Diginetwerk, dan kun je bij RvIG een aansluiting aanvraag voor de proefomgeving van de {apiname}.
+Op deze omgeving doorloop je ook het proces van "Schouwen en Toetsen".
+
+4. *Aansluiten op de productie-omgeving.* +
+Na goedkeuring door RvIG kun je aansluiten op de productie-omgeving.
+Dit is de omgeving waar het uiteindelijk natuurlijk allemaal om draait.
+
+.Omgevingen {apiname}
+[cols="2,^1,^1,^1",options=header]
+|===
+| Kenmerk | DEMO | Proef/ketentest | Productie
+| Autorisatiebesluit noodzakelijk |  ❌ | ❌ | ✅
+| Authenticatie d.m.v. Basic Authentication | ✅ | ❌ | ❌
+| Authenticatie d.m.v. OAuth2 | ✅  | ✅ | ✅
+| Beschikbaarheidsgaranties | Best-effort | Conform SLA | Conform SLA
+| Bereikbaar via diginetwerk | ❌ | ✅ | ✅
+| Bereikbaar via internet |  ✅ | ❌ | ❌
+| Geschikt voor persoonsgegevens |️ ❌ | ❌ | ✅
+| Ketenintegratie aanwezig | ❌ | ✅ | ✅
+a| xref:concept/pki-overheid-certificaat.adoc[PKI-Overheid certificaat] vereist, inclusief xref:concept/organisatie-identificatie-nummer.adoc[OIN] t.b.v. mTLS (tweezijdig TLS) | ❌ | ✅ | ✅
+| Toegang tot alle mailbox-accounts | ✅ | ❌ | ❌
+| Toegang zonder geslaagde "Schouwen en toetsen" / "Compliancy-toets" | ✅ | ✅ | ❌
+| Versie | Development | productie OF productie + 1 | productie
+|===
+
+include::ROOT:partial$demo-omgeving-waarschuwing.adoc[]
+
+
+== Details
+
+Voor meer uitleg per omgeving lees je hier verder:
+
+* xref:aansluiten/demo-omgeving.adoc[Demo omgeving]
+* xref:aansluiten/proef-omgeving.adoc[Proef/ketentest-omgeving]
+* xref:aansluiten/productie-omgeving.adoc[Productieomgeving]
+

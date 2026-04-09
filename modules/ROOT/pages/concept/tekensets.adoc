@@ -1,0 +1,38 @@
+= Tekensets (UTF-8 / Teletex)
+
+De BRP stelsel heeft lange tijd gewerkt met de Teletex tekenset.
+Per definitie waren alle berichten die via de mailboxserver verstuurd werden geformatteerd in deze tekenset en ook berichten die via stuurGBAbericht verstuurd worden konden in deze tekenset geformatteerd zijn.
+Met de komst van de BRP Berichten API wordt hier afscheid van genomen.
+Deze API hanteert de UTF-8 tekenset, maar met beperkingen binnen het BRP-stelsel.
+
+== Beperkingen op de UTF-8 tekenset.
+
+WARNING: Hoewel de {apiname} de UTF-8 tekenset volledig ondersteund, legt het {lo-naam} beperkingen op met betrekking op de karakters die gebruikt mogen worden.
+
+Een van de reden voor deze beperking is het feit dat gedurende de transitie van mailboxserver/stuurGBAbericht naar de {apiname} berichten nog via de oudere berichtdiensten gerouteerd moeten kunnen worden.
+
+Daarnaast is het niet gegarandeerd dat aangesloten partijen de volledige UTF-8 tekenset kunnen ondersteunen aangezien het {lo-naam} bepaald welke karakters er expliciet gebruikt moeten worden.
+
+Voor een volledige lijst van toegestane karakters raadpleegt je het {lo-naam}:
+
+* https://developer.rvig.nl/lo-brp/LO-BRP/#_tekenset[window=_blank]
+
+Daarnaast zijn er ook een voorbeeld-berichten te vinden met alle karakters zoals deze gedefinieerd zijn in het {lo-naam}.
+
+* *Teletex*: +
+https://github.com/rvig-brp/BRP-Berichten-API/blob/main/voorbeelden/berichten/Vb01_alle-tekens-teletex.GBA[window=_blank]
+* *UTF-8*: +
+https://github.com/rvig-brp/BRP-Berichten-API/blob/main/voorbeelden/berichten/Vb01_alle-tekens-utf8.GBA[window=_blank]
+
+## Teletex
+
+De Teletex standaard is gebaseerd op 'CCITT-aanbeveling T.61' en speelt eigenlijk geen rol meer binnen deze API.
+Enkel bij het onderdeel berichtconversie, dat je in staat stelt om berichten te converten, is dit vanuit het perspectief van deze API relevant.
+Lees meer hierover op de pagina: xref:handleiding/berichten-converteren.adoc[].
+
+Lees verder over de Teletex tekenset:
+
+* http://en.wikipedia.org/wiki/ITU_T.61[window=_blank]
+* xref:ROOT:attachment$T-REC-T.61-198811.pdf[CCITT Recommendation T.61,window=_blank]
+* https://developer.rvig.nl/lo-brp/LO-BRP/#_tekenset[window=_blank]
+

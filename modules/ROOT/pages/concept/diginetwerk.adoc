@@ -1,0 +1,21 @@
+= Diginetwerk
+Diginetwerk is een afsprakenstelsel dat zorgt voor het koppelen van besloten IT-netwerken van de overheid.
+Door het koppelen van deze netwerken ontstaat er één netwerk voor het uitwisselen van gegevens van burgers en bedrijven, tussen organisaties met een publieke taak.
+
+Dit netwerk is besloten.
+Dat betekent dat privacygevoelige data op veiligere en betrouwbaardere wijze uitgewisseld kan worden dan over het open internet.
+Zo zorgen we samen voor een digitale overheid die werkt voor iedereen.
+
+Lees verder:
+
+* https://www.rvig.nl/Aansluitinstructies-Diginetwerk-voor-stelselapplicaties[window=_blank]
+* https://www.logius.nl/onze-dienstverlening/infrastructuur/diginetwerk[window=_blank]
+
+== Diginetwerk vereist
+
+Aansluiten op de productie- en proefomgeving van de {apiname} is uitsluitend mogelijk via een koppeling met Diginetwerk.
+Er zijn diverse leveranciers (ook wel koppelnetwerkaanbieders) die aansluitingen aanbieden op hun koppelnetwerk met Diginetwerk.
+Je maakt zelf een keuze voor een koppelnetwerkaanbieder.
+
+* https://www.logius.nl/onze-dienstverlening/infrastructuur/diginetwerk/aansluiten[window=_blank]
+

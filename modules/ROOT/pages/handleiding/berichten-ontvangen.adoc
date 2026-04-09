@@ -1,0 +1,266 @@
+= Berichten ontvangen
+
+Het ontvangen van berichten van andere instanties verloopt in twee stappen.
+Eerst wordt een overzicht van klaarstaande berichten opgehaald.
+Daarna worden één of meer berichten opgehaald.
+
+Daarnaast is het mogelijk om enkele tellingen uit te voeren om te bepalen hoeveel berichten klaar staan om nog opgehaald te worden.
+
+== Tellen te ontvangen berichten
+
+Er kunnen drie tellingen worden uitgevoerd om te bepalen hoeveel berichten nog klaar staan om opgehaald en verwerkt te worden.
+De drie tellingen zijn:
+
+* *NIEUW* +
+telt het aantal nieuwe berichten dat nog niet is gezien via een LIST-operatie én nog niet is opgehaald met een GET-operatie;
+
+* *GEZIEN-IN-LIJST-EN-NIET-OPGEHAALD* +
+telt het aantal berichten dat gezien is via een LIST-operatie, maar nog niet is opgehaald met een GET-operatie;
+
+* *NIET-OPGEHAALD* +
+telt het aantal berichten dat nog niet is opgehaald met een GET-operatie ongeacht of deze al dan niet gezien is in een eerdere LIST-operatie.
+
+Het endpoint voor het uitvoeren van een telling is:
+
+* `GET <basisurl>/berichten/telling`
+
+De input en output zijn JSON-objecten, die beschreven zijn in de OpenAPI specificatie.
+
+* https://brp-berichten-api.dictua.ictu-sr.nl/openapi/berichten-api.html#tag/Berichtenverkeer/operation/summarize[window=_blank]
+
+=== Voorbeeldrequest
+
+Hieronder wordt een telling uitgevoerd door een ontvanger van een bericht.
+De ontvanger kan zien dat er 1 bericht voor hem klaar staat.
+
+==== Request
+
+[source,http]
+----
+GET https://brp-berichten-api.dictua.ictu-sr.nl/api/v1/berichten/telling?soort=niet-opgehaald
+Authorization: ---
+Accept: application/json
+----
+
+==== Response
+
+[source,json]
+----
+HTTP/1.1 200
+Content-Type: application/json
+
+{
+  "interactieId": "259119a6-8729-4b3a-b2d0-ba5531cc1a81",
+  "aantalBerichten": 1
+}
+----
+
+[#_ophalen_lijst_van_te_ontvangen_berichten_]
+== Ophalen lijst van te ontvangen berichten
+
+Door het ophalen van de lijst krijgt je informatie over de berichten die klaar staan voor ontvangst.
+Het belangrijkste is het `berichtTransportId`, dit attribuut is noodzakelijk om in een volgende stap het bericht daadwerkelijk op te halen.
+Met de overige argumenten zoals bijvoorbeeld `status`, `vanafMoment`, `totMoment`, `berichttype` of `afzender` kun je filteren en op die manier (indien wenselijk) invloed uitoefenen op welke berichten je wenst te ontvangen.
+
+Het endpoint voor het ophalen van een lijst met berichten die klaar staan is:
+
+* `GET <basisurl>/berichten`
+
+De input en output zijn JSON-objecten die beschreven zijn in de OpenAPI Specificatie:
+
+* https://brp-berichten-api.dictua.ictu-sr.nl/openapi/berichten-api.html#tag/Berichtenverkeer/operation/listMessages[window=_blank]
+
+=== Voorbeeldrequest
+
+In het onderstaande request vraagt een ontvanger alle berichten op die nieuw zijn of al wel eerder gezien zijn in een LIST, maar nog niet opgehaald zijn.
+De ontvanger ziet vervolgens dat er 1 bericht voor hem klaar staat met daarbij de kenmerken van het bericht, maar niet de inhoud van het bericht.
+De inhoud van het bericht wordt in de volgende stap opgehaald (getMessages).
+Indien er veel berichten klaar staan, dan zullen niet alle berichten ineens getoond worden.
+Door middel van paginering kunnen de overige berichten die klaar staan uitgevraagd worden.
+
+TIP: In de praktijk zien we dat veel partijen een `listMessages` operatie uitvoeren en de berichten die daarbij vermeld worden direct daarna ophalen middels een (of meerdere) `getMessages` operatie(s).
+Vervolgens halen ze weer de daarop volgende berichten op middels een `listMessages` operatie waarbij dus effectief telkens de eerste pagina opgevraagd wordt en daarmee het concept paginering vermeden kan worden.
+
+==== Request
+
+[source,http]
+----
+
+GET https://brp-berichten-api.dictua.ictu-sr.nl/api/v1/berichten/?status=nieuw,gezien-in-lijst
+Authorization: ---
+Accept: application/json
+----
+
+[NOTE]
+.De waarden in het `status` argument van dit request zijn beschreven in de OpenAPI specificatie.
+====
+* nieuw: Geeft berichten die nog nooit opgehaald zijn en tevens niet in de lijst operatie zijn getoond.
+* gezien-in-lijst: Geeft berichten die nog niet opgehaald zijn, maar al wel gezien zijn in de lijst.
+* opgehaald: Geeft berichten die reeds opgehaald zijn.
+====
+
+==== Response
+
+[source,json]
+----
+HTTP/1.1 200
+Content-Type: application/json
+
+{
+  "interactieId": "fff55630-9204-4efa-b2b6-6e572ba725f7",
+  "paginering": {
+    "pagineringVerzoek": {
+      "pagina": 1
+    },
+    "totaalAantalBerichten": 1,
+    "aantalBerichtenOpDezePagina": 1,
+    "aantalPaginas": 1,
+    "huidigePagina": 1,
+    "eerstePagina": true,
+    "laatstePagina": true
+  },
+  "berichten": [
+    {
+      "berichtId": "123456789012",
+      "verwijzingBerichtId": null,
+      "berichtType": "Lg01",
+      "berichtTransportId": "d67d03cb-99bf-44af-ba27-c6b93f5cf474",
+      "berichtVolgnummer": 14,
+      "afzender": 1904010,
+      "ontvanger": 3000200,
+      "dtOntvangen": "2026-04-01T12:47:47.513171Z",
+      "opgehaald": false,
+      "dtBewaardTot": "2026-04-08T12:47:47.513171Z"
+    }
+  ]
+}
+
+----
+
+== Berichten ontvangen
+
+Aan de hand van het `berichtTransportId` vraagt je de berichten (inclusief berichtinhoud) op bij de {apiname}.
+Per request kunnen meerdere berichten in een keer opgehaald worden.
+Let hierbij op dat het voor kan komen dat er sprake kan zijn van berichten die wel en berichten die niet opgehaald konden worden.
+
+Het endpoint voor het daadwerkelijk ophalen van berichten is:
+
+* `GET <basisurl>/berichten/<berichtTransportId1>,<berichtTransportId2>,etc`
+
+De input en output zijn JSON-objecten die beschreven zijn in de OpenAPI Specificatie.
+
+* https://brp-berichten-api.dictua.ictu-sr.nl/openapi/berichten-api.html#tag/Berichtenverkeer/operation/getMessages[window=_blank]
+
+=== Voorbeeldrequest
+
+In het onderstaande request gaat de ontvanger 2 berichten ophalen.
+Één bericht dat daadwerkelijk klaarstaat en één bericht dat de {apiname} niet kent.
+We doen dit bewust even fout om aan te tonen dat er 2 takken in de response zijn (`opgehaaldeBerichten` en `nietOpgehaaldeBerichten`).
+
+==== Request
+
+[source,http]
+----
+GET https://brp-berichten-api.dictua.ictu-sr.nl/api/v1/berichten/d67d03cb-99bf-44af-ba27-c6b93f5cf474,1d76843c-9ecf-4557-b505-2f0221b67315
+Authorization: ---
+Accept: application/json
+----
+
+==== Response
+
+[source,json]
+----
+HTTP/1.1 200
+Content-Type: application/json
+
+{
+  "interactieId": "e8ebb2f9-2769-4cb5-adb3-a25156d597cd",
+  "opgehaaldeBerichten": [
+    {
+      "berichtKenmerken": {
+        "berichtId": "123456789012",
+        "verwijzingBerichtId": null,
+        "berichtType": "Lg01",
+        "berichtTransportId": "d67d03cb-99bf-44af-ba27-c6b93f5cf474",
+        "berichtVolgnummer": 14,
+        "afzender": 1904010,
+        "ontvanger": 3000200,
+        "dtOntvangen": "2026-04-01T12:47:47.513171Z",
+        "opgehaald": false,
+        "dtBewaardTot": "2026-04-08T12:47:47.513171Z"
+      },
+      "berichtInhoud": {
+        "$schema": "berichten.schema.json#/berichtsoorten/Lg01Bericht",
+        "berichtType": "Lg01",
+        "datumTijd": "20120402000000000",
+        "aNummer": "1839305202",
+        "oudANummer": "0000000000",
+        "plData": {
+          "c01": [
+            {
+              "e0110": "1839305202",
+              "e0120": "300647827",
+              "e0210": "Catootjes",
+              "e0240": "Altena",
+              "e0310": "19810921",
+              "e0320": "0796",
+              "e0330": "6030",
+              "e0410": "V",
+              "e6110": "N",
+              "e8210": "1810",
+              "e8220": "20120401",
+              "e8230": "schr.verz.wijz.nmgebr.",
+              "e8510": "20241121",
+              "e8610": "20241121",
+              "historie": [
+                {
+                  "e0110": "1839305202",
+                  "e0120": "300647827",
+                  "e0210": "Catootje",
+                  "e0240": "Altena",
+                  "e0310": "19810921",
+                  "e0320": "0796",
+                  "e0330": "6030",
+                  "e0410": "V",
+                  "e6110": "N",
+                  "e8210": "1810",
+                  "e8220": "20120401",
+                  "e8230": "schr.verz.wijz.nmgebr.",
+                  "e8510": "20120401",
+                  "e8610": "20120401"
+                },
+                { "overige categorieën" : "weggelaten voor leesbaarheid" }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "nietOpgehaaldeBerichten": [
+    {
+      "berichtTransportId": "1d76843c-9ecf-4557-b505-2f0221b67315",
+      "foutmeldingen": [
+        {
+          "type": "https://www.rvig.nl/brp/berichten-api/probleem/BBA-GET-F003",
+          "title": "GETREQUEST_MESSAGE_NOT_FOUND",
+          "detail": "Onbekend berichtTransportId",
+          "dateTime": "2026-04-01T15:28:23.859492+02:00"
+        }
+      ]
+    }
+  ]
+}
+
+----
+
+== Berichten twee keer (of vaker) ophalen
+
+Het is mogelijk om een bericht dat je al hebt ontvangen nog een keer op te halen.
+
+Bij het <<_ophalen_lijst_van_te_ontvangen_berichten_>> kun je in de argumenten voor het ophalen van de lijst berichten die klaar staan meegeven dat de parameter `status` de waarde `opgehaald` moet hebben.
+Je ontvangt dan alleen informatie over berichten die je al eerder hebt opgehaald.
+
+Met de ontvangen `berichtTransportID` 's vraagt je de betreffende berichten nogmaals op.
+
+Je kunt een bericht net zo vaak ophalen als dat je wilt, tot het is xref:handleiding/berichten-verwijderen.adoc[verwijderd].

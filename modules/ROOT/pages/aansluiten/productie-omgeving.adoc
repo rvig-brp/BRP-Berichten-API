@@ -1,0 +1,33 @@
+= Aansluiten op de productie-omgeving
+
+Nadat je het Schouwen en Toetsen succesvol hebt afgerond, mag je aansluiten op de productie-omgeving.
+
+Voorwaarden voor het aansluiten op de productie-omgeving zijn:
+
+* Geldige afnemercode/afnemersindicatie (in tabel 35).
+Dit is het nummer dat hoort bij je autorisatiebesluit.
+** Deze is hier op te zoeken:
+*** https://publicaties.rvig.nl/zoeken[window=_blank]
+*** https://publicaties.rvig.nl/zoekpagina-tabel-35-autorisatietabel[window=_blank]
+
+** Lees verder voor meer info: xref:concept/autorisatie.adoc[]
+* xref:concept/schouwen-en-toetsen.adoc[Schouwen en Toetsen] is succesvol afgerond
+
+* Aansluiting via xref:concept/diginetwerk.adoc[diginetwerk]
+
+* xref:concept/pki-overheid-certificaat.adoc[PKI-overheid certificaat] (met xref:concept/organisatie-identificatie-nummer.adoc[OIN])
+
+
+* Beschikking over OAuth2 credentials (client-id, client-secret en scope).
+Deze zijn aan te vragen via RvIG.
+
+Op de website van RvIG staan aansluitinstructies voor het aansluiten op de productie-omgeving.
+
+* https://www.rvig.nl/Aansluitinstructies-Diginetwerk-voor-stelselapplicaties
+
+== Controle OAuth2 credentials en JWT-token
+
+Het is aan te raden om je OAuth2 credentials na ontvangst qua juistheid te toetsen.
+Hoe je dat doet, dat kunt je lezen op de deze pagina:
+
+* xref:handleiding/oauth2-token-controle.adoc[Controle OAuth2 credentials en JWT-token].

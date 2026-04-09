@@ -1,0 +1,81 @@
+= Berichten & berichtencycli
+
+De BRP is opgezet als een decentrale persoonsregistratie, waarbij de persoonsgegevens ook fysiek op verschillende plaatsen opgeslagen worden.
+Dit heeft tot gevolg dat er gegevensuitwisseling plaats moet kunnen vinden.
+Deze uitwisseling gebeurt door middel van berichten, die via de berichtendienst, webservices of API’s worden verzonden.
+De gegevensuitwisseling heeft twee functies.
+
+1. In de eerste plaats is dat de gegevensuitwisseling die dient om de BRP, inclusief de RNI consistent te houden.
+Zo dienen bij een intergemeentelijke verhuizing de persoonsgegevens met de burger mee te verhuizen.
+Bij een emigratie of het van kracht worden van een Ministerieel besluit dienen de persoonsgegevens van de gemeente naar de RNI te verhuizen.
+En bij een immigratie of het vervallen van een Ministerieel besluit dienen de persoonsgegevens, in het geval dat een RNI-ingeschrevene betreft, van de RNI naar de gemeente te verhuizen.
+Onder het consistent houden van de gegevens vallen ook de berichten van en naar BRP-V, de BvBSN ter voorkoming van dubbele inschrijvingen, het Ministerie van Justitie vanwege het opnemen van de verblijfstitel en de berichten die nodig zijn om de landelijke tabellen consistent te houden.
+
+2. Daarnaast vormt de BRP een basisregistratie, hetgeen betekent dat de overheid en andere organisaties in de contacten met de burgers gebruik maken van de in de basisregistratie opgeslagen gegevens.
+Dit maakt gegevensverstrekking aan die overheidsinstanties en die andere organisaties noodzakelijk.
+
+Via de {apiname} worden tussen aangesloten instanties gegevens uitgewisseld ten behoeve van de bijhouding en de consistentie van de BRP.
+Verder worden berichten uitgewisseld in verband met het verstrekken van gegevens.
+Tenslotte zijn er ook nog enkele specifieke berichten in het kader van de berichtuitwisseling.
+
+== Berichttype (berichtnummer)
+
+Berichtnummer en berichttype zijn een en hetzelfde begrip.
+Waar het {lo-naam} veelal zal spreken over berichtnummer, hanteert de {apiname} de term berichtType zodat in de toekomst ook andere soorten (niet numerieke) berichten aangeduid kunnen worden.
+
+Het berichttype identificeert een bericht op basis van een tekenreeks van 4 karakters, bijvoorbeeld 'Gv01'.
+
+== Berichten / berichtgroepen
+
+De BRP-berichten zijn ingedeeld in de volgende groepen:
+
+1. De berichten die tussen de verschillende op de berichtendienst aangesloten instanties uitgewisseld kunnen worden ten behoeve van de bijhouding en de consistentie van de BRP.
+Deze berichten worden uitgewisseld tussen:
+
+* gemeenten onderling;
+
+* een gemeente en de RNI;
+
+* de IND en een gemeente of de RNI;
+
+* een gemeente of de RNI en BRP-V.
+
+2. De berichten ten behoeve van de gegevensverstrekkingen.
+Deze berichten worden uitgewisseld tussen BRP-V en een afnemer.
+Een afnemer kan ook weer een gemeente of de RNI zijn.
+
+3. Overige berichten, die dan weer zijn onder te verdelen in:
+
+* De berichten ten behoeve van het onderhouden van de autorisatietabel.
+Deze berichten worden verzonden door Tapp naar BRP-V.
+
+* De berichten ten behoeve van het onderhouden van de overige landelijke tabellen.
+Deze berichten worden verzonden door Tapp naar de gemeenten, de RNI, BRP-V, de BvBSN en de afnemers.
+
+* Het vrije bericht.
+Dit bericht kan worden uitgewisseld tussen alle instanties die op de berichtendienst zijn aangesloten.
+
+* De berichten als gevolg van ernstige verstoring van het berichtenverkeer, de protocolfouten.
+Deze berichten kunnen worden uitgewisseld tussen alle instanties die in het BRP-stelsel zijn aangesloten.
+
+* De verwerkbevestiging.
+Dit bericht is gedefinieerd om te kunnen melden dat een bepaald voorgaand bericht correct is verwerkt.
+
+Welke uiteenzetting van de berichten en in welke groepen deze berichten zijn ingedeeld, is terug te vinden in het {lo-naam}:
+
+* https://developer.rvig.nl/lo-brp/LO-BRP/#_beschrijving_van_de_brp_berichten[window=_blank]
+* https://developer.rvig.nl/lo-brp/LO-BRP/#_berichtenboek[window=_blank]
+* https://www.rvig.nl/brp-berichten[window=_blank]
+
+== Berichtencycli
+
+Hoe partijen berichten uitwisselen in bepaalde situaties is beschreven in zogenoemde berichtencycli.
+Voor allerlei situaties is er een dergelijk cyclus gedefinieerd.
+In het {lo-naam} zijn ze allemaal terug te vinden.
+
+* https://developer.rvig.nl/lo-brp/LO-BRP/#_berichtenboek[window=_blank]
+* https://www.rvig.nl/brp-berichten[window=_blank]
+
+.Voorbeeld van een berichtcyclus (Vervolginschrijving van gemeente naar gemeente)
+image::ROOT:vervolginschrijving-van-gemeente-naar-gemeente.svg[width=800]
+

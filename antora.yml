@@ -1,0 +1,42 @@
+name: brp-berichten-api
+version: ~
+title: BRP Berichten API
+nav:
+  - modules/ROOT/nav.adoc
+asciidoc:
+  attributes:
+    apiname: BRP Berichten API
+    github-url: https://github.com/rvig-brp/BRP-Berichten-API
+    po-email: tessa.andrea@rvig.nl
+    po-naam: Tessa Andrea
+    rvig-email: info@rvig.nl
+    rvig-project-email: brp.berichtenapi@rvig.nl
+    organisation-url: https://www.rvig.nl
+    berichten-retentie-tijd: 7 dagen
+    lo-compliancy-test-naam: Schouwen en toetsen
+    lo-naam: Logisch Ontwerp BRP
+    testafdeling-naam: Test & Deployment Team
+
+    # Asciidoc language attributes (see: https://docs.asciidoctor.org/asciidoctor/latest/localization-support/)
+    appendix-caption: Bijlage
+    appendix-refsig: Bijlage
+    caution-caption: Opgelet
+    chapter-signifier: Hoofdstuk
+    chapter-refsig: Hoofdstuk
+    example-caption: Voorbeeld
+    figure-caption: Figuur
+    important-caption: Belangrijk
+    last-update-label: Laatste aanpassing
+    listing-caption: Lijst
+    manname-title: Naam
+    note-caption: Noot
+    part-signifier: Deel
+    part-refsig: Deel
+    preface-title: Inleiding
+    section-refsig: Paragraaf
+    table-caption: Tabel
+    tip-caption: Tip
+    toc-title: Inhoudsopgave
+    untitled-label: Naamloos
+    version-label: Versie
+    warning-caption: Waarschuwing

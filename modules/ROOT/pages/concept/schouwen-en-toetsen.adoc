@@ -1,0 +1,117 @@
+= Schouwen & Toetsen bij RvIG - het verhaal achter de toets
+
+Binnen RvIG dragen we de verantwoordelijkheid voor een goed functionerend BRP-stelsel.
+Dat betekent niet alleen dat systemen technisch met elkaar kunnen praten, maar vooral dat die communicatie inhoudelijk klopt en voldoet aan het {lo-naam} en relevante wetgeving.
+Het {lo-naam} stelt:
+
+“Schouwing en toetsing bestaat uit een aantal procedures en gereedschappen waarmee gecontroleerd wordt of de BRP-systemen voldoen aan de specificaties zoals deze in het voorliggende {lo-naam} gedefinieerd worden.”
+
+Concreet betekent dit:
+
+* dat RvIG controleert;
+
+* dat die controle gaat over het voldoen aan het LO;
+
+* dat dit géén vrijblijvende activiteit is.
+
+Wat we vroeger “Schouwen & Toetsen” noemden, is daarom in feite het aantonen van BRP- of LO-compliancy.
+De term S&T is sinds 2024 formeel afgeschaft, maar de activiteit is belangrijker dan ooit.
+
+== Wat toetsen we precies?
+
+Bij het aantonen van compliancy kijken we niet achter de deurmat van een organisatie: hoe een partij zijn interne processen of teststraat inricht, is niet aan ons.
+Wat we wél doen, is vaststellen of een aangesloten systeem zich naar buiten toe gedraagt zoals het {lo-naam} voorschrijft.
+Dat betekent dat we toetsen of de berichten, de volgorde en de inhoud van de gegevens allen verklaarbaar zijn door een LO-conforme interne verwerking.
+RvIG is en blijft verantwoordelijk voor het borgen van de juiste en rechtmatige verwerking van persoonsgegevens binnen het BRP-stelsel.
+Het {lo-naam} zegt hierover:
+
+“Het {lo-naam} moet de centrale overheid een instrument in handen geven om de consistentie en de kwaliteit van de persoonsgegevens en de gegevensverstrekking naar de afnemers te garanderen.”
+
+Concreet beantwoorden we vragen als:
+
+* Worden berichten correct opgebouwd volgens het LO?
+
+* Is de inhoud juridisch en logisch juist?
+
+* Gedraagt een systeem zich in alle voorgeschreven scenario’s zoals verwacht?
+
+* Wat is de impact van LO-wijzigingen op de keten?
+
+Dit maakt compliancy aantonen een bijzondere vorm van een koppelvlaktest, en daarmee een verplicht onderdeel van het RvIG-testbeleid.
+
+== Voor welke systemen doen we dit?
+
+We voeren deze toets uit voor zowel interne als externe applicaties die aansluiten op het BRP-stelsel.
+Afhankelijk van de manier van berichtenuitwisseling gebruiken we verschillende middelen:
+
+* *Mailboxverkeer* +
+Hiervoor gebruiken we (vooralsnog) de bekende "Schouwen & Toetsen"-scenario’s.
+
+* *StuurGBA-berichten* +
+Deze toetsen we via specifieke testen op spontane verstrekkingen.
+
+* *{apiname}* +
+Hiervoor wordt nieuwe, schaalbare testtooling ontwikkeld, waarin bestaande scenario’s en testdata zijn meegenomen.
+
+Het doel is steeds hetzelfde: aantonen dat verzenden én ontvangen van berichten via BRP(-V) correct verloopt.
+
+== Zwaar of licht toetsen: wanneer wat?
+
+Niet elke aansluiting is hetzelfde.
+Daarom maken we onderscheid tussen een lichte en een zware toets.
+
+Een nieuwe aansluiting is een partij die:
+
+* volledig nieuw is binnen de BRP, of
+
+* overstapt van een leverancier naar zelfbouw.
+
+Belangrijk: een overstap van leverancier A naar leverancier B is géén nieuwe aansluiting.
+
+Voor nieuwe aansluitingen en situaties met hogere risico’s hanteren we een zware toets, met een vaste set scenario’s en diepgaande controles.
+In minder risicovolle situaties volstaat een lichtere toets.
+Deze afweging wordt gemaakt op basis van een product-risicoanalyse en vastgelegd in de testplannen.
+
+== Hoe voeren we de test uit?
+
+De toetsing gebeurt gestructureerd en herhaalbaar:
+
+* met een vaste set scenario’s, gebaseerd op het LO;
+
+* met tooling die schaalbaar is en meegroeit met nieuwe vormen van gegevensuitwisseling;
+
+* door simulatie van verzenden en ontvangen binnen het BRP-stelsel.
+
+De inhoudelijke kennis (scenario’s, interpretatie van wet- en regelgeving) ligt bij de LO- en BRP-specialisten.
+De uitvoering en borging van het proces ligt bij het {testafdeling-naam}, onder verantwoordelijkheid van de Test (Proces) Manager.
+
+== Governance en verantwoordelijkheid
+
+Sinds mei 2024 is compliancy aantonen expliciet opgenomen in het RvIG testbeleid.
+Daarmee geldt:
+
+* het is een verplichte testvorm binnen het voortbrengingsproces;
+
+* het eigenaarschap ligt bij de het {testafdeling-naam};
+
+* de inhoudelijke expertise wordt geleverd door de afdeling kwaliteit;
+
+* resultaten landen in vrijgave-adviezen en vormen input voor Go/No-Go-besluiten.
+
+Het is dus geen losstaand toezichtsinstrument, maar een integraal onderdeel van professioneel test- en releasemanagement.
+
+== Waarom dit verhaal belangrijk is?
+
+De ontwikkelingen binnen RvIG, nieuwe API’s en het uitfaseren van de mailboxserver maken één ding duidelijk:
+zonder eenduidige, goed ingerichte compliancy-toets verliezen we grip op het BRP-stelsel.
+
+Door deze activiteit stevig te positioneren binnen het testbeleid:
+
+* voorkomen we versnippering;
+
+* borgen we kennis en tooling;
+
+* en houden we controle op kwaliteit, wetgeving en ketenwerking.
+
+Compliancy aantonen is daarmee geen rem, maar juist een randvoorwaarde voor veilige vernieuwing.
+

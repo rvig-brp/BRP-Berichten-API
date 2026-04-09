@@ -1,0 +1,161 @@
+= Berichten versturen
+
+Via de {apiname} kan een instantie a-synchroon een bericht verzenden naar een andere instantie.
+Welke berichten een instantie verstuurd en naar welke andere instanties deze worden gestuurd, hangt af van de xref:concept/berichten.adoc[berichtcyclus].
+Je bent zelf als verzender verantwoordelijk voor het sturen van de juiste berichten zowel qua type als qua inhoud.
+Per request kun je meerdere berichten sturen.
+
+Het endpoint om berichten te versturen is:
+
+* `POST <basisurl>/berichten`
+
+De Input en Output zijn JSON-objecten die beschreven zijn in de OpenAPI specificaties.
+
+* https://brp-berichten-api.dictua.ictu-sr.nl/openapi/berichten-api.html#tag/Berichtenverkeer/operation/putMessages[window=_blank]
+
+== Voorbeeldrequest
+
+In het onderstaande request wordt een (versimpeld) synchronisatiebericht (Lg01) gestuurd vanuit een bijhouder naar de BRP(-V).
+Het bericht is geen bericht dat volgt op een eerder bericht in de berichtcyclus en daarom heeft `verwijzingBerichtId` de waarde `null`.
+Tevens is er een foutief bericht opgenomen dat zal leiden tot een validatiefout.
+In de response zie je beide berichten terug in `verwerkteBerichten` en `nietVerwerkteBerichten`.
+
+Niet verwerkte berichten zullen niet behandeld worden door de {apiname}, maar krijgen wel een `berichtTransportId` zodat je (indien nodig) bij RvIG na kunt gaan waarom dit bericht afgekeurd is.
+
+Berichten die wel verwerkt konden worden krijgen ook een `berichtTransportId`.
+Beschouw dit als de unieke referentie binnen de {apiname}.
+De ontvanger zal middels dit `berichtTransportId` uiteindelijk het bericht in ontvangst nemen.
+
+[CAUTION]
+====
+De combinatie van `verzender` + `ontvanger` + `berichtId` dient conform het {lo-naam} uniek te zijn.
+De {apiname} controleert hier niet op zodat je op een later moment een bericht nog een keer zou kunnen sturen.
+Je bent zelf verantwoordelijk voor het garanderen dat deze combinatie uniek is.
+
+De ontvanger dient te controleren of zij dit bericht al eerder ontvangen heeft door gebruikt te maken van deze combinatie.
+Een `berichtTransportId` speelt in dit geval geen rol.
+
+Een bericht (met dezelfde `verzender` + `ontvanger` + `berichtId` combinatie) dat voor een tweede (of daaropvolgende) keer gestuurd word, zal altijd een eigen unieke `berichtTransportId` krijgen.
+
+Lees meer hierover in het {lo-naam}: https://developer.rvig.nl/lo-brp/LO-BRP/#_berichtenafhandelingssysteem[window=_blank]
+====
+
+=== Request
+
+[source,json]
+----
+POST https://brp-berichten-api.dictua.ictu-sr.nl/api/v1/berichten
+Authorization: ---
+Accept: application/json
+Content-Type: application/json
+
+{
+  "interactieId": "e8ebb2f9-2769-4cb5-adb3-a25156d597cd",
+  "berichten": [
+    {
+      "berichtKenmerken": {
+        "berichtId": "123456789001foutief",
+        "verwijzingBerichtId": null,
+        "berichtType": "Lg01",
+        "ontvanger": 300200
+      },
+      "berichtInhoud": {
+      }
+    },
+    {
+      "berichtKenmerken": {
+        "berichtId": "123456789012",
+        "verwijzingBerichtId": null,
+        "berichtType": "Lg01",
+        "ontvanger": 3000200
+      },
+      "berichtInhoud": {
+        "$schema": "berichten.schema.json#/berichtsoorten/Lg01Bericht",
+        "berichtType": "Lg01",
+        "datumTijd": "20120402000000000",
+        "aNummer": "1839305202",
+        "oudANummer": "0000000000",
+        "plData": {
+          "c01": [
+            {
+              "e0110": "1839305202",
+              "e0120": "300647827",
+              "e0210": "Catootjes",
+              "e0240": "Altena",
+              "e0310": "19810921",
+              "e0320": "0796",
+              "e0330": "6030",
+              "e0410": "V",
+              "e6110": "N",
+              "e8210": "1810",
+              "e8220": "20120401",
+              "e8230": "schr.verz.wijz.nmgebr.",
+              "e8510": "20241121",
+              "e8610": "20241121",
+              "historie": [
+                {
+                  "e0110": "1839305202",
+                  "e0120": "300647827",
+                  "e0210": "Catootje",
+                  "e0240": "Altena",
+                  "e0310": "19810921",
+                  "e0320": "0796",
+                  "e0330": "6030",
+                  "e0410": "V",
+                  "e6110": "N",
+                  "e8210": "1810",
+                  "e8220": "20120401",
+                  "e8230": "schr.verz.wijz.nmgebr.",
+                  "e8510": "20120401",
+                  "e8610": "20120401"
+                },
+                { "overige categorieën" : "weggelaten voor leesbaarheid" }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
+----
+
+=== Response
+
+[source,json]
+----
+HTTP/1.1 200
+Content-Type: application/json
+
+{
+  "interactieId": "ed4780ff-4436-4153-8bcb-e553673c454c",
+  "verwerkteBerichten": [
+    {
+      "ontvanger": 3000200,
+      "berichtId": "123456789012",
+      "berichtTransportId": "d67d03cb-99bf-44af-ba27-c6b93f5cf474"
+    }
+  ],
+  "nietVerwerkteBerichten": [
+    {
+      "ontvanger": 300200,
+      "berichtId": "123456789001foutief",
+      "berichtTransportId": "9145a831-9e41-450e-afe4-351cbd370075",
+      "foutmeldingen": [
+        {
+          "type": "https://www.rvig.nl/brp/berichten-api/probleem/BBA-PUT-F002",
+          "title": "PUTREQUEST_INVALID_FIELD_ERROR",
+          "detail": "Een of meerdere velden in het bericht voldoen niet aan de gestelde eisen",
+          "dateTime": "2026-04-01T16:29:51.094545+02:00",
+          "invalidParameters": [
+            {
+              "key": "berichtId",
+              "value": "Het veld berichtId mag niet langer zijn dan 12 karakters"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+----

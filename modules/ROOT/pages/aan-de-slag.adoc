@@ -1,0 +1,66 @@
+= Aan de slag
+
+Als ontwikkelaar kunt je direct aan de slag:
+
+1. Bekijk de functionaliteit en specificaties
+2. Download de OpenAPI specificaties en JSON schemas
+3. Bouw de aansluiting op de {apiname} en test middels de DEMO-omgeving.
+4. Sluit aan op de proefomgeving en doorloop de acceptatietesten (schouwen en toetsen).
+Je bent klaar voor productie!
+
+== Stap 1 - Bekijk de functionaliteit en specificaties
+
+De OpenAPI specificatie van deze API is opgenomen in de repository en is tevens als grafische representatie in te zien middels redocly.
+Hier zijn ook de JSON-schemas opgenomen die duiden hoe de berichten en de inhoud van deze berichten er uit dienen te zien.
+
+* OpenAPI Schema
+** Sources: https://github.com/rvig-brp/BRP-Berichten-API/tree/main/openapi-specificatie[window=_blank]
+** Grafische weergave: https://brp-berichten-api.dictua.ictu-sr.nl/openapi/berichten-api.html[window=_blank]
+
+Middels het {lo-naam} kun je meer context vergaren met betrekking tot hoe deze berichten gebruikt worden en welke berichtcycli daarbij betrokken zijn.
+
+
+* {lo-naam}
+** Als webpagina: https://developer.rvig.nl/lo-brp/LO-BRP/[window=_blank]
+** Als PDF: https://www.rvig.nl/lo-brp[window=_blank]
+
+Tot slot zijn veel berichten gerelateerd aan persoonslijsten.
+Ook deze worden uitgedrukt middels een JSON-structuur welke zich conformeert aan het {lo-naam}.
+Hoe deze opgebouwd zijn wordt toegelicht middels:
+
+* https://html-preview.github.io/?url=https://github.com/rvig-brp/BRP-Berichten-API/blob/main/JSON-PL/documentatie_onderbouwing/readPL.html[window=_blank]
+
+== Stap 2 - Download de OpenAPI specificaties
+
+Download de specificaties en de bijbehorende JSON-schemas.
+
+* https://github.com/rvig-brp/BRP-Berichten-API/tree/main/openapi-specificatie[window=_blank]
+
+== Stap 3 - Bouw de aansluiting op de {apiname} en test middels de DEMO-omgeving.
+
+Om te integreren met de {apiname} zul je een client moeten realiseren.
+Om je in een vroeg stadium bekend te laten raken met de {apiname} is er een demo-omgeving ter beschikking gesteld.
+Dit is een omgeving waarmee je zonder diginetwerk kunt verbinden en zonder consequenties zaken uit kunt proberen.
+Toegang is daarbij laagdrempelig ingericht, je kunt zelf bepalen namens wie je berichten verstuurd en namens wie je berichten wilt ontvangen.
+Hiermee raakt je bekend met het koppelvlak en kunt je een client realiseren die compatible is met dit koppelvlak.
+
+include::ROOT:partial$demo-omgeving-waarschuwing.adoc[]
+
+1. Lees hoe het verzenden en ontvangen van berichten werkt zodat je vooraf weet wat je kunt verwachten.
+2. Zorg dat je client zich conformeert aan de OpenAPI specificatie en de JSON-schemas die daarbij betrokken zijn.
+3. Vraag toegang aan tot de demo-omgeving van de {apiname} via {rvig-email}.
+4. Toets zelf middels de demo-omgeving of je client berichten kan verzenden en ontvangen.
+Gebruik daarbij eventueel de {github-url}/tree/main/voorbeelden/berichten[voorbeeldberichten, window=_blank] die hiervoor beschikbaar zijn gesteld.
+
+Als je deze stappen doorlopen hebt, kunt je door naar de volgende stap waarbij je aansluit op de proefomgeving.
+
+== Stap 4 - Aansluiten op de proefomgeving
+
+In de proefomgeving sluit je daadwerkelijk aan op een keten, je kan deze omgeving dan ook beschouwen als een ketentestomgeving.
+Hierbij vindt daadwerkelijk interactie plaats met de BRP(-V).
+Je authenticeert hier middels je eigen afnemerId en communiceert daarmee met de BRP(-V) net zoals dit in productie zou gebeuren.
+
+Samen met het {testafdeling-naam} van RvIG doorloopt je deze fase die uiteindelijk afgerond wordt middels een S&T-test (Schouwen en Toetsen).
+Daarmee wordt vastgesteld of je software zich conformeert aan de bericht-cycli zoals afgesproken in het {lo-naam} en daarmee in productie genomen mag worden.
+
+Meer informatie over het aansluiten op de proef- en productieomgeving en informatie over de S&T-test staat xref:concept/schouwen-en-toetsen.adoc[hier] beschreven.

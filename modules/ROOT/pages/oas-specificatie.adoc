@@ -1,0 +1,11 @@
+= OpenAPI Specificatie (OAS3)
+
+De volledige OpenAPI Specificatie en alle bijbehorende JSON schema's zijn te vinden in onze Github repository: {github-url}[window=_blank].
+
+++++
+<redoc id='redoc-container'></redoc>
+<script src="https://cdn.jsdelivr.net/npm/redoc@2.5.2/bundles/redoc.standalone.js"></script>
+<script>
+  Redoc.init('https://raw.githubusercontent.com/rvig-brp/BRP-Berichten-API/refs/heads/main/openapi-specificatie/openapi.brp-berichten-api-v1.yaml', {scrollYOffset: '.toolbar'}, document.getElementById('redoc-container'))
+</script>
+++++

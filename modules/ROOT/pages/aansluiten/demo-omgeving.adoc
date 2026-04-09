@@ -1,0 +1,27 @@
+= Aansluiten op de demo-omgeving
+
+Vooruitlopend op een proef/ketentest-omgeving is er een demo-omgeving beschikbaar gesteld welke gebruikt kan worden om in een vroeg stadium een client-implementatie op te beproeven.
+De demo-omgeving is benaderbaar via de volgende url:
+
+* Base URL: https://brp-berichten-api.dictua.ictu-sr.nl/api/v1/berichten
+
+== Aansluiten op demo-omgeving
+
+Om gebruik te maken van de demo-omgeving dien je over inloggegevens te beschikken.
+Deze kunt je onder vermelding van je organisatienaam opvragen door een e-mail te sturen naar: {rvig-email}.
+
+== Kenmerken demo-omgeving
+
+Enkele kenmerken van de demo-omgeving zijn:
+
+* Je kunt inloggen op elk willekeurig mailboxaccount.
+Daarmee kunt je berichten verzenden van mailboxaccount A om vervolgens met mailboxaccount B het bericht te kunnen ontvangen.
+Op deze manier kunt je je eigen testbericht(en) inschieten e.d.
+* De demo-omgeving is geen ketentest-omgeving.
+Ga er dus niet vanuit dat er berichten daadwerkelijk ontvangen worden door andere partijen.
+* De demo-omgeving wordt regelmatig voorzien van updates vanuit het ontwikkelplatform.
+Wij behouden ons het recht om data verloren te laten gaan bij een update (reset van de database).
+* Alleen op de demo-omgeving kun je zowel inloggen met 'Basic Authentication' als 'OAuth2 (Client-Credentials flow)'.
+Dit is een drempelverlagende maatregel, in alle andere omgevingen wordt Auth2 vereist.
+
+include::ROOT:partial$demo-omgeving-waarschuwing.adoc[]

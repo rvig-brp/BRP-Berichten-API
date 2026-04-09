@@ -1,0 +1,32 @@
+= Aansluiten op de proefomgeving
+
+Als je applicatie klaar is om te testen en je beschikt over een aansluiting op diginetwerk, dan kun je bij RvIG een aansluiting aanvragen voor de proefomgeving van de {apiname}.
+
+Voorwaarden voor het aansluiten op de proefomgeving zijn:
+
+* Aansluiting via xref:concept/diginetwerk.adoc[diginetwerk]
+
+* xref:concept/pki-overheid-certificaat.adoc[PKI-overheid certificaat] (met xref:concept/organisatie-identificatie-nummer.adoc[OIN])
+
+* Beschikking over OAuth2 credentials (client-id, client-secret en scope).
+Deze zijn aan te vragen via RvIG.
+
+Op de website van RvIG staan de https://www.rvig.nl/Aansluitinstructies-Diginetwerk-voor-stelselapplicaties[aansluitinstructies] voor het aansluiten op de proefomgeving.
+
+== Schouwen en Toetsen
+
+Voordat je mag aansluiten op de productie-omgeving van de {apiname} wil RvIG je systeem xref:concept/schouwen-en-toetsen.adoc[Schouwen en Toetsen].
+Het doel van Schouwen en Toetsen is vaststellen dat een systeem van een gemeente, afnemer of RvIG zelf naar systemen van andere instanties aangesloten op de {apiname} functioneert zoals het {lo-naam} voorschrijft.
+
+Het Schouwen en Toetsen gebeurt in samenwerking van het {testafdeling-naam} van RvIG.
+Het {testafdeling-naam} verstrekt je een draaiboek met een aantal scenario's die van toepassing zijn op je situatie.
+Na het uitvoeren van de scenario's beoordeelt het {testafdeling-naam} het resultaat en ontvangt je een bericht of je wel of niet mag aansluiten.
+
+Een verzoek voor het uitvoeren van Schouwen en Toetsen kunt je per mail versturen naar {rvig-email}
+
+== Controle OAuth2 credentials en JWT-token
+
+Het is aan te raden om je OAuth2 credentials na ontvangst qua juistheid te toetsen.
+Hoe je dat doet, dat kunt je lezen op de deze pagina:
+
+* xref:handleiding/oauth2-token-controle.adoc[Controle OAuth2 credentials en JWT-token].

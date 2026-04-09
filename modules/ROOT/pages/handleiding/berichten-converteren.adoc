@@ -1,0 +1,125 @@
+= Converteren van berichten
+
+Om voor je de transitie naar de nieuwe JSON-structuur te bespoedigen, kun je gebruik maken van conversie endpoint welke berichten voor je kan converteren tussen 'oud' en 'nieuw' formaat.
+In de OpenAPI specificaties staat beschreven hoe dit endpoint gebruikt kan worden.
+Let in het bijzonder op de `Accept` en `Content-Type` headers.
+Deze gebruikt u om aan te geven welk bronformaat aangeleverd wordt en in welk doelformaat u het bericht wilt ontvangen.
+Authenticatie gebeurt op dezelfde wijze als bij de berichtuitwisseling.
+
+== Endpoint
+
+Het endpoint voor het converteren van een bericht is:
+
+* `POST <basisurl>/berichten/conversie`
+
+De input en output zijn JSON-objecten die beschreven zijn in de OpenAPI Specificatie.
+
+* https://brp-berichten-api.dictua.ictu-sr.nl/openapi/berichten-api.html#tag/Berichtconversie/operation/converteer[window=_blank]
+
+== Teletex tekenset
+
+[WARNING]
+.Werken met de Teletex tekenset
+====
+Let erop dat bij het werken met berichten die opgemaakt zijn in de Teletex tekenset niet gewerkt kan worden met moderne tools.
+Bijna geen enkele tool zal deze tekenset ondersteunen en daardoor op byte-niveau deze berichten beschadigen.
+Het is absoluut noodzakelijk dat berichten in het oude formaat (in Teletex) codering op byte-niveau correct zijn om 'speciale' karakters te behouden.
+
+Lees meer over de Teletex tekenset op de pagina xref:concept/tekensets.adoc#_teletex[tekensets].
+====
+
+Houd er rekening mee dat als het bericht Teletex specifieke karakters bevat het niet werkt om het bericht via een tool zoals bijvoorbeeld Postman in te schieten.
+Een manier om dit op te lossen is door `curl` te gebruiken en de data binair aan te bieden.
+
+[source,bash]
+----
+# Download Teletex voorbeeld bericht van Github
+curl -L -o vb01-teletex.GBA \
+  "https://github.com/rvig-brp/BRP-Berichten-API/raw/refs/heads/main/voorbeelden/berichten/Vb01_alle-tekens-teletex.GBA"
+
+# Converteer naar JSON
+curl -X POST "https://brp-berichten-api.dictua.ictu-sr.nl/api/v1/berichten/conversie" \
+  -H "Authorization: ---" \
+  -H "Content-Type: text/plain; charset=teletex" \
+  -H "Accept: application/json" \
+  --data-binary "@vb01-teletex.GBA"
+----
+
+== Voorbeeldrequests
+
+=== Converteren van oud formaat in Teletex naar JSON
+
+==== Request
+
+[source,http]
+----
+POST <basisurl>/berichten/conversie
+Authorization: ---
+Content-Type: text/plain; charset=teletex
+Accept: application/json
+
+00000000Tf11000220101701100103474548513
+----
+
+==== Response
+
+[source,json]
+----
+HTTP/1.1 200
+Content-Type: application/json;charset=utf-8
+
+{
+  "berichtInhoud": {
+    "$schema": "berichten.schema.json#/$defs/berichtsoorten/$defs/Tf11Bericht",
+    "berichtType": "Tf11",
+    "plData": {
+      "c01": [
+        {
+          "e0110": "3474548513"
+        }
+      ]
+    }
+  },
+  "validatieFouten": []
+}
+----
+
+=== Converteren van JSON-formaat naar oud formaat in Teletex
+
+==== Request
+
+[source,json]
+----
+POST <basisurl>/berichten/conversie
+Authorization: ---
+Content-Type: application/json
+Accept: text/plain; charset=teletex
+
+{
+  "berichtType": "Gv01",
+  "aNummer": "4746845042",
+  "plData": {
+    "c07": [
+      {
+        "e7110": "20230102",
+        "e7120": "Attestatie de Vita",
+        "e8810": "0201",
+        "historie": [
+          {
+            "e7110": "",
+            "e7120": "",
+            "e8810": ""
+          }
+        ]
+      }
+    ]
+  }
+}
+----
+
+==== Response
+
+[source]
+----
+00000000Gv01474684504200082070517110008202301027120018Attestatie de Vita8810004020157021711000071200008810000
+----

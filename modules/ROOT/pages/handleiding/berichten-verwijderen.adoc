@@ -1,0 +1,71 @@
+= Verwijderen van berichten
+
+Wanneer berichten ontvangen zijn, worden deze automatisch na {berichten-retentie-tijd} verwijderd door de {apiname}.
+Je kunt ook zelf berichten verwijderen.
+Na het verwijderen van de berichten is het niet meer mogelijk om deze bij de {apiname} op te halen.
+
+Door het verwijderen van de berichten wordt de inhoud van de berichten verwijderd.
+De metadata van de berichten wordt bewaard voor auditing, rapportages, managementinformatie en facturering.
+
+== Automatisch (na {berichten-retentie-tijd})
+
+De {apiname} verwijdert berichten automatisch na {berichten-retentie-tijd} ongeacht of deze opgehaald zijn op niet.
+Je krijgt geen melding over berichten die door de {apiname} zijn verwijderd.
+Indien je een bericht opvraagt dat reeds geschoond is, dan zie je dit wel terug in de foutmelding.
+
+Mocht u willen dat de berichten die aan u gericht zijn tijdelijk langer te laten bewaren, dan kunt u dit aanvragen door xref:index.adoc#_contact[contact] op te nemen met RvIG.
+
+== Zelf verwijderen (direct)
+
+Je bepaalt zelf of berichten na ontvangst verwijderd worden of juist nog even bewaard worden.
+
+Het endpoint voor het verwijderen van één of meer berichten is:
+
+* `DELETE <basisurl>/berichten/<berichtTransportId1>,<berichtTransportId2>, etc`
+
+De input en output zijn JSON-objecten, die beschreven zijn in de OpenAPI Specificatie.
+
+* https://brp-berichten-api.dictua.ictu-sr.nl/openapi/berichten-api.html#tag/Berichtenverkeer/operation/deleteMessages[window=_blank]
+
+== Voorbeeldrequest
+
+In het onderstaande request gaat de ontvanger 2 berichten verwijderen.
+Één bericht dat daadwerkelijk bestaat en één bericht dat de {apiname} niet kent.
+We doen dit bewust even fout om aan te tonen dat er 2 takken in de response zijn (`succesvolVerwijderdeBerichten` en `nietSuccesvolVerwijderdeBerichten`).
+
+=== Request
+
+[source,http]
+----
+DELETE https://brp-berichten-api.dictua.ictu-sr.nl/api/v1/berichten/d67d03cb-99bf-44af-ba27-c6b93f5cf474,1d76843c-9ecf-4557-b505-2f0221b67315
+Authorization: ---
+Accept: application/json
+----
+
+=== Response
+
+[source,JSON]
+----
+HTTP/1.1 200
+Content-Type: application/json
+
+{
+  "interactieId": "94192976-971c-4f15-9a38-22e95396a1a3",
+  "succesvolVerwijderdeBerichten": [
+    "d67d03cb-99bf-44af-ba27-c6b93f5cf474"
+  ],
+  "nietSuccesvolVerwijderdeBerichten": [
+    {
+      "berichtTransportId": "1d76843c-9ecf-4557-b505-2f0221b67315",
+      "foutmeldingen": [
+        {
+          "type": "https://www.rvig.nl/brp/berichten-api/probleem/BBA-DELETE-F003",
+          "title": "DELETEREQUEST_MESSAGE_NOT_FOUND",
+          "detail": "Onbekend berichtTransportId",
+          "dateTime": "2026-04-01T16:12:58.618876+02:00"
+        }
+      ]
+    }
+  ]
+}
+----

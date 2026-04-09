@@ -1,0 +1,98 @@
+= Controle OAuth2 credentials en JWT-token
+
+Deze instructie kan gebruikt worden om de OAuth2 credentials en JWT-Token te controleren.
+
+== Demo omgeving
+
+CAUTION: De demo-omgeving wijkt af ten opzichte van het onderstaande aangezien je op deze omgeving zelf kunt kiezen op welke mailboxaccount je toegang wilt krijgen.
+Vanwege deze constructie is het onderstaande niet 100% van toepassing.
+Het clientId, scope en claims zullen op de demo-omgeving afwijken.
+
+Bij het verzoeken van een token hanteert u:
+
+* *Als clientId* +
+Het nummer van het mailboxaccount waar je toegang toe wilt verkrijgen.
+* *Als clientSecret* +
+Het door "jou"/"jouw organisatie" ontvangen wachtwoord dat "jij"/"jouw organisatie" heeft ontvangen bij het aanvragen van de toegang tot de demo-omgeving.
+* *Als scope*:  `bba-demo-{\{mailboxaccount-nummer}}`
+
+De inhoud van het JWT-token kan afwijken van de voorbeelden die hieronder gegeven zullen worden.
+
+== Token ophalen
+
+Afhankelijk van de omgeving dien je de volgende token-url te hanteren:
+
+* *Demo* +
+https://brp-berichten-api.dictua.ictu-sr.nl/api/v1/demo-accounts/oauth2/token
+* *Proef/ketentest* +
+https://auth.npr.idm.diginetwerk.net/nidp/oauth/nam/token
+* *Productie* +
+https://auth.idm.diginetwerk.net/nidp/oauth/nam/token
+
+Stuur het onderstaande request in om een token aan te vragen, vervang alles wat tussen dubbele accolades staat met de inloggegevens die je hebt ontvangen en de token-url zoals hierboven aangegeven.
+
+[source,bash]
+----
+curl --location -–request POST '{{token-url}}' \
+--header 'Content-Type: application/x-www-form-urlencoded' \
+--data-urlencode 'grant_type=client_credentials' \
+--data-urlencode 'client_id={{client-id}}' \
+--data-urlencode 'client_secret={{client-secret}}' \
+--data-urlencode 'scope={{ afnemersindicatie }}-{{OIN}}' \
+--data-urlencode 'resourceServer=ResourceServer01'
+----
+
+Je krijgt dan als antwoord een application/json response dat er als volgt uitziet:
+
+[source,json]
+----
+{
+"access_token": "{{access token}}",
+"token_type": "bearer",
+"expires_in": {{geldigheidsduur}},
+"scope": "{{scope}}"
+}
+----
+
+=== JWT-Token controle (claims controleren)
+
+Om te toetsen of je JWT-token in orde is, plaats je de inhoud van access_token in een file genaamd `token.b64`.
+Vervolgens voer je dit commando uit:
+
+[source,shell]
+----
+include::ROOT:example$jwt-decode.sh[]
+----
+
+Mocht dit commando niet werken omdat het `jq` commando niet gevonden kon worden, verwijder dan het laatste stukje van het commando `\| jq`.
+Hierdoor is de output iets lastiger te lezen, maar zeker niet onmogelijk.
+
+Je krijgt nu een output die er als volgt ongeveer uitziet:
+
+[source,json]
+----
+include::ROOT:example$jwt-token-payload.json[]
+----
+
+In de output moet je een claims array terugvinden.
+Daarin moeten de volgende claims minimaal aanwezig zijn:
+
+* een `endpoint` claim met daarin de waarde
+** demo: `brp-berichten-demo`
+** proef/ketentest: `brp-berichten-lap`
+** productie: `brp-berichten-acc`
+* een `mailboxid` of `mailboxID` claim
+* een `OIN` claim
+
+== Token gebruiken in requests
+
+Het token welke in "access_token" staat, stuur je mee met elk request aan de {apiname} door deze in te vullen in de request header `Authorization`.
+De waarde van deze header laat je voorafgegaan door `Bearer`.
+
+Let op:
+
+* Er dient 1 spatie te staat tussen `Bearer` en het token.
+* Er mag geen spatie of ander teken staat na het token!
+
+Het token is beperkt geldig en kun je gedurende de geldigheidsperiode voor meerdere API requests gebruiken.
+In `expires_in` staat hoe lang (in seconden) het token geldig is.
