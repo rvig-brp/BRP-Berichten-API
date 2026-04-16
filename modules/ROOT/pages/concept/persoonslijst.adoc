@@ -40,8 +40,6 @@ Lees verder over dit onderwerp in het {lo-naam}:
 * https://developer.rvig.nl/lo-brp/LO-BRP/#_beschrijving_van_de_elementen[window=_blank]
 
 == JSON & JSON-Schema's
-
-De berichtuitwisseling en de data die daarmee daadwerkelijk mee uitgewisseld wordt zal via JSON genoteerd worden.
 Om te duiden hoe een persoonslijst gestructureerd moet worden zijn verschillende json-schema’s gedefinieerd die hieronder beschreven worden.
 
 Persoonslijst & Persoonslijst-data (plData) Er zijn twee schema-variaties t.b.v. het beschrijven van de structuur rondom een persoonlijst:

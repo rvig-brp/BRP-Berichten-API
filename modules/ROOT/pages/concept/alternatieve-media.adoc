@@ -1,0 +1,22 @@
+= Alternatieve media (AM)
+
+Van het begin af aan is binnen de BRP erkend dat er voor de uitwisseling van gegevens naast de berichtendienst behoefte bestaat aan alternatieve media. Deze media kunnen worden gebruikt in die gevallen waar er sprake is van (bulk)transporten tussen twee BRP-participanten. Gebruik van de berichtendienst kan in die gevallen leiden tot onnodig hoge kosten en tot capaciteits- en andere problemen.
+
+Het medium voor de verschillende gegevensverstrekkingen in de BRP bestaat in principe uit de berichtendienst, webservices en API’s. Indien een afnemer de voorkeur geeft aan een ander medium en de afnemer kan de verantwoordelijk Minister overtuigen van het nut van een bepaalde gegevensverstrekking via een ander medium, dan kan de afnemer hiervoor geautoriseerd worden.
+
+Onder alternatieve media wordt alleen nog verstaan:
+
+* FTPS (een uitbreiding voor het file transfer protocol FTP dat ondersteuning voor Transport Layer Security TLS biedt);
+
+* SecureTransfer via de Rijkscloud.
+
+Lees verder op: https://developer.rvig.nl/lo-brp/LO-BRP/#_alternatieve_media
+
+== JSON en alternatieve media
+
+Omdat de {apiname} berichten uitwisselt in JSON-formaat, is er ook een structuur gedefinieerd wanneer partijen (om uiteenlopende redenen) via alternatieve media deze berichten willen uitwisselen. Het AM-Bestand is een combinatie van:
+
+Een ZIP-file met daarin:
+
+* Een metadata bestand (am-metadata.json), welke informatie levert m.b.t. het AM-bestand (afzender, datum-tijd, etc...). Tevens bevat deze een checksum t.b.v. integriteitscontrole op het bestand met de daadwerkelijke inhoud.
+* Een bestand met daarin de berichten (berichtregels.jsonl). De jsonl-extensie staat voor jsonlines waarover meer te lezen valt op https://jsonlines.org/. In de basis komt het er op neer dat elke regel in de file 1 bericht bevat. Met name voor grotere datasets is het daardoor te overwegen om een dergelijke dataset op een streaming wijze te produceren/consumeren.

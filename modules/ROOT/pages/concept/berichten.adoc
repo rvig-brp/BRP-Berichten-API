@@ -79,3 +79,40 @@ In het {lo-naam} zijn ze allemaal terug te vinden.
 .Voorbeeld van een berichtcyclus (Vervolginschrijving van gemeente naar gemeente)
 image::ROOT:vervolginschrijving-van-gemeente-naar-gemeente.svg[width=800]
 
+== JSON & JSON-Schema's
+
+De berichtuitwisseling en de data die daarmee daadwerkelijk mee uitgewisseld wordt zal via JSON genoteerd worden. Alle berichten die verzonden kunnen worden, zijn opgenomen in de OpenAPI specificatie. Elk bericht verwijst vervolgens door naar een JSON-schema waarin gedefinieerd wordt hoe een dergelijk bericht opgebouwd is.
+
+.Voorbeeld van een definitie van een berichttype.
+[source,json]
+----
+{
+  "berichtsoorten" : {
+    "Ag11Bericht" : {
+      "title" : "Ag11",
+      "type" : "object",
+      "description" : "Vulbericht - Dit bericht wordt verstuurd als voor een afnemer een afnemersindicatie is geplaatst bij een persoon. Het bevat alle gegevens van die persoon, waarvoor de afnemer bij spontane gegevensverstrekking geautoriseerd is.",
+      "additionalProperties" : false,
+      "unevaluatedProperties" : false,
+      "properties" : {
+        "$schema" : {
+          "type" : "string"
+        },
+        "berichtType" : {
+          "$ref" : "#/$defs/berichtkoppen/$defs/berichtType"
+        },
+        "status" : {
+          "$ref" : "#/$defs/berichtkoppen/$defs/status"
+        },
+        "datum" : {
+          "$ref" : "#/$defs/berichtkoppen/$defs/datum"
+        },
+        "plData" : {
+          "$ref" : "persoonslijst-data.schema.json"
+        }
+      },
+      "required" : [ "berichtType", "status", "datum", "plData" ]
+    }
+  }
+}
+----

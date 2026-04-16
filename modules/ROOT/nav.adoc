@@ -9,6 +9,7 @@
 ** xref:handleiding/oauth2-token-controle.adoc[Controle OAuth2 credentials en JWT-token]
 
 * Concepten
+** xref:concept/alternatieve-media.adoc[Alternatieve media (AM)]
 ** xref:concept/autorisatie.adoc[Autorisatie(code)]
 ** xref:concept/berichten.adoc[Berichten & berichtencycli]
 ** xref:concept/diginetwerk.adoc[Diginetwerk]
