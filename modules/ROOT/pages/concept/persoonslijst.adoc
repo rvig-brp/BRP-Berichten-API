@@ -52,4 +52,5 @@ Dit schema wordt gebruikt bij nagenoeg alle andere berichtsoorten die (gedeeltel
 
 Documentatie rondom de achtergrond en motivatie/onderbouwing van de structuur is hier interactief in te zien:
 
-* https://htmlpreview.github.io/?https://github.com/rvig-brp/BRP-Berichten-API/blob/main/JSON-PL/documentatie_onderbouwing/readPL.html[window=_blank]
+
+* xref:ROOT:attachment$PLstructuur_in_json/readPL.html["https://github.com/rvig-brp/BRP-Berichten-API/blob/main/JSON-PL/documentatie_onderbouwing/readPL.html",window=_blank]
