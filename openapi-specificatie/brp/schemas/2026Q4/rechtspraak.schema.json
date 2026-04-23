@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id" : "https://schemas.rvig.nl/brp/berichten/rechtspraak/2026Q4",
+  "$defs": {
+    "rechtsfeitMinderJarigGezag": {
+      "title": "Rechtsfeit",
+      "description": "Uitspraken van rechtbanken die betrekking hebben op het gezag over een minderjarige",
+      "type": "object",
+      "properties": {
+        "rechtsfeitId": {
+          "$ref": "#/$defs/rechtsfeitId"
+        },
+        "gezagscategorie": {
+          "type": "string",
+          "maxLength": 50
+        },
+        "gezagscode": {
+          "type": "string",
+          "maxLength": 255
+        },
+        "beslissingstekst": {
+          "type": "string",
+          "maxLength": 2000
+        },
+        "beslissingsdatum": {
+          "type": "string",
+          "pattern": "^[0-9]{8}$"
+        },
+        "registratiedatum": {
+          "type": "string",
+          "pattern": "^[0-9]{8}$"
+        },
+        "vorigeRechtsfeit": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/rechtsfeitId"
+          }
+        },
+        "rechtbank": {
+          "type": "string",
+          "maxLength": 120
+        }
+      },
+      "required": [
+        "rechtsfeitId",
+        "gezagscategorie",
+        "gezagscode",
+        "beslissingstekst",
+        "beslissingsdatum",
+        "registratiedatum",
+        "rechtbank"
+      ]
+    },
+    "rechtsfeitId": {
+      "title": "Rechtsfeit ID",
+      "description": "Identificatienummer van een rechtsfeit",
+      "type": "string",
+      "maxLength": 50
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "$schema" : "berichten.schema.json#/$defs/berichtsoorten/$defs/Og21Bericht",
+  "berichtType": "Og21",
+  "herhaling": "0",
+  "burgerservicenummer": "123456789",
+  "versie": "1",
+  "nieuweRechtsfeiten": [{
+    "rechtsfeitId":"ID-4",
+    "gezagscategorie": "Voogdij",
+    "gezagscode": "Voogdij",
+    "beslissingstekst": "Benoemt Piet Klein geboren op 1-4-1980 te Rotterdam tot voogd(en) over de minderjarige.",
+    "beslissingsdatum": "20251001",
+    "registratiedatum": "20251004",
+    "vorigeRechtsfeit": "ID-3",
+    "rechtbank": "Noord-Nederland"
+  },{
+    "rechtsfeitId":"ID-3",
+    "gezagscategorie": "Gezag",
+    "gezagscode": "Gezagsbeëindiging",
+    "beslissingstekst": "Beëindigt het gezag van over de minderjarige.",
+    "beslissingsdatum": "20251001",
+    "registratiedatum": "20251003",
+    "vorigeRechtsfeit": "ID-2",
+    "rechtbank": "Noord-Nederland"
+  }],
+  "eerdereRechtsfeiten": [{
+    "rechtsfeitId":"ID-2",
+    "gezagscategorie": "Overig",
+    "gezagscode": "Vernietiging uitspraak",
+    "beslissingstekst": "Vernietiging uitspraak: Hierbij vernietig ik de uitspraak d.d. 1-1-2015",
+    "beslissingsdatum": "20180601",
+    "registratiedatum": "20180603",
+    "vorigeRechtsfeit": "ID-1",
+    "rechtbank": "Noord-Nederland"
+  },{
+    "rechtsfeitId":"ID-1",
+    "gezagscategorie": "Voogdij",
+    "gezagscode": "Voogdij",
+    "beslissingstekst": "Benoemt Sjaak de Groot geboren op 1-1-1970 te Amsterdam tot voogd(en) over de minderjarige.",
+    "beslissingsdatum": "20150101",
+    "registratiedatum": "20150314",
+    "rechtbank": "Noord-Nederland"
+  }]
+}

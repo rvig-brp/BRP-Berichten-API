@@ -1,0 +1,8 @@
+{
+  "$schema" : "berichten.schema.json#/$defs/berichtsoorten/$defs/Of21Bericht",
+  "berichtType" : "Of21",
+  "foutreden" : "O",
+  "datum" : "20251001",
+  "gemeente" : "0000",
+  "burgerservicenummer" : "123456789"
+}
