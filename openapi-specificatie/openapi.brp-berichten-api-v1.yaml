@@ -1,11 +1,14 @@
 openapi: 3.1.0
 info:
   title: BRP Berichten API
-  version: 0.8.0
+  version: 0.8.1
   description: |
     Een REST API voor het a-synchroon uitwisselen van berichten welke in het Logisch Ontwerp gedefinieerd zijn.
 
     # Wijzigingshistorie:
+
+    ## 0.8.1 Mei 2026
+    - Examples van BerichtId en BerichtVerwijzingId tussen quotes gezet zodat ze zich conformeren aan het string type van hetgeen waar ze voorbeeld van zijn.
 
     ## 0.8.0 April 2026
     - LoBerichten component is opgedeeld in `MailboxserverCompatibleBerichten` en `IncompatibleMailboxserverBerichten`. Het component `IncompatibleMailboxserverBerichten` gaat nieuwe berichttypen bevatten niet geconverteerd kunnen worden naar het oude formaat en daardoor niet compatible zijn met partijen die aangesloten zijn via de mailboxserver.
@@ -932,7 +935,7 @@ components:
       type: string
       maxLength: 12
       examples:
-        - 103693694
+        - "103693694"
       description: |
         Het unieke volgnummer dat aan het uitgaande bericht wordt toegekend door de afzender.
         De "BRP berichten API" voert geen inhoudelijke controles uit op dit BerichtId. Maximaal 12 posities.
@@ -941,7 +944,7 @@ components:
       type: string
       maxLength: 12
       examples:
-        - 213582583
+        - "213582583"
       description: |
         Indien het bericht een antwoord is op een eerder door het eindsysteem ontvangen bericht: het `berichtId` van het eerder ontvangen bericht. Het veld correspondeert met het "CrossReference" veld van de mailboxserver.
 
