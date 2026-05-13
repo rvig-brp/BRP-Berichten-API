@@ -1,6 +1,6 @@
 = Converteren van berichten
 
-Om voor je de transitie naar de nieuwe JSON-structuur te bespoedigen, kun je gebruik maken van conversie endpoint welke berichten voor je kan converteren tussen 'oud' en 'nieuw' formaat.
+Om de transitie naar de nieuwe JSON-structuur te bespoedigen, kun je gebruik maken van conversie endpoint welke berichten kan converteren tussen 'oud' en 'nieuw' formaat.
 In de OpenAPI specificaties staat beschreven hoe dit endpoint gebruikt kan worden.
 Let in het bijzonder op de `Accept` en `Content-Type` headers.
 Deze gebruikt u om aan te geven welk bronformaat aangeleverd wordt en in welk doelformaat u het bericht wilt ontvangen.
