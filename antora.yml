@@ -14,8 +14,9 @@ asciidoc:
     organisation-url: https://www.rvig.nl
     berichten-retentie-tijd: 7 dagen
     lo-compliancy-test-naam: Schouwen en toetsen
-    lo-naam: Logisch Ontwerp BRP
-    testafdeling-naam: Test & Deployment Team
+    lo-naam-afgekort: LO BRP
+    lo-naam-voluit: Logisch Ontwerp BRP
+    testafdeling-naam: Test & Deployment team
 
     # Asciidoc language attributes (see: https://docs.asciidoctor.org/asciidoctor/latest/localization-support/)
     appendix-caption: Bijlage

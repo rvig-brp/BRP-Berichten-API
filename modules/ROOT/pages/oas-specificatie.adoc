@@ -1,6 +1,6 @@
-= OpenAPI Specificatie (OAS3)
+= OpenAPI-specificatie (OAS3)
 
-De volledige OpenAPI Specificatie en alle bijbehorende JSON schema's zijn te vinden in onze Github repository: {github-url}[window=_blank].
+De volledige OpenAPI-specificatie en alle bijbehorende JSON schema's zijn te vinden op onze GitHub pagina: {github-url}[window=_blank].
 
 ++++
 <redoc id='redoc-container'></redoc>

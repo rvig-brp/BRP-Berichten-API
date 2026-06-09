@@ -28,7 +28,7 @@ De ontvanger zal middels dit `berichtTransportId` uiteindelijk het bericht in on
 
 [CAUTION]
 ====
-De combinatie van `verzender` + `ontvanger` + `berichtId` dient conform het {lo-naam} uniek te zijn.
+De combinatie van `verzender` + `ontvanger` + `berichtId` dient conform het {lo-naam-voluit} ({lo-naam-afgekort}} uniek te zijn.
 De {apiname} controleert hier niet op zodat je op een later moment een bericht nog een keer zou kunnen sturen.
 Je bent zelf verantwoordelijk voor het garanderen dat deze combinatie uniek is.
 
@@ -37,7 +37,7 @@ Een `berichtTransportId` speelt in dit geval geen rol.
 
 Een bericht (met dezelfde `verzender` + `ontvanger` + `berichtId` combinatie) dat voor een tweede (of daaropvolgende) keer gestuurd word, zal altijd een eigen unieke `berichtTransportId` krijgen.
 
-Lees meer hierover in het {lo-naam}: https://developer.rvig.nl/lo-brp/LO-BRP/#_berichtenafhandelingssysteem[window=_blank]
+Lees meer hierover in het {lo-naam-afgekort}: https://developer.rvig.nl/lo-brp/LO-BRP/#_berichtenafhandelingssysteem[window=_blank]
 ====
 
 === Request

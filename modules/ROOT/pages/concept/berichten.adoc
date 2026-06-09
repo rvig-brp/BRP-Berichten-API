@@ -21,7 +21,7 @@ Tenslotte zijn er ook nog enkele specifieke berichten in het kader van de berich
 == Berichttype (berichtnummer)
 
 Berichtnummer en berichttype zijn een en hetzelfde begrip.
-Waar het {lo-naam} veelal zal spreken over berichtnummer, hanteert de {apiname} de term berichtType zodat in de toekomst ook andere soorten (niet numerieke) berichten aangeduid kunnen worden.
+Waar het {lo-naam-voluit} ({lo-naam-afgekort}) veelal zal spreken over berichtnummer, hanteert de {apiname} de term berichtType zodat in de toekomst ook andere soorten (niet numerieke) berichten aangeduid kunnen worden.
 
 Het berichttype identificeert een bericht op basis van een tekenreeks van 4 karakters, bijvoorbeeld 'Gv01'.
 
@@ -61,7 +61,7 @@ Deze berichten kunnen worden uitgewisseld tussen alle instanties die in het BRP-
 * De verwerkbevestiging.
 Dit bericht is gedefinieerd om te kunnen melden dat een bepaald voorgaand bericht correct is verwerkt.
 
-Welke uiteenzetting van de berichten en in welke groepen deze berichten zijn ingedeeld, is terug te vinden in het {lo-naam}:
+Welke uiteenzetting van de berichten en in welke groepen deze berichten zijn ingedeeld, is terug te vinden in het {lo-naam-afgekort}:
 
 * https://developer.rvig.nl/lo-brp/LO-BRP/#_beschrijving_van_de_brp_berichten[window=_blank]
 * https://developer.rvig.nl/lo-brp/LO-BRP/#_berichtenboek[window=_blank]
@@ -71,7 +71,7 @@ Welke uiteenzetting van de berichten en in welke groepen deze berichten zijn ing
 
 Hoe partijen berichten uitwisselen in bepaalde situaties is beschreven in zogenoemde berichtencycli.
 Voor allerlei situaties is er een dergelijk cyclus gedefinieerd.
-In het {lo-naam} zijn ze allemaal terug te vinden.
+In het {lo-naam-afgekort} zijn ze allemaal terug te vinden.
 
 * https://developer.rvig.nl/lo-brp/LO-BRP/#_berichtenboek[window=_blank]
 * https://www.rvig.nl/brp-berichten[window=_blank]

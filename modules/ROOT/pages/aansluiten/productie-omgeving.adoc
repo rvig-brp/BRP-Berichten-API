@@ -1,33 +1,32 @@
 = Aansluiten op de productie-omgeving
 
-Nadat je het Schouwen en Toetsen succesvol hebt afgerond, mag je aansluiten op de productie-omgeving.
+Nadat de compliancy-test (voorheen "Schouwen en Toetsen") succesvol is afgerond, kan je aansluiten op de productie-omgeving van de {apiname}.
 
-Voorwaarden voor het aansluiten op de productie-omgeving zijn:
+Voor aansluiting op de productie-omgeving gelden de volgende voorwaarden:
 
-* Geldige afnemercode/afnemersindicatie (in tabel 35).
-Dit is het nummer dat hoort bij je autorisatiebesluit.
-** Deze is hier op te zoeken:
+* Een geldige afnemercode/afnemersindicatie (opgenomen in Tabel 35).
+Dit is het nummer dat hoort bij het autorisatiebesluit van je organisatie.
+** Deze vind je hier:
 *** https://publicaties.rvig.nl/zoeken[window=_blank]
 *** https://publicaties.rvig.nl/zoekpagina-tabel-35-autorisatietabel[window=_blank]
 
-** Lees verder voor meer info: xref:concept/autorisatie.adoc[]
-* xref:concept/schouwen-en-toetsen.adoc[Schouwen en Toetsen] is succesvol afgerond
+** Meer informatie staat op: xref:concept/autorisatie.adoc[]
+* De compliancy-test (voorheen xref:concept/schouwen-en-toetsen.adoc["Schouwen en Toetsen"] is succesvol afgerond
 
-* Aansluiting via xref:concept/diginetwerk.adoc[diginetwerk]
+* Aansluiting op xref:concept/diginetwerk.adoc[Diginetwerk]
 
-* xref:concept/pki-overheid-certificaat.adoc[PKI-overheid certificaat] (met xref:concept/organisatie-identificatie-nummer.adoc[OIN])
+* Je organisatie beschikt over een xref:concept/pki-overheid-certificaat.adoc[PKI-overheid certificaat] (met xref:concept/organisatie-identificatie-nummer.adoc[OIN])
 
+* Je organisatie beschikt over OAuth2 credentials (client-id, client-secret en scope).
+Deze kun je aanvragen via {rvig-email}.
 
-* Beschikking over OAuth2 credentials (client-id, client-secret en scope).
-Deze zijn aan te vragen via RvIG.
-
-Op de website van RvIG staan aansluitinstructies voor het aansluiten op de productie-omgeving.
+De aansluitinstructies voor de productie-omgeving zijn beschikbaar via de website van RvIG:
 
 * https://www.rvig.nl/Aansluitinstructies-Diginetwerk-voor-stelselapplicaties
 
 == Controle OAuth2 credentials en JWT-token
 
-Het is aan te raden om je OAuth2 credentials na ontvangst qua juistheid te toetsen.
-Hoe je dat doet, dat kunt je lezen op de deze pagina:
+Wij adviseren om de ontvangen OAuth2 credentials en het JWT-token na ontvangst te controleren op juistheid.
+Informatie hierover staat op de volgende pagina:
 
 * xref:handleiding/oauth2-token-controle.adoc[Controle OAuth2 credentials en JWT-token].

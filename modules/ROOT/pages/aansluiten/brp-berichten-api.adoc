@@ -3,25 +3,26 @@
 Om aan te sluiten op de {apiname} doorloop je de volgende fases:
 
 1. *Aansluiten op de demo-omgeving* +
-Dit is een laagdrempelige omgeving welke gebruikt kan worden om in een vroeg stadium een client-implementatie op te ontwikkelen en te beproeven.
-Er is op deze omgeving geen sprake van een aangesloten keten.
-Je zorgt hier zelf voor het inschieten van berichten waarmee je wilt testen.
+De demo-omgeving is bedoeld om in vroeg stadium ervaring op te doen met de {apiname} en een client-implementatie te ontwikkelen en te testen.
+In deze omgeving is er geen sprake van een aangesloten keten.
+Je verzorgt zelf de berichten waarmee je wilt testen.
 
-2. *Je realiseert een aansluiting op xref:concept/diginetwerk.adoc[Diginetwerk]* +
-Randvoorwaardelijk voor de aansluiting op de proef en productieomgevingen.
-Veel partijen beschikken al over een dergelijke aansluiting, dus controleer of dit voor jou van toepassing is.
+2. *Aansluiting op xref:concept/diginetwerk.adoc[Diginetwerk]* +
+Een aansluiting op het Diginetwerk is een voorwaarde voor toegang tot de proef- en productieomgeving.
+Veel organisaties beschikken al over een dergelijke aansluiting. Controleer daarom eerst of dit binnen je organisatie al is geregeld.
 
 3. *Aansluiten op de proef/ketentest-omgeving.* +
-Als je applicatie klaar is om te testen en je beschikt over een aansluiting op Diginetwerk, dan kun je bij RvIG een aansluiting aanvraag voor de proefomgeving van de {apiname}.
-Op deze omgeving doorloop je ook het proces van "Schouwen en Toetsen".
+Als je applicatie gereed is om te testen en je organisatie beschikt over een aansluiting op Diginetwerk, dan kun je bij RvIG een aansluiting aanvragen voor de proefomgeving van de {apiname}.
+In deze omgeving doorloop je ook het proces van de compliancy-test (voorheen "Schouwen en Toetsen)".
 
 4. *Aansluiten op de productie-omgeving.* +
 Na goedkeuring door RvIG kun je aansluiten op de productie-omgeving.
-Dit is de omgeving waar het uiteindelijk natuurlijk allemaal om draait.
+Dit is de omgeving waarin het BRP-berichtenverkeer daadwerkelijk plaatsvindt.
 
-.Omgevingen {apiname}
+
 [cols="2,^1,^1,^1",options=header]
 |===
+
 | Kenmerk | DEMO | Proef/ketentest | Productie
 | Autorisatiebesluit noodzakelijk |  ❌ | ❌ | ✅
 | Authenticatie d.m.v. Basic Authentication | ✅ | ❌ | ❌
@@ -33,18 +34,22 @@ Dit is de omgeving waar het uiteindelijk natuurlijk allemaal om draait.
 | Ketenintegratie aanwezig | ❌ | ✅ | ✅
 a| xref:concept/pki-overheid-certificaat.adoc[PKI-Overheid certificaat] vereist, inclusief xref:concept/organisatie-identificatie-nummer.adoc[OIN] t.b.v. mTLS (tweezijdig TLS) | ❌ | ✅ | ✅
 | Toegang tot alle mailbox-accounts | ✅ | ❌ | ❌
-| Toegang zonder geslaagde "Schouwen en toetsen" / "Compliancy-toets" | ✅ | ✅ | ❌
+| Toegang zonder geslaagde compliancy-toets (voorheen "Schouwen en Toetsen") | ✅ | ✅ | ❌
 | Versie | Development | productie OF productie + 1 | productie
 |===
+
+
+_Tabel 1. Omgevingen {apiname}_
+
 
 include::ROOT:partial$demo-omgeving-waarschuwing.adoc[]
 
 
 == Details
 
-Voor meer uitleg per omgeving lees je hier verder:
+Meer informatie over de verschillende omgevingen vind je op:
 
-* xref:aansluiten/demo-omgeving.adoc[Demo omgeving]
+* xref:aansluiten/demo-omgeving.adoc[Demo-omgeving]
 * xref:aansluiten/proef-omgeving.adoc[Proef/ketentest-omgeving]
-* xref:aansluiten/productie-omgeving.adoc[Productieomgeving]
+* xref:aansluiten/productie-omgeving.adoc[Productie-omgeving]
 

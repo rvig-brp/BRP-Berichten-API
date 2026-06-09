@@ -6,7 +6,7 @@ Dit netwerk is besloten.
 Dat betekent dat privacygevoelige data op veiligere en betrouwbaardere wijze uitgewisseld kan worden dan over het open internet.
 Zo zorgen we samen voor een digitale overheid die werkt voor iedereen.
 
-Lees verder:
+Lees meer hierover op:
 
 * https://www.rvig.nl/Aansluitinstructies-Diginetwerk-voor-stelselapplicaties[window=_blank]
 * https://www.logius.nl/onze-dienstverlening/infrastructuur/diginetwerk[window=_blank]

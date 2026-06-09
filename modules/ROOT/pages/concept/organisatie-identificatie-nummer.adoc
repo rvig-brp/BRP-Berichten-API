@@ -6,6 +6,6 @@ Dit kunnen publieke en private organisaties zijn.
 
 Voor de {apiname} is het belangrijk dat het OIN is opgenomen in het client-certificaat dat je aanbiedt tijdens het maken van de verbinding met de {apiname} (middels mTLS/tweezijdig TLS).
 
-Lees verder:
+Lees meer hierover op:
 
 * https://www.logius.nl/onze-dienstverlening/toegang/organisatie-identificatienummer[window=_blank]

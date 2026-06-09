@@ -8,13 +8,13 @@ Het aanvraagproces van een dergelijk certificaat borgt dat een dergelijk certifi
 
 *Goed om te weten:*
 
-* Het certificaat met xref:concept/organisatie-identificatie-nummer.adoc[OIN] voor de proefomgeving kunt je ook gebruiken in de productieomgeving.
+* Het certificaat met xref:concept/organisatie-identificatie-nummer.adoc[OIN] voor de proefomgeving kun je ook gebruiken in de productieomgeving.
 * Gebruikt je organisatie al een PKI-Overheid certificaat voor een ander product van RvIG?
 Dan kun je dat certificaat opnieuw gebruiken.
 ** Je organisatie besluit zelf of dit wenselijk is.
 Soms wordt er ook voor gekozen om meerdere client certificaten te hanteren om uiteenlopende redenen.
 
-Lees verder:
+Lees meer hierover op:
 
 * https://www.pkioverheid.nl/[window=_blank]
 * https://www.logius.nl/onze-dienstverlening/toegang/pkioverheid[window=_blank]

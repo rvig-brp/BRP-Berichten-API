@@ -1,27 +1,26 @@
 = Aansluiten op de demo-omgeving
 
-Vooruitlopend op een proef/ketentest-omgeving is er een demo-omgeving beschikbaar gesteld welke gebruikt kan worden om in een vroeg stadium een client-implementatie op te beproeven.
-De demo-omgeving is benaderbaar via de volgende url:
+Vooruitlopend op een aansluiting op de proef/ketentest-omgeving is er een demo-omgeving beschikbaar. Deze omgeving kan worden gebruikt
+ om in een vroeg stadium een client-implementatie te ontwikkelen, testen en vertrouwd te raken met de {apiname}. De demo-omgeving is bereikbaar via de volgende URL:
 
 * Base URL: https://brp-berichten-api.dictua.ictu-sr.nl/api/v1/berichten
 
-== Aansluiten op demo-omgeving
+== Toegang aanvragen
 
-Om gebruik te maken van de demo-omgeving dien je over inloggegevens te beschikken.
-Deze kunt je onder vermelding van je organisatienaam opvragen door een e-mail te sturen naar: {rvig-email}.
+Om gebruik te maken van de demo-omgeving heb je inloggegevens nodig. Je kunt deze aanvragen door een e-mail te sturen naar: {rvig-email}, onder vermelding van je organisatienaam.
 
-== Kenmerken demo-omgeving
 
-Enkele kenmerken van de demo-omgeving zijn:
+== Kenmerken van de demo-omgeving
+
+De demo-omgeving heeft de volgende kenmerken:
 
 * Je kunt inloggen op elk willekeurig mailboxaccount.
-Daarmee kunt je berichten verzenden van mailboxaccount A om vervolgens met mailboxaccount B het bericht te kunnen ontvangen.
-Op deze manier kunt je je eigen testbericht(en) inschieten e.d.
+Hierdoor kun je berichten verzenden van mailboxaccount A en deze vervolgens met mailboxaccount B ontvangen.
+Dit maakt het mogelijk om je eigen testbericht(en) uit te voeren.
 * De demo-omgeving is geen ketentest-omgeving.
-Ga er dus niet vanuit dat er berichten daadwerkelijk ontvangen worden door andere partijen.
-* De demo-omgeving wordt regelmatig voorzien van updates vanuit het ontwikkelplatform.
-Wij behouden ons het recht om data verloren te laten gaan bij een update (reset van de database).
-* Alleen op de demo-omgeving kun je zowel inloggen met 'Basic Authentication' als 'OAuth2 (Client-Credentials flow)'.
-Dit is een drempelverlagende maatregel, in alle andere omgevingen wordt Auth2 vereist.
+Berichten worden niet daadwerkelijk afgeleverd en ontvangen door andere organisaties.
+* De demo-omgeving wordt regelmatig bijgewerkt vanuit het ontwikkelplatform. Daarbij kan testdata verloren gaan (bijvoorbeeld door een reset van de database).
+* Alleen in de demo-omgeving kun je zowel inloggen met 'Basic Authentication' als 'OAuth2' (Client-Credentials flow).
+Dit is bedoeld om de toegang laagdrempelig te houden. In alle andere omgevingen is OAuth2 vereist.
 
 include::ROOT:partial$demo-omgeving-waarschuwing.adoc[]

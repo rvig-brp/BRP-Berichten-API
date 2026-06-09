@@ -1,18 +1,21 @@
 = REST-API
 
-De {apiname} is ontworpen als vervanger van de mailboxserver welke de voorloper was van deze API.
-Om uiteenlopende redenen is gekozen om het gedrag en terminologie van deze API op bepaalde vlakken gelijk te houden met dat van de mailboxserver.
-Dit heeft zo zijn effecten op de implementatie van de {apiname}.
+De {apiname} is ontwikkeld als vervanger van de mailboxserver.
+Bij het ontwerp van de API is ervoor gekozen om op verschillende onderdelen aan te sluiten bij de verwerking en terminologie van de mailboxserver.
+Dit maakt de overstap naar de {apiname} voor aangesloten organisaties op de mailboxserver eenvoudiger.
 
 == Resource
 
-Wanneer de designprincipes van REST nauwkeurig worden opgevolgd, heeft elk request betrekking op 1 resource.
-In deze API zouden een resource een bericht zijn.
-Deze API wijkt hier vanaf, het is mogelijk om meerdere berichten in 1 request te versturen, te ontvangen en te verwijderen.
+Binnen REST heeft een request normaal gesproken betrekking op één resource.
+In de context van de {apiname} is een bericht een resource.
+De {apiname} wijkt hier vanaf.
+Deze ondersteunt het verwerken van meerdere berichten binnen één request.
+Dit maakt het mogelijk om meerdere berichten tegelijk te verzenden, ontvangen en verwijderen.
+
 In de response wordt vervolgens per bericht aangegeven wat de resultaten zijn.
 
 == Spraakverwarring PUT != POST
 
-Deze API kent termen als getMessage, putMessage, listMessage.
-Hoe wel de getMessage ook daadwerkelijk met een HTTP GET uitgevoerd wordt, wordt de putMessage uitgevoerd middels een HTTP POST (en geen PUT).
+Binnen de {apiname} worden termen gebruikt als getMessage, putMessage, listMessage.
+Hoewel de getMessage ook daadwerkelijk met een HTTP GET uitgevoerd wordt, wordt de putMessage uitgevoerd middels een HTTP POST (en geen PUT).
 De term putMessage is afkomstig uit het verleden, maar wel gehanteerd, maar heeft geen relatie met een HTTP PUT-methode.
