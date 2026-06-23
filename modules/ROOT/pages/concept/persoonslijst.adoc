@@ -4,10 +4,10 @@ Een persoonslijst is het geheel van persoonsgegevens dat over een persoon in de 
 De PL is onderverdeeld in een aantal categorieën met bij elkaar horende gegevens.
 Deze onderverdeling is schematisch weergegeven in onderstaande figuren.
 
-.Voorbeeld van een persoonlijst voor een ingezetene.
+.Voorbeeld van een persoonslijst voor een ingezetene.
 image::persoonslijst-categorieen-ingezetene.png[width=450]
 
-Voor de meest recente indeling van de persoonlijsten raadpleegt je het {lo-naam-afgekort}.
+Voor de meest recente indeling van de persoonslijsten raadpleeg je het {lo-naam-afgekort}.
 
 * https://developer.rvig.nl/lo-brp/LO-BRP/#_de_persoonslijst[window=_blank]
 
@@ -43,7 +43,7 @@ Lees meer over dit onderwerp in het {lo-naam-afgekort}:
 
 Om te duiden hoe een persoonslijst gestructureerd moet worden zijn verschillende json-schema’s gedefinieerd die hieronder beschreven worden.
 
-Persoonslijst & Persoonslijst-data (plData) Er zijn twee schema-variaties t.b.v. het beschrijven van de structuur rondom een persoonlijst:
+Persoonslijst & Persoonslijst-data (plData) Er zijn twee schema-variaties t.b.v. het beschrijven van de structuur rondom een persoonslijst:
 
 * persoonslijst.schema.json: Dit schema beschrijft de persoonslijst zoals deze opgenomen dient te worden in de synchronisatieberichten.
 Dit schema is stricter dan de volgende variant.

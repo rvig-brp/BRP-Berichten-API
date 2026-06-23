@@ -12,11 +12,11 @@ Bovendien gebruikt de mailboxserver verouderde technologie, wat op termijn risic
 
 De {apiname} is gebaseerd op moderne en gangbare technologische standaarden, zoals:
 
-* REST API (een standaard voor het transporteren van gegevens);
-* JSON (een standaard voor het structureren van berichten);
+* REST-API (een standaard voor het transporteren van gegevens);
+* JSON (een standaard voor het structureren van gegevens);
 * UTF-8 (een standaard voor het coderen van tekens).
 
-Meer informatie vind je op: https://www.rvig.nl/vervanging-mailboxserver[window=_blank]
+Meer informatie over de vervanging van de mailboxserver vind je op: https://www.rvig.nl/vervanging-mailboxserver[window=_blank]
 
 == Context
 
@@ -25,7 +25,7 @@ Meer informatie vind je op: https://www.rvig.nl/vervanging-mailboxserver[window=
 De Basisregistratie Persoonsgegevens (BRP) is een landelijke registratie van personen die in gemeenten, in de Registratie Niet-Ingezetenen (RNI) en bij de openbare lichamen Bonaire, Sint Eustatius en Saba ingeschreven zijn.
 
 De BRP wordt decentraal "bijgehouden".
-Dat wil zeggen dat persoongegevens vastgelegd worden bij de zogenaamde "bijhouders", zoals gemeenten en de RNI.
+Dat wil zeggen dat persoonsgegevens vastgelegd worden bij de zogenaamde "bijhouders", zoals gemeenten en de RNI.
 Vervolgens wordt dit gesynchroniseerd met de landelijke Basisregistratie Personen Verstrekkingsvoorziening (BRP-V).
 
 Alle overheidsorganisaties en bestuursorganen zijn voor de uitvoering van hun wettelijke taken verplicht om gebruik te maken van de persoonsgegevens in de BRP.
