@@ -1,35 +1,36 @@
-00000000Vb0101358In het gezagsregister is de volgende gezagsbeslissing geregistreerd.
+00000000Vb0101358
 
-  +---------+
-  |BSN      |
-  |---------|
-  |123456789|
-  +---------+
-
-  Dit bericht betreft de onderstaande nieuwe rechtsfeiten:
-
-Rechtsfeit ID-3 in navolging van ID-2, in categorie Gezag met code GezagsbeÈeindiging.
-  Beslissing: BeÈeindigt het gezag van  over de minderjarige.
-  De beslissing is per 1 oktober 2025.
-  Bij vragen, neem contact op met rechtbank Noord-Nederland.
-
-  Rechtsfeit ID-4 in navolging van ID-3, in categorie Voogdij met code Voogdij.
-  Beslissing: Benoemt Piet Klein geboren op 1-4-1980 te Rotterdam tot
-  voogd(en) over de minderjarige.
-  De beslissing is per 1 oktober 2025.
-  Bij vragen, neem contact op met rechtbank Noord-Nederland.
-
-
-  Eerdere rechstfeiten ten aanzien van deze persoon zijn:
-
-Rechtsfeit ID-2 in navolging van ID-1, in categorie Overig met code Vernietiging uitspraak.
-  Beslissing: Vernietiging uitspraak: Hierbij vernietig ik de uitspraak
-  d.d. 1-1-2015.
-  De beslissing is per 1 juni 2018.
-  Bij vragen, neem contact op met rechtbank Noord-Nederland.
-
-  Rechtsfeit ID-1 in navolging van , in categorie Voogdij met code Voogdij.
-  Beslissing: Benoemt Sjaak de Groot geboren op 1-1-1970 te Amsterdam tot
-  voogd(en) over de minderjarige.
-  De beslissing is per 1 januari 2015.
-  Bij vragen, neem contact op met rechtbank Noord-Nederland.
+{
+  "berichtType": "Og21",
+  "uittreksel": {
+    "aangemaaktOp": "2023-01-01T15:30:01",
+    "verstrekkendeInstantie": "Rechtbank Noord-Nederland",
+    "toelichting": "voorbeeld aantekening gezamenlijk gezag na een gezagssbeÃ«indiging"
+  },
+  "minderjarige": {
+    "burgerservicenummer": "345678900"
+  },
+  "registerkaart": {
+    "registerkaartnummer": "2025_00000249"
+  },
+  "aantekeningen": [
+    {
+      "ingangsdatum": "2024-09-09",
+      "beslissingsdatum": "2024-09-09",
+      "beslissendeInstantie": "Rechtbank Noord-Nederland",
+      "beslissingscategorie": " Aantekening ",
+      "beslissingsnaam": " Aantekening gezamenlijk gezag ",
+      "beslissingstekst": " De griffier van de rechtbank stelt vast dat verzoekers hebben voldaan aan de voorwaarden om de aantekening tot het gezamenlijk uitoefenen van het gezag over voornoemde minderjarige in het gezagsregister te verkrijgen. In het gezagsregister is aangetekend dat de ouders gezamenlijk met het ouderlijk gezag zijn belast.",
+      "registratiedatum": "2024-09-15"
+    },
+    {
+      "ingangsdatum": "",
+      "beslissingsdatum": "2024-04-01",
+      "beslissendeInstantie": "Rechtbank Noord-Nederland",
+      "beslissingscategorie": " Gezag ",
+      "beslissingsnaam": " GezagsbeÃ«indiging ",
+      "beslissingstekst": " BeÃ«indigt het gezag van Jan van Veen over de minderjarige.",
+      "registratiedatum": "2024-04-04"
+    }
+  ]
+}
