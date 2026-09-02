@@ -1124,23 +1124,31 @@
             "berichtType" : {
               "$ref" : "#/$defs/berichtkoppen/$defs/berichtType"
             },
-            "uittreksel": {
-              "$ref" : "rechtspraak.schema.json#/$defs/uittreksel"
+            "herhaling": {
+              "$ref": "#/$defs/berichtkoppen/$defs/herhaling"
             },
-            "minderjarige" : {
-              "$ref" : "rechtspraak.schema.json#/$defs/minderjarige"
+            "burgerservicenummer": {
+              "$ref": "persoonslijst.schema.json#/$defs/E0120"
             },
-            "registerkaart": {
-              "$ref" : "rechtspraak.schema.json#/$defs/registerkaart"
+            "versie": {
+              "type": "string",
+              "minLength": 0,
+              "maxLength": 2
             },
-            "aantekeningen": {
-              "type" : "array",
-              "items" : {
-                "$ref" : "rechtspraak.schema.json#/$defs/aantekening"
+            "nieuweRechtsfeiten": {
+              "type": "array",
+              "items": {
+                "$ref": "rechtspraak.schema.json#/$defs/rechtsfeitMinderJarigGezag"
+              }
+            },
+            "eerdereRechtsfeiten": {
+              "type": "array",
+              "items": {
+                "$ref": "rechtspraak.schema.json#/$defs/rechtsfeitMinderJarigGezag"
               }
             }
           },
-          "required" : ["berichtType", "minderjarige", "registerkaart", "uittreksel"]
+          "required" : [ "berichtType", "herhaling", "burgerservicenummer", "versie", "nieuweRechtsfeiten", "eerdereRechtsfeiten"]
         },
         "Pf01Bericht" : {
           "title" : "Pf01",
