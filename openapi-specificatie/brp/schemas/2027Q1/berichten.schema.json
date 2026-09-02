@@ -1,6 +1,6 @@
 {
-  "$id" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/berichten/20264",
-  "$version" : "20264",
+  "$id" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/berichten/20271",
+  "$version" : "20271",
   "$schema" : "https://json-schema.org/draft/2020-12/schema",
   "title" : "Berichtdefinities",
   "description" : "Beschrijving van de berichtsoorten zoals omschreven in het Logisch Ontwerp BRP",
@@ -1124,31 +1124,23 @@
             "berichtType" : {
               "$ref" : "#/$defs/berichtkoppen/$defs/berichtType"
             },
-            "herhaling": {
-              "$ref": "#/$defs/berichtkoppen/$defs/herhaling"
+            "uittreksel": {
+              "$ref" : "rechtspraak.schema.json#/$defs/uittreksel"
             },
-            "burgerservicenummer": {
-              "$ref": "persoonslijst.schema.json#/$defs/E0120"
+            "minderjarige" : {
+              "$ref" : "rechtspraak.schema.json#/$defs/minderjarige"
             },
-            "versie": {
-              "type": "string",
-              "minLength": 0,
-              "maxLength": 2
+            "registerkaart": {
+              "$ref" : "rechtspraak.schema.json#/$defs/registerkaart"
             },
-            "nieuweRechtsfeiten": {
-              "type": "array",
-              "items": {
-                "$ref": "rechtspraak.schema.json#/$defs/rechtsfeitMinderJarigGezag"
-              }
-            },
-            "eerdereRechtsfeiten": {
-              "type": "array",
-              "items": {
-                "$ref": "rechtspraak.schema.json#/$defs/rechtsfeitMinderJarigGezag"
+            "aantekeningen": {
+              "type" : "array",
+              "items" : {
+                "$ref" : "rechtspraak.schema.json#/$defs/aantekening"
               }
             }
           },
-          "required" : [ "berichtType", "herhaling", "burgerservicenummer", "versie", "nieuweRechtsfeiten", "eerdereRechtsfeiten"]
+          "required" : ["berichtType", "minderjarige", "registerkaart", "uittreksel"]
         },
         "Pf01Bericht" : {
           "title" : "Pf01",
