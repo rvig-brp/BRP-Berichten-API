@@ -1,12 +1,12 @@
 {
-  "$id" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/am-berichtregel/20253",
   "$schema" : "https://json-schema.org/draft/2020-12/schema",
+  "$id" : "https://schemas.rvig.nl/brp/berichten/am/berichtregel/2027Q1",
   "title" : "AM Berichtobject — kenmerken + inhoud",
   "description" : "Schema voor het AM-berichtregel met 'berichtKenmerken' en 'berichtInhoud'. De korte 'berichtType'-code (bijv. 'Lg01') bepaalt, welk berichten subschema wordt toegepast. Daarnaast moet 'berichtInhoud.$schema' exact verwijzen naar '#/berichtsoorten/<TypeName>' binnen het body-schema. Dit schema bepaald hoe een regel uit berichtregels.jsonl in het am zip bestand er uit moet komen te zien.",
   "type" : "object",
   "$defs" : {
     "versie" : {
-      "const" : "20253"
+      "const" : "20271"
     }
   },
   "properties" : {
@@ -29,16 +29,6 @@
           "description" : "Het soort bericht (zoals gedefinieerd in het berichtenboek in het Logisch Ontwerp).\n\n\n* Berichten ten behoeve van de bijhouding en de consistentie van de BRP\n  * Berichten tussen bijhouders onderling\n    * Berichten in verband met de vervolginschrijving tussen gemeenten:\n      * Ii01 Initiatie intergemeentelijke verhuizing\n      * Ib01 Verhuizen PL intergemeentelijk\n      * Iv01 Verwijsgegevens\n      * If01 Fout: PL niet te verzenden\n      * If21 Fout: de ontvangen PL is niet de aangevraagde\n      * If31 Fout: de verwijsgegevens zijn niet correct\n    * Berichten in verband met de vervolginschrijving van de gemeente naar de RNI:\n      * Rb01 Verhuizen PL van gemeente naar RNI\n      * Rv01 Verwijsgegevens\n      * Rf01 Fout: de ontvangen PL kan niet worden opgenomen\n      * Rf31 Fout: de verwijsgegevens zijn niet correct\n    * Berichten in verband met de vervolginschrijving van de RNI naar de gemeente:\n      * Ji01 Initiatie verhuizing PL van RNI naar gemeente\n      * Jb01 Verhuizen PL van RNI naar gemeente\n      * Jv01 Verwijsgegevens\n      * Jf01 Fout: PL niet te verzenden\n      * Jf21 Fout: de ontvangen PL is niet de aangevraagde\n      * Jf31 Fout: de verwijsgegevens zijn niet correct\n    * Berichten in verband met een toevallige geboorte:\n      * Tb01 Toevallige geboorte\n      * Tv01 Verwijsgegevens\n      * Tf01 Fout: persoon niet in te schrijven\n      * Tf11 Fout: de verwijsgegevens zijn niet correct\n    * Berichten in verband met een toevallige gebeurtenis:\n      * Tb02 Toevallige gebeurtenis\n      * Tf21 Fout: gebeurtenisgegevens niet te verwerken\n    * Berichten in verband met het opnemen van verwijsgegevens:\n      * Iv11 Verwijsgegevens\n      * Iv21 Verificatie verwijsgegevens\n      * If41 Fout: verwijsgegevens kunnen niet worden opgenomen\n    * Berichten in verband met wijzigen A-nummer in de verwijsgegevens bij gemeenten en bij de RNI:\n      * Wa01 Wijziging A-nummer\n      * Wf01 Fout: A-nummerwijziging niet te verwerken\n  * Berichten ten behoeve van de bijhouding\n    * Berichten in verband met verblijfstitel:\n      * Og11 Opnemen gegevens verblijfstitel\n      * Of11 Fout: opnemen/wijzigen verblijfstitel niet mogelijk\n  * Berichten ten behoeve van het bijhouden van de persoonsgegevens in BRP-V\n    * Berichten in verband met synchronisatie met BRP-V:\n      * Lg01 Synchronisatiebericht\n      * Lq01 Synchronisatievraag\n      * La01 Synchronisatieantwoord\n      * Lf01 Fout: synchronisatievraag niet te beantwoorden\n    * Berichten in verband met synchroniciteitsselecties:\n      * Lg01 Synchronisatiebericht\n* Berichten ten behoeve van de gegevensverstrekkingen\n  * Berichten in verband met spontane gegevensverstrekkingen als gevolg van afnemersindicaties op persoonslijsten:\n    * Gv01 Spontane mutatie\n    * Gv02 Spontane mutatie: infrastructurele wijziging\n    * Wa11 Wijziging A-nummer ten behoeve van afnemers\n    * Ng01 Afvoeren PL\n    * Ag11 Vulbericht\n    * Ag21 Conditionele gegevensverstrekking\n    * Ag31 Foutherstelbericht\n  * Berichten in verband met selecties:\n    * Sv01 Selectieverstrekking\n    * Sv11 Niemand geselecteerd\n  * Berichten in verband met ad hoc vragen:\n    * Hq01 Ad hoc vraag\n    * Ha01 Ad hoc antwoord\n    * Hf01 Fout: ad hoc vraag niet te beantwoorden\n  * Berichten in verband met ad hoc adresvragen:\n    * Xq01 Ad hoc adresvraag\n    * Xa01 Ad hoc adresantwoord\n    * Xf01 Fout: ad hoc adresvraag niet te beantwoorden\n  * Berichten in verband met het muteren van afnemersindicaties op persoonslijsten:\n    * Ap01 Plaatsen afnemersindicatie op persoonslijst\n    * Ag01 Gegevensverstrekking als gevolg van ad hoc plaatsing afnemersindicatie op persoonslijst\n    * Af01 Fout: plaatsen afnemersindicatie op persoonslijst onmogelijk\n    * Av01 Verwijderen afnemersindicatie van persoonslijst\n    * Af11 Fout: verwijderen afnemersindicatie van persoonslijst onmogelijk\n* Overige berichten\n  * Berichten ten behoeve van het onderhouden van de autorisatietabel\n    * Berichten in verband met het onderhoud van de autorisatietabel:\n      * Ct01 Toevoegen tabelregel aan Autorisatietabel\n      * Cw01 Wijzigen tabelregel in Autorisatietabel\n      * Cb01 Beëindigen tabelregel in Autorisatietabel\n    * Berichten ten behoeve van het onderhouden van de overige landelijke tabellen\n      * Dt01 Toevoegen tabelregel\n      * Dw01 Wijzigen tabelregel\n    * De protocolfouten\n      * Berichten om niet voorziene fouten in ontvangen berichten te melden:\n        * Pf01 Fout: cyclus\n        * Pf02 Fout: syntax\n        * Pf03 Fout: inhoudelijk\n    * Het vrije bericht\n      * Bericht, vergelijkbaar met een mededeling op papier en als zodanig te gebruiken:\n        * Vb01 Vrij bericht\n        * Vb02 Vrij bericht via webservice\n    * De verwerkbevestiging\n      * Bericht om de verwerking van bepaalde gegevens te bevestigen:\n        * Null Verwerkbevestiging (Null-bericht)",
           "enum" : [ "Af01", "Af11", "Ag01", "Ag11", "Ag21", "Ag31", "Ap01", "Av01", "Cb01", "Ct01", "Cw01", "Dt01", "Dw01", "Gv01", "Gv02", "Ha01", "Hf01", "Hq01", "Ib01", "If01", "If21", "If31", "If41", "Ii01", "Iv01", "Iv11", "Iv21", "Jb01", "Jf01", "Jf21", "Jf31", "Ji01", "Jv01", "La01", "Lf01", "Lg01", "Lq01", "Ng01", "Null", "Of11", "Og11", "Pf01", "Pf02", "Pf03", "Rb01", "Rf01", "Rf31", "Rv01", "Sv01", "Sv11", "Tb01", "Tb02", "Tf01", "Tf11", "Tf21", "Tv01", "Vb01", "Vb02", "Wa01", "Wa11", "Wf01", "Xa01", "Xf01", "Xq01" ]
         },
-        "berichtTransportId" : {
-          "type" : "string",
-          "format" : "uuid",
-          "description" : "De is de referentie naar het bericht zoals deze bekend was bij de `BRP berichten API` (UUID). Bij elke interactie met deze dienst omtrent een bericht, wordt deze waarde gebruikt. Het mag, net zoals `berichtVolgnummer` gebruikt worden om het bericht uniek te identificeren."
-        },
-        "berichtVolgnummer" : {
-          "type" : "integer",
-          "minimum" : 0,
-          "description" : "Dit volgnummer is het equivalent van het 'Dispatch sequence number'/'MSSequenceNumber' van de mailboxserver. Hiermee kan over verschillende media worden vastgesteld of dit bericht al eerder verwerkt is. Het nummer wordt door deze dienst uniek toegekend aan het bericht."
-        },
         "afzender" : {
           "type" : "integer",
           "maximum" : 9999999,
@@ -48,11 +38,6 @@
           "type" : "integer",
           "maximum" : 9999999,
           "description" : "Het unieke nummer van een ontvanger."
-        },
-        "dtOntvangen" : {
-          "type" : "string",
-          "format" : "date-time",
-          "description" : "Het tijdstip waarop het bericht door de berichten API ontvangen is. Optioneel, kan gebruikt worden om een tijdstip aan te duiden i.h.k.v. o.a. volgordelijkheid."
         }
       },
       "required" : [ "berichtId", "berichtType", "afzender", "ontvanger" ],
@@ -81,10 +66,10 @@
         "then" : {
           "properties" : {
             "$schema" : {
-              "const" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Af01Bericht"
+              "const" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Af01Bericht"
             }
           },
-          "$ref" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Af01Bericht"
+          "$ref" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Af01Bericht"
         }
       }, {
         "if" : {
@@ -98,10 +83,10 @@
         "then" : {
           "properties" : {
             "$schema" : {
-              "const" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Af11Bericht"
+              "const" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Af11Bericht"
             }
           },
-          "$ref" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Af11Bericht"
+          "$ref" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Af11Bericht"
         }
       }, {
         "if" : {
@@ -115,10 +100,10 @@
         "then" : {
           "properties" : {
             "$schema" : {
-              "const" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Ag01Bericht"
+              "const" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Ag01Bericht"
             }
           },
-          "$ref" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Ag01Bericht"
+          "$ref" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Ag01Bericht"
         }
       }, {
         "if" : {
@@ -132,10 +117,10 @@
         "then" : {
           "properties" : {
             "$schema" : {
-              "const" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Ag11Bericht"
+              "const" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Ag11Bericht"
             }
           },
-          "$ref" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Ag11Bericht"
+          "$ref" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Ag11Bericht"
         }
       }, {
         "if" : {
@@ -149,10 +134,10 @@
         "then" : {
           "properties" : {
             "$schema" : {
-              "const" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Ag21Bericht"
+              "const" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Ag21Bericht"
             }
           },
-          "$ref" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Ag21Bericht"
+          "$ref" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Ag21Bericht"
         }
       }, {
         "if" : {
@@ -166,10 +151,10 @@
         "then" : {
           "properties" : {
             "$schema" : {
-              "const" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Ag31Bericht"
+              "const" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Ag31Bericht"
             }
           },
-          "$ref" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Ag31Bericht"
+          "$ref" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Ag31Bericht"
         }
       }, {
         "if" : {
@@ -183,10 +168,10 @@
         "then" : {
           "properties" : {
             "$schema" : {
-              "const" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Ap01Bericht"
+              "const" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Ap01Bericht"
             }
           },
-          "$ref" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Ap01Bericht"
+          "$ref" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Ap01Bericht"
         }
       }, {
         "if" : {
@@ -200,10 +185,10 @@
         "then" : {
           "properties" : {
             "$schema" : {
-              "const" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Av01Bericht"
+              "const" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Av01Bericht"
             }
           },
-          "$ref" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Av01Bericht"
+          "$ref" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Av01Bericht"
         }
       }, {
         "if" : {
@@ -217,10 +202,10 @@
         "then" : {
           "properties" : {
             "$schema" : {
-              "const" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Cb01Bericht"
+              "const" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Cb01Bericht"
             }
           },
-          "$ref" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Cb01Bericht"
+          "$ref" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Cb01Bericht"
         }
       }, {
         "if" : {
@@ -234,10 +219,10 @@
         "then" : {
           "properties" : {
             "$schema" : {
-              "const" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Ct01Bericht"
+              "const" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Ct01Bericht"
             }
           },
-          "$ref" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Ct01Bericht"
+          "$ref" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Ct01Bericht"
         }
       }, {
         "if" : {
@@ -251,10 +236,10 @@
         "then" : {
           "properties" : {
             "$schema" : {
-              "const" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Cw01Bericht"
+              "const" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Cw01Bericht"
             }
           },
-          "$ref" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Cw01Bericht"
+          "$ref" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Cw01Bericht"
         }
       }, {
         "if" : {
@@ -268,10 +253,10 @@
         "then" : {
           "properties" : {
             "$schema" : {
-              "const" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Dt01Bericht"
+              "const" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Dt01Bericht"
             }
           },
-          "$ref" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Dt01Bericht"
+          "$ref" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Dt01Bericht"
         }
       }, {
         "if" : {
@@ -285,10 +270,10 @@
         "then" : {
           "properties" : {
             "$schema" : {
-              "const" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Dw01Bericht"
+              "const" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Dw01Bericht"
             }
           },
-          "$ref" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Dw01Bericht"
+          "$ref" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Dw01Bericht"
         }
       }, {
         "if" : {
@@ -302,10 +287,10 @@
         "then" : {
           "properties" : {
             "$schema" : {
-              "const" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Gv01Bericht"
+              "const" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Gv01Bericht"
             }
           },
-          "$ref" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Gv01Bericht"
+          "$ref" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Gv01Bericht"
         }
       }, {
         "if" : {
@@ -319,10 +304,10 @@
         "then" : {
           "properties" : {
             "$schema" : {
-              "const" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Gv02Bericht"
+              "const" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Gv02Bericht"
             }
           },
-          "$ref" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Gv02Bericht"
+          "$ref" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Gv02Bericht"
         }
       }, {
         "if" : {
@@ -336,10 +321,10 @@
         "then" : {
           "properties" : {
             "$schema" : {
-              "const" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Ha01Bericht"
+              "const" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Ha01Bericht"
             }
           },
-          "$ref" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Ha01Bericht"
+          "$ref" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Ha01Bericht"
         }
       }, {
         "if" : {
@@ -353,10 +338,10 @@
         "then" : {
           "properties" : {
             "$schema" : {
-              "const" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Hf01Bericht"
+              "const" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Hf01Bericht"
             }
           },
-          "$ref" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Hf01Bericht"
+          "$ref" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Hf01Bericht"
         }
       }, {
         "if" : {
@@ -370,10 +355,10 @@
         "then" : {
           "properties" : {
             "$schema" : {
-              "const" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Hq01Bericht"
+              "const" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Hq01Bericht"
             }
           },
-          "$ref" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Hq01Bericht"
+          "$ref" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Hq01Bericht"
         }
       }, {
         "if" : {
@@ -387,10 +372,10 @@
         "then" : {
           "properties" : {
             "$schema" : {
-              "const" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Ib01Bericht"
+              "const" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Ib01Bericht"
             }
           },
-          "$ref" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Ib01Bericht"
+          "$ref" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Ib01Bericht"
         }
       }, {
         "if" : {
@@ -404,10 +389,10 @@
         "then" : {
           "properties" : {
             "$schema" : {
-              "const" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/If01Bericht"
+              "const" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/If01Bericht"
             }
           },
-          "$ref" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/If01Bericht"
+          "$ref" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/If01Bericht"
         }
       }, {
         "if" : {
@@ -421,10 +406,10 @@
         "then" : {
           "properties" : {
             "$schema" : {
-              "const" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/If21Bericht"
+              "const" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/If21Bericht"
             }
           },
-          "$ref" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/If21Bericht"
+          "$ref" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/If21Bericht"
         }
       }, {
         "if" : {
@@ -438,10 +423,10 @@
         "then" : {
           "properties" : {
             "$schema" : {
-              "const" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/If31Bericht"
+              "const" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/If31Bericht"
             }
           },
-          "$ref" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/If31Bericht"
+          "$ref" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/If31Bericht"
         }
       }, {
         "if" : {
@@ -455,10 +440,10 @@
         "then" : {
           "properties" : {
             "$schema" : {
-              "const" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/If41Bericht"
+              "const" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/If41Bericht"
             }
           },
-          "$ref" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/If41Bericht"
+          "$ref" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/If41Bericht"
         }
       }, {
         "if" : {
@@ -472,10 +457,10 @@
         "then" : {
           "properties" : {
             "$schema" : {
-              "const" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Ii01Bericht"
+              "const" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Ii01Bericht"
             }
           },
-          "$ref" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Ii01Bericht"
+          "$ref" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Ii01Bericht"
         }
       }, {
         "if" : {
@@ -489,10 +474,10 @@
         "then" : {
           "properties" : {
             "$schema" : {
-              "const" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Iv01Bericht"
+              "const" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Iv01Bericht"
             }
           },
-          "$ref" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Iv01Bericht"
+          "$ref" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Iv01Bericht"
         }
       }, {
         "if" : {
@@ -506,10 +491,10 @@
         "then" : {
           "properties" : {
             "$schema" : {
-              "const" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Iv11Bericht"
+              "const" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Iv11Bericht"
             }
           },
-          "$ref" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Iv11Bericht"
+          "$ref" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Iv11Bericht"
         }
       }, {
         "if" : {
@@ -523,10 +508,10 @@
         "then" : {
           "properties" : {
             "$schema" : {
-              "const" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Iv21Bericht"
+              "const" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Iv21Bericht"
             }
           },
-          "$ref" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Iv21Bericht"
+          "$ref" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Iv21Bericht"
         }
       }, {
         "if" : {
@@ -540,10 +525,10 @@
         "then" : {
           "properties" : {
             "$schema" : {
-              "const" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Jb01Bericht"
+              "const" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Jb01Bericht"
             }
           },
-          "$ref" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Jb01Bericht"
+          "$ref" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Jb01Bericht"
         }
       }, {
         "if" : {
@@ -557,10 +542,10 @@
         "then" : {
           "properties" : {
             "$schema" : {
-              "const" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Jf01Bericht"
+              "const" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Jf01Bericht"
             }
           },
-          "$ref" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Jf01Bericht"
+          "$ref" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Jf01Bericht"
         }
       }, {
         "if" : {
@@ -574,10 +559,10 @@
         "then" : {
           "properties" : {
             "$schema" : {
-              "const" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Jf21Bericht"
+              "const" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Jf21Bericht"
             }
           },
-          "$ref" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Jf21Bericht"
+          "$ref" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Jf21Bericht"
         }
       }, {
         "if" : {
@@ -591,10 +576,10 @@
         "then" : {
           "properties" : {
             "$schema" : {
-              "const" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Jf31Bericht"
+              "const" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Jf31Bericht"
             }
           },
-          "$ref" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Jf31Bericht"
+          "$ref" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Jf31Bericht"
         }
       }, {
         "if" : {
@@ -608,10 +593,10 @@
         "then" : {
           "properties" : {
             "$schema" : {
-              "const" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Ji01Bericht"
+              "const" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Ji01Bericht"
             }
           },
-          "$ref" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Ji01Bericht"
+          "$ref" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Ji01Bericht"
         }
       }, {
         "if" : {
@@ -625,10 +610,10 @@
         "then" : {
           "properties" : {
             "$schema" : {
-              "const" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Jv01Bericht"
+              "const" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Jv01Bericht"
             }
           },
-          "$ref" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Jv01Bericht"
+          "$ref" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Jv01Bericht"
         }
       }, {
         "if" : {
@@ -642,10 +627,10 @@
         "then" : {
           "properties" : {
             "$schema" : {
-              "const" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/La01Bericht"
+              "const" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/La01Bericht"
             }
           },
-          "$ref" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/La01Bericht"
+          "$ref" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/La01Bericht"
         }
       }, {
         "if" : {
@@ -659,10 +644,10 @@
         "then" : {
           "properties" : {
             "$schema" : {
-              "const" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Lf01Bericht"
+              "const" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Lf01Bericht"
             }
           },
-          "$ref" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Lf01Bericht"
+          "$ref" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Lf01Bericht"
         }
       }, {
         "if" : {
@@ -676,10 +661,10 @@
         "then" : {
           "properties" : {
             "$schema" : {
-              "const" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Lg01Bericht"
+              "const" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Lg01Bericht"
             }
           },
-          "$ref" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Lg01Bericht"
+          "$ref" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Lg01Bericht"
         }
       }, {
         "if" : {
@@ -693,10 +678,10 @@
         "then" : {
           "properties" : {
             "$schema" : {
-              "const" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Lq01Bericht"
+              "const" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Lq01Bericht"
             }
           },
-          "$ref" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Lq01Bericht"
+          "$ref" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Lq01Bericht"
         }
       }, {
         "if" : {
@@ -710,10 +695,10 @@
         "then" : {
           "properties" : {
             "$schema" : {
-              "const" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Ng01Bericht"
+              "const" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Ng01Bericht"
             }
           },
-          "$ref" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Ng01Bericht"
+          "$ref" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Ng01Bericht"
         }
       }, {
         "if" : {
@@ -727,10 +712,10 @@
         "then" : {
           "properties" : {
             "$schema" : {
-              "const" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/NullBericht"
+              "const" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/NullBericht"
             }
           },
-          "$ref" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/NullBericht"
+          "$ref" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/NullBericht"
         }
       }, {
         "if" : {
@@ -744,10 +729,10 @@
         "then" : {
           "properties" : {
             "$schema" : {
-              "const" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Of11Bericht"
+              "const" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Of11Bericht"
             }
           },
-          "$ref" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Of11Bericht"
+          "$ref" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Of11Bericht"
         }
       }, {
         "if" : {
@@ -761,10 +746,44 @@
         "then" : {
           "properties" : {
             "$schema" : {
-              "const" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Og11Bericht"
+              "const" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Og11Bericht"
             }
           },
-          "$ref" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Og11Bericht"
+          "$ref" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Og11Bericht"
+        }
+      }, {
+        "if" : {
+          "properties" : {
+            "berichtType" : {
+              "const" : "Of21"
+            }
+          },
+          "required" : [ "berichtType" ]
+        },
+        "then" : {
+          "properties" : {
+            "$schema" : {
+              "const" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Of21Bericht"
+            }
+          },
+          "$ref" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Of21Bericht"
+        }
+      }, {
+        "if" : {
+          "properties" : {
+            "berichtType" : {
+              "const" : "Og21"
+            }
+          },
+          "required" : [ "berichtType" ]
+        },
+        "then" : {
+          "properties" : {
+            "$schema" : {
+              "const" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Og21Bericht"
+            }
+          },
+          "$ref" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Og21Bericht"
         }
       }, {
         "if" : {
@@ -778,10 +797,10 @@
         "then" : {
           "properties" : {
             "$schema" : {
-              "const" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Pf01Bericht"
+              "const" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Pf01Bericht"
             }
           },
-          "$ref" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Pf01Bericht"
+          "$ref" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Pf01Bericht"
         }
       }, {
         "if" : {
@@ -795,10 +814,10 @@
         "then" : {
           "properties" : {
             "$schema" : {
-              "const" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Pf02Bericht"
+              "const" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Pf02Bericht"
             }
           },
-          "$ref" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Pf02Bericht"
+          "$ref" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Pf02Bericht"
         }
       }, {
         "if" : {
@@ -812,10 +831,10 @@
         "then" : {
           "properties" : {
             "$schema" : {
-              "const" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Pf03Bericht"
+              "const" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Pf03Bericht"
             }
           },
-          "$ref" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Pf03Bericht"
+          "$ref" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Pf03Bericht"
         }
       }, {
         "if" : {
@@ -829,10 +848,10 @@
         "then" : {
           "properties" : {
             "$schema" : {
-              "const" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Rb01Bericht"
+              "const" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Rb01Bericht"
             }
           },
-          "$ref" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Rb01Bericht"
+          "$ref" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Rb01Bericht"
         }
       }, {
         "if" : {
@@ -846,10 +865,10 @@
         "then" : {
           "properties" : {
             "$schema" : {
-              "const" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Rf01Bericht"
+              "const" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Rf01Bericht"
             }
           },
-          "$ref" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Rf01Bericht"
+          "$ref" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Rf01Bericht"
         }
       }, {
         "if" : {
@@ -863,10 +882,10 @@
         "then" : {
           "properties" : {
             "$schema" : {
-              "const" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Rf31Bericht"
+              "const" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Rf31Bericht"
             }
           },
-          "$ref" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Rf31Bericht"
+          "$ref" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Rf31Bericht"
         }
       }, {
         "if" : {
@@ -880,10 +899,10 @@
         "then" : {
           "properties" : {
             "$schema" : {
-              "const" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Rv01Bericht"
+              "const" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Rv01Bericht"
             }
           },
-          "$ref" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Rv01Bericht"
+          "$ref" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Rv01Bericht"
         }
       }, {
         "if" : {
@@ -897,10 +916,10 @@
         "then" : {
           "properties" : {
             "$schema" : {
-              "const" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Sv01Bericht"
+              "const" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Sv01Bericht"
             }
           },
-          "$ref" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Sv01Bericht"
+          "$ref" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Sv01Bericht"
         }
       }, {
         "if" : {
@@ -914,10 +933,10 @@
         "then" : {
           "properties" : {
             "$schema" : {
-              "const" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Sv11Bericht"
+              "const" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Sv11Bericht"
             }
           },
-          "$ref" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Sv11Bericht"
+          "$ref" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Sv11Bericht"
         }
       }, {
         "if" : {
@@ -931,10 +950,10 @@
         "then" : {
           "properties" : {
             "$schema" : {
-              "const" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Tb01Bericht"
+              "const" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Tb01Bericht"
             }
           },
-          "$ref" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Tb01Bericht"
+          "$ref" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Tb01Bericht"
         }
       }, {
         "if" : {
@@ -948,10 +967,10 @@
         "then" : {
           "properties" : {
             "$schema" : {
-              "const" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Tb02Bericht"
+              "const" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Tb02Bericht"
             }
           },
-          "$ref" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Tb02Bericht"
+          "$ref" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Tb02Bericht"
         }
       }, {
         "if" : {
@@ -965,10 +984,10 @@
         "then" : {
           "properties" : {
             "$schema" : {
-              "const" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Tf01Bericht"
+              "const" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Tf01Bericht"
             }
           },
-          "$ref" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Tf01Bericht"
+          "$ref" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Tf01Bericht"
         }
       }, {
         "if" : {
@@ -982,10 +1001,10 @@
         "then" : {
           "properties" : {
             "$schema" : {
-              "const" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Tf11Bericht"
+              "const" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Tf11Bericht"
             }
           },
-          "$ref" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Tf11Bericht"
+          "$ref" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Tf11Bericht"
         }
       }, {
         "if" : {
@@ -999,10 +1018,10 @@
         "then" : {
           "properties" : {
             "$schema" : {
-              "const" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Tf21Bericht"
+              "const" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Tf21Bericht"
             }
           },
-          "$ref" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Tf21Bericht"
+          "$ref" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Tf21Bericht"
         }
       }, {
         "if" : {
@@ -1016,10 +1035,10 @@
         "then" : {
           "properties" : {
             "$schema" : {
-              "const" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Tv01Bericht"
+              "const" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Tv01Bericht"
             }
           },
-          "$ref" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Tv01Bericht"
+          "$ref" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Tv01Bericht"
         }
       }, {
         "if" : {
@@ -1033,10 +1052,10 @@
         "then" : {
           "properties" : {
             "$schema" : {
-              "const" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Vb01Bericht"
+              "const" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Vb01Bericht"
             }
           },
-          "$ref" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Vb01Bericht"
+          "$ref" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Vb01Bericht"
         }
       }, {
         "if" : {
@@ -1050,10 +1069,10 @@
         "then" : {
           "properties" : {
             "$schema" : {
-              "const" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Vb02Bericht"
+              "const" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Vb02Bericht"
             }
           },
-          "$ref" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Vb02Bericht"
+          "$ref" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Vb02Bericht"
         }
       }, {
         "if" : {
@@ -1067,10 +1086,10 @@
         "then" : {
           "properties" : {
             "$schema" : {
-              "const" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Wa01Bericht"
+              "const" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Wa01Bericht"
             }
           },
-          "$ref" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Wa01Bericht"
+          "$ref" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Wa01Bericht"
         }
       }, {
         "if" : {
@@ -1084,10 +1103,10 @@
         "then" : {
           "properties" : {
             "$schema" : {
-              "const" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Wa11Bericht"
+              "const" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Wa11Bericht"
             }
           },
-          "$ref" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Wa11Bericht"
+          "$ref" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Wa11Bericht"
         }
       }, {
         "if" : {
@@ -1101,10 +1120,10 @@
         "then" : {
           "properties" : {
             "$schema" : {
-              "const" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Wf01Bericht"
+              "const" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Wf01Bericht"
             }
           },
-          "$ref" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Wf01Bericht"
+          "$ref" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Wf01Bericht"
         }
       }, {
         "if" : {
@@ -1118,10 +1137,10 @@
         "then" : {
           "properties" : {
             "$schema" : {
-              "const" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Xa01Bericht"
+              "const" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Xa01Bericht"
             }
           },
-          "$ref" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Xa01Bericht"
+          "$ref" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Xa01Bericht"
         }
       }, {
         "if" : {
@@ -1135,10 +1154,10 @@
         "then" : {
           "properties" : {
             "$schema" : {
-              "const" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Xf01Bericht"
+              "const" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Xf01Bericht"
             }
           },
-          "$ref" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Xf01Bericht"
+          "$ref" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Xf01Bericht"
         }
       }, {
         "if" : {
@@ -1152,10 +1171,10 @@
         "then" : {
           "properties" : {
             "$schema" : {
-              "const" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Xq01Bericht"
+              "const" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Xq01Bericht"
             }
           },
-          "$ref" : "https://brp-berichten-api.dictua.ictu-sr.nl/realms/schema/brp-berichten-api/20253#/berichtsoorten/Xq01Bericht"
+          "$ref" : "https://schemas.rvig.nl/brp/berichten/berichtdefinities/2027Q1#/berichtsoorten/Xq01Bericht"
         }
       } ],
       "unevaluatedProperties" : false
