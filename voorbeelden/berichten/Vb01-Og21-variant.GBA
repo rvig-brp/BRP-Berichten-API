@@ -1,34 +1,48 @@
-00000000Vb0101397{
-  "berichtType": "Og21",
-  "uittreksel": {
-    "aangemaaktOp": "2023-01-01T15:30:01",
-    "verstrekkendeInstantie": "Rechtbank Noord-Nederland",
-    "toelichting": "voorbeeld aantekening gezamenlijk gezag na een gezagssbeÈeindiging"
-  },
-  "minderjarige": {
-    "burgerservicenummer": "345678900"
-  },
-  "registerkaart": {
-    "registerkaartnummer": "2025_00000249"
-  },
-  "aantekeningen": [
-    {
-      "ingangsdatum": "2024-09-09",
-      "beslissingsdatum": "2024-09-09",
-      "beslissendeInstantie": "Rechtbank Noord-Nederland",
-      "beslissingscategorie": " Aantekening ",
-      "beslissingsnaam": " Aantekening gezamenlijk gezag ",
-      "beslissingstekst": " De griffier van de rechtbank stelt vast dat verzoekers hebben voldaan aan de voorwaarden om de aantekening tot het gezamenlijk uitoefenen van het gezag over voornoemde minderjarige in het gezagsregister te verkrijgen. In het gezagsregister is aangetekend dat de ouders gezamenlijk met het ouderlijk gezag zijn belast.",
-      "registratiedatum": "2024-09-15"
-    },
-    {
-      "ingangsdatum": "",
-      "beslissingsdatum": "2024-04-01",
-      "beslissendeInstantie": "Rechtbank Noord-Nederland",
-      "beslissingscategorie": " Gezag ",
-      "beslissingsnaam": " GezagsbeÈeindiging ",
-      "beslissingstekst": " BeÈeindigt het gezag van Jan van Veen over de minderjarige.",
-      "registratiedatum": "2024-04-04"
-    }
-  ]
-}
+00000000Vb0101724
+berichtType: Og21
+uittreksel:
+  aangemaaktOp: 20251001152001000
+  verstrekkendeInstantie: Rechtbank Noord-Nederland
+  toelichting: voorbeeld hoger beroep
+minderjarige:
+  burgerservicenummer: 225456977
+registerkaart:
+  registerkaartnummer: 2025_00000149
+aantekeningen:
+- ingangsdatum: 20180601
+  beslissingsdatum: 20180601
+  beslissendeInstantie: Rechtbank Noord-Nederland
+  beslissingscategorie: Overig
+  beslissingsnaam: Vernietiging uitspraak
+  beslissingstekst: "Vernietiging uitspraak: Hierbij vernietig ik de uitspraak\
+    \ d.d. 1-1-2015."
+  registratiedatum: 20180601
+- ingangsdatum: '00000000'
+  beslissingsdatum: 20150101
+  beslissendeInstantie: Rechtbank Noord-Nederland
+  beslissingscategorie: Voogdij
+  beslissingsnaam: Voogdij
+  beslissingstekst: Benoemt Sjaak de Groot geboren op 1-1-1970 te Amsterdam
+    tot voogd(en) over de minderjarige.
+  registratiedatum: 20150101
+- beslissingsdatum: 20150101
+  beslissendeInstantie: Rechtbank Noord-Nederland
+  beslissingscategorie: Voogdij
+  beslissingsnaam: Voogdij
+  beslissingstekst: Voorbeeld tekst.
+  registratiedatum: 20150101
+- ingangsdatum: 20251001
+  beslissingsdatum: 20251001
+  beslissendeInstantie: Rechtbank Noord-Nederland
+  beslissingscategorie: Gezag
+  beslissingsnaam: GezagsbeÃ«indiging
+  beslissingstekst: BeÃ«indigt het gezag van Jan van Veen over de minderjarige.
+  registratiedatum: 20251001
+- ingangsdatum: 20250911
+  beslissingsdatum: 20250911
+  beslissendeInstantie: Rechtbank Noord-Nederland
+  beslissingscategorie: Voogdij
+  beslissingsnaam: Voogdij
+  beslissingstekst: Benoemt Piet Klein geboren op 1-4-1980 te Rotterdam tot
+    voogd(en) over de minderjarige.
+  registratiedatum: 20250911
